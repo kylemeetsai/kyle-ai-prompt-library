@@ -75,15 +75,23 @@
   }
   .prompt-title .arrow { color: #ff6b2c; font-size: 20px; }
   .prompt-desc { font-size: 14px; color: #666; line-height: 1.45; }
-  .footer {
-    margin-top: 48px; text-align: center; font-size: 13px; color: #888;
+  .headline-emoji {
+    font-size: 0.85em;
+    margin-left: 4px;
+    vertical-align: -2px;
   }
-  .footer a { color: #ff6b2c; text-decoration: none; font-weight: 500; }
-  .coming-soon {
-    margin-top: 20px; padding: 16px; text-align: center;
-    background: #fff7f2; border: 1px dashed #ffb88c;
-    border-radius: 12px; font-size: 14px; color: #8a4520;
+  .follow-cta {
+    margin: 14px 0 8px;
+    text-align: center;
+    font-size: 13.5px;
+    color: #666;
   }
+  .follow-cta a {
+    color: #ff6b2c;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .follow-cta a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -95,9 +103,14 @@
   </div>
 
   <div class="headline-block">
-    <div class="headline">FREE PROMPTS</div>
-    <div class="subhead">Tap · copy · paste into Claude</div>
+    <div class="headline">PROMPTS AS SEEN ON TIKTOK <span class="headline-emoji">🎥</span></div>
+    <div class="subhead">Prompts behind the videos, all free to use.</div>
   </div>
+
+  <p class="follow-cta">
+    Weekly prompts released — follow for more on
+    <a href="https://www.tiktok.com/@kyle.meets.ai">@kyle.meets.ai</a>
+  </p>
 
   <div class="prompts-list">
     <a href="resume-optimizer.html" class="prompt-card">
@@ -114,14 +127,6 @@
       <div class="prompt-title">AI Budget Tracker <span class="arrow">→</span></div>
       <div class="prompt-desc">Upload a bank statement or CSV. Get an interactive dashboard with charts, overspending flags, and one savings tip.</div>
     </a>
-  </div>
-
-  <div class="coming-soon">
-    More prompts dropping weekly.<br>Follow <strong>@kyle.meets.ai</strong> on TikTok so you don't miss them.
-  </div>
-
-  <div class="footer">
-    Built by Kyle · <a href="https://www.tiktok.com/@kyle.meets.ai">TikTok</a>
   </div>
 </div>
 </body>
