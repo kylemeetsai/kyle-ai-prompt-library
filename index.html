@@ -28,7 +28,20 @@
     display: block;
   }
   .handle { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
-  .tagline { font-size: 14px; color: #666; }
+  .tagline { font-size: 14px; font-weight: 600; color: #222; }
+  .tagline-emoji { font-size: 0.95em; margin-left: 2px; vertical-align: -1px; }
+  .subtagline { font-size: 13.5px; color: #666; margin-top: 2px; }
+  .follow-cta {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #666;
+  }
+  .follow-cta a {
+    color: #ff6b2c;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .follow-cta a:hover { text-decoration: underline; }
   .headline-block {
     position: relative;
     margin: 40px 0 24px;
@@ -75,23 +88,6 @@
   }
   .prompt-title .arrow { color: #ff6b2c; font-size: 20px; }
   .prompt-desc { font-size: 14px; color: #666; line-height: 1.45; }
-  .headline-emoji {
-    font-size: 0.85em;
-    margin-left: 4px;
-    vertical-align: -2px;
-  }
-  .follow-cta {
-    margin: 14px 0 8px;
-    text-align: center;
-    font-size: 13.5px;
-    color: #666;
-  }
-  .follow-cta a {
-    color: #ff6b2c;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  .follow-cta a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -99,18 +95,18 @@
   <div class="header">
     <div class="avatar"><img src="profile.jpg" alt="Kyle"></div>
     <div class="handle">@kyle.meets.ai</div>
-    <div class="tagline">AI bites for SaaS pros · built with Claude</div>
+    <div class="tagline">As seen on TikTok <span class="tagline-emoji">🎥</span></div>
+    <div class="subtagline">Prompts behind the videos, all free to use.</div>
+    <div class="follow-cta">
+      Weekly prompts released — follow for more on
+      <a href="https://www.tiktok.com/@kyle.meets.ai">@kyle.meets.ai</a>
+    </div>
   </div>
 
   <div class="headline-block">
-    <div class="headline">PROMPTS AS SEEN ON TIKTOK <span class="headline-emoji">🎥</span></div>
-    <div class="subhead">Prompts behind the videos, all free to use.</div>
+    <div class="headline">FREE PROMPTS</div>
+    <div class="subhead">Tap · copy · paste into any AI</div>
   </div>
-
-  <p class="follow-cta">
-    Weekly prompts released — follow for more on
-    <a href="https://www.tiktok.com/@kyle.meets.ai">@kyle.meets.ai</a>
-  </p>
 
   <div class="prompts-list">
     <a href="resume-optimizer.html" class="prompt-card">
