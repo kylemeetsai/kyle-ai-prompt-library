@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live AI Classes — kyle.meets.ai</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #f5f0eb;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: #1a1a1a;
+      min-height: 100vh;
+      padding: 40px 16px 80px;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .profile {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .profile img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 12px;
+    }
+
+    .profile .handle {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .profile .tagline {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+    }
+
+    .profile .sub {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 6px;
+    }
+
+    .profile a {
+      color: #ff6b2c;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .back {
+      display: inline-block;
+      font-size: 13px;
+      color: #666;
+      text-decoration: none;
+      margin-bottom: 24px;
+    }
+
+    .back:hover {
+      color: #ff6b2c;
+    }
+
+    .section-header {
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px 24px 24px 20px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: stretch;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .section-header::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      background: #ff6b2c;
+      border-radius: 0 14px 14px 0;
+    }
+
+    .section-header h1 {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -0.3px;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .section-header .subtitle {
+      display: inline-block;
+      font-size: 12px;
+      color: #555;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 4px 10px;
+    }
+
+    .class-card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .class-card .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #ff6b2c;
+      background: #fff2ec;
+      border-radius: 6px;
+      padding: 3px 8px;
+      margin-bottom: 12px;
+    }
+
+    .class-card h2 {
+      font-size: 18px;
+      font-weight: 800;
+      color: #1a1a1a;
+      margin-bottom: 4px;
+      letter-spacing: -0.2px;
+    }
+
+    .class-card .tagline {
+      font-size: 13px;
+      color: #ff6b2c;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    .class-card .description {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.65;
+      margin-bottom: 20px;
+    }
+
+    .includes {
+      background: #f9f6f2;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin-bottom: 20px;
+    }
+
+    .includes .includes-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #999;
+      margin-bottom: 8px;
+    }
+
+    .includes ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .includes ul li {
+      font-size: 13px;
+      color: #444;
+      padding: 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .includes ul li::before {
+      content: '✓';
+      color: #ff6b2c;
+      font-weight: 700;
+      font-size: 12px;
+      flex-shrink: 0;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .seats {
+      font-size: 13px;
+      color: #666;
+    }
+
+    .seats .filled {
+      color: #ff6b2c;
+      font-weight: 700;
+    }
+
+    .book-btn {
+      display: inline-block;
+      background: #ff6b2c;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .book-btn:hover {
+      background: #e85a1e;
+    }
+
+    .book-btn.sold-out {
+      background: #ccc;
+      pointer-events: none;
+    }
+
+    .price {
+      font-size: 18px;
+      font-weight: 900;
+      color: #1a1a1a;
+    }
+
+    .price span {
+      font-size: 12px;
+      font-weight: 500;
+      color: #999;
+      margin-left: 2px;
+    }
+
+    .card-divider {
+      border: none;
+      border-top: 1px solid #f0ebe4;
+      margin: 20px 0;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: #999;
+      margin-bottom: 6px;
+    }
+
+    .footer a {
+      color: #ff6b2c;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="profile">
+      <img src="https://kyle-ai-prompt-library.pages.dev/profile.jpg" alt="Kyle" />
+      <div class="handle">@kyle.meets.ai</div>
+      <div class="tagline">As seen on TikTok 🎥</div>
+      <div class="sub">Live AI classes. Real practice. Real results.</div>
+      <a href="https://www.tiktok.com/@kyle.meets.ai" target="_blank">@kyle.meets.ai</a>
+    </div>
+
+    <a href="index.html" class="back">← all prompts</a>
+
+    <div class="section-header">
+      <div>
+        <h1>Live AI Classes</h1>
+        <span class="subtitle">Live on Google Meet · $15 · Max 15 seats</span>
+      </div>
+    </div>
+
+    <div class="class-card">
+      <span class="badge">Foundations · Recurring</span>
+      <h2>Claude 101: From Curious to Confident</h2>
+      <p class="tagline">45 minutes. Real results. No fluff.</p>
+      <p class="description">
+        You've opened Claude. Maybe you've even used it a few times. But if you're being honest, you're not totally sure you're using it right.<br><br>
+        This is the class I wish existed when I started. We're skipping the theory and going straight into how Claude actually works and how to plug it into the work you're already doing. Emails, decks, research, client prep, strategy docs, all of it.<br><br>
+        No more YouTube rabbit holes. This is live, hands on, and you can actually ask questions. Imagine wrapping a 45 minute session and walking away with 5 prompts you can use before your next meeting. That's exactly what this is.
+      </p>
+      <div class="includes">
+        <div class="includes-label">What's included</div>
+        <ul>
+          <li>45 min live session on Google Meet</li>
+          <li>Open Q&A</li>
+          <li>5 prompt cheat sheet you keep forever</li>
+        </ul>
+      </div>
+      <hr class="card-divider" />
+      <div class="card-footer">
+        <div>
+          <div class="price">$15 <span>per seat</span></div>
+          <!-- UPDATE seats filled number below when someone books -->
+          <div class="seats"><span class="filled">0</span> / 15 seats filled</div>
+        </div>
+        <!-- Replace href with your Beacons event URL when live -->
+        <a href="#" class="book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="class-card">
+      <span class="badge">Deep Dive · Specialized</span>
+      <h2>Claude Deep Dive: Projects</h2>
+      <p class="tagline">Stop starting from scratch every time you open Claude.</p>
+      <p class="description">
+        Most people use Claude like a search bar — ask a question, get an answer, close the tab, repeat. Projects completely changes that.<br><br>
+        Imagine opening Claude and it already knows your role, your context, and exactly how you like to work. No re-explaining. No starting over. Just results.<br><br>
+        We're building this together live, not just watching someone else do it. Ask questions, follow along, and leave with a starter Project template ready to go the same day.
+      </p>
+      <div class="includes">
+        <div class="includes-label">What's included</div>
+        <ul>
+          <li>45 min live session on Google Meet</li>
+          <li>Open Q&A</li>
+          <li>Starter Project template</li>
+        </ul>
+      </div>
+      <hr class="card-divider" />
+      <div class="card-footer">
+        <div>
+          <div class="price">$15 <span>per seat</span></div>
+          <!-- UPDATE seats filled number below when someone books -->
+          <div class="seats"><span class="filled">0</span> / 15 seats filled</div>
+        </div>
+        <!-- Replace href with your Beacons event URL when live -->
+        <a href="#" class="book-btn">Book Now</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Want more free AI content?</p>
+      <a href="https://www.tiktok.com/@kyle.meets.ai" target="_blank">Follow @kyle.meets.ai on TikTok →</a>
+    </div>
+
+  </div>
+</body>
+</html>
