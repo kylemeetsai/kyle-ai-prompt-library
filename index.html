@@ -88,6 +88,36 @@
   }
   .prompt-title .arrow { color: #ff6b2c; font-size: 20px; }
   .prompt-desc { font-size: 14px; color: #666; line-height: 1.45; }
+  .classes-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #ff6b2c;
+    color: #fff;
+    padding: 16px 22px;
+    border-radius: 14px;
+    text-decoration: none;
+    margin-top: 28px;
+    box-shadow: 0 6px 18px rgba(255, 107, 44, 0.28);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .classes-cta:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 22px rgba(255, 107, 44, 0.38);
+  }
+  .classes-cta:active { transform: scale(0.98); }
+  .classes-cta-label {
+    font-size: 17px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+  }
+  .classes-cta-sub {
+    font-size: 12.5px;
+    font-weight: 500;
+    opacity: 0.92;
+    margin-top: 2px;
+  }
+  .classes-cta-arrow { font-size: 22px; font-weight: 700; }
 </style>
 </head>
 <body>
@@ -102,6 +132,14 @@
       <a href="https://www.tiktok.com/@kyle.meets.ai">@kyle.meets.ai</a>
     </div>
   </div>
+
+  <a href="classes.html" class="classes-cta">
+    <div>
+      <div class="classes-cta-label">AI Classes</div>
+      <div class="classes-cta-sub">Live on Google Meet · 45 min · $15</div>
+    </div>
+    <span class="classes-cta-arrow">→</span>
+  </a>
 
   <div class="headline-block">
     <div class="headline">FREE PROMPTS</div>
