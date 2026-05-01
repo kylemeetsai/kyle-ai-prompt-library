@@ -103,7 +103,7 @@
   </div>
 
   <div class="description">
-    Scans your email and chat from the past 7 days, finds every thread where you sent the last message and got no reply, ranks them by what matters, and writes follow-up drafts you can send today. Can run automatically every Monday.
+    Set it up once, then trigger it anytime by saying "run my follow up radar." It scans your email and chat from the past 7 days, finds every thread where you sent the last message and got no reply, ranks them by what matters, and writes follow-up drafts you can send today. Optional weekly auto-run on Monday mornings.
   </div>
 
   <div class="how-to">
@@ -111,83 +111,111 @@
     <div class="how-to-steps">
       <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
       <strong>2.</strong> Paste into a new Claude chat with your email and chat connectors set up (Gmail, Outlook, Slack, or Teams)<br>
-      <strong>3.</strong> Answer a few quick questions about who and what matters most<br>
-      <strong>4.</strong> Get ranked follow-ups and ready-to-send drafts
+      <strong>3.</strong> Answer a few quick questions once (your preferences get saved)<br>
+      <strong>4.</strong> Re-run anytime by saying "run my follow up radar"
     </div>
   </div>
 
-  <div class="prompt-box" id="prompt-text">You are helping me set up a weekly follow up radar. The goal is simple. Find every email and chat thread from the past 7 days where I sent the last message and the other person has not replied, then rank them so I know which ones really matter and what to actually send today.
+  <div class="prompt-box" id="prompt-text">You are managing my Weekly Follow Up Radar. This is a one time setup. After my first successful run, I should never have to repeat the setup again, and I should be able to trigger this anytime by saying "run my follow up radar," "check my follow ups," "follow up radar," or any obvious variant.
 
-I am new to this, so be patient. Walk me through it in four parts. Use plain language. Do not assume I know any technical terms. Do not use em dashes anywhere in your responses or in any drafts you write for me. Keep the tone professional but warm, like a thoughtful colleague.
+Important style rules for everything you write to me and every draft you create:
+1. Do not use em dashes anywhere. Use commas, periods, parentheses, or the word "and" instead.
+2. Keep the tone professional and warm, like a thoughtful colleague.
+3. Use plain language. Assume I am new to AI and do not know technical terms.
 
-PART 1: CHECK MY CONNECTIONS
+ON EVERY RUN, START AT STEP 0.
 
-Before scanning anything, look at the tools available to you in this chat. I am specifically looking for two things:
+STEP 0: CHECK FOR MY SAVED PREFERENCES
 
+Look in my workspace folder for a file named "followup-radar-criteria.md."
+
+If the file exists, this is a returning run. Read the file, greet me briefly, and summarize my saved preferences back to me in two or three sentences. Then ask: "Want me to use these as they are, update them, or start completely fresh?" Wait for my answer.
+- If I say use them, skip directly to PART 3.
+- If I say update, go to PART 2 and replace the file with my new answers.
+- If I say start fresh, ignore the existing file, run PART 1, then PART 2.
+
+If the file does not exist, this is my first run. Greet me, tell me this is a one time setup that should take about three minutes, then go to PART 1.
+
+If you cannot read or write files in this environment, tell me clearly. Recommend I either run this in Claude Cowork or paste this prompt into a Claude Project as project instructions so my preferences can persist. Then ask if I want to keep going for this session anyway, knowing I will need to re-enter my preferences next time.
+
+PART 1: CONNECTOR CHECK (first run only, or if I ask you to recheck)
+
+Look at the tools available to you in this conversation. I am specifically looking for two categories:
 1. An email connector. Gmail or Outlook are the most common.
 2. A chat connector. Slack or Microsoft Teams are the most common.
 
-Tell me clearly which of these you can see. If I have at least one email source and at least one chat source connected, say so and move to Part 2.
+Tell me clearly which of these you can see by name. Then:
 
-If something is missing, stop. Do not try to scan yet. Instead:
+- If I have at least one email source and at least one chat source, say so and move to PART 2.
+- If I am missing one of the two, ask whether I want to keep going with what I have or pause and add the other one. Respect my choice either way.
+- If I have nothing connected, stop. Do not try to scan anything. Explain in one or two friendly sentences what a connector is and why we need at least one. Use any connector search or suggestion tools you have to recommend the specific ones I should add (Gmail, Outlook, Slack, or Teams). Give me simple instructions and tell me to come back when I have at least one connected. Wait for me to confirm before continuing.
 
-- Explain in one or two friendly sentences what a connector is and why we need at least one email source and one chat source.
-- Use any connector search or suggestion tools you have to recommend the specific ones I should add (Gmail, Outlook, Slack, Teams).
-- Give me simple instructions on how to add them, and tell me to come back when I have at least one email and one chat connected.
-- Wait for me to confirm I am set up before going further.
+PART 2: CRITERIA INTAKE (first run, or when I ask you to update)
 
-If I only have one of the two (email or chat but not both), ask me whether I want to keep going with just what I have, or pause and add the other one. Respect my choice either way.
+Ask me these questions one at a time. Wait for my answer before moving to the next.
 
-PART 2: LEARN WHAT MATTERS TO ME
-
-Once I am connected, ask me these questions one at a time. Wait for my answer before moving to the next one.
-
-1. Who are the people whose follow-ups should always be high priority for me? Examples: my boss, specific clients, agency partners, recruiters, board members, key teammates. List names if you can think of them.
+1. Who are the people whose follow-ups should always be high priority for me? Examples: my boss, specific clients, agency partners, recruiters, board members, key teammates. List names if you can.
 2. What kinds of messages count as a real ask worth surfacing? Examples: a decision I am waiting on, an approval, a meeting that needs scheduling, an intro I requested, a question someone asked me.
 3. Anything I want you to ignore on sight? Examples: newsletters, friends and family, casual office banter, recruiter spam, anything from specific senders.
-4. How many follow-ups do I want to see at most? The default is five. I can say more or fewer.
+4. How many follow-ups do I want to see at most? The default is five.
 5. Where do I want the drafts to land? Pick one:
    a. In a clean Word document I can read and copy from.
    b. As actual draft emails or unsent chat messages inside my connected tools, wherever your tools support that.
    c. Both.
 
-After I answer, repeat back what you heard in two or three sentences and ask me to confirm before you start scanning. If I want to change something, let me change it.
+After I answer, repeat back what you heard in two or three sentences and ask me to confirm before saving.
+
+Once I confirm, save my answers to a file in my workspace named "followup-radar-criteria.md." Format it as clean markdown with these sections:
+
+  # Follow Up Radar Criteria
+  ## VIPs (always high priority)
+  ## What counts as a real ask
+  ## Ignore on sight
+  ## Max number of results
+  ## Preferred output format
+  ## Last updated
+
+Tell me where the file is saved so I know it exists. From now on, you will read this file at the start of every run.
 
 PART 3: RUN THE SCAN AND WRITE THE DRAFTS
 
-Once I confirm, do the following:
+Use the criteria from my saved file (or my fresh answers if I just updated them) and do the following:
 
 1. Look at my sent email and chat messages from the last 7 days.
 2. Find every thread where I sent the latest message and no one has replied yet.
-3. Drop the noise. Skip newsletters, automated alerts, calendar notifications, bounce messages, casual chatter with no question, and anything where I was the one closing the loop. Also skip anything I told you to ignore in Part 2.
+3. Drop the noise. Skip newsletters, automated alerts, calendar notifications, bounce messages, casual chatter with no question, anything where I was the one closing the loop, and anything that matches my "ignore on sight" list.
 4. Score what is left on these signals:
-   - How important the recipient is to me, using my list from Part 2.
-   - Whether my message had a real ask, decision pending, or blocked next step.
-   - Whether the topic is time sensitive (deadline, event, launch, contract window).
-   - How long it has been silent. Longer silence on a real ask means higher priority.
-   - Whether the relationship or project is actively moving versus a cold reach out.
+   a. How important the recipient is to me, using my VIP list.
+   b. Whether my message had a real ask or a pending decision, using my "real ask" list.
+   c. Whether the topic is time sensitive (deadline, event, launch, contract window).
+   d. How long it has been silent. Longer silence on a real ask means higher priority.
+   e. Whether the relationship or project is actively moving versus a cold reach out.
 5. Rank everything and split into HIGH PRIORITY (send today) and MEDIUM PRIORITY (send this week).
-6. For the top items, up to the number I gave you in Part 2, write a follow-up draft I could actually send today. Each draft must:
-   - Match the warmth and register of my original message. Read the original before drafting.
-   - Skip every version of "just checking in," "circling back," "bumping this," and "wanted to follow up." These read as filler and lower the chance of a reply.
-   - Give the other person a concrete reason to write back. Restate the specific decision they owe me, offer a new option, share a small piece of new information, or propose a time.
-   - Stay short. Usually two to four sentences unless the original thread was longer or more formal.
-   - Use the recipient's name the way I used it in the original thread.
-   - Have no em dashes. Use commas, periods, or "and" instead. Keep the voice human.
-7. Deliver the result in the format I picked in Part 2:
-   - If I asked for a document, save a Word document in my workspace named "followup-radar-YYYY-MM-DD" with today's date, and share the link.
-   - If I asked for in-platform drafts, create the draft emails and unsent chat messages directly using the connector tools that support it. Tell me clearly which platform each draft is sitting in so I know where to find them.
-   - If I asked for both, do both.
+6. For the top items, up to my saved max number, write a follow-up draft I could actually send today. Each draft must:
+   a. Match the warmth and register of my original message. Read the original first.
+   b. Skip every version of "just checking in," "circling back," "bumping this," and "wanted to follow up."
+   c. Give the other person a concrete reason to write back. Restate the specific decision they owe me, offer a new option, share a small piece of new information, or propose a time.
+   d. Stay short. Usually two to four sentences unless the original thread was longer or more formal.
+   e. Use the recipient's name the way I used it in the original thread.
+   f. Have no em dashes. Use commas, periods, or the word "and" instead.
+7. Deliver in my saved output format:
+   a. If I picked document, save a Word document in my workspace named "followup-radar-YYYY-MM-DD" with today's date and share the link.
+   b. If I picked in-platform drafts, create draft emails and unsent chat messages directly using the connector tools that support it. Tell me clearly which platform each draft is sitting in so I know where to find them.
+   c. If I picked both, do both.
 
-Open with a one sentence summary like "You have three high priority and two medium priority follow-ups waiting on you." If nothing is worth surfacing, say so plainly in one sentence. Do not invent threads or fabricate context. If a thread is ambiguous, leave it out instead of guessing.
+Open with a one sentence summary like "You have three high priority and two medium priority follow-ups waiting on you." If nothing is worth surfacing, say so plainly in one sentence. Do not invent threads or fabricate context.
 
-PART 4: MAKE IT A WEEKLY HABIT
+PART 4: OFFER TO SCHEDULE (first run only)
 
-After the first run is done, ask me if I want this to run automatically every Monday at 8am in my local timezone. If I say yes, create a scheduled task that runs the exact same process every Monday morning using the same criteria I gave you in Part 2. Tell me where to find the scheduled task and how to edit or pause it later if my priorities change.
+After the first successful run, ask if I want this to happen automatically every Monday at 8am in my local timezone.
 
-If I say no, leave it as a one time thing. I can always ask for it again.
+If I say yes, create a scheduled task. Bake my specific criteria from my saved file directly into the scheduled task prompt, so the scheduled run does not depend on reading any other file. Tell me where to find the task and how to edit or pause it later if my priorities change.
 
-NOW BEGIN WITH PART 1. Check what is connected and tell me where I stand.</div>
+If I say no, leave it. I can trigger this manually anytime by saying "run my follow up radar."
+
+If I ever say "update my radar criteria," "change my preferences," or similar, run PART 2 again, save the updated file, and ask if I want you to update the scheduled task too with the new criteria.
+
+NOW START AT STEP 0.</div>
 
   <button class="copy-button" id="copy-btn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
