@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Instagram Carousel (Claude Design) — kyle.meets.ai</title>
+<title>Marketing Email Template (Claude Design) — kyle.meets.ai</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   body {
@@ -98,58 +98,79 @@
   <a href="index.html" class="back-link">← all prompts</a>
 
   <div class="headline-block">
-    <div class="headline">INSTAGRAM CAROUSEL (CLAUDE DESIGN)</div>
+    <div class="headline">MARKETING EMAIL TEMPLATE (CLAUDE DESIGN)</div>
     <div class="subhead">60 second setup</div>
   </div>
 
   <div class="description">
-    Generates a complete Instagram carousel from your topic and audience. Builds a single HTML artifact with live previews of every slide and one-click PNG downloads sized exactly to Instagram's 1080x1080 spec, so you can post directly.
+    Walks you through a quick questionnaire about your campaign, brand, content, and vibe, then builds a fully responsive HTML email you can paste straight into Klaviyo, Mailchimp, or any major email platform. Comes with a swap-in checklist, three subject line options, and an A/B test idea. Best run in Claude Design for a live preview as it builds.
   </div>
 
   <div class="how-to">
     <div class="how-to-label">How to use</div>
     <div class="how-to-steps">
       <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
-      <strong>2.</strong> Paste into a new Claude chat<br>
-      <strong>3.</strong> Fill in your topic, audience, slide count, and any brand colors or aesthetic<br>
-      <strong>4.</strong> Download each slide as a 1080x1080 PNG and post
+      <strong>2.</strong> Paste into a new Claude chat (Claude Design recommended for a live preview)<br>
+      <strong>3.</strong> Answer the questionnaire about your campaign, brand, and vibe<br>
+      <strong>4.</strong> Get export-ready HTML plus a swap-in checklist and subject line options
     </div>
   </div>
 
-  <div class="prompt-box" id="prompt-text">Build me ONE single HTML artifact (not multiple separate files) that displays an Instagram carousel as a responsive grid of slide previews on screen. Under each slide preview, include a "Download as PNG" button that exports just that slide at exactly 1080x1080 resolution. I want to see all slides at once, then download each one to post to Instagram.
+  <div class="prompt-box" id="prompt-text">You are my email design partner. I want to build a responsive HTML email campaign that I can paste straight into Klaviyo, Mailchimp, or any major email service provider.
 
-TOPIC: [describe your carousel topic. Examples: "5 productivity habits I swear by", "intro to my coaching practice", "summer reading list 2025", "announcing our new product launch"]
+**Before you start designing, check where we are:**
 
-AUDIENCE: [who this is for. Examples: "first-time founders", "moms returning to work", "people new to AI", "wedding photographers"]
+If you can render live HTML previews in this environment (Claude Design / Artifacts), great — you'll build the email visually so I can see it as it comes together. If you can't render previews here, pause and tell me: *"For the best experience, open Claude Design at [claude.ai](http://claude.ai) and paste this prompt there so you can preview the email live. Want me to continue here anyway and just give you the code?"* — then wait for my answer.
 
-NUMBER OF SLIDES: [pick anywhere from 5 to 10. Instagram's engagement sweet spot is 7 to 10]
+**Step 1 — Ask me these questions all at once, in this order. Number them so I can answer inline.**
 
-STRUCTURE (adjust to your slide count):
-- Slide 1: Cover / hook (big headline, sets tone, includes a subtle swipe hint)
-- Middle slides: One idea per slide (tips, steps, points, items, or features)
-- Final slide: CTA ("save this", "follow for more", "try it yourself", or your own call to action)
+**About the campaign**
+1. What type of email is this? (product launch, sale/promo, newsletter, welcome email, re-engagement, event invite, announcement, other)
+2. What's the brand name and a one-line description? (e.g. "Wildgrove — small-batch skincare")
+3. Who's receiving this? (existing customers, new subscribers, VIPs, lapsed customers, etc.)
+4. What's the single most important thing this email needs to do? (drive a click, announce news, build relationship, etc.)
 
-REQUIREMENTS:
-- Single self-contained HTML file
-- Grid of live previews scaled to fit the screen, auto-adjusting columns based on slide count
-- Each preview has its own "Download as PNG" button below it
-- Also include a "Download all" button at the top
-- Each PNG exports at exactly 1080x1080 (Instagram square spec)
-- Use html2canvas for the export (load from CDN) with scale: 2 for crisp retina-quality output
-- Render each slide at full 1080x1080 in a hidden off-screen stage. The on-screen previews are CSS-scaled clones, so what you see is exactly what gets exported
-- File names: export as [topic-slug]-01.png, [topic-slug]-02.png, etc. so downloads stay organized
+**About the content**
+5. What's the headline or main message? (one confident line — if you're not sure, give me the gist and I'll suggest options)
+6. Any specific copy points, product details, dates, or offer terms I need to include?
+7. What's the call-to-action? (e.g. "Shop Now," "Read More," "RSVP") And where should it link?
+8. Any secondary link or action? (optional)
+9. Do you have a testimonial, quote, or social proof you want featured? (optional — paste it or skip)
 
-DESIGN RULES:
-- Pick a strong, opinionated visual direction. Not generic web design. Commit to a specific aesthetic (e.g. travel scrapbook, brutalist editorial, soft pastel risograph, 90s zine, modern minimalist, retro postcard, vintage magazine, art deco, swiss design, collage, etc.)
-- Use real Google Fonts, layered illustrations or SVG details, a considered color palette of 3 to 5 colors max, and intentional typography hierarchy
-- Add visual continuity across slides. Use a recurring shape, color block, texture, or graphic element on every slide so the carousel reads as ONE connected story, not separate posts
-- Include page indices (01/07, 02/07, etc.) so it reads as a connected carousel
-- Keep critical text and key visuals inside a center safe zone with at least 80px of padding on top and bottom. Instagram crops the feed preview, so anything near the edges may get cut
-- Body text minimum 32px, headlines 80px or larger, so it stays legible on mobile
+**About the look**
+10. What's the overall vibe? (editorial/luxury, playful/modern, minimalist, bold/punchy, warm/cozy, clinical/clean, other — describe in your own words if none fit)
+11. Brand colors? (paste hex codes if you have them, or describe — "warm earth tones," "cool blues," etc. — and I'll suggest a palette)
+12. Any font preferences? (or I'll pick a serif + sans-serif pairing that fits your vibe)
+13. Do you have product photos, lifestyle imagery, or a logo ready to drop in? (yes/no — if no, I'll use clearly-marked placeholders)
 
-AESTHETIC FOR THIS ONE: [optional. Describe a vibe or say "surprise me"]
+**About the structure**
+14. Are there any sections you definitely want or definitely *don't* want? (default sections: pre-header, logo bar, hero image + headline, short editorial paragraph, 3-up benefits or features, testimonial pull-quote, primary CTA, secondary link, footer)
 
-BRAND COLORS / FONTS (if any): [optional. Drop hex codes or font names if you have them]</div>
+If any answer is vague or skipped, make a smart suggestion based on what I've told you and flag it as a suggestion so I can override.
+
+**Step 2 — Once I answer, build the email with these technical specs (these are email best practices — don't ask, just do):**
+
+- 600px max width, centered
+- Table-based layout (required for Outlook compatibility)
+- All critical CSS inlined
+- Mobile breakpoint at 480px with stacked layout
+- Web-safe font fallbacks (Georgia, Helvetica, Arial) behind any custom fonts
+- Bulletproof buttons (VML fallback for Outlook)
+- Alt text on every image
+- Footer includes social icons, mailing address placeholder, and unsubscribe link
+- Subtle CSS-only animations where they degrade gracefully (gentle fade-in on hero, hover lift on CTA)
+- Dark mode aware where reasonable
+
+**Step 3 — Render it live (if in Claude Design), then give me:**
+
+1. The export-ready HTML in a single code block I can copy-paste into my ESP
+2. A **personalized swap-in checklist** — a numbered list of every placeholder, image, link, and copy block I need to replace before sending, written specifically based on what I told you. For each item, tell me exactly what to do (e.g. "Replace `[HERO_IMAGE]` with your 1200x800px product photo — recommend lifestyle shot, not white background").
+3. A **subject line + preview text suggestion** (3 options, varied tones)
+4. One quick **A/B test idea** worth running on this email
+
+**Step 4 — Offer to iterate.** Ask if I want to swap anything, change the tone, try a different layout, or add/remove sections. If I drop in photo URLs or asset links, integrate them into the HTML.
+
+Keep your tone like a smart creative director — opinionated where it helps, hands-off where I've made a clear choice.</div>
 
   <button class="copy-button" id="copy-btn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
