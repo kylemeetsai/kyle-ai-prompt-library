@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Color Analysis (ChatGPT) — kyle.meets.ai</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    background: #fafaf7;
+    color: #111;
+    min-height: 100vh;
+    padding: 24px 18px 60px;
+    line-height: 1.5;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #666; text-decoration: none;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .back-link:hover { color: #111; }
+  .headline-block {
+    position: relative;
+    margin-bottom: 8px;
+    padding: 16px 22px 16px 18px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .headline-block::after {
+    content: ''; position: absolute; right: -3px; top: 8px; bottom: 8px;
+    width: 8px; background: #ff6b2c; border-radius: 2px;
+  }
+  .headline { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .subhead {
+    display: inline-block; margin-top: 14px;
+    padding: 6px 12px; background: #fff;
+    font-size: 14px; font-weight: 500; border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .description {
+    margin: 20px 0 16px; font-size: 15px; color: #444; line-height: 1.6;
+  }
+  .how-to {
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 16px 20px; margin-bottom: 20px;
+  }
+  .how-to-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; color: #ff6b2c; margin-bottom: 8px;
+  }
+  .how-to-steps { font-size: 14px; color: #333; line-height: 1.7; }
+  .how-to-steps strong { color: #111; }
+  .prompt-box {
+    position: relative;
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 20px 20px 70px; margin-bottom: 12px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.65;
+    white-space: pre-wrap; word-wrap: break-word;
+    color: #222; max-height: 300px; overflow-y: auto;
+  }
+  .copy-button {
+    position: sticky; bottom: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px;
+    background: #111; color: #fff;
+    border: none; border-radius: 14px;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .copy-button:active { transform: scale(0.98); }
+  .copy-button.copied { background: #1d9e75; }
+  .copy-button svg { width: 18px; height: 18px; }
+  .footer-cta {
+    margin-top: 32px; padding: 20px;
+    background: #111; color: #fff; border-radius: 14px;
+    text-align: center;
+  }
+  .footer-cta-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #ff6b2c; font-weight: 700; margin-bottom: 6px;
+  }
+  .footer-cta-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .footer-cta-sub { font-size: 13px; color: #bbb; margin-bottom: 14px; }
+  .footer-cta a {
+    display: inline-block; padding: 10px 20px;
+    background: #ff6b2c; color: #fff; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← all prompts</a>
+
+  <div class="headline-block">
+    <div class="headline">AI COLOR ANALYSIS (CHATGPT)</div>
+    <div class="subhead">60 second setup</div>
+  </div>
+
+  <div class="description">
+    Upload a portrait and get a true personal color analysis: an objective read of your undertone, value contrast, chroma, and harmony, the single best-fitting season from all 12 palettes, a 10–12 color swatch grid with hex codes that flatter your specific features, and a "wears well vs avoid" comparison, all laid out as a single editorial magazine spread.
+  </div>
+
+  <div class="how-to">
+    <div class="how-to-label">How to use</div>
+    <div class="how-to-steps">
+      <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
+      <strong>2.</strong> Paste into a new ChatGPT chat<br>
+      <strong>3.</strong> Upload a clear portrait photo of yourself<br>
+      <strong>4.</strong> Get your color analysis laid out as a magazine spread
+    </div>
+  </div>
+
+  <div class="prompt-box" id="prompt-text">Using this portrait, create a true personal color analysis presented as a single editorial magazine spread in portrait orientation (roughly 3:4). IMPORTANT: Do not default toward warm, muted, earthy, beige, minimalist, or "Soft Autumn"-leaning palettes because of the design aesthetic. The seasonal diagnosis must come entirely from facial analysis, not from the requested visual style of the layout. First, objectively analyze: * skin undertone (warm, cool, neutral, olive, peach, golden, rosy, etc.) * value contrast (light, medium, deep) * chroma/intensity (muted vs bright/clear) * harmony between skin, hair, and eyes * how overall contrast influences seasonal direction Evaluate all 12 seasonal palettes equally: * Bright Spring * True Spring * Light Spring * Light Summer * True Summer * Soft Summer * Soft Autumn * True Autumn * Deep Autumn * Deep Winter * True Winter * Bright Winter Then select the SINGLE best-fitting season and briefly explain why competing seasons were ruled out. The analysis: At the top of the page, include: 1. The final season diagnosis as a bold editorial headline 2. One concise line identifying the exact traits that drove the diagnosis Example: "neutral-cool rosy undertone, ash blonde hair, soft gray-blue eyes, low contrast" 3. A very short poetic descriptor of the palette mood The layout: TOP BLOCK * Large editorial title with the season name * One-line descriptor underneath * One-line technical reasoning beneath that MIDDLE BLOCK * A clean swatch grid of 10–12 colors that specifically support THIS identified season * Every swatch must include: * curated color name * accurate hex code * The colors should be chosen because they flatter the analyzed features, not because they fit the page aesthetic * Arrange in a clean structured grid BOTTOM BLOCK A side-by-side "wears well vs avoid" comparison: LEFT: * 3 colors that harmonize with the analyzed complexion RIGHT: * 3 colors that create disharmony, dullness, harshness, or imbalance Show these either as: * fabric drapes * color overlays * stylized fashion silhouettes * or portrait comparisons Label both sides clearly. VISUAL STYLE: The page itself should feel editorial and high-fashion, but the design aesthetic must NOT influence the seasonal result. Use: * elegant typography * intentional white space * refined magazine layout * restrained graphic design * clean hierarchy Avoid: * forcing warm neutrals * forcing muted palettes * making every analysis look like Soft Autumn * reusing identical palettes between different people The final result should feel like a genuine professional color analysis created specifically for this individual, with a palette uniquely derived from their actual features.</div>
+
+  <button class="copy-button" id="copy-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+    <span id="copy-label">Copy prompt</span>
+  </button>
+
+  <div class="footer-cta">
+    <div class="footer-cta-label">Want more like this?</div>
+    <div class="footer-cta-title">Follow @kyle.meets.ai</div>
+    <div class="footer-cta-sub">New AI bites dropping weekly</div>
+    <a href="https://www.tiktok.com/@kyle.meets.ai">Open TikTok →</a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('copy-btn');
+  const label = document.getElementById('copy-label');
+  const promptText = document.getElementById('prompt-text');
+
+  btn.addEventListener('click', async () => {
+    const text = promptText.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const range = document.createRange();
+      range.selectNode(promptText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try { document.execCommand('copy'); } catch(e) {}
+      window.getSelection().removeAllRanges();
+    }
+    btn.classList.add('copied');
+    label.textContent = 'Copied ✓';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      label.textContent = 'Copy prompt';
+    }, 2000);
+  });
+</script>
+</body>
+</html>
