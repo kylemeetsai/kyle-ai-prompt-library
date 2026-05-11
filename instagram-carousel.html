@@ -119,9 +119,7 @@
   <div class="prompt-box" id="prompt-text">Build me ONE single HTML artifact (not multiple separate files) that displays an Instagram carousel as a responsive grid of slide previews on screen. Under each slide preview, include a "Download as PNG" button that exports just that slide at exactly 1080x1080 resolution. I want to see all slides at once, then download each one to post to Instagram.
 
 TOPIC: [describe your carousel topic. Examples: "5 productivity habits I swear by", "intro to my coaching practice", "summer reading list 2025", "announcing our new product launch"]
-
 AUDIENCE: [who this is for. Examples: "first-time founders", "moms returning to work", "people new to AI", "wedding photographers"]
-
 NUMBER OF SLIDES: [pick anywhere from 5 to 10. Instagram's engagement sweet spot is 7 to 10]
 
 STRUCTURE (adjust to your slide count):
@@ -133,22 +131,25 @@ REQUIREMENTS:
 - Single self-contained HTML file
 - Grid of live previews scaled to fit the screen, auto-adjusting columns based on slide count
 - Each preview has its own "Download as PNG" button below it
-- Also include a "Download all" button at the top
+- Also include a "Download all" button at the top. When clicked, it must export slides sequentially with a 400ms delay between each download to avoid the browser blocking multiple downloads
+- Display a small one-line note near the "Download all" button that says: "Your browser may ask permission to download multiple files. Click Allow."
 - Each PNG exports at exactly 1080x1080 (Instagram square spec)
-- Use html2canvas for the export (load from CDN) with scale: 2 for crisp retina-quality output
-- Render each slide at full 1080x1080 in a hidden off-screen stage. The on-screen previews are CSS-scaled clones, so what you see is exactly what gets exported
+- Use html2canvas version 1.4.1 loaded from cdnjs. Call it with these exact options for every export: { width: 1080, height: 1080, scale: 1, useCORS: true, allowTaint: false, backgroundColor: [match the slide's actual background color, never null] }. Do NOT use scale: 2, because the source already renders at 1080x1080 and scale: 2 would produce 2160x2160 output
+- Render each slide at full 1080x1080 inside a hidden off-screen stage positioned at left: -99999px. Do NOT use display: none, which breaks html2canvas rendering. The on-screen grid shows CSS-scaled clones using transform: scale(...) with transform-origin: top left so layout stays predictable
+- Before ANY export runs, await document.fonts.ready so Google Fonts finish loading. Also run one silent "warmup" html2canvas pass on page load (throw the result away) so the browser caches font glyphs before the user clicks any download button. This prevents the common bug where the first export uses fallback system fonts
 - File names: export as [topic-slug]-01.png, [topic-slug]-02.png, etc. so downloads stay organized
 
 DESIGN RULES:
 - Pick a strong, opinionated visual direction. Not generic web design. Commit to a specific aesthetic (e.g. travel scrapbook, brutalist editorial, soft pastel risograph, 90s zine, modern minimalist, retro postcard, vintage magazine, art deco, swiss design, collage, etc.)
-- Use real Google Fonts, layered illustrations or SVG details, a considered color palette of 3 to 5 colors max, and intentional typography hierarchy
+- Use real Google Fonts loaded from fonts.googleapis.com, layered inline SVG illustrations or shapes for graphic detail, and a considered color palette of 3 to 5 colors max with intentional typography hierarchy
+- Avoid external image URLs (Unsplash, Pexels, etc.) because they frequently fail CORS in html2canvas. Use inline SVG for any illustration or graphic element
+- Avoid emojis in slide bodies. They render with system fonts during export and often look different from the preview. Use inline SVG icons instead, or text only
 - Add visual continuity across slides. Use a recurring shape, color block, texture, or graphic element on every slide so the carousel reads as ONE connected story, not separate posts
 - Include page indices (01/07, 02/07, etc.) so it reads as a connected carousel
-- Keep critical text and key visuals inside a center safe zone with at least 80px of padding on top and bottom. Instagram crops the feed preview, so anything near the edges may get cut
+- Keep critical text and key visuals inside a center safe zone with at least 80px of padding on ALL FOUR sides (top, bottom, left, right). Instagram crops the feed preview, so anything near the edges may get cut
 - Body text minimum 32px, headlines 80px or larger, so it stays legible on mobile
 
 AESTHETIC FOR THIS ONE: [optional. Describe a vibe or say "surprise me"]
-
 BRAND COLORS / FONTS (if any): [optional. Drop hex codes or font names if you have them]</div>
 
   <button class="copy-button" id="copy-btn">
