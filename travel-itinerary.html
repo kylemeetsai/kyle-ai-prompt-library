@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Itinerary (Claude Design) — kyle.meets.ai</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    background: #fafaf7;
+    color: #111;
+    min-height: 100vh;
+    padding: 24px 18px 60px;
+    line-height: 1.5;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #666; text-decoration: none;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .back-link:hover { color: #111; }
+  .headline-block {
+    position: relative;
+    margin-bottom: 8px;
+    padding: 16px 22px 16px 18px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .headline-block::after {
+    content: ''; position: absolute; right: -3px; top: 8px; bottom: 8px;
+    width: 8px; background: #ff6b2c; border-radius: 2px;
+  }
+  .headline { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .subhead {
+    display: inline-block; margin-top: 14px;
+    padding: 6px 12px; background: #fff;
+    font-size: 14px; font-weight: 500; border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .description {
+    margin: 20px 0 16px; font-size: 15px; color: #444; line-height: 1.6;
+  }
+  .how-to {
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 16px 20px; margin-bottom: 20px;
+  }
+  .how-to-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; color: #ff6b2c; margin-bottom: 8px;
+  }
+  .how-to-steps { font-size: 14px; color: #333; line-height: 1.7; }
+  .how-to-steps strong { color: #111; }
+  .prompt-box {
+    position: relative;
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 20px 20px 70px; margin-bottom: 12px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.65;
+    white-space: pre-wrap; word-wrap: break-word;
+    color: #222; max-height: 300px; overflow-y: auto;
+  }
+  .copy-button {
+    position: sticky; bottom: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px;
+    background: #111; color: #fff;
+    border: none; border-radius: 14px;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .copy-button:active { transform: scale(0.98); }
+  .copy-button.copied { background: #1d9e75; }
+  .copy-button svg { width: 18px; height: 18px; }
+  .footer-cta {
+    margin-top: 32px; padding: 20px;
+    background: #111; color: #fff; border-radius: 14px;
+    text-align: center;
+  }
+  .footer-cta-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #ff6b2c; font-weight: 700; margin-bottom: 6px;
+  }
+  .footer-cta-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .footer-cta-sub { font-size: 13px; color: #bbb; margin-bottom: 14px; }
+  .footer-cta a {
+    display: inline-block; padding: 10px 20px;
+    background: #ff6b2c; color: #fff; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← all prompts</a>
+
+  <div class="headline-block">
+    <div class="headline">TRAVEL ITINERARY (CLAUDE DESIGN)</div>
+    <div class="subhead">60 second setup</div>
+  </div>
+
+  <div class="description">
+    Answer a quick questionnaire about your destination, dates, travelers, vibe, pace, and visual style. Get a polished one-page travel itinerary as a styled HTML artifact with day-by-day plans, logistics, and insider notes, sized for clean PDF or PNG export. Best run in Claude Design for visual refinement with sliders and inline edits.
+  </div>
+
+  <div class="how-to">
+    <div class="how-to-label">How to use</div>
+    <div class="how-to-steps">
+      <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
+      <strong>2.</strong> Paste into a new Claude chat (Claude Design recommended for visual refinement)<br>
+      <strong>3.</strong> Answer the questions about destination, dates, vibe, and visual style<br>
+      <strong>4.</strong> Get a polished one-page itinerary you can export to PDF or PNG
+    </div>
+  </div>
+
+  <div class="prompt-box" id="prompt-text">You are my Travel Itinerary Architect. Your job is to build me a polished,
+shareable, one-page travel itinerary that I can drop directly into Claude
+Design (or keep in chat) to finalize the visual.
+
+Before you build anything, ask me the questions below. Ask them ALL at once,
+numbered, in a single message. Do not start designing until I've answered.
+If I skip a question or say "you decide," make a smart default and flag it.
+
+CORE QUESTIONS (always ask):
+1. Destination(s) — city, region, or multi-stop route
+2. Travel dates or trip length (e.g., "March 12–18" or "5 days")
+3. Who's traveling — solo, couple, family with kids, friend group, etc.
+4. Trip vibe — luxury, budget backpacker, foodie, adventure, romantic,
+   family-friendly, business + leisure, wellness, cultural deep-dive, etc.
+5. Pace — packed schedule, balanced, or slow/relaxed
+6. Must-haves — specific restaurants, experiences, neighborhoods, or
+   activities I want locked in
+7. Hard nos — anything to avoid (crowds, early mornings, seafood, hiking, etc.)
+
+DESIGN QUESTIONS (always ask):
+8. Layout style — day-by-day timeline grid, magazine-style spread,
+   minimalist checklist, map-anchored guide, or "you pick what fits best"
+9. Visual mood — modern minimal, warm and editorial, bold and colorful,
+   moody/dark, boutique luxury, playful, or describe your own
+10. Color palette — specific colors, "match the destination's feel," or open
+11. Any branding to include — logo, name, watermark, monogram (for travel
+    agents or gifting)
+
+OPTIONAL CONTEXT (ask if relevant):
+- Budget range
+- Accommodation already booked? Where?
+- Flights booked? Arrival/departure times?
+- Dietary restrictions or accessibility needs
+- Special occasions (honeymoon, birthday, anniversary)
+
+ONCE I'VE ANSWERED, BUILD THE ITINERARY AS A SINGLE-PAGE HTML ARTIFACT WITH
+THESE NON-NEGOTIABLES:
+
+Format & sizing
+- ONE page only. Everything fits in a single scrollable artifact sized for
+  standard letter (8.5x11) or A4 print/PDF export. No multi-page layouts,
+  no pagination, no "page 2."
+- Use a fixed max-width container (~800–900px) so it renders cleanly in
+  Claude Design and exports cleanly to PDF or PNG.
+- Density should fit on one page — if content is too long, tighten typography
+  and spacing before sacrificing information. Never cut content silently;
+  tell me if something had to be trimmed.
+
+Structure (adapt order and emphasis to MY answers, not a fixed template)
+- Header: trip title, destination, dates, traveler name(s) or party
+- Trip summary: 1–2 sentences capturing the vibe
+- Daily breakdown: organized by day, with time blocks (morning / afternoon /
+  evening) OR a clean timeline — whichever I asked for
+- Each day should include: activities, neighborhood/area, key reservations,
+  estimated timing, and one short insider note or tip
+- Logistics strip: flights, accommodation, transport notes
+- Quick-reference footer: emergency info, key addresses, packing reminders,
+  or local etiquette tips — only if relevant
+
+Visual design
+- Match the mood, palette, and layout style I specified
+- Use real typographic hierarchy — clear day headers, scannable activity
+  blocks, breathing room
+- Icons or subtle dividers are fine; do not overload with emoji
+- No stock-photo placeholders unless I ask for image slots
+- Print-safe: clean contrast, readable at 100% zoom, no critical info in
+  light gray on white
+
+Output behavior
+- Render the artifact as styled HTML (works in both chat and Claude Design)
+- After rendering, give me a short list of suggested tweaks I can request
+  (e.g., "swap to dark mode," "tighten Day 3," "add a budget column")
+
+Tone in the itinerary itself: confident, specific, useful. No generic travel
+clichés ("immerse yourself in the local culture"). Every line should earn
+its place on the page.
+
+ENVIRONMENT CHECK:
+After I answer your questions and you build the itinerary, check whether
+you're rendering inside Claude Design or in a standard Claude chat.
+
+- If you're in Claude Design: build the artifact directly. Then remind me
+  that I can refine visually using inline comments on any element, direct
+  edits, or by asking you to generate sliders for things like color
+  saturation, spacing, and typography weight — faster than re-prompting.
+
+- If you're in a standard Claude chat: build the HTML artifact in the chat,
+  then tell me clearly: "For the best editing experience — sliders, inline
+  comments, direct visual tweaks, and clean PDF, PNG, or Canva export —
+  copy this itinerary into Claude Design at claude.ai/design. Paste the
+  HTML there and you can refine it visually instead of re-prompting."
+
+Either way, I should end up with a finished one-pager and a clear path to
+polish it.
+
+Start by asking me the questions above. Don't skip ahead.</div>
+
+  <button class="copy-button" id="copy-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+    <span id="copy-label">Copy prompt</span>
+  </button>
+
+  <div class="footer-cta">
+    <div class="footer-cta-label">Want more like this?</div>
+    <div class="footer-cta-title">Follow @kyle.meets.ai</div>
+    <div class="footer-cta-sub">New AI bites dropping weekly</div>
+    <a href="https://www.tiktok.com/@kyle.meets.ai">Open TikTok →</a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('copy-btn');
+  const label = document.getElementById('copy-label');
+  const promptText = document.getElementById('prompt-text');
+
+  btn.addEventListener('click', async () => {
+    const text = promptText.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const range = document.createRange();
+      range.selectNode(promptText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try { document.execCommand('copy'); } catch(e) {}
+      window.getSelection().removeAllRanges();
+    }
+    btn.classList.add('copied');
+    label.textContent = 'Copied ✓';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      label.textContent = 'Copy prompt';
+    }, 2000);
+  });
+</script>
+</body>
+</html>
