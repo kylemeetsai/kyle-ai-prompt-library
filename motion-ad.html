@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motion Ad (Claude Design) — kyle.meets.ai</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    background: #fafaf7;
+    color: #111;
+    min-height: 100vh;
+    padding: 24px 18px 60px;
+    line-height: 1.5;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #666; text-decoration: none;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .back-link:hover { color: #111; }
+  .headline-block {
+    position: relative;
+    margin-bottom: 8px;
+    padding: 16px 22px 16px 18px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .headline-block::after {
+    content: ''; position: absolute; right: -3px; top: 8px; bottom: 8px;
+    width: 8px; background: #ff6b2c; border-radius: 2px;
+  }
+  .headline { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .subhead {
+    display: inline-block; margin-top: 14px;
+    padding: 6px 12px; background: #fff;
+    font-size: 14px; font-weight: 500; border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .description {
+    margin: 20px 0 16px; font-size: 15px; color: #444; line-height: 1.6;
+  }
+  .how-to {
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 16px 20px; margin-bottom: 20px;
+  }
+  .how-to-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; color: #ff6b2c; margin-bottom: 8px;
+  }
+  .how-to-steps { font-size: 14px; color: #333; line-height: 1.7; }
+  .how-to-steps strong { color: #111; }
+  .prompt-box {
+    position: relative;
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 20px 20px 70px; margin-bottom: 12px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.65;
+    white-space: pre-wrap; word-wrap: break-word;
+    color: #222; max-height: 300px; overflow-y: auto;
+  }
+  .copy-button {
+    position: sticky; bottom: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px;
+    background: #111; color: #fff;
+    border: none; border-radius: 14px;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .copy-button:active { transform: scale(0.98); }
+  .copy-button.copied { background: #1d9e75; }
+  .copy-button svg { width: 18px; height: 18px; }
+  .footer-cta {
+    margin-top: 32px; padding: 20px;
+    background: #111; color: #fff; border-radius: 14px;
+    text-align: center;
+  }
+  .footer-cta-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #ff6b2c; font-weight: 700; margin-bottom: 6px;
+  }
+  .footer-cta-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .footer-cta-sub { font-size: 13px; color: #bbb; margin-bottom: 14px; }
+  .footer-cta a {
+    display: inline-block; padding: 10px 20px;
+    background: #ff6b2c; color: #fff; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← all prompts</a>
+
+  <div class="headline-block">
+    <div class="headline">MOTION AD (CLAUDE DESIGN)</div>
+    <div class="subhead">60 second setup</div>
+  </div>
+
+  <div class="description">
+    Answers six quick questions about what you're promoting, your brand vibe, colors, and call to action. Then builds a 15-second 9:16 vertical motion ad sized for Instagram Reels, TikTok, and LinkedIn, with a five-beat timeline, brand-matched typography, and precise cubic-bezier easing. Plays in a loop preview so you can screen-record it as a clean MP4. Best run in Claude Design's Animation template.
+  </div>
+
+  <div class="how-to">
+    <div class="how-to-label">How to use</div>
+    <div class="how-to-steps">
+      <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
+      <strong>2.</strong> Paste into a new Claude chat (Claude Design's Animation template recommended)<br>
+      <strong>3.</strong> Answer the six quick questions about your brand, vibe, colors, and call to action<br>
+      <strong>4.</strong> Screen-record the looping preview as a clean MP4 for social
+    </div>
+  </div>
+
+  <div class="prompt-box" id="prompt-text">You are a senior motion designer at a top-tier creative studio. You design with restraint, taste, and intentionality. You adapt your aesthetic to the brand's voice, but every frame earns its place. This is portfolio-grade work, not a mockup.
+
+# THE BUILD
+
+Use Claude Design's Animation template to build a 15-second timeline-based motion graphic social ad based on the user's brand. Build it as if it's going on a top agency reel.
+
+# STEP 1: INTERVIEW THE USER FIRST
+
+Before you build anything, ask the user these 6 questions one at a time, conversationally. Wait for their answer before asking the next. Keep your tone warm, sharp, and concise.
+
+1. What are you promoting? (Product, service, event, personal brand, app, restaurant, etc.) Give me the category and a one-line description.
+2. What's the brand or creator name, and what headline message or offer do you want to lead with?
+3. Describe the brand's vibe in a few words. (Examples: "editorial and warm," "bold streetwear," "minimal luxury," "playful and loud," "calm and clinical.")
+4. Give me 2 to 3 brand colors as hex codes. If you don't have any, say "pick for me" and I'll choose based on your vibe.
+5. What's the call to action and where do people go? (Buy now? Visit us? Sign up? Include any address, URL, or handle.)
+6. Do you have a one-line testimonial or social proof quote you'd like featured? If no, say "skip" and I'll replace that scene with something else.
+
+After the user answers, confirm you have what you need, then proceed to build. Don't ask follow-ups unless something is genuinely unclear.
+
+# STEP 2: TECHNICAL SPECS (NON-NEGOTIABLE)
+
+Format: 9:16 vertical, 1080x1920 (Instagram Reels, TikTok, LinkedIn vertical).
+Duration: exactly 15 seconds.
+Frame rate: 30fps minimum, 60fps if browser performance allows.
+Output: screen-recordable web animation that loops the preview twice automatically.
+Easing: cubic-bezier curves throughout. Default ease-out: cubic-bezier(0.16, 1, 0.3, 1). Default ease-in-out: cubic-bezier(0.65, 0, 0.35, 1). No linear easing anywhere except deliberate ticker text.
+
+# STEP 3: STYLE SYSTEM (DERIVED FROM THE USER'S ANSWERS)
+
+Colors: use the user's hex codes. If they said "pick for me," choose a 3-color system that matches their vibe (background, primary text, primary accent). Add a fourth muted support color for attribution only, used once at most.
+
+Typography: choose a type pairing that matches the vibe.
+
+- Editorial / warm / luxury: high-contrast serif (Cardo, Cormorant Garamond, Editorial New) paired with clean grotesk (Inter, Söhne, system-ui).
+- Bold / streetwear / loud: condensed display sans (Anton, Bebas Neue, Druk) paired with grotesk for support.
+- Minimal / clinical / tech: geometric sans only (Inter, Söhne, Neue Haas), no serif.
+- Playful / handmade: display script or rounded sans (Recoleta, Sofia, DM Serif) paired with clean sans.
+
+Display headlines: 900 weight where the typeface allows, -2% tracking, 1.05 line-height.
+Body: 500 weight, 0% tracking, 1.4 line-height.
+All caps only for labels and timestamps, never headlines.
+
+Texture: subtle film grain at 4% opacity over the entire composition. Skip if the vibe is "clinical" or "tech."
+
+# STEP 4: STRUCTURE (RESHAPE BASED ON CATEGORY)
+
+The 15-second timeline has 5 beats. Adapt each beat to fit what the user is promoting. Hit every timecode precisely.
+
+## [0.0s to 1.5s] HOOK SCENE
+
+A headline animates on letter-by-letter at 45ms per character, ease-out, starting at 0.3s.
+Type: display headline, 96px, primary text color, centered.
+A 2px primary-accent underline swipes left-to-right under the strongest word over 200ms.
+Add a subtle SVG/CSS atmosphere element that loops (steam, light flicker, dust particles, halftone shimmer; choose based on category and vibe), 4-second loop, 15% opacity.
+
+## [1.5s to 4.0s] FOCAL REVEAL
+
+Adapt this scene to what the user is promoting:
+
+- Product: a CSS/SVG illustration of the product animates in from below (translateY -40px to 0, scale 0.94 to 1.0 over 800ms, ease-out-expo), holds a -2deg tilt, soft drop shadow.
+- Service: a typographic moment. The service name in large display headline animates in with an oversized accent shape behind it (circle, line, slash).
+- Event: a date/time card slides in with the event name above, day/time below in display + sans pairing.
+- Personal brand: a circular avatar placeholder (SVG portrait silhouette in brand colors) animates in with the creator's name beside it.
+
+Brand or creator name types in below at 2.0s, display type, 64px, primary text color, 60ms letter stagger.
+Primary-accent 3px underline swipes under the name at 3.2s, 350ms duration.
+
+## [4.0s to 8.0s] VALUE STACK
+
+Three short benefit lines stagger vertically, 800ms apart, starting at 4.0s.
+If the user only gave one or two value lines, generate the rest from their description. Keep each line under 4 words.
+Each line: slides up 24px, fades in over 350ms, ease-out-expo.
+Each line: a small primary-accent dot lands to the left of the text 150ms after the slide-up completes.
+Type: 56px sans-serif, 500 weight, primary text color, left-aligned, 1.5 line-height.
+Hold all three on screen from 6.4s to 8.0s.
+
+## [8.0s to 12.0s] SOCIAL PROOF (OR REPLACEMENT)
+
+If the user provided a quote:
+
+- Background shifts: faint primary-accent wash layers in at 8% opacity from the right edge.
+- Pull-quote types in: the user's quote, display headline italic, 72px, primary text color, max-width 80% of frame.
+- Attribution at 10.5s: name and context in sans-serif, 32px, support color, ease-up over 200ms.
+- Oversized accent-colored display quote marks sit behind the text at 30% opacity.
+
+If the user said "skip":
+
+- Replace with a benefit close-up. One of their value lines from Scene 3 animates in at hero size (72px), with a single supporting word in display serif italic underneath (Example: "Finally." "Locally." "Yours.").
+
+## [12.0s to 15.0s] CTA AND LOGO LOCK-UP
+
+At 12.0s: all previous elements fade out over 400ms.
+At 12.4s: CTA headline appears (user's offer or call to action, max 6 words, display headline, 84px).
+At 12.9s: CTA subhead appears (timing, urgency, or context, sans-serif, 36px).
+At 13.5s: brand or creator lock-up reveals (wordmark plus a small thematic icon chosen for the category; scale from 0.92 to 1.0 over 500ms, ease-out-expo).
+At 14.2s: address line, URL, or handle types in at 24px sans-serif.
+Hold final composition from 14.5s to 15.0s.
+
+# STEP 5: MOTION PRINCIPLES (APPLY THROUGHOUT)
+
+Eased, not linear. Cubic-bezier curves everywhere.
+Stagger, not synchronize. Elements arrive in sequence, never all at once.
+Subtle parallax: background moves at 60% of foreground speed at all times.
+Respect negative space. Generous margins, never crowd the frame.
+Motion blur on any translate longer than 200ms (CSS filter: blur).
+Subtle film grain overlay throughout, animated noise at 4% opacity (skip if vibe is clinical/tech).
+
+# STEP 6: WHAT TO AVOID
+
+No bounce or elastic easing anywhere (looks amateur).
+No spinning logos.
+No more than one accent color highlighted per scene.
+No more than four words per typographic line in display sizes.
+No emojis.
+No generic "Get Started Now" or "Click Here" CTA language.
+
+# STEP 7: SELF-CHECK BEFORE FINAL EXPORT
+
+Confirm before showing the final output:
+
+1. The full animation runs exactly 15 seconds with no dead time.
+2. The CTA is visible for at least 2.5 seconds.
+3. The brand or creator mark is visible at the end for at least 1.5 seconds.
+4. No two scenes use identical motion (vary entrance directions and easing).
+5. The brand identity feels true to the vibe the user described, not generic.
+6. The primary accent is the only highlighted color carried throughout; the support color appears once at most.
+7. The composition reads cleanly when paused at any single frame.
+
+# EXPORT
+
+Render the final animation in a preview that loops twice automatically. Provide a full-screen play option so the user can screen-record it as a clean MP4 for social upload.</div>
+
+  <button class="copy-button" id="copy-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+    <span id="copy-label">Copy prompt</span>
+  </button>
+
+  <div class="footer-cta">
+    <div class="footer-cta-label">Want more like this?</div>
+    <div class="footer-cta-title">Follow @kyle.meets.ai</div>
+    <div class="footer-cta-sub">New AI bites dropping weekly</div>
+    <a href="https://www.tiktok.com/@kyle.meets.ai">Open TikTok →</a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('copy-btn');
+  const label = document.getElementById('copy-label');
+  const promptText = document.getElementById('prompt-text');
+
+  btn.addEventListener('click', async () => {
+    const text = promptText.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const range = document.createRange();
+      range.selectNode(promptText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try { document.execCommand('copy'); } catch(e) {}
+      window.getSelection().removeAllRanges();
+    }
+    btn.classList.add('copied');
+    label.textContent = 'Copied ✓';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      label.textContent = 'Copy prompt';
+    }, 2000);
+  });
+</script>
+</body>
+</html>
