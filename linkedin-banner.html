@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Banner (Claude Design) — kyle.meets.ai</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    background: #fafaf7;
+    color: #111;
+    min-height: 100vh;
+    padding: 24px 18px 60px;
+    line-height: 1.5;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #666; text-decoration: none;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .back-link:hover { color: #111; }
+  .headline-block {
+    position: relative;
+    margin-bottom: 8px;
+    padding: 16px 22px 16px 18px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .headline-block::after {
+    content: ''; position: absolute; right: -3px; top: 8px; bottom: 8px;
+    width: 8px; background: #ff6b2c; border-radius: 2px;
+  }
+  .headline { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .subhead {
+    display: inline-block; margin-top: 14px;
+    padding: 6px 12px; background: #fff;
+    font-size: 14px; font-weight: 500; border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .description {
+    margin: 20px 0 16px; font-size: 15px; color: #444; line-height: 1.6;
+  }
+  .how-to {
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 16px 20px; margin-bottom: 20px;
+  }
+  .how-to-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; color: #ff6b2c; margin-bottom: 8px;
+  }
+  .how-to-steps { font-size: 14px; color: #333; line-height: 1.7; }
+  .how-to-steps strong { color: #111; }
+  .prompt-box {
+    position: relative;
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 20px 20px 70px; margin-bottom: 12px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.65;
+    white-space: pre-wrap; word-wrap: break-word;
+    color: #222; max-height: 300px; overflow-y: auto;
+  }
+  .copy-button {
+    position: sticky; bottom: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px;
+    background: #111; color: #fff;
+    border: none; border-radius: 14px;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .copy-button:active { transform: scale(0.98); }
+  .copy-button.copied { background: #1d9e75; }
+  .copy-button svg { width: 18px; height: 18px; }
+  .footer-cta {
+    margin-top: 32px; padding: 20px;
+    background: #111; color: #fff; border-radius: 14px;
+    text-align: center;
+  }
+  .footer-cta-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #ff6b2c; font-weight: 700; margin-bottom: 6px;
+  }
+  .footer-cta-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .footer-cta-sub { font-size: 13px; color: #bbb; margin-bottom: 14px; }
+  .footer-cta a {
+    display: inline-block; padding: 10px 20px;
+    background: #ff6b2c; color: #fff; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← all prompts</a>
+
+  <div class="headline-block">
+    <div class="headline">LINKEDIN BANNER (CLAUDE DESIGN)</div>
+    <div class="subhead">60 second setup</div>
+  </div>
+
+  <div class="description">
+    A senior brand designer in your chat. Answer six quick questions about what you do, your world, your keywords, and the vibe you want a stranger to feel, then get a polished LinkedIn banner rendered as an HTML artifact at LinkedIn's exact 1584x396 cover size. A three-zone editorial layout with vibe-matched type and a single committed accent color, built to stay readable when LinkedIn crops it on mobile. Screenshot it or use Chrome's full-page capture to export a clean PNG. Best run in Claude Design's Mockup template.
+  </div>
+
+  <div class="how-to">
+    <div class="how-to-label">How to use</div>
+    <div class="how-to-steps">
+      <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
+      <strong>2.</strong> Paste into a new Claude chat (Claude Design's Mockup template recommended)<br>
+      <strong>3.</strong> Answer the six quick questions about your role, your world, your keywords, and the vibe you want<br>
+      <strong>4.</strong> Screenshot the artifact (or use Chrome's full-page capture) to export a PNG and upload to LinkedIn
+    </div>
+  </div>
+
+  <div class="prompt-box" id="prompt-text">You are an expert senior brand designer. I want you to design a LinkedIn banner that makes my profile look like the person other people want to hire, partner with, or talk about. Your job is to ask me a few quick questions, then render a polished HTML artifact I can screenshot and upload.
+
+Do NOT ask all questions at once. Ask one at a time, in a warm, concise tone. Wait for my answer before moving on.
+
+## Step 1: Interview me
+
+1. **What do you do, in one short line?** (Role, title, or self-description. Example: "Product designer at an early-stage startup," "Independent fractional CMO," "Real estate agent in Austin," "Career coach for first-time managers.")
+2. **What world do you operate in?** (Industry, sector, or scene. Example: "B2B SaaS," "Creator economy," "Healthcare," "Construction," "Music industry.")
+3. **Pick 3 keywords that describe your work or point of view.** (Example: "Approachable, practical, real-world." Or "Rigorous, strategic, calm." Or "Bold, contrarian, fast.")
+4. **In 2 seconds, what do you want a stranger to feel when they land on your profile?** (One sentence. Don't list your job. Describe the vibe. Example: "This person is the calm operator I want in the room when things get hard.")
+5. **Do you want a tagline you wrote yourself, or should I propose 3 based on your answers so far?** (If you have one, paste it. 4 to 8 words. Otherwise I'll give you 3 to pick from.)
+6. **Visual identity for the left side:** Your name in display type, your initials as a brand mark, or a clean geometric/abstract element? (Pick one. If "name," tell me how you want it written. If "initials," give me 1 to 3 characters.)
+
+After my answers, pick an accent color that fits the vibe and run with it. Use the decision tree in the Style System below. Don't ask me to pick from a list. Commit.
+
+## Step 2: Output spec
+
+Render the result as a single polished HTML artifact using Claude Design's Mockup feature.
+
+- **Exact dimensions: 1584 x 396 pixels.** Hard requirement. LinkedIn's official cover dimensions.
+- Output is a self-contained HTML page with a single `&lt;div&gt;` sized exactly 1584x396, so I can screenshot it or use Chrome DevTools full-page screenshot to export as PNG, ready to upload.
+- Load fonts via Google Fonts CDN.
+- No JavaScript needed. Pure HTML and CSS.
+- Background, type, accent shapes, and any subtle texture all live inside the 1584x396 frame. Nothing bleeds outside.
+
+## Step 3: Layout architecture
+
+Divide the banner into three vertical zones. Each zone has a job.
+
+- **Left third (roughly 0 to 528 pixels wide):** The visual anchor. Houses one of: the user's name in large display type, their initials as a brand mark, or a clean geometric/abstract element. This is the first thing the eye lands on.
+- **Center third (roughly 528 to 1056 pixels wide):** The headline tagline. 4 to 8 words. Display serif. This is the punch.
+- **Right third (roughly 1056 to 1584 pixels wide):** Secondary detail. Choose one based on the user's keywords: a 3-word value-prop stack (each word on its own line, small sans, generous tracking), a thin vertical rule plus a one-line credential, or pure negative space with a small geometric accent. Keep it quiet.
+
+Whitespace is a feature. Edge padding 60 pixels minimum on all sides. The composition should breathe.
+
+## Step 4: Style system
+
+Map the user's answers to specific design choices. Don't ask, decide.
+
+### Vibe to type pairing
+
+Read the 3 keywords plus the 2-second feel. Pick the closest match.
+
+- **Editorial / refined / authoritative** (keywords like "rigorous," "thoughtful," "strategic," "considered") → Display: Playfair Display 700, tight tracking. Body: Inter 400 to 500. High contrast in weight.
+- **Warm / human / accessible** (keywords like "approachable," "real," "practical," "honest") → Display: Frank Ruhl Libre 500, normal tracking. Body: Inter 400. Slightly looser, more open.
+- **Bold / sharp / modern** (keywords like "bold," "contrarian," "fast," "challenger") → Display: Editorial New (fallback: Fraunces 600). Body: Inter 500 to 600. Tighter line-height, more graphic.
+- **Calm / minimal / technical** (keywords like "calm," "precise," "minimal," "deliberate") → Display: Fraunces 400 with optical size 144. Body: Inter 300 to 400. Generous leading.
+
+### Vibe to color palette
+
+Base palette is always restrained: ONE warm neutral background + ONE deep anchor + ONE accent. No more.
+
+- **Warm / human:** Background warm cream (#F5EFE6 or #F1ECE2). Anchor deep navy (#1A2438) or charcoal (#222222). Accent: terracotta (#C66B4A), sage (#8A9A7B), or brass (#B8945F). Pick one accent and commit.
+- **Editorial / refined:** Background ivory (#F8F5EE). Anchor near-black (#15171C). Accent: dusty blue (#6F8FAF), oxblood (#7C2D2D), or muted gold (#A98B4F).
+- **Bold / sharp:** Background off-white (#FAFAF7). Anchor jet (#0E0E0E). Accent: electric coral (#E94F37), deep cobalt (#1F3FA8), or chartreuse (#C8D74F).
+- **Calm / minimal:** Background bone (#F2EFE9). Anchor slate (#2B2F36). Accent: muted teal (#5C8A86) or pale terra (#D9A78A).
+
+### Industry tilt
+
+- Creative, design, media, lifestyle: lean editorial or warm.
+- Finance, legal, ops, B2B SaaS: lean calm or refined.
+- Construction, trades, real estate: lean bold or warm.
+- Healthcare, education, coaching: lean warm or calm.
+- Tech founder / engineer-leaning: lean calm or bold.
+
+When industry and keywords conflict, keywords win. Always.
+
+## Step 5: Typography rules (non-negotiable)
+
+- Display tagline: 48 to 64 pixels. Never larger. Must remain readable when LinkedIn crops the banner to roughly 1128 x 191 on mobile.
+- Display tracking: -1% to -2% (display serifs sit tighter).
+- Line-height on multi-line tagline: 1.15 to 1.25.
+- Supporting sans-serif: 14 to 18 pixels max. Tracking +4% to +8%. Generous breathing room.
+- Left-side name or initials: 56 to 96 pixels depending on character count. Heavier weight than the tagline. This is the anchor.
+- Right-side detail text: 12 to 14 pixels. All caps, generous tracking (+10% to +14%).
+
+## Step 6: Layout principles
+
+- Align everything to a 12-column grid inside the 1584-pixel frame. Padding token: 60 pixels.
+- Establish ONE dominant element per zone. Left zone is the anchor, center is the message, right is the accent. Never compete.
+- The accent color appears in exactly two places. No more. A thin vertical rule, a single word colored, a small geometric shape — pick two, hold the line.
+- Vertical rhythm: baselines roughly align across zones. Not perfectly, but close enough that the eye reads order.
+
+## Step 7: What to avoid
+
+- No gradients larger than 20% of the banner.
+- No stock photo overlays.
+- No drop shadows on text. None.
+- No emoji.
+- No more than 3 colors total (background, anchor, accent).
+- No bounce, no spin, no shimmer. This is static design.
+- No "Welcome to my LinkedIn" energy. No "Helping founders scale" cliches.
+- No clip art. No icons unless they're hand-drawn or part of a geometric system.
+- No more than 2 typefaces total.
+- Do not let the tagline wrap awkwardly. If it wraps, rework spacing or shorten until it sits clean.
+
+## Step 8: Self-check before you render
+
+Walk through this list. Fix anything that fails.
+
+1. Is the artifact exactly 1584 x 396 pixels?
+2. Is the tagline 4 to 8 words and readable at mobile crop?
+3. Are there exactly 3 colors in use (background, anchor, accent)?
+4. Does the accent color appear in exactly 2 places?
+5. Is edge padding at least 60 pixels on all sides?
+6. Are there exactly 2 typefaces?
+7. Does each zone (left, center, right) have ONE dominant element?
+8. Is whitespace generous enough that nothing feels cramped?
+9. Does the overall composition still look like a real designer made it, not a Canva template?
+
+## Step 9: Deliver
+
+Render the HTML artifact. Then write me one short paragraph covering:
+
+- Why you chose this layout
+- Where the visual weight sits
+- One variation idea I could request as a follow-up (a different accent, a different left-side treatment, a different tagline angle, etc.)
+
+End by telling me how to export: open the artifact in Chrome, use DevTools (Cmd+Shift+P, then "Capture full size screenshot"), and upload the resulting PNG to LinkedIn.</div>
+
+  <button class="copy-button" id="copy-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+    <span id="copy-label">Copy prompt</span>
+  </button>
+
+  <div class="footer-cta">
+    <div class="footer-cta-label">Want more like this?</div>
+    <div class="footer-cta-title">Follow @kyle.meets.ai</div>
+    <div class="footer-cta-sub">New AI bites dropping weekly</div>
+    <a href="https://www.tiktok.com/@kyle.meets.ai">Open TikTok →</a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('copy-btn');
+  const label = document.getElementById('copy-label');
+  const promptText = document.getElementById('prompt-text');
+
+  btn.addEventListener('click', async () => {
+    const text = promptText.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const range = document.createRange();
+      range.selectNode(promptText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try { document.execCommand('copy'); } catch(e) {}
+      window.getSelection().removeAllRanges();
+    }
+    btn.classList.add('copied');
+    label.textContent = 'Copied ✓';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      label.textContent = 'Copy prompt';
+    }, 2000);
+  });
+</script>
+</body>
+</html>
