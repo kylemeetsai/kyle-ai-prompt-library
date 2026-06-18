@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Caption Generator — kyle.meets.ai</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    background: #fafaf7;
+    color: #111;
+    min-height: 100vh;
+    padding: 24px 18px 60px;
+    line-height: 1.5;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #666; text-decoration: none;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .back-link:hover { color: #111; }
+  .headline-block {
+    position: relative;
+    margin-bottom: 8px;
+    padding: 16px 22px 16px 18px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .headline-block::after {
+    content: ''; position: absolute; right: -3px; top: 8px; bottom: 8px;
+    width: 8px; background: #ff6b2c; border-radius: 2px;
+  }
+  .headline { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .subhead {
+    display: inline-block; margin-top: 14px;
+    padding: 6px 12px; background: #fff;
+    font-size: 14px; font-weight: 500; border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .description {
+    margin: 20px 0 16px; font-size: 15px; color: #444; line-height: 1.6;
+  }
+  .how-to {
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 16px 20px; margin-bottom: 20px;
+  }
+  .how-to-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; color: #ff6b2c; margin-bottom: 8px;
+  }
+  .how-to-steps { font-size: 14px; color: #333; line-height: 1.7; }
+  .how-to-steps strong { color: #111; }
+  .prompt-box {
+    position: relative;
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 20px 20px 70px; margin-bottom: 12px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.65;
+    white-space: pre-wrap; word-wrap: break-word;
+    color: #222; max-height: 300px; overflow-y: auto;
+  }
+  .copy-button {
+    position: sticky; bottom: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px;
+    background: #111; color: #fff;
+    border: none; border-radius: 14px;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .copy-button:active { transform: scale(0.98); }
+  .copy-button.copied { background: #1d9e75; }
+  .copy-button svg { width: 18px; height: 18px; }
+  .footer-cta {
+    margin-top: 32px; padding: 20px;
+    background: #111; color: #fff; border-radius: 14px;
+    text-align: center;
+  }
+  .footer-cta-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #ff6b2c; font-weight: 700; margin-bottom: 6px;
+  }
+  .footer-cta-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .footer-cta-sub { font-size: 13px; color: #bbb; margin-bottom: 14px; }
+  .footer-cta a {
+    display: inline-block; padding: 10px 20px;
+    background: #ff6b2c; color: #fff; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← all prompts</a>
+
+  <div class="headline-block">
+    <div class="headline">AI CAPTION GENERATOR</div>
+    <div class="subhead">60 second setup</div>
+  </div>
+
+  <div class="description">
+    Builds a live caption generator as a Cowork Live Artifact that writes Instagram captions in your exact voice. Paste five of your recent captions and Claude studies your phrasing, rhythm, signature phrases, and hooks to build a voice profile, then bakes it into a working generator. Pick your post type, goal, length, vibe, and CTA, add a little context, and get three caption options (short, medium, long) that actually sound like you, each with a copy button.
+  </div>
+
+  <div class="how-to">
+    <div class="how-to-label">How to use</div>
+    <div class="how-to-steps">
+      <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
+      <strong>2.</strong> Paste into a new Claude chat in Cowork (required for Live Artifacts)<br>
+      <strong>3.</strong> Paste 5 of your recent Instagram captions when asked, so Claude can learn your voice<br>
+      <strong>4.</strong> Use the live artifact: pick your post type, goal, length, vibe, and CTA to generate captions that sound like you
+    </div>
+  </div>
+
+  <div class="prompt-box" id="prompt-text">Build me a live Cowork artifact that generates Instagram captions in my exact voice. Do the whole flow in one go. STEP 1: Ask me to paste 5 of my recent Instagram captions, then STOP and wait. Do not proceed until I paste them. STEP 2: Once I paste them, read all 5 word for word and build a tight writing-voice profile of me, copying my words exactly (no paraphrasing, no cleanup), covering: - Voice & personality: how I sound, what emotion comes through, how I make people feel (4–6 sentences). - Sentence structure & punctuation: sentence length, fragments, filler words, commas, ellipses, line breaks, exclamation marks, and what makes my writing recognizable at a glance. - Signature phrases: recurring words/expressions, how I open and close captions, slang — quoted exactly. - CTA & hook style: my common hooks and calls to action, quoted word for word. - The 5 captions copied exactly as reference examples. Save it as caption-style-profile.md and show it to me in chat. STEP 3: Immediately build a LIVE Cowork artifact (a working caption generator, not a static form). Technical requirements: - Embed the FULL Step-2 voice profile (including all 5 reference captions) as a JavaScript const baked into the file, so every generation has my complete voice and it still works on reload. - On Generate, call window.cowork.askClaude(prompt, []) with a prompt that combines the embedded profile + all my form selections. - Have askClaude return the 3 captions in a delimited format (===SHORT===, ===MEDIUM===, ===LONG===, ===END===) and parse by those markers — do not rely on JSON, since emojis and quotes break it. - Self-contained single HTML file: inline all CSS/JS, light mode (:root{color-scheme:light}, light bg/dark text), no external libraries, no localStorage. - Show a loading/spinner state while generating; put a Copy button on each caption. UI — clean and beautiful, two sections: YOUR POST DETAILS (clickable pill buttons, single-select): - Type of post: Educational / Inspirational / Funny or relatable / Selling an offer / Promoting a freebie / Behind the scenes / Personal story - Goal: Add value / Sell an offer / Promote a freebie / Be relatable or funny / Share a personal story / Drive engagement - Length: Short (1–2 lines) / Medium (3–5 lines) / Long (real, vulnerable storytelling) - Vibe: Casual and funny / Real and vulnerable / Hyped and motivating / Soft and educational - Call to action: Promote my resources / Drive to link in bio / Ask a question / No CTA GIVE CLAUDE CONTEXT (open text boxes): - Tell me about your post (idea, script, or context) - Anything specific to mention (product name, story detail, a phrase that must be included) On Generate, return 3 options labeled Short, Medium, Long. Each must sound like I wrote it — my real phrasing and rhythm, no generic language, no filler. If create_artifact returns "Failed to save artifact," it's a transient backend issue — retry the save a couple of times before doing anything else. Make the caption Generator Visually appealing, you can choose the creative direction.</div>
+
+  <button class="copy-button" id="copy-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+    <span id="copy-label">Copy prompt</span>
+  </button>
+
+  <div class="footer-cta">
+    <div class="footer-cta-label">Want more like this?</div>
+    <div class="footer-cta-title">Follow @kyle.meets.ai</div>
+    <div class="footer-cta-sub">New AI bites dropping weekly</div>
+    <a href="https://www.tiktok.com/@kyle.meets.ai">Open TikTok →</a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('copy-btn');
+  const label = document.getElementById('copy-label');
+  const promptText = document.getElementById('prompt-text');
+
+  btn.addEventListener('click', async () => {
+    const text = promptText.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const range = document.createRange();
+      range.selectNode(promptText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try { document.execCommand('copy'); } catch(e) {}
+      window.getSelection().removeAllRanges();
+    }
+    btn.classList.add('copied');
+    label.textContent = 'Copied ✓';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      label.textContent = 'Copy prompt';
+    }, 2000);
+  });
+</script>
+</body>
+</html>
