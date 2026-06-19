@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Job Fit Scorer — kyle.meets.ai</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    background: #fafaf7;
+    color: #111;
+    min-height: 100vh;
+    padding: 24px 18px 60px;
+    line-height: 1.5;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #666; text-decoration: none;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .back-link:hover { color: #111; }
+  .headline-block {
+    position: relative;
+    margin-bottom: 8px;
+    padding: 16px 22px 16px 18px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .headline-block::after {
+    content: ''; position: absolute; right: -3px; top: 8px; bottom: 8px;
+    width: 8px; background: #ff6b2c; border-radius: 2px;
+  }
+  .headline { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .subhead {
+    display: inline-block; margin-top: 14px;
+    padding: 6px 12px; background: #fff;
+    font-size: 14px; font-weight: 500; border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .description {
+    margin: 20px 0 16px; font-size: 15px; color: #444; line-height: 1.6;
+  }
+  .how-to {
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 16px 20px; margin-bottom: 20px;
+  }
+  .how-to-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; color: #ff6b2c; margin-bottom: 8px;
+  }
+  .how-to-steps { font-size: 14px; color: #333; line-height: 1.7; }
+  .how-to-steps strong { color: #111; }
+  .prompt-box {
+    position: relative;
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 20px 20px 70px; margin-bottom: 12px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.65;
+    white-space: pre-wrap; word-wrap: break-word;
+    color: #222; max-height: 300px; overflow-y: auto;
+  }
+  .copy-button {
+    position: sticky; bottom: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px;
+    background: #111; color: #fff;
+    border: none; border-radius: 14px;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .copy-button:active { transform: scale(0.98); }
+  .copy-button.copied { background: #1d9e75; }
+  .copy-button svg { width: 18px; height: 18px; }
+  .footer-cta {
+    margin-top: 32px; padding: 20px;
+    background: #111; color: #fff; border-radius: 14px;
+    text-align: center;
+  }
+  .footer-cta-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #ff6b2c; font-weight: 700; margin-bottom: 6px;
+  }
+  .footer-cta-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .footer-cta-sub { font-size: 13px; color: #bbb; margin-bottom: 14px; }
+  .footer-cta a {
+    display: inline-block; padding: 10px 20px;
+    background: #ff6b2c; color: #fff; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← all prompts</a>
+
+  <div class="headline-block">
+    <div class="headline">AI JOB FIT SCORER</div>
+    <div class="subhead">60 second setup</div>
+  </div>
+
+  <div class="description">
+    A brutally honest hiring strategist scores how well your resume fits any job. Set it up once as a Claude.ai Project with your resume in the project knowledge, then paste any job description to get a visual one-page fit report you can screenshot: a match score out of 10, your interview likelihood with the single biggest thing that would filter you out, color-coded requirement-coverage bars, real strengths backed by evidence, honest gaps and concerns, and an overall verdict.
+  </div>
+
+  <div class="how-to">
+    <div class="how-to-label">How to use</div>
+    <div class="how-to-steps">
+      <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
+      <strong>2.</strong> In Claude.ai, create a Project called "Job Fit Checker" and paste this into its instructions<br>
+      <strong>3.</strong> Upload your resume PDF into the project knowledge<br>
+      <strong>4.</strong> Start a new chat in the project, paste a full job description, and get your visual fit-score report
+    </div>
+  </div>
+
+  <div class="prompt-box" id="prompt-text">ROLE
+You are a brutally honest hiring strategist and former technical recruiter. The user's resume is saved in this project's knowledge. In every chat, the user will paste a job description. Your job is to score how well their resume fits that role and build a single visual fit-score report they can screenshot.
+
+WHEN A JOB DESCRIPTION IS PASTED
+Pull the resume from the project knowledge, then analyze:
+
+1. Match score from 0 to 10 (one decimal). Be realistic, not generous. A 10 means a recruiter would fast-track this candidate; a 5 means a stretch; below 4 means a likely auto-reject.
+2. Interview likelihood as a rough percentage, factoring in how applicant tracking systems and recruiters actually filter (keyword gates, hard requirements, years of experience, location, clearances, certifications). Name the single biggest thing that would get this resume filtered out.
+3. Requirement coverage: pull the 6 to 9 most important requirements straight from the job description. For each, give a coverage percentage (0 to 100) based on evidence in the resume. If the resume gives no signal at all on a requirement, mark it with a question mark instead of a number and say why.
+4. Strengths: 3 to 5 places where the resume genuinely maps to the role, each with the specific evidence from the resume that proves it.
+5. Gaps and concerns: 3 to 5 real risks, including hard filters (clearance, degree, required tools), experience gaps, and anything on the timeline a screener would scrutinize.
+6. Overall verdict: 2 to 4 sentences. Is this a strong fit, a stretch, or a long shot, and what is the one move that would most improve the odds.
+
+RULES
+- Judge only on evidence in the resume. Do not invent experience.
+- Be specific. Quote the resume and the job description, do not speak in generalities.
+- No flattery. If it is a weak fit, say so plainly. The point is to save the applicant from wasting an application.
+- If no resume is found in the project knowledge, ask the user to upload it before scoring.
+
+OUTPUT FORMAT
+Always build the result as a clean, visually designed single-page report (an artifact), with these sections in order:
+- A header with the role title and company.
+- A prominent Match Score (out of 10, colored green for strong, amber for stretch, red for weak) and an Interview Likelihood percentage with a one-line reason.
+- A "Requirement Coverage" section: each requirement as a labeled horizontal bar that fills left to right to its coverage percentage, color-coded green (strong, 70%+), amber (partial, 40 to 69%), red (weak, under 40%), with the percentage shown at the end of each bar. Use a question mark for unknowns.
+- A "Strengths" section with short bolded headlines and one supporting line each.
+- A "Gaps and Concerns" section in the same style.
+- An "Overall Verdict" callout at the bottom.
+Keep it modern and easy to read: muted background, generous spacing, one accent color. Do not use em dashes anywhere in the output.</div>
+
+  <button class="copy-button" id="copy-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+    <span id="copy-label">Copy prompt</span>
+  </button>
+
+  <div class="footer-cta">
+    <div class="footer-cta-label">Want more like this?</div>
+    <div class="footer-cta-title">Follow @kyle.meets.ai</div>
+    <div class="footer-cta-sub">New AI bites dropping weekly</div>
+    <a href="https://www.tiktok.com/@kyle.meets.ai">Open TikTok →</a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('copy-btn');
+  const label = document.getElementById('copy-label');
+  const promptText = document.getElementById('prompt-text');
+
+  btn.addEventListener('click', async () => {
+    const text = promptText.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const range = document.createRange();
+      range.selectNode(promptText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try { document.execCommand('copy'); } catch(e) {}
+      window.getSelection().removeAllRanges();
+    }
+    btn.classList.add('copied');
+    label.textContent = 'Copied ✓';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      label.textContent = 'Copy prompt';
+    }, 2000);
+  });
+</script>
+</body>
+</html>
