@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Site (Claude Design) — kyle.meets.ai</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    background: #fafaf7;
+    color: #111;
+    min-height: 100vh;
+    padding: 24px 18px 60px;
+    line-height: 1.5;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #666; text-decoration: none;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .back-link:hover { color: #111; }
+  .headline-block {
+    position: relative;
+    margin-bottom: 8px;
+    padding: 16px 22px 16px 18px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .headline-block::after {
+    content: ''; position: absolute; right: -3px; top: 8px; bottom: 8px;
+    width: 8px; background: #ff6b2c; border-radius: 2px;
+  }
+  .headline { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .subhead {
+    display: inline-block; margin-top: 14px;
+    padding: 6px 12px; background: #fff;
+    font-size: 14px; font-weight: 500; border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .description {
+    margin: 20px 0 16px; font-size: 15px; color: #444; line-height: 1.6;
+  }
+  .how-to {
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 16px 20px; margin-bottom: 20px;
+  }
+  .how-to-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; color: #ff6b2c; margin-bottom: 8px;
+  }
+  .how-to-steps { font-size: 14px; color: #333; line-height: 1.7; }
+  .how-to-steps strong { color: #111; }
+  .prompt-box {
+    position: relative;
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 20px 20px 70px; margin-bottom: 12px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.65;
+    white-space: pre-wrap; word-wrap: break-word;
+    color: #222; max-height: 300px; overflow-y: auto;
+  }
+  .copy-button {
+    position: sticky; bottom: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px;
+    background: #111; color: #fff;
+    border: none; border-radius: 14px;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .copy-button:active { transform: scale(0.98); }
+  .copy-button.copied { background: #1d9e75; }
+  .copy-button svg { width: 18px; height: 18px; }
+  .footer-cta {
+    margin-top: 32px; padding: 20px;
+    background: #111; color: #fff; border-radius: 14px;
+    text-align: center;
+  }
+  .footer-cta-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #ff6b2c; font-weight: 700; margin-bottom: 6px;
+  }
+  .footer-cta-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .footer-cta-sub { font-size: 13px; color: #bbb; margin-bottom: 14px; }
+  .footer-cta a {
+    display: inline-block; padding: 10px 20px;
+    background: #ff6b2c; color: #fff; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← all prompts</a>
+
+  <div class="headline-block">
+    <div class="headline">PERSONAL SITE (CLAUDE DESIGN) 🌐</div>
+    <div class="subhead">Two passes · one HTML file</div>
+  </div>
+
+  <div class="description">
+    Turns Claude into a senior brand designer who builds you a portfolio-grade personal website that never looks like a template. It interviews you about who you are, your proof, and your vibe, then shows you a design plan (palette, type pairing, wireframe, and one signature element) for approval before writing a single line of code. Approve it and Claude builds a complete, self-contained single-page site as one HTML file, with a live motion system: a slow-shifting gradient, scroll reveals, count-up stats, and tasteful hover effects. Save it as index.html and open it in any browser.
+  </div>
+
+  <div class="how-to">
+    <div class="how-to-label">How to use</div>
+    <div class="how-to-steps">
+      <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
+      <strong>2.</strong> Paste it into a new Claude chat with Claude Design<br>
+      <strong>3.</strong> Answer the short interview, then approve or tweak the design plan Claude shows you<br>
+      <strong>4.</strong> Claude builds the full site live in the Mockup preview and gives you the code to save as <em>index.html</em>
+    </div>
+  </div>
+
+  <div class="prompt-box" id="prompt-text">You are a senior brand designer and front-end developer at a top-tier creative studio. You build personal websites that feel inevitable: the type, the palette, the spacing, and the motion all serve one person's story. Every section earns its place. You have real taste, and you have a rule: nothing you make should look like a template. This is portfolio-grade work.
+We are going to build my personal website in two passes. Pass one is a short design plan that you show me for approval. Pass two is the full build, only after I say go. Do not skip pass one. Do not start writing code until I approve the plan.
+THE BUILD
+Use Claude Design's Mockup template to build a complete, single-page personal website as ONE self-contained HTML file. Everything lives in one file I can save, open in any browser, or hand to a developer later. No external dependencies beyond Google Fonts and inline CSS and JavaScript.
+STEP 1: INTERVIEW ME FIRST
+Before you plan or build anything, ask me these questions one at a time, conversationally. Wait for each answer before asking the next. Keep your tone warm, sharp, and brief. If an answer is thin, ask one quick follow-up, then move on.
+
+1. Who are you, and what is the single most characteristic thing you do? Give me your name or the name you go by online, and one line on what you help people with. (Example: "Sam Rivera. I help small teams cut their busywork with simple automations." Or "Dana Cole, a wedding photographer who shoots film in natural light.") The more specific, the more real the copy will feel.
+2. Who is this page for, and what is the one thing you want a visitor to do? Think about the person landing here from a link or a search. (Examples of the action: "book a call," "hire me," "request my rate sheet," "download my free guide," "follow me," "buy my course.") Name the one action that matters most.
+3. What is your proof? Give me any real numbers, credentials, or facts that show you know your stuff. (Examples: "12,000 followers," "over 400 clients served," "8 years in the field," "featured in three trade publications," "certified X.") If you do not have numbers yet, tell me, and we will lead with credibility a different way (a clear point of view, named skills, or the outcomes you deliver). Use only real facts. I will never invent numbers for you.
+4. What is your best work? List 2 to 6 things you are proud of that we can show as a portfolio: projects, pieces of content, products, case studies, results. For each, give me a short name and one detail (a result, a view count, a client, a date). If you would rather not show a portfolio, say "skip it" and we will replace this section with your services or a set of highlights.
+5. What do you offer, or what do you make? This is the "here is what I do" section. List your services, content, products, or the kinds of work you take on. A few words each is fine.
+6. How should people reach you, and where do you live online? Give me the contact method for your one main action (an email, a link, a booking page), plus any links you want in the footer (social handles, a store, a portfolio). Tell me the exact addresses and handles. And do you want a simple email or free-resource signup on the page? If yes, one line on what people get for signing up. If no, say "no signup."
+7. Last, the feel. Give me 3 to 5 mood words for the vibe (examples: "calm, precise, expert," or "bold, playful, fast," or "warm, human, grounded"). Then: do you have a brand color you want to build from? Give me a color or a hex code, or say "pick for me." And how alive should the page feel as someone scrolls: "lively, like a live dashboard," or "subtle and calm"? Either way I will keep motion smooth and refined, never busy.
+
+After I answer, confirm you have what you need. Do not ask more than one or two follow-ups. Then move to Step 2.
+STEP 2: PASS ONE, SHOW ME A DESIGN PLAN BEFORE ANY CODE
+Do not write code yet. First give me a short, skimmable plan built from my answers. Four parts:
+
+1. Palette: 4 to 6 named colors with hex codes, chosen for my specific brand and vibe, not a generic default. Name the role of each (background, primary text, accent, support, and so on).
+2. Type pairing: one display font for headlines and one body font, picked for this brief, not your usual go-to. Name both, with the weights you will use. Say in one line why this pairing fits my vibe.
+3. Layout concept and a simple wireframe: describe the page top to bottom in a few lines, then sketch a quick text wireframe (boxes and labels) so I can see the shape before you build it.
+4. The one signature element: the single thing this page will be remembered by. A living hero, an unusual way of showing the proof numbers, a bold type moment, a distinctive way the sections reveal. Name it clearly.
+
+Then critique your own plan. Look hard at the three most common ways an AI-designed site gives itself away, and confirm you have avoided all of them:
+
+* The cream background with a big serif "editorial" look.
+* The pure black background with one bright accent color, the default "AI product" look (especially black and purple, which everyone uses, so avoid it).
+* The gray newspaper look with thin rules and columns.
+
+If any part of your plan drifts toward one of those, change it and tell me what you changed and why. Then take one real, justified creative risk somewhere on the page and tell me what it is. Do not build until I approve or tweak the plan.
+STEP 3: PASS TWO, BUILD IT (ONLY AFTER I APPROVE)
+Build the full single-page site as one HTML file, deriving every color and font choice from the approved plan. Follow all specs below. Write all copy in my voice using my answers: plain, active, written from the reader's side of the screen, and free of filler. No invented facts, no placeholder text anywhere.
+TECHNICAL SPECS (NON-NEGOTIABLE)
+Output: ONE self-contained .html file. All CSS in a single `&lt;style&gt;` block in the head. All JavaScript in a single `&lt;script&gt;` block before `&lt;/body&gt;`.
+Fonts: load the two approved Google Fonts via a `&lt;link&gt;` tag.
+Responsive and mobile-first: fully responsive from 320px to 1920px, with breakpoints at 640px, 1024px, and 1440px. Everything must be smooth and beautiful on a phone. Check the layout mentally at each width before finalizing.
+Palette as tokens: define the approved colors as `:root` CSS variables at the top, each with a comment naming its role.
+No stock photos of people. If I gave you a photo link, use it. If I did not, do not drop in a stock headshot. Use a tasteful placeholder treatment instead: a dark gradient panel or a geometric shape where a portrait would go, so I can swap my own photo in later. Match the treatment to the brand.
+Semantic, accessible HTML: use `&lt;header&gt;`, `&lt;main&gt;`, `&lt;section&gt;`, `&lt;footer&gt;`. Alt text on any image. Text contrast of at least 4.5:1. Respect `prefers-reduced-motion` by easing off animation for users who ask for less.
+MOTION SYSTEM (THIS IS THE SIGNATURE FEEL)
+The page should feel alive and in motion as someone scrolls, like a quiet live dashboard. Keep it lively but refined, never cluttered, and smooth on mobile. Build all of these:
+
+* Slow-shifting gradient somewhere in the background (the hero or a section band). Animate it slowly, 15 seconds or longer per cycle, so it breathes rather than flashes.
+* Reveal on scroll: each major section and card fades up 24px to full opacity as it enters view, 600ms, cubic-bezier(0.16, 1, 0.3, 1). Use IntersectionObserver, not scroll listeners. Stagger cards slightly so they arrive one after another.
+* Live-counting numbers: the proof stats count up from zero to their real value when that section scrolls into view (for example 0 up to 12,000). Format large numbers cleanly with commas or a "K" suffix. Only count up to real numbers I gave you.
+* Status dots: one or two small dots that gently pulse (a soft glow in and out), used as a live signal next to something current, like an "available for work" line or a recent highlight. Keep them small and tasteful.
+* Floating accents: one or two subtle shapes that drift slowly behind content. Slow and small, never distracting.
+* Hover interactions on cards: portfolio and offering cards lift a few pixels and gain a soft shadow on hover, 250ms ease. Links grow an underline from the left. Buttons shift up 2px.
+
+Motion is felt, not seen. Nothing bounces. Nothing spins. If I asked for "subtle and calm," keep every one of these but dial the movement down and slow it further.
+STYLE SYSTEM (DERIVED FROM THE APPROVED PLAN)
+Colors: use the approved palette. One accent color does the highlighting work across the whole page (buttons, key numbers, the pulse dots, hover states). Do not multiply accents section to section. The support colors handle dividers, backgrounds of bands, and quiet detail.
+Type: use the approved pairing. Display font for the hero headline and section headlines. Body font for everything else, at two weights maximum. Headlines run heavy (800 to 900 where the font allows), tight letter-spacing, 1.05 line-height. Body sits at 400 to 500 weight, 1.6 line-height. Small caps eyebrows above sections: 12px, 600 weight, wide letter-spacing, uppercase.
+If my vibe words point one way, lean the type that way: expert and precise leans a clean grotesk display with a neutral body. Bold and loud leans a heavy condensed display. Warm and human leans a friendly display with rounded edges. Editorial and considered leans a refined serif display, but avoid the plain cream-and-serif cliche by pairing it with an unexpected color or a modern body font.
+Spacing scale: 8, 16, 24, 40, 64, 96, 128px. Use these tokens only. No arbitrary values. Generous white space is a feature, not a gap. Container max-width around 1200px, centered, with 24px gutters on mobile and 64px on desktop.
+STEP 4: STRUCTURE (RESHAPE TO WHO I AM)
+The page has seven sections in this order. Adapt each to the kind of person I am (creator, freelancer or consultant, founder or small business owner, professional, or coach and educator), based on my answers.
+1. NAVIGATION (sticky)
+My name or wordmark on the left in the display font. Right-aligned anchor links to the sections. My one main action as a button on the far right in the accent color. After scrolling past 80px, the nav gains a solid background and a subtle bottom border. On mobile, collapse to a clean menu.
+2. HERO (treat it as a thesis)
+Full viewport height on desktop (minimum 600px), around 85vh on mobile. Open with the single most characteristic thing about what I do, stated as an oversized display headline in a few strong words. Do not default to a headshot beside a paragraph. Lead with the idea.
+Below the headline: one supporting line in body type that says who I help and how. Then my one main action as a large accent button, with a smaller secondary link beside it if it helps.
+Use the signature element from the approved plan here or nearby. Put the slow-shifting gradient behind the hero. If I have no photo, use the dark gradient or geometric placeholder treatment rather than a stock image. Add a small pulsing status line if it fits (for example a live "currently taking new work" signal).
+3. ABOUT
+Who I am, in my voice, in two short paragraphs. A small caps eyebrow ("About," "The short version," "Who I am"), a display headline of a few words, then the paragraphs. Weave in one grounding detail from my answers. If I have a photo, this is a natural place for it. If not, keep the placeholder treatment consistent with the hero.
+4. BEST WORK (portfolio)
+Show the work I listed as a set of cards. Grid of two or three columns on desktop, one on mobile. Each card shows the name, the one detail I gave (a result, a view count, a client, a date), and lifts on hover. If a card has a standout number (like a view count), let it read big and confident. If I said "skip it," replace this section with a highlights strip or fold my offerings in here instead.
+5. WHAT I MAKE (offerings)
+What I do or make, laid out clearly. Reshape by who I am: a creator shows content series or formats; a freelancer or consultant shows services; a founder shows what the product or business does; a professional shows areas of expertise; a coach shows programs or packages. Use a clean grid or a simple list, each item with a short label and a line of plain description. Keep it scannable.
+6. PROOF (the real numbers)
+The credibility section. Show my real stats as large count-up numbers that animate when the section scrolls into view, each with a short label under it (for example "12,000" over "followers," or "400+" over "clients served"). Two to four stats in a row on desktop, stacked on mobile. If I gave no numbers, build this as a short "why me" band instead: three plain, confident statements of what I deliver or believe, no invented figures.
+7. WORK WITH ME AND CONTACT
+Close the page with the ask. A clear "work with me" block written for whoever I said this page is for (clients, brands, employers, followers), then the contact. Put my one main action here as a prominent button pointing to the real address, link, or booking page I gave. If I asked for a signup, add a simple one-field email capture with one line on what people get. Footer holds my wordmark, the footer links and handles I listed, and a copyright line with the current year. Only include links I actually gave you.
+STEP 5: WRITING THE COPY
+Write every word in my voice from my answers. Plain and active. Say what I do and what a visitor gets, from the reader's side of the screen. No filler, no hype, no jargon. No lorem ipsum and no placeholder text anywhere. If I did not give you something, leave that element out rather than inventing it. Never invent names, numbers, testimonials, or partners.
+STEP 6: WHAT TO AVOID
+
+* The default black-and-purple "AI" look everyone uses.
+* The cream-and-serif editorial cliche, the black-with-one-bright-accent look, and the gray newspaper look.
+* A generic portfolio template that could belong to anyone.
+* Stock photos of people, headsets, handshakes, or "diverse team smiling."
+* Bounce or elastic easing. Spinning logos. Anything that jitters.
+* More than one accent color doing highlight work.
+* Generic buttons like "Click Here," "Learn More" alone, or "Get Started Now." Use my real action.
+* Any invented fact, number, quote, or logo.
+* Placeholder or lorem text of any kind.
+
+STEP 7: SELF-CHECK BEFORE YOU SHOW ME
+Confirm all of this before the final output:
+
+1. Every color and font traces back to the approved plan.
+2. The page is one self-contained HTML file with no missing pieces.
+3. All seven sections have real copy in my voice. No placeholder text survives.
+4. Every number on the page is a real number I gave you. Nothing is invented.
+5. The stats count up on scroll, and the count targets match my real figures.
+6. The motion system is all present: slow gradient, scroll reveals, count-up numbers, at least one pulsing dot, a floating accent, and card hovers. Motion is smooth and calm on a phone.
+7. The signature element from the plan is clearly present and memorable.
+8. The layout is clean and complete at 375px wide, top to bottom.
+9. The one main action appears at least twice (hero and contact, at minimum), pointing to the real destination.
+10. Nothing on the page reads as a template. It looks like it belongs to one specific person: me.
+
+EXPORT
+Show the finished site in Claude Design's Mockup preview so I can see it live and screen-record it. Give me a copy-the-code option so I can save the .html file. Add one line at the bottom: "Save this as index.html and open it in any browser. To make edits, change the text directly in the file."</div>
+
+  <button class="copy-button" id="copy-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+    <span id="copy-label">Copy prompt</span>
+  </button>
+
+  <div class="footer-cta">
+    <div class="footer-cta-label">Want more like this?</div>
+    <div class="footer-cta-title">Follow @kyle.meets.ai</div>
+    <div class="footer-cta-sub">New AI bites dropping weekly</div>
+    <a href="https://www.tiktok.com/@kyle.meets.ai">Open TikTok →</a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('copy-btn');
+  const label = document.getElementById('copy-label');
+  const promptText = document.getElementById('prompt-text');
+
+  btn.addEventListener('click', async () => {
+    const text = promptText.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const range = document.createRange();
+      range.selectNode(promptText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try { document.execCommand('copy'); } catch(e) {}
+      window.getSelection().removeAllRanges();
+    }
+    btn.classList.add('copied');
+    label.textContent = 'Copied ✓';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      label.textContent = 'Copy prompt';
+    }, 2000);
+  });
+</script>
+</body>
+</html>
