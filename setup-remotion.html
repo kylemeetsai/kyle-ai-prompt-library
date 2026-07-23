@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Setup Remotion — kyle.meets.ai</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    background: #fafaf7;
+    color: #111;
+    min-height: 100vh;
+    padding: 24px 18px 60px;
+    line-height: 1.5;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #666; text-decoration: none;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .back-link:hover { color: #111; }
+  .headline-block {
+    position: relative;
+    margin-bottom: 8px;
+    padding: 16px 22px 16px 18px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .headline-block::after {
+    content: ''; position: absolute; right: -3px; top: 8px; bottom: 8px;
+    width: 8px; background: #ff6b2c; border-radius: 2px;
+  }
+  .headline { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .subhead {
+    display: inline-block; margin-top: 14px;
+    padding: 6px 12px; background: #fff;
+    font-size: 14px; font-weight: 500; border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .description {
+    margin: 20px 0 16px; font-size: 15px; color: #444; line-height: 1.6;
+  }
+  .how-to {
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 16px 20px; margin-bottom: 20px;
+  }
+  .how-to-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; color: #ff6b2c; margin-bottom: 8px;
+  }
+  .how-to-steps { font-size: 14px; color: #333; line-height: 1.7; }
+  .how-to-steps strong { color: #111; }
+  .prompt-box {
+    position: relative;
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 20px 20px 70px; margin-bottom: 12px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.65;
+    white-space: pre-wrap; word-wrap: break-word;
+    color: #222; max-height: 300px; overflow-y: auto;
+  }
+  .copy-button {
+    position: sticky; bottom: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px;
+    background: #111; color: #fff;
+    border: none; border-radius: 14px;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .copy-button:active { transform: scale(0.98); }
+  .copy-button.copied { background: #1d9e75; }
+  .copy-button svg { width: 18px; height: 18px; }
+  .footer-cta {
+    margin-top: 32px; padding: 20px;
+    background: #111; color: #fff; border-radius: 14px;
+    text-align: center;
+  }
+  .footer-cta-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #ff6b2c; font-weight: 700; margin-bottom: 6px;
+  }
+  .footer-cta-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .footer-cta-sub { font-size: 13px; color: #bbb; margin-bottom: 14px; }
+  .footer-cta a {
+    display: inline-block; padding: 10px 20px;
+    background: #ff6b2c; color: #fff; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← all prompts</a>
+
+  <div class="headline-block">
+    <div class="headline">SETUP REMOTION 🎥</div>
+    <div class="subhead">Guided setup · no coding needed</div>
+  </div>
+
+  <div class="description">
+    A patient, plain-language setup guide that gets Remotion working inside Claude Code for you. Remotion is a tool that makes real videos using code, and once it is set up, you can just ask Claude to build videos for you. This prompt walks Claude through checking your computer has what it needs, creating a fresh video project, and running a tiny test render to prove it can actually make a video, explaining every step along the way and never installing anything without telling you what it is first.
+  </div>
+
+  <div class="how-to">
+    <div class="how-to-label">How to use</div>
+    <div class="how-to-steps">
+      <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
+      <strong>2.</strong> Open the Claude desktop app and start a Claude Code session<br>
+      <strong>3.</strong> Paste the prompt into the chat<br>
+      <strong>4.</strong> Follow along as Claude checks your setup, creates the project, and runs a test render, answering its questions when it asks
+    </div>
+  </div>
+
+  <div class="prompt-box" id="prompt-text">You are my patient setup guide. You are going to help me set up Remotion inside Claude Code. Remotion is a tool that lets you make real videos using code, and once it is set up, I will be able to just ask you to build videos for me. I might not be technical, so explain what you are doing in plain language at each step, and never install anything on my computer without first telling me what it is and why it is needed. If anything looks off, pause and check with me instead of pushing ahead.
+
+Work through these steps in order.
+
+Step 1: Tell me the plan.
+In two or three sentences, tell me what we are about to do: check that my computer has the one basic tool Remotion needs, set up a fresh video project, and then run a tiny test to prove it can actually make a video. Keep it friendly and simple.
+
+Step 2: Check that Node.js is installed.
+Node.js is the engine that runs Remotion and its tools behind the scenes. Nothing here works without it. Check whether Node.js is installed and tell me the version. Also check that npm is available (that is the helper that comes with Node and installs the pieces a project needs).
+
+If Node.js is installed and the version is 18 or higher, tell me we are good to go and move on to Step 3.
+
+If Node.js is missing, or the version is older than 18, do NOT install anything yourself. Stop and walk me through it instead, so I understand what I am installing before I install it:
+
+- Explain in plain words what Node.js is and why Remotion needs it.
+- Check whether I am on a Mac or a Windows computer, then give me the simple, official way to install it: go to nodejs.org, download the version labeled LTS, and run the installer.
+- Tell me what to expect (a normal installer that I click through with the default choices) so nothing feels scary or surprising.
+- Then wait. Once I have installed it and told you I am ready, check the version again before continuing. Remotion needs at least Node 16, but 18 or newer is the safe choice.
+
+Step 3: Ask me where to set up the project.
+Ask me one simple question and wait for my answer: would I like you to create a new, clearly named folder for this project (a name like my-first-video works well), or set it up right here in the folder we are already in? If I choose the current folder, first check whether it already has files in it, and warn me before doing anything if it does.
+
+Step 4: Create the project.
+Once I have answered, set up a new Remotion project using the blank starter, without making me answer a bunch of technical questions. Run this command, using the folder name I chose:
+
+npx create-video@latest --yes --blank my-first-video
+
+(use the name I picked in Step 3 in place of my-first-video). Then go into that folder and install everything the project needs by running npm install. Tell me in one plain line what that install step is doing (downloading the building blocks the project runs on). This part can take a minute, so let me know that is normal if it looks like it is just thinking.
+
+Step 5: Add Remotion's AI skill.
+Now give yourself Remotion's own instruction manual, so you know exactly how to build videos the right way in this project. From inside the project folder, run:
+
+npx skills add remotion-dev/skills
+
+If that command is not found or does not work, try this one instead: npx remotion skills add. Tell me in one line what this did (it taught you Remotion's official way of doing things, so your videos come out clean).
+
+Step 6: Run a tiny test render to prove it works.
+This is just a quick health check, not a real video I keep. First, ask Remotion what is in the project by running npx remotion compositions, and pick the first one it lists. Then render that one to a temporary test file, for example:
+
+npx remotion render [that-composition-name] out/setup-test.mp4
+
+Warn me first that the very first render will automatically download Remotion's built-in rendering browser (a one-time thing that can take a minute or two), and that this is completely normal. When it finishes, confirm that the file out/setup-test.mp4 was actually created. If it was, tell me plainly that my computer can produce real videos, then delete that test file so we start clean. If the render fails, stop and tell me in simple terms what went wrong so we can fix it, rather than pretending it worked.
+
+Step 7: Check the rest of the setup.
+Also confirm the basics are healthy: the project folder has a package.json file, the dependencies installed (there is a node_modules folder), and the Remotion skill files were added. If anything is missing, tell me plainly and stop so we can fix it together.
+
+Step 8: Confirm it is ready, then stop.
+If everything checks out, give me a short, friendly summary:
+
+- What I now have set up, including that a test video rendered successfully.
+- The name and location of my project folder.
+- That next time, I can simply ask you to build a video and you will take it from there.
+
+Do not build any real or finished video in this session beyond the tiny throwaway test in Step 6. This is setup only. Once you have confirmed everything is ready, we are done for now.
+
+Keep your tone simple and encouraging the whole way through. No jargon. If anything is unclear, ask me instead of guessing. The goal is that by the end, I have a working Remotion project that has already proven it can make a video, and I understood every step we took to get there.</div>
+
+  <button class="copy-button" id="copy-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+    <span id="copy-label">Copy prompt</span>
+  </button>
+
+  <div class="footer-cta">
+    <div class="footer-cta-label">Want more like this?</div>
+    <div class="footer-cta-title">Follow @kyle.meets.ai</div>
+    <div class="footer-cta-sub">New AI bites dropping weekly</div>
+    <a href="https://www.tiktok.com/@kyle.meets.ai">Open TikTok →</a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('copy-btn');
+  const label = document.getElementById('copy-label');
+  const promptText = document.getElementById('prompt-text');
+
+  btn.addEventListener('click', async () => {
+    const text = promptText.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const range = document.createRange();
+      range.selectNode(promptText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try { document.execCommand('copy'); } catch(e) {}
+      window.getSelection().removeAllRanges();
+    }
+    btn.classList.add('copied');
+    label.textContent = 'Copied ✓';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      label.textContent = 'Copy prompt';
+    }, 2000);
+  });
+</script>
+</body>
+</html>
