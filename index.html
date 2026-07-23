@@ -69,7 +69,54 @@
     border-radius: 3px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
-  .prompts-list { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+  /* Filter pill bar */
+  .filter-bar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 24px -20px 4px;
+    padding: 12px 20px;
+    background: #fafaf7;
+  }
+  .filter-bar::-webkit-scrollbar { display: none; }
+  .pill {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: #fff;
+    border: 1px solid #e6e6e0;
+    border-radius: 999px;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  }
+  .pill:active { transform: scale(0.96); }
+  .pill .pill-count {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #aaa;
+    transition: color 0.15s ease;
+  }
+  .pill[aria-pressed="true"] {
+    background: #ff6b2c;
+    border-color: #ff6b2c;
+    color: #fff;
+  }
+  .pill[aria-pressed="true"] .pill-count { color: rgba(255,255,255,0.85); }
+
+  .prompts-list { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
   .prompt-card {
     display: block;
     background: #fff;
@@ -80,14 +127,56 @@
     color: inherit;
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
+  .prompt-card.hidden { display: none; }
   .prompt-card:active { transform: scale(0.98); }
   .prompt-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  /* Card meta row: tool tag + optional NEW badge */
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .tool-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 9px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+  }
+  .tool-tag.tool-design    { background: #fff0e6; color: #d1590f; }
+  .tool-tag.tool-agent     { background: #f0ecfb; color: #6d4bd1; }
+  .tool-tag.tool-chatgpt   { background: #e7f6ee; color: #1d8a5b; }
+  .tool-tag.tool-connector { background: #e8f1fc; color: #2668b8; }
+  .tool-tag.tool-claude    { background: #eef0f2; color: #566072; }
+  .new-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: #ff6b2c;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+  }
   .prompt-title {
     font-size: 17px; font-weight: 700; margin-bottom: 4px;
     display: flex; align-items: center; justify-content: space-between;
   }
   .prompt-title .arrow { color: #ff6b2c; font-size: 20px; }
   .prompt-desc { font-size: 14px; color: #666; line-height: 1.45; }
+  .no-results {
+    display: none;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    padding: 32px 12px;
+  }
   .classes-cta {
     display: flex;
     align-items: center;
@@ -156,179 +245,263 @@
     <div class="subhead">Tap · copy · paste into any AI</div>
   </div>
 
+  <nav class="filter-bar" aria-label="Filter prompts by topic">
+    <button class="pill" type="button" data-filter="all" aria-pressed="true">All <span class="pill-count"></span></button>
+    <button class="pill" type="button" data-filter="career" aria-pressed="false">Career <span class="pill-count"></span></button>
+    <button class="pill" type="button" data-filter="design" aria-pressed="false">Design <span class="pill-count"></span></button>
+    <button class="pill" type="button" data-filter="content" aria-pressed="false">Content &amp; Social <span class="pill-count"></span></button>
+    <button class="pill" type="button" data-filter="health" aria-pressed="false">Health &amp; Life <span class="pill-count"></span></button>
+    <button class="pill" type="button" data-filter="money" aria-pressed="false">Money <span class="pill-count"></span></button>
+    <button class="pill" type="button" data-filter="agents" aria-pressed="false">Agents &amp; Automation <span class="pill-count"></span></button>
+  </nav>
+
   <div class="prompts-list">
-    <a href="setup-remotion.html" class="prompt-card">
+    <a href="setup-remotion.html" class="prompt-card" data-topic="agents" data-tool="claude" data-new>
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude Code</span><span class="new-badge">New</span></div>
       <div class="prompt-title">Setup Remotion 🎥 <span class="arrow">→</span></div>
       <div class="prompt-desc">A patient, plain-language setup guide that gets Remotion working inside Claude Code for you. Remotion makes real videos using code, and once it is set up you can just ask Claude to build videos for you. This prompt walks Claude through checking your computer has what it needs, creating a fresh video project, and running a tiny test render to prove it can actually make a video, explaining every step and never installing anything without telling you what it is first. No coding needed on your end.</div>
     </a>
 
-    <a href="resume-tailor.html" class="prompt-card">
+    <a href="resume-tailor.html" class="prompt-card" data-topic="career" data-tool="claude" data-new>
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude</span><span class="new-badge">New</span></div>
       <div class="prompt-title">Resume Tailor 📝 <span class="arrow">→</span></div>
       <div class="prompt-desc">Paste one prompt into Claude and it interviews you, then builds you your own private "Resume Tailor" tool as an interactive artifact. It rewrites your resume to match a specific job, shows the exact keywords you are missing, scores how well you match against the posting, and upgrades your weak bullet points into strong, measurable ones. Your resume stays loaded in the tool so you can reopen it every time you apply for a new job.</div>
     </a>
 
-    <a href="personal-site.html" class="prompt-card">
+    <a href="personal-site.html" class="prompt-card" data-topic="design" data-tool="design" data-new>
+      <div class="card-meta"><span class="tool-tag tool-design">Claude Design</span><span class="new-badge">New</span></div>
       <div class="prompt-title">Personal Site (Claude Design) 🌐 <span class="arrow">→</span></div>
       <div class="prompt-desc">Turns Claude into a senior brand designer who builds you a portfolio-grade personal website that never looks like a template. It interviews you about who you are, your proof, and your vibe, then shows you a design plan (palette, type pairing, wireframe, and a signature element) for approval before writing any code. Approve it and Claude builds a complete, self-contained single-page site as one HTML file, with a live motion system: a slow-shifting gradient, scroll reveals, count-up stats, and tasteful hover effects. Save it as index.html and open it in any browser.</div>
     </a>
 
-    <a href="build-crm-notion.html" class="prompt-card">
+    <a href="build-crm-notion.html" class="prompt-card" data-topic="agents" data-tool="connector">
+      <div class="card-meta"><span class="tool-tag tool-connector">Notion</span></div>
       <div class="prompt-title">Build a CRM with Claude (Notion) 🗂️ <span class="arrow">→</span></div>
       <div class="prompt-desc">Paste one prompt into Claude with your Notion connected, answer a short interview about how you work, and Claude builds a real, fully populated CRM inside your Notion in a single pass. It blends a contacts list with a visual sales pipeline board, color-codes your stages, adds follow-up dates and priority labels, and can pre-fill about 12 realistic sample contacts so nothing opens empty. It looks and works like a tool you have used for months, then sends you the direct Notion link.</div>
     </a>
 
-    <a href="ai-running-coach.html" class="prompt-card">
+    <a href="ai-running-coach.html" class="prompt-card" data-topic="health" data-tool="connector" data-new>
+      <div class="card-meta"><span class="tool-tag tool-connector">Strava</span><span class="new-badge">New</span></div>
       <div class="prompt-title">AI Running Coach (Strava) 🏃 <span class="arrow">→</span></div>
       <div class="prompt-desc">Connects to your Strava and builds a live AI Running Coach dashboard as a saved artifact that refreshes from your data every time you open it. Pulls your last 90 days of runs into five key stats, a personalized "Coach's Read" of what you are doing well and what to fix, trend charts for weekly volume and pace, and a recent-runs table that flags your PRs. Type in a goal and how many days you can train, and it generates a tailored one-week plan that stays within your current fitness. All in miles and minutes per mile.</div>
     </a>
 
-    <a href="desktop-agent-organize-folders.html" class="prompt-card">
+    <a href="desktop-agent-organize-folders.html" class="prompt-card" data-topic="agents" data-tool="agent">
+      <div class="card-meta"><span class="tool-tag tool-agent">Agent</span></div>
       <div class="prompt-title">Desktop Agent 🤖: Organize Folders <span class="arrow">→</span></div>
       <div class="prompt-desc">Turns Claude's desktop agent loose on one messy folder and only that folder. It sorts every loose top-level file into clearly named subfolders by type (Documents, PDFs, Spreadsheets, Images, and more), skips empty categories, leaves everything else untouched, and gives you a before/after count when it's done.</div>
     </a>
 
-    <a href="price-drop-agent.html" class="prompt-card">
+    <a href="price-drop-agent.html" class="prompt-card" data-topic="money" data-tool="agent" data-new>
+      <div class="card-meta"><span class="tool-tag tool-agent">Agent</span><span class="new-badge">New</span></div>
       <div class="prompt-title">Price Drop Agent 🤖 <span class="arrow">→</span></div>
       <div class="prompt-desc">Builds a personal Price Drop Agent as a Cowork Live Artifact that watches the 3 to 4 products you are shopping for. It interviews you first, researches real listings and the honest "usual price" of each item, then shows today's price, a Deal Score, and a clear BUY NOW or WAIT call on a clean dashboard that saves across sessions. It also sets up a daily morning check that only messages you when something actually hits a great deal. No fake sales, no hype, no noise.</div>
     </a>
 
-    <a href="job-fit-scorer.html" class="prompt-card">
+    <a href="job-fit-scorer.html" class="prompt-card" data-topic="career" data-tool="claude">
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude</span></div>
       <div class="prompt-title">AI Job Fit Scorer <span class="arrow">→</span></div>
       <div class="prompt-desc">A brutally honest hiring strategist scores how well your resume fits any job. Set it up once as a Claude.ai Project with your resume in the knowledge, then paste any job description to get a visual one-page report: a match score out of 10, interview likelihood, color-coded requirement-coverage bars, strengths, gaps, and an overall verdict.</div>
     </a>
 
-    <a href="caption-generator.html" class="prompt-card">
+    <a href="caption-generator.html" class="prompt-card" data-topic="content" data-tool="agent">
+      <div class="card-meta"><span class="tool-tag tool-agent">Agent</span></div>
       <div class="prompt-title">AI Caption Generator <span class="arrow">→</span></div>
       <div class="prompt-desc">Builds a live caption generator as a Cowork Live Artifact that writes Instagram captions in your exact voice. Paste five recent captions so Claude learns your phrasing, hooks, and signature phrases, then pick your post type, goal, length, vibe, and CTA to get three caption options that actually sound like you.</div>
     </a>
 
-    <a href="claude-second-brain.html" class="prompt-card">
+    <a href="claude-second-brain.html" class="prompt-card" data-topic="agents" data-tool="connector">
+      <div class="card-meta"><span class="tool-tag tool-connector">Google Drive</span></div>
       <div class="prompt-title">Claude Second Brain 🧠 <span class="arrow">→</span></div>
       <div class="prompt-desc">Turns Claude into a personal assistant that knows everything in your Google Drive. Set it up once as a Claude.ai Project with the Google Drive connector, then ask anything about your own files, from contracts and bills to notes and plans, and get an instant, sourced answer with a link to the source file.</div>
     </a>
 
-    <a href="canva-carousel.html" class="prompt-card">
+    <a href="canva-carousel.html" class="prompt-card" data-topic="content" data-tool="connector">
+      <div class="card-meta"><span class="tool-tag tool-connector">Canva</span></div>
       <div class="prompt-title">Carousel (Canva MCP) <span class="arrow">→</span></div>
       <div class="prompt-desc">An expert carousel designer builds an editable carousel straight into your Canva account using the Canva connector. Answer six quick questions, approve a slide outline, then get a premium 1080x1350 portrait carousel with each slide as its own editable Canva page, exported as PNGs, a PDF, and an editable link.</div>
     </a>
 
-    <a href="content-calendar.html" class="prompt-card">
+    <a href="content-calendar.html" class="prompt-card" data-topic="content" data-tool="claude">
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude</span></div>
       <div class="prompt-title">AI Content Calendar <span class="arrow">→</span></div>
       <div class="prompt-desc">Acts as your AI content strategist. It interviews you about your niche and goals, researches what is working in your space right now with live web search, then builds a 30-day calendar of weekday posts, each with a scroll-stopping hook, a specific shot list, keywords, and the research reason behind it. Pick Excel, an HTML doc, or a live interactive artifact, and optionally push every post to your Google Calendar.</div>
     </a>
 
-    <a href="linkedin-audit.html" class="prompt-card">
+    <a href="linkedin-audit.html" class="prompt-card" data-topic="career" data-tool="connector">
+      <div class="card-meta"><span class="tool-tag tool-connector">Chrome</span></div>
       <div class="prompt-title">AI LinkedIn Audit <span class="arrow">→</span></div>
       <div class="prompt-desc">A senior technical recruiter audits the LinkedIn profile open in your browser. Using the Claude for Chrome extension, Claude reads the live page and returns an honest score out of 100, a section-by-section breakdown with paste-ready rewrites, and a prioritized top-3 action list to rank higher in recruiter search and get more replies.</div>
     </a>
 
-    <a href="linkedin-banner.html" class="prompt-card">
+    <a href="linkedin-banner.html" class="prompt-card" data-topic="design" data-tool="design">
+      <div class="card-meta"><span class="tool-tag tool-design">Claude Design</span></div>
       <div class="prompt-title">LinkedIn Banner (Claude Design) <span class="arrow">→</span></div>
       <div class="prompt-desc">Answers six quick questions about what you do, your world, and the vibe you want a stranger to feel, then designs a polished LinkedIn banner as an HTML artifact at LinkedIn's exact 1584x396 cover size. A three-zone editorial layout with vibe-matched type and a single accent color, built to stay readable when LinkedIn crops it on mobile, ready to screenshot and upload.</div>
     </a>
 
-    <a href="job-tracker.html" class="prompt-card">
+    <a href="job-tracker.html" class="prompt-card" data-topic="career" data-tool="agent">
+      <div class="card-meta"><span class="tool-tag tool-agent">Agent</span></div>
       <div class="prompt-title">AI Job Tracker (Cowork) <span class="arrow">→</span></div>
       <div class="prompt-desc">Builds a personal job-search command center as a Cowork Live Artifact that lives in your sidebar and remembers everything across sessions. Track every application through a six-stage pipeline, log notes, surface stalled jobs, and draft follow-up emails in your own voice, written from you to the recruiter.</div>
     </a>
 
-    <a href="design-logo.html" class="prompt-card">
+    <a href="design-logo.html" class="prompt-card" data-topic="design" data-tool="design">
+      <div class="card-meta"><span class="tool-tag tool-design">Claude Design</span></div>
       <div class="prompt-title">Design Logo (Claude Design) <span class="arrow">→</span></div>
       <div class="prompt-desc">Answers six quick questions about your business, customer, personality, palette, and type vibe, then designs three distinct, portfolio-grade logo concepts delivered as exportable SVG artifacts, scalable from favicon to billboard.</div>
     </a>
 
-    <a href="quote-agent.html" class="prompt-card">
+    <a href="quote-agent.html" class="prompt-card" data-topic="agents" data-tool="claude">
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude</span></div>
       <div class="prompt-title">AI Quote Agent <span class="arrow">→</span></div>
       <div class="prompt-desc">A professional quoting assistant for any service business. Share a customer inquiry email, confirm the scope, give your rates, and get back a clean PDF quote with line items, fees, totals, payment terms, and a signature block, ready to send.</div>
     </a>
 
-    <a href="personal-trainer.html" class="prompt-card">
+    <a href="personal-trainer.html" class="prompt-card" data-topic="health" data-tool="agent">
+      <div class="card-meta"><span class="tool-tag tool-agent">Agent</span></div>
       <div class="prompt-title">AI Personal Trainer <span class="arrow">→</span></div>
       <div class="prompt-desc">Builds a 4-week training program as a Cowork Live Artifact plus a Word doc backup. Answer seven questions about your goal, level, equipment, and schedule, and get today's workout, a full calendar, nutrition guardrails, and progress tracking.</div>
     </a>
 
-    <a href="newsletter.html" class="prompt-card">
+    <a href="newsletter.html" class="prompt-card" data-topic="content" data-tool="agent">
+      <div class="card-meta"><span class="tool-tag tool-agent">Agent</span></div>
       <div class="prompt-title">AI Newsletter <span class="arrow">→</span></div>
       <div class="prompt-desc">Builds a personal recurring briefing as a Cowork Live Artifact. Answer seven questions about a topic you care about and get curated stories, citations, weekend picks, and a refresh schedule, all designed to your chosen vibe.</div>
     </a>
 
-    <a href="motion-ad.html" class="prompt-card">
+    <a href="motion-ad.html" class="prompt-card" data-topic="design" data-tool="design">
+      <div class="card-meta"><span class="tool-tag tool-design">Claude Design</span></div>
       <div class="prompt-title">Motion Ad (Claude Design) <span class="arrow">→</span></div>
       <div class="prompt-desc">Answers six quick questions about your brand and offer, then builds a 15-second 9:16 vertical motion ad sized for Reels, TikTok, and LinkedIn, ready to screen-record and post.</div>
     </a>
 
-    <a href="interview-assistant.html" class="prompt-card">
+    <a href="interview-assistant.html" class="prompt-card" data-topic="career" data-tool="claude">
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude</span></div>
       <div class="prompt-title">AI Interview Assistant <span class="arrow">→</span></div>
       <div class="prompt-desc">Share your company, role title, interview round, and job description. Get a tailored HTML brief covering round strategy, likely questions, positioning stories, smart questions to ask back, and a follow-up template, plus optional live practice drills.</div>
     </a>
 
-    <a href="color-analysis.html" class="prompt-card">
+    <a href="color-analysis.html" class="prompt-card" data-topic="health" data-tool="chatgpt">
+      <div class="card-meta"><span class="tool-tag tool-chatgpt">ChatGPT</span></div>
       <div class="prompt-title">AI Color Analysis (ChatGPT) <span class="arrow">→</span></div>
       <div class="prompt-desc">Upload a portrait and get a true personal color analysis: your single best-fitting season from all 12 palettes, a curated swatch grid with hex codes, and a "wears well vs avoid" comparison, all laid out as an editorial magazine spread.</div>
     </a>
 
-    <a href="palm-reader.html" class="prompt-card">
+    <a href="palm-reader.html" class="prompt-card" data-topic="health" data-tool="chatgpt">
+      <div class="card-meta"><span class="tool-tag tool-chatgpt">ChatGPT</span></div>
       <div class="prompt-title">AI Palm Reader (ChatGPT) <span class="arrow">→</span></div>
       <div class="prompt-desc">Upload a photo of your palm and get a complete reading with a minimalist line drawing of your palm, your extracted palm print, and an in-depth analysis of your life, heart, head, and fate lines, all laid out like a chapter from a high-end guidebook.</div>
     </a>
 
-    <a href="travel-itinerary.html" class="prompt-card">
+    <a href="travel-itinerary.html" class="prompt-card" data-topic="design" data-tool="design">
+      <div class="card-meta"><span class="tool-tag tool-design">Claude Design</span></div>
       <div class="prompt-title">Travel Itinerary (Claude Design) <span class="arrow">→</span></div>
       <div class="prompt-desc">Answer a few questions about your destination, dates, vibe, and visual style, then get a polished one-page travel itinerary as an HTML artifact you can export to PDF or PNG.</div>
     </a>
 
-    <a href="marketing-email-template.html" class="prompt-card">
+    <a href="marketing-email-template.html" class="prompt-card" data-topic="design" data-tool="design">
+      <div class="card-meta"><span class="tool-tag tool-design">Claude Design</span></div>
       <div class="prompt-title">Marketing Email Template (Claude Design) <span class="arrow">→</span></div>
       <div class="prompt-desc">Walks you through a quick questionnaire about your campaign, brand, and vibe, then builds a fully responsive HTML email you can paste straight into Klaviyo, Mailchimp, or any major email platform.</div>
     </a>
 
-    <a href="personal-finance-tracker.html" class="prompt-card">
+    <a href="personal-finance-tracker.html" class="prompt-card" data-topic="money" data-tool="connector">
+      <div class="card-meta"><span class="tool-tag tool-connector">Email</span></div>
       <div class="prompt-title">AI Personal Finance Tracker (EMAIL MCP) <span class="arrow">→</span></div>
       <div class="prompt-desc">Scans your email for the last 90 days and builds a Live Artifact dashboard of every active subscription, with a "worth a second look" callout for services you may not be using anymore.</div>
     </a>
 
-    <a href="instagram-carousel.html" class="prompt-card">
+    <a href="instagram-carousel.html" class="prompt-card" data-topic="content" data-tool="design">
+      <div class="card-meta"><span class="tool-tag tool-design">Claude Design</span></div>
       <div class="prompt-title">Instagram Carousel (Claude Design) <span class="arrow">→</span></div>
       <div class="prompt-desc">Generates a complete Instagram carousel from your topic and audience, with live previews and one-click PNG downloads sized to Instagram's 1080x1080 spec, ready to post.</div>
     </a>
 
-    <a href="outreach-agent.html" class="prompt-card">
+    <a href="outreach-agent.html" class="prompt-card" data-topic="agents" data-tool="agent">
+      <div class="card-meta"><span class="tool-tag tool-agent">Agent</span></div>
       <div class="prompt-title">AI Outreach Agent <span class="arrow">→</span></div>
       <div class="prompt-desc">Set it up once, then trigger it anytime by saying "run my follow up radar." Finds emails and chats you sent that got no reply, ranks them by what matters, and writes follow-up drafts you can send today.</div>
     </a>
 
-    <a href="goals-dashboard.html" class="prompt-card">
+    <a href="goals-dashboard.html" class="prompt-card" data-topic="health" data-tool="claude">
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude</span></div>
       <div class="prompt-title">AI Goals Dashboard <span class="arrow">→</span></div>
       <div class="prompt-desc">Plan out your goals and get an interactive dashboard with progress bars, weekly targets, and a quarterly roadmap to keep you on track.</div>
     </a>
 
-    <a href="nutritionist.html" class="prompt-card">
+    <a href="nutritionist.html" class="prompt-card" data-topic="health" data-tool="claude">
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude</span></div>
       <div class="prompt-title">AI Nutritionist <span class="arrow">→</span></div>
       <div class="prompt-desc">Runs a quick intake on your goals, dietary restrictions, and cooking setup, then delivers personalized recipes and meal plans with calories and macros matched to your targets.</div>
     </a>
 
-    <a href="cover-letter.html" class="prompt-card">
+    <a href="cover-letter.html" class="prompt-card" data-topic="career" data-tool="claude">
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude</span></div>
       <div class="prompt-title">AI Cover Letter Writer <span class="arrow">→</span></div>
       <div class="prompt-desc">Paste your resume + a job posting. Claude writes a polished, human-sounding cover letter and saves it as a ready-to-send Word doc.</div>
     </a>
 
-    <a href="resume-optimizer.html" class="prompt-card">
+    <a href="resume-optimizer.html" class="prompt-card" data-topic="career" data-tool="claude">
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude</span></div>
       <div class="prompt-title">AI Resume Optimizer <span class="arrow">→</span></div>
       <div class="prompt-desc">Drop your resume + a job description. Claude scores the match, finds keyword gaps, and rewrites your weakest bullets.</div>
     </a>
 
-    <a href="interview-coach.html" class="prompt-card">
+    <a href="interview-coach.html" class="prompt-card" data-topic="career" data-tool="claude">
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude</span></div>
       <div class="prompt-title">AI Interview Coach <span class="arrow">→</span></div>
       <div class="prompt-desc">Paste a job description + your resume. Claude runs a realistic mock interview, scores each answer, and coaches you with honest feedback.</div>
     </a>
 
-    <a href="budget-tracker.html" class="prompt-card">
+    <a href="budget-tracker.html" class="prompt-card" data-topic="money" data-tool="claude">
+      <div class="card-meta"><span class="tool-tag tool-claude">Claude</span></div>
       <div class="prompt-title">AI Budget Tracker <span class="arrow">→</span></div>
       <div class="prompt-desc">Upload a bank statement or CSV. Get an interactive dashboard with charts, overspending flags, and one savings tip.</div>
     </a>
   </div>
 
+  <p class="no-results">No prompts in this category yet — check back soon.</p>
+
   <p class="disclaimer">These prompts are provided for educational and informational purposes only. Results from AI tools vary and may contain errors. Always review AI output before using it for any important decisions. This is not professional, legal, medical, or financial advice. Use at your own discretion.</p>
 </div>
+
+<script>
+  (function () {
+    var pills = Array.prototype.slice.call(document.querySelectorAll('.filter-bar .pill'));
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.prompt-card'));
+    var noResults = document.querySelector('.no-results');
+
+    // Write the live count into each pill from the actual cards on the page.
+    pills.forEach(function (pill) {
+      var filter = pill.getAttribute('data-filter');
+      var count = filter === 'all'
+        ? cards.length
+        : cards.filter(function (c) { return c.getAttribute('data-topic') === filter; }).length;
+      var slot = pill.querySelector('.pill-count');
+      if (slot) slot.textContent = count;
+    });
+
+    function apply(filter) {
+      var visible = 0;
+      cards.forEach(function (card) {
+        var show = filter === 'all' || card.getAttribute('data-topic') === filter;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+      pills.forEach(function (pill) {
+        pill.setAttribute('aria-pressed', pill.getAttribute('data-filter') === filter ? 'true' : 'false');
+      });
+      if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
+    }
+
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        apply(pill.getAttribute('data-filter'));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  })();
+</script>
 </body>
 </html>

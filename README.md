@@ -37,7 +37,21 @@ Either way, your Beacons bio button will point to `yoururl.com/` (the hub) or in
    - The `<div class="headline">` text (the big bold headline)
    - The prompt text inside `<div class="prompt-box" id="prompt-text">` (between the opening and closing tags)
    - The `<div class="description">` text
-4. Open `index.html` and add a new `<a class="prompt-card">` block pointing to your new file
+4. Open `index.html` and add a new `<a class="prompt-card">` block pointing to your new file. Copy an existing card and update its link, tool tag, title, and description. Each card needs two attributes so it sorts into the right filter:
+   - `data-topic="..."` — which filter pill it appears under. One of: `career`, `design`, `content`, `health`, `money`, `agents`
+   - `data-tool="..."` — the colored tool tag on the card. One of: `claude`, `design` (Claude Design), `agent`, `connector`, `chatgpt`
+   - Add `data-new` (no value) to show a **NEW** badge; remove it later once the prompt isn't new anymore
+   - Inside the card, the first row is `<div class="card-meta">` holding the `<span class="tool-tag tool-XXX">Label</span>` (and the NEW badge if used). Match the `tool-XXX` class to your `data-tool` value.
+
+   Example:
+   ```html
+   <a href="email-writer.html" class="prompt-card" data-topic="content" data-tool="claude" data-new>
+     <div class="card-meta"><span class="tool-tag tool-claude">Claude</span><span class="new-badge">New</span></div>
+     <div class="prompt-title">AI Email Writer <span class="arrow">→</span></div>
+     <div class="prompt-desc">Short description of what the prompt does.</div>
+   </a>
+   ```
+   The pill counts update themselves automatically — no need to edit any numbers.
 5. Re-upload the folder to Cloudflare/Netlify — it'll update the live site
 
 ## Branding
