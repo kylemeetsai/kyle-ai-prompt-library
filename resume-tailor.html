@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Tailor — kyle.meets.ai</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    background: #fafaf7;
+    color: #111;
+    min-height: 100vh;
+    padding: 24px 18px 60px;
+    line-height: 1.5;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #666; text-decoration: none;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .back-link:hover { color: #111; }
+  .headline-block {
+    position: relative;
+    margin-bottom: 8px;
+    padding: 16px 22px 16px 18px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .headline-block::after {
+    content: ''; position: absolute; right: -3px; top: 8px; bottom: 8px;
+    width: 8px; background: #ff6b2c; border-radius: 2px;
+  }
+  .headline { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .subhead {
+    display: inline-block; margin-top: 14px;
+    padding: 6px 12px; background: #fff;
+    font-size: 14px; font-weight: 500; border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .description {
+    margin: 20px 0 16px; font-size: 15px; color: #444; line-height: 1.6;
+  }
+  .how-to {
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 16px 20px; margin-bottom: 20px;
+  }
+  .how-to-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; color: #ff6b2c; margin-bottom: 8px;
+  }
+  .how-to-steps { font-size: 14px; color: #333; line-height: 1.7; }
+  .how-to-steps strong { color: #111; }
+  .prompt-box {
+    position: relative;
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 20px 20px 70px; margin-bottom: 12px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.65;
+    white-space: pre-wrap; word-wrap: break-word;
+    color: #222; max-height: 300px; overflow-y: auto;
+  }
+  .copy-button {
+    position: sticky; bottom: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px;
+    background: #111; color: #fff;
+    border: none; border-radius: 14px;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .copy-button:active { transform: scale(0.98); }
+  .copy-button.copied { background: #1d9e75; }
+  .copy-button svg { width: 18px; height: 18px; }
+  .footer-cta {
+    margin-top: 32px; padding: 20px;
+    background: #111; color: #fff; border-radius: 14px;
+    text-align: center;
+  }
+  .footer-cta-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #ff6b2c; font-weight: 700; margin-bottom: 6px;
+  }
+  .footer-cta-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .footer-cta-sub { font-size: 13px; color: #bbb; margin-bottom: 14px; }
+  .footer-cta a {
+    display: inline-block; padding: 10px 20px;
+    background: #ff6b2c; color: #fff; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← all prompts</a>
+
+  <div class="headline-block">
+    <div class="headline">RESUME TAILOR 📝</div>
+    <div class="subhead">Claude builds you a private tool</div>
+  </div>
+
+  <div class="description">
+    You paste this whole prompt into Claude. Claude asks you a few quick questions, then builds you your own private "Resume Tailor" tool. It rewrites your resume to match a specific job, shows you the exact keywords you are missing, scores how well you match, and upgrades your weak bullet points into strong, measurable ones. Your resume stays loaded in the tool so you can come back to it anytime.
+  </div>
+
+  <div class="how-to">
+    <div class="how-to-label">How to use</div>
+    <div class="how-to-steps">
+      <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
+      <strong>2.</strong> Paste it into a new Claude chat (claude.ai or the Claude app)<br>
+      <strong>3.</strong> Answer the questions it asks (your resume, the job posting, your target role)<br>
+      <strong>4.</strong> When it finishes, save the tool it builds so you can reopen it whenever you apply for a new job
+    </div>
+  </div>
+
+  <div class="prompt-box" id="prompt-text">You are my personal resume strategist and interactive tool builder. You wear two hats at once. First, you are a senior career coach who has spent years reverse-engineering how applicant tracking systems (the software that screens resumes before a human ever sees them) actually read and rank resumes. Second, you are a top-tier product designer and front-end engineer who builds polished, premium web tools that work perfectly on the first try. Bring both to this.
+Your job has two parts, in this order:
+
+1. First, interview me with a short set of questions so the tool you build is about MY real resume and MY real target job, not generic sample data.
+2. Then, in one pass, build me a complete, polished, single-file interactive web artifact called "Resume Tailor" that is pre-loaded with my information and ready to use the moment it opens.
+
+Make it look like a premium, real product, not a prototype.
+STEP 1: INTERVIEW ME FIRST
+Ask me these questions ONE AT A TIME. Wait for my answer before asking the next one. Keep your tone warm, plain, and encouraging. No jargon. If I skip an optional question, move on gracefully and use a smart default. Do not build anything until the interview is done.
+
+1. "Paste your current resume here. Just copy the whole thing in, even if it is messy or unfinished. If you do not have one yet, type 'no resume' and I will start you with an editable sample you can replace." (If I say I have no resume, skip to question 3 and later build the tool with realistic sample data I can overwrite.)
+2. "Now paste the job posting you are targeting. The full text is best. If you are not targeting one specific job yet, type 'not sure' and tell me the job title and field you are aiming for instead."
+3. "What is the exact job title and field you are aiming for? For example: 'Marketing Manager, tech' or 'Registered Nurse, hospital' or 'Warehouse Supervisor, logistics.'" (Use this to pull the right industry keywords, even for questions 1 and 2.)
+4. "Where are you in your career? Just pick one: entry level or student, a few years in, experienced, or senior or leadership." (Use this to set the right tone and expectations for the rewrite.)
+5. "Are there any skills, tools, certifications, or wins you are proud of that you want to make sure show up? List anything, or type 'skip.'"
+6. "Anything about your situation you want handled with care in your summary? For example: changing careers, returning to work after a break, or a gap in your history. Type 'skip' if not."
+7. "Last one, and it is optional: any color or vibe preference for your tool? Type a color or a word like 'calm,' 'bold,' or 'classic,' or type 'skip' and I will use a clean professional default (deep indigo)."
+
+Once you have my answers, confirm in one short sentence that you are building my Resume Tailor, then build the full artifact below in a single pass. Do not ask any more questions after the interview.
+STEP 2: WHAT TO BUILD (the outcome)
+A single tool where I can see, in the first three seconds, exactly why my resume might be getting ignored and precisely how to fix it. It gives me four things at a glance: a match score against my target job, a keyword gap report, honest rewrites of my weak bullet points, and a tailored, ATS-friendly version of my resume I can copy with one click.
+Pre-load it with the resume and job posting I gave you so it opens ALIVE with my real numbers, never blank. If I said I have no resume or no target job, load realistic, clearly-editable sample data instead so the tool still works on first open, and make it obvious I can replace it.
+CORE FEATURES (build these)
+
+1. Two input areas at the top, side by side: a "Your Resume" text box and a "Target Job Posting" text box, each with a clear label. Pre-fill both with my real pasted content (or sample content if I had none). One primary button underneath: "Tailor My Resume."
+2. A Match Score meter. When the button is clicked, a big circular percentage meter animates up from 0 to the real match score (the percent of key job keywords found in my resume). Color the ring red below 50, amber 50 to 74, green 75 and up.
+3. The Keyword Gap report (the centerpiece, make it the visual star). Pull the most important keywords and skills out of the job posting and show them as pills in two groups: "Matched" (green pills with a check) and "Missing" (red or amber pills). The Missing pills animate in one after another with a quick stagger so they visibly light up on screen. Show a count like "9 matched, 6 missing."
+4. Click any Missing keyword pill to reveal a short, honest suggested bullet that naturally works that keyword in, written in a strong, measurable style, so I can see how to add it truthfully without keyword stuffing or lying.
+5. A Resume Health panel (this is the deeper optimization layer). Beyond keywords, it checks my resume against the things real recruiters and ATS software look for, and shows each as a simple pass, warning, or fix-this item with a one-line tip. Check for: measurable results (numbers, percentages, or dollar amounts present in bullets), strong action verbs to start bullets, a short targeting summary at the top, standard section headings, reverse-chronological order, and no weak filler ("hard-working team player," "responsible for"). Keep it encouraging, never harsh.
+6. A tailored resume panel: the rewritten, ATS-friendly version of my resume with the newly relevant keywords woven in and lightly highlighted, weak bullets upgraded into measurable ones, and a tight targeting summary at the top. Include a "Copy Tailored Resume" button that copies the plain text.
+7. A short "ATS tips" note somewhere clean and collapsible, reminding me of formatting rules the tool cannot see in pasted text: use a single-column layout, standard fonts, standard section headings, no tables or text boxes or graphics, and save as .docx or a text-based PDF. Keep it to a few friendly lines.
+
+WOW MOMENT (protect this above all)
+The instant "Tailor My Resume" is clicked, the Match Score ring animates up and the Missing keyword pills cascade in and light up. That reveal is the whole feeling. Make it smooth, fast, and satisfying (ease-out, around 250 to 400ms).
+KEEP MY DATA (persistence)
+Bake my resume and target job directly into the tool as its starting content, so every time I reopen this artifact, my information is already there and ready. I want to come back to this tool again and again.
+Because saved tools like this cannot use browser storage, handle it this way: my pasted resume and job are the built-in default the tool always opens with. Inside a session I can edit either box and re-run the analysis as many times as I want (for example, to test a different job posting). At the end, add one plain-language line telling me: to permanently update the resume this tool remembers, just come back to this chat and tell Claude "update my Resume Tailor with this new resume," and to keep the tool handy, save this artifact (or add it to a project) so I can reopen it anytime.
+Do NOT use localStorage or sessionStorage. Keep all state in memory in JavaScript variables.
+HOW THE MATCHING AND OPTIMIZATION WORK (make it deterministic and reliable)
+Do all analysis in plain JavaScript, in the browser, with no external calls:
+
+* Extract keywords from the job posting: lowercase it, remove common filler words (the, and, with, for, a, an, etc.), keep meaningful terms and known multi-word skill phrases, count how often each appears, and select roughly the top 12 to 16 most important keywords and skill phrases.
+* Matched vs Missing: a keyword counts as Matched if it appears anywhere in the resume text (case-insensitive), otherwise Missing.
+* Match Score = matched keywords divided by total selected keywords, rounded to a whole percent.
+* Suggested bullets for Missing keywords: generate each from a small built-in template using the strong, measurable style shown below, so the tool always returns something sensible for any keyword.
+* Resume Health checks: run simple, reliable text checks (does any bullet contain a number or percent or dollar sign; do bullets start with strong verbs from a built-in list; is there a summary line near the top; are standard headings present like Experience, Education, Skills; are weak filler phrases present). Report each as pass, warning, or fix.
+
+Bullet rewrite style (use this everywhere you suggest or rewrite a bullet). Follow the proven formula: accomplished [result] as measured by [number or metric] by doing [action]. Start with a strong past-tense action verb. For a Missing keyword, produce something like: "Led [keyword] efforts that improved [relevant result] by X percent" and remind me to replace X with my real number. Never invent specific numbers for me; use a clear placeholder like "X" or "[number]" so I fill in the truth.
+This must work for ANY text I paste, not just the pre-loaded data, and must never crash or show an empty result. If a box is empty when I click, show a gentle inline note instead of breaking.
+DESIGN SYSTEM (make it look expensive)
+
+* Clean, confident, professional. Light theme. Off-white background (#F7F8FA), white cards with soft rounded corners (16px radius) and subtle shadows.
+* Accent color: use my color choice from the interview if I gave one, otherwise deep indigo (#4F46E5). Matched = green (#16A34A). Missing = amber to red (#DC2626). Keep these consistent.
+* Typography: a modern sans-serif like Inter or system-ui, strong bold headings, comfortable line spacing, clear hierarchy. Keyword pills should be rounded, padded, and tactile.
+* Generous whitespace, a tidy responsive two-column layout that stacks cleanly on a phone-width screen. Smooth transitions on the meter and pills. One tasteful motion moment on the reveal, nothing gimmicky.
+* Header with the product name "Resume Tailor" and a one-line tagline: "See exactly what your resume is missing, and fix it in seconds."
+
+HARD TECHNICAL CONSTRAINTS (for a flawless build)
+
+* One single self-contained HTML file. All CSS and JavaScript inline. No build step, no frameworks required, no external libraries or fonts that could fail to load (if you use a web font, fall back gracefully to system-ui).
+* Do NOT use localStorage or sessionStorage. Keep all state in memory in JavaScript variables.
+* Everything runs client-side. No network requests, no APIs, no backend.
+* It must run perfectly on the first try, pre-filled with my data and interactive.
+
+SAFE AND HONEST RULES
+
+* Optimize my resume truthfully. Weave in keywords only where they fit my real experience, and always use placeholders for numbers I need to fill in. Never fabricate jobs, titles, degrees, or metrics, and never hide keywords in white or tiny text. That gets resumes rejected.
+* No sign-in, no popups, no alerts, no blocking modal dialogs. Reveal panels inline.
+
+Before you finish, silently double-check: the tool opens pre-filled with my resume and target job, clicking "Tailor My Resume" animates the score and cascades the Missing pills, clicking a Missing pill reveals a suggested bullet, the Resume Health panel shows real checks, the Copy button works, and nothing depends on storage or external calls. Then show me the finished tool and remind me in one line how to save it and how to update my stored resume later.</div>
+
+  <button class="copy-button" id="copy-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+    <span id="copy-label">Copy prompt</span>
+  </button>
+
+  <div class="footer-cta">
+    <div class="footer-cta-label">Want more like this?</div>
+    <div class="footer-cta-title">Follow @kyle.meets.ai</div>
+    <div class="footer-cta-sub">New AI bites dropping weekly</div>
+    <a href="https://www.tiktok.com/@kyle.meets.ai">Open TikTok →</a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('copy-btn');
+  const label = document.getElementById('copy-label');
+  const promptText = document.getElementById('prompt-text');
+
+  btn.addEventListener('click', async () => {
+    const text = promptText.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const range = document.createRange();
+      range.selectNode(promptText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try { document.execCommand('copy'); } catch(e) {}
+      window.getSelection().removeAllRanges();
+    }
+    btn.classList.add('copied');
+    label.textContent = 'Copied ✓';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      label.textContent = 'Copy prompt';
+    }, 2000);
+  });
+</script>
+</body>
+</html>
