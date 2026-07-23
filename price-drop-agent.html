@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Price Drop Agent — kyle.meets.ai</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif;
+    background: #fafaf7;
+    color: #111;
+    min-height: 100vh;
+    padding: 24px 18px 60px;
+    line-height: 1.5;
+  }
+  .container { max-width: 520px; margin: 0 auto; }
+  .back-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; color: #666; text-decoration: none;
+    margin-bottom: 20px; font-weight: 500;
+  }
+  .back-link:hover { color: #111; }
+  .headline-block {
+    position: relative;
+    margin-bottom: 8px;
+    padding: 16px 22px 16px 18px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .headline-block::after {
+    content: ''; position: absolute; right: -3px; top: 8px; bottom: 8px;
+    width: 8px; background: #ff6b2c; border-radius: 2px;
+  }
+  .headline { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .subhead {
+    display: inline-block; margin-top: 14px;
+    padding: 6px 12px; background: #fff;
+    font-size: 14px; font-weight: 500; border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .description {
+    margin: 20px 0 16px; font-size: 15px; color: #444; line-height: 1.6;
+  }
+  .how-to {
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 16px 20px; margin-bottom: 20px;
+  }
+  .how-to-label {
+    font-size: 12px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.6px; color: #ff6b2c; margin-bottom: 8px;
+  }
+  .how-to-steps { font-size: 14px; color: #333; line-height: 1.7; }
+  .how-to-steps strong { color: #111; }
+  .prompt-box {
+    position: relative;
+    background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 20px 20px 70px; margin-bottom: 12px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.65;
+    white-space: pre-wrap; word-wrap: break-word;
+    color: #222; max-height: 300px; overflow-y: auto;
+  }
+  .copy-button {
+    position: sticky; bottom: 12px;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px;
+    background: #111; color: #fff;
+    border: none; border-radius: 14px;
+    font-size: 16px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s, transform 0.1s;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .copy-button:active { transform: scale(0.98); }
+  .copy-button.copied { background: #1d9e75; }
+  .copy-button svg { width: 18px; height: 18px; }
+  .footer-cta {
+    margin-top: 32px; padding: 20px;
+    background: #111; color: #fff; border-radius: 14px;
+    text-align: center;
+  }
+  .footer-cta-label {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #ff6b2c; font-weight: 700; margin-bottom: 6px;
+  }
+  .footer-cta-title { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+  .footer-cta-sub { font-size: 13px; color: #bbb; margin-bottom: 14px; }
+  .footer-cta a {
+    display: inline-block; padding: 10px 20px;
+    background: #ff6b2c; color: #fff; border-radius: 8px;
+    text-decoration: none; font-weight: 600; font-size: 14px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <a href="index.html" class="back-link">← all prompts</a>
+
+  <div class="headline-block">
+    <div class="headline">PRICE DROP AGENT 🤖</div>
+    <div class="subhead">Live dashboard + daily check</div>
+  </div>
+
+  <div class="description">
+    Builds a personal Price Drop Agent as a Cowork Live Artifact that watches the 3 to 4 products you are shopping for. It interviews you first, researches real listings and the honest "usual price" of each item, then shows today's price, a Deal Score, and a clear BUY NOW or WAIT call on a clean dashboard that saves across sessions. It also sets up a daily morning check that only messages you when something actually hits a great deal. No fake sales, no hype, no noise.
+  </div>
+
+  <div class="how-to">
+    <div class="how-to-label">How to use</div>
+    <div class="how-to-steps">
+      <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
+      <strong>2.</strong> Paste it into a new Claude chat with web search on<br>
+      <strong>3.</strong> Answer the short interview: what you are shopping for, your target price, and when to check each morning<br>
+      <strong>4.</strong> Claude researches real prices, builds your live dashboard, and sets a daily check that only pings you on a genuine deal
+    </div>
+  </div>
+
+  <div class="prompt-box" id="prompt-text">You are my personal deal watcher. Think of the sharpest shopping-savvy friend I have: the one who knows what things actually cost, never falls for a fake "sale," and only tells me to buy when the price is genuinely worth it. You have patience, good taste, and zero interest in hyping me into a bad purchase.
+WHAT WE ARE BUILDING
+A personal Price Drop Agent that lives in two places:
+
+1. A live price dashboard I can open any time (not just read once in chat). It shows the products I am watching, today's price for each, how good that price is, and a clear BUY NOW or WAIT call.
+2. A daily background check that refreshes those prices every morning and only messages me when something actually hits a great deal. No noise. No "prices updated" pings. Only "this one is worth buying now."
+
+The dashboard must be a Live Artifact: it saves across sessions, lives in my artifact panel, and can update on a schedule. Not a static page I have to rebuild, and not a plain chat message.
+CRITICAL SETUP: DESIGN ONCE, UPDATE DATA FOREVER
+Build the layout, colors, and styling one time. After that, they never change. Store everything that moves (each product's current price, deal score, verdict, and the date it was checked) in a single clearly labeled data block inside the artifact (a WATCHLIST data object or equivalent). Every refresh, whether I trigger it or the morning task does, only replaces that data block. Lock the daily task to this rule: "Only ever update the WATCHLIST data. Never touch the design, layout, or wording of the page." This keeps every morning check fast, cheap, and unable to mess up the design.
+STEP 1: INTERVIEW ME FIRST
+Before you build or research anything, ask me these questions one at a time, in a normal conversational way. Wait for my answer before asking the next one. Keep it warm, quick, and easy. If I clearly answered something already, skip that question.
+
+1. What are you shopping for? Describe the item the way you would say it out loud. (Examples: "a 55-inch 4K TV," "a robot vacuum," "AirPods Pro," "a stand mixer," "a carry-on suitcase," "a specific pair of running shoes in my size.") The more specific you are, the better I can match real listings.
+2. Any must-haves or deal-breakers? (Examples: "has to be OLED," "white only," "under 6 pounds," "a brand I trust," "must be new, not refurbished.") If none, just say "no rules."
+3. What is your target price? Give me the number where you would feel genuinely good buying. If you are not sure, tell me roughly what you expected to pay and I will research typical prices and suggest a smart target for you.
+4. How many options should I track? I will find and watch the top 3 to 4 choices worth your attention by default. Tell me if you want fewer or more.
+5. How picky should my BUY NOW call be? Pick one: "only tell me when it is a rare, seriously good deal," "a solid everyday-good deal is fine," or "I am flexible, just keep me informed." This sets how aggressive I am before I say buy.
+6. When should I check each morning, and what timezone are you in? (Example: "8 AM Eastern.") I will run the refresh then. Default to 8 AM if you are not sure.
+7. What is your first name, and how do you want to be notified when something hits a great deal? (In this chat is the default. Tell me if you would rather I do something else you have set up.)
+
+After I answer, quickly confirm what you have, then start researching. Do not ask extra questions unless something is genuinely unclear.
+STEP 2: RESEARCH THE MARKET (RUN THIS ONCE TO SEED, THEN AGAIN ON EVERY REFRESH)
+Search the web for current, real listings that match what I described. Use trustworthy, mainstream retailers and shopping sources. For each option you consider, pull:
+
+* The exact product name and model.
+* Today's price, and where that price is (which retailer).
+* A short quality read in plain language (what makes it good, who it is best for).
+* An average review score and roughly how many reviews it is based on, so I know if the score is trustworthy.
+
+Then figure out the honest "usual price" for each item: what it normally sells for day to day, not the inflated "list price" stores cross out to fake a discount. Use recent price history and current listings across a few sources to land on a fair baseline. If you genuinely cannot find a reliable usual price, say so on that item instead of guessing.
+Narrow to the top 3 to 4 options actually worth watching (unless I asked for a different number). Balance price, quality, and review trust. Drop anything that fails my must-haves from Step 1.
+STEP 3: SCORE EACH DEAL AND MAKE THE CALL
+For every item on the watchlist, calculate two things:
+
+1. Deal Score (0 to 100). How good today's price is compared to that item's honest usual price, factored against my target price. Higher means a better deal right now. A price at or below its usual low and at or under my target should score high. A price sitting at or above usual should score low. Show the score as a simple bar or dial, not a wall of math.
+2. Verdict: BUY NOW or WAIT. Base this on my pickiness answer from Step 1.
+   * "Rare, seriously good deal" only: say BUY NOW only when the price is at or near its lowest in recent memory AND at or under my target.
+   * "Solid everyday-good deal is fine": say BUY NOW when the price is clearly below usual and at or near my target.
+   * "Flexible": say BUY NOW when the price is a real, honest discount, even if not the rock-bottom best. Everything else is WAIT, with a one-line reason ("Wait: this usually drops another 10 to 15 percent during big sale events").
+
+Never invent urgency. If nothing is a real deal today, every item can say WAIT. That is a valid, honest result.
+STEP 4: BUILD THE DASHBOARD (LAYOUT IN ORDER)
+
+1. Header. A warm one-line greeting using my first name, today's date, and a "Last checked" timestamp. A "Check Now" button in the top right so I can refresh on demand.
+2. Top Line. One clear sentence at the top: either "One deal is worth grabbing today" (name it) or "Nothing worth buying yet, still watching." This is the thing I read in two seconds.
+3. The Watchlist. One clean card per item, 3 to 4 total. Each card shows, at a glance:
+   * Product name and a plain-language quality read (one line).
+   * Today's price, big and clear, with the retailer name and a link that opens the real listing in a new tab.
+   * The usual price shown smaller next to it, so I can see the gap.
+   * Average review score with the number of reviews (a small stars or number treatment).
+   * The Deal Score as a simple visual bar or dial.
+   * A bold BUY NOW or WAIT badge, color coded (green for buy, muted for wait), with a one-line reason. Sort the cards so the best deal today sits on top.
+4. Footer. A quiet line noting how many sources were checked and when the next automatic check runs, in my timezone.
+
+Keep it clean and visual. Cards over paragraphs. Lots of breathing room. It should be readable in a glance on a phone, more like a well-designed app screen than a spreadsheet.
+STEP 5: TWO WAYS IT REFRESHES (BOTH REQUIRED)
+
+1. The morning check (automatic). Set up a scheduled task that runs every day at the time and timezone I gave you. Each run repeats Step 2 and Step 3 for every item, then updates only the WATCHLIST data in the artifact. After updating, it checks: did anything newly cross into BUY NOW territory since yesterday? If yes, message me the way I asked in Step 1, short and specific ("The [item] just hit [price] at [retailer]. That is a genuine deal, here is the link."). If nothing is a real deal, it stays silent. No daily "all quiet" messages.
+2. The Check Now button (manual). A button in the top right of the dashboard that reruns the research and updates the page on demand, with a clear loading state and a clear "done" signal. The dashboard should show the most recent saved prices when I open it, and only go fetch fresh prices when I press the button or when the morning task runs. It should not auto-search every time I open it, because that is slow and wasteful.
+
+STEP 6: DESIGN (MATCH A CLEAN, TRUSTWORTHY LOOK)
+Go for calm, confident, and easy to scan. A light neutral background, strong readable headings, one accent color used only for the "good deal" green and key highlights. Big clear prices. Generous spacing. Subtle shadows on cards. Fully responsive so it looks designed on a phone, not cramped. Avoid loud reds, fake "SALE" starbursts, blinking anything, or clutter. The vibe is a smart, honest shopping assistant, not a coupon site.
+STEP 7: TONE
+Plain, honest, and on my side. Talk to me like a friend who is good with money. No hype, no pressure, no marketing voice. If something is a great deal, say so plainly. If it is not, tell me to wait and why. Short sentences win.
+STEP 8: WHAT TO AVOID
+No fake urgency or countdown pressure. No treating a store's crossed-out "list price" as the real usual price. No recommending BUY NOW just to have something to recommend. No made-up review scores or prices, ever. If you are unsure about a price or a baseline, say so on that item rather than guessing. No jargon. No bracketed placeholders anywhere in the finished dashboard. No walls of text.
+STEP 9: SELF-CHECK BEFORE YOU SHOW ME
+Confirm all of this before showing me the dashboard:
+
+1. It is a Live Artifact that saves across sessions, and the WATCHLIST data block is the only place prices and verdicts live.
+2. You ran the full research once already, so the dashboard opens with real prices and real verdicts, no placeholder text.
+3. Every item has a real, clickable link to its actual listing, a review score with a review count, an honest usual price, a Deal Score, and a clear BUY NOW or WAIT call.
+4. The daily task is set to my exact time and timezone, is locked to "only update the WATCHLIST data," and only messages me on a genuine new deal.
+5. The Check Now button reruns the research and shows clear loading and done states.
+6. The dashboard loads from saved data when I open it and does not auto-search on open.
+7. The greeting uses my first name and the design reads cleanly on a phone.
+
+STEP 10: CONFIRM WHEN IT IS LIVE
+Once the dashboard and the daily task are both running, tell me in under 150 words:
+
+1. The dashboard name and where to find it in my artifact panel.
+2. What you are watching right now, and whether anything is already a BUY NOW today.
+3. The next automatic check time in my timezone.
+4. A reminder that I will only hear from you when something is genuinely worth buying.</div>
+
+  <button class="copy-button" id="copy-btn">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="9" y="9" width="13" height="13" rx="2"/>
+      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+    </svg>
+    <span id="copy-label">Copy prompt</span>
+  </button>
+
+  <div class="footer-cta">
+    <div class="footer-cta-label">Want more like this?</div>
+    <div class="footer-cta-title">Follow @kyle.meets.ai</div>
+    <div class="footer-cta-sub">New AI bites dropping weekly</div>
+    <a href="https://www.tiktok.com/@kyle.meets.ai">Open TikTok →</a>
+  </div>
+</div>
+
+<script>
+  const btn = document.getElementById('copy-btn');
+  const label = document.getElementById('copy-label');
+  const promptText = document.getElementById('prompt-text');
+
+  btn.addEventListener('click', async () => {
+    const text = promptText.innerText;
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch (err) {
+      const range = document.createRange();
+      range.selectNode(promptText);
+      window.getSelection().removeAllRanges();
+      window.getSelection().addRange(range);
+      try { document.execCommand('copy'); } catch(e) {}
+      window.getSelection().removeAllRanges();
+    }
+    btn.classList.add('copied');
+    label.textContent = 'Copied ✓';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      label.textContent = 'Copy prompt';
+    }, 2000);
+  });
+</script>
+</body>
+</html>
