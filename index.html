@@ -145,6 +145,7 @@
   .tool-tag.tool-chatgpt   { background: #e7f6ee; color: #1d8a5b; }
   .tool-tag.tool-connector { background: #e8f1fc; color: #2668b8; }
   .tool-tag.tool-claude    { background: #eef0f2; color: #566072; }
+  .tool-tag.tool-skill     { background: #fdeef2; color: #c0356b; }
   .new-badge {
     display: inline-flex;
     align-items: center;
@@ -251,6 +252,12 @@
   </nav>
 
   <div class="prompts-list">
+    <a href="humanizer-skill.html" class="prompt-card" data-topic="skills" data-tool="skill" data-new>
+      <div class="card-meta"><span class="tool-tag tool-skill">Skill</span><span class="new-badge">New</span></div>
+      <div class="prompt-title">Humanizer ✍️ <span class="arrow">→</span></div>
+      <div class="prompt-desc">A Claude Skill that strips the tell-tale signs of AI writing out of any text so it reads like a real person wrote it. It catches the giveaways like overused em dashes, "rule of three" lists, puffed-up buzzwords, and robotic hedging, then rewrites them in your voice without inventing facts. Paste it into Claude with your draft, or add it once as a Skill and reuse it anytime. Free and open source, by Siqi Chen.</div>
+    </a>
+
     <a href="setup-remotion.html" class="prompt-card" data-topic="agents" data-tool="claude" data-new>
       <div class="card-meta"><span class="tool-tag tool-claude">Claude Code</span><span class="new-badge">New</span></div>
       <div class="prompt-title">Setup Remotion 🎥 <span class="arrow">→</span></div>
