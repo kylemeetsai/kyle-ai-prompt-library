@@ -38,8 +38,8 @@ Either way, your Beacons bio button will point to `yoururl.com/` (the hub) or in
    - The prompt text inside `<div class="prompt-box" id="prompt-text">` (between the opening and closing tags)
    - The `<div class="description">` text
 4. Open `index.html` and add a new `<a class="prompt-card">` block pointing to your new file. Copy an existing card and update its link, tool tag, title, and description. Each card needs two attributes so it sorts into the right filter:
-   - `data-topic="..."` — which filter pill it appears under. One of: `career`, `design`, `content`, `health`, `money`, `agents`
-   - `data-tool="..."` — the colored tool tag on the card. One of: `claude`, `design` (Claude Design), `agent`, `connector`, `chatgpt`
+   - `data-topic="..."` — which filter pill it appears under. One of: `skills`, `career`, `design`, `content`, `health`, `money`, `agents`
+   - `data-tool="..."` — the colored tool tag on the card. One of: `claude`, `design` (Claude Design), `agent`, `connector`, `chatgpt`, `skill`
    - Add `data-new` (no value) to show a **NEW** badge; remove it later once the prompt isn't new anymore
    - Inside the card, the first row is `<div class="card-meta">` holding the `<span class="tool-tag tool-XXX">Label</span>` (and the NEW badge if used). Match the `tool-XXX` class to your `data-tool` value.
 
@@ -53,6 +53,21 @@ Either way, your Beacons bio button will point to `yoururl.com/` (the hub) or in
    ```
    The pill counts update themselves automatically — no need to edit any numbers.
 5. Re-upload the folder to Cloudflare/Netlify — it'll update the live site
+
+## How to add a new Skill
+
+Skills (like `humanizer-skill.html`) work the same way as prompts, with two extras:
+
+1. Save the skill's markdown file into the folder (e.g. `humanizer.md`), keeping any
+   original author credit / license notice inside it intact.
+2. Duplicate `humanizer-skill.html`, rename it, and update the headline, description, the
+   `How to use it` steps, the **Source** credit line (author + GitHub link), and the skill
+   text inside `<div class="prompt-box">`. The `Download` button points at the `.md` file.
+3. In `index.html`, add the card with `data-topic="skills"` and `data-tool="skill"` (rose
+   `Skill` tag). That populates the **Skills** pill automatically.
+
+Host the file yourself and always credit the original author with a link back to their
+GitHub — don't send non-technical followers to GitHub to download.
 
 ## Branding
 
