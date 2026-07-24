@@ -241,6 +241,7 @@
   <nav class="filter-bar" aria-label="Filter prompts by topic">
     <button class="pill" type="button" data-filter="all" aria-pressed="true">All <span class="pill-count"></span></button>
     <span class="pill-break" aria-hidden="true"></span>
+    <button class="pill" type="button" data-filter="skills" aria-pressed="false">Skills <span class="pill-count"></span></button>
     <button class="pill" type="button" data-filter="career" aria-pressed="false">Career <span class="pill-count"></span></button>
     <button class="pill" type="button" data-filter="design" aria-pressed="false">Design <span class="pill-count"></span></button>
     <button class="pill" type="button" data-filter="content" aria-pressed="false">Content &amp; Social <span class="pill-count"></span></button>
@@ -473,7 +474,7 @@
         ? cards.length
         : cards.filter(function (c) { return c.getAttribute('data-topic') === filter; }).length;
       var slot = pill.querySelector('.pill-count');
-      if (slot) slot.textContent = count;
+      if (slot) slot.textContent = count > 0 ? count : '';
     });
 
     function apply(filter) {
