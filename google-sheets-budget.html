@@ -103,7 +103,7 @@
   </div>
 
   <div class="description">
-    Paste this prompt into Claude with Google Drive connected, fill in your own numbers, and Claude builds a real budget inside your Google Sheets. You get a phone-friendly dashboard with summary cards, color-coded progress bars, a 50/30/20 check and charts, plus a transaction log. Every number is a live formula, so when you log a purchase the whole dashboard updates by itself.
+    Paste this prompt into Claude with Google Drive connected and answer a few quick questions about your money. Claude then builds a real budget inside your Google Sheets. You get a phone-friendly dashboard with summary cards, color-coded progress bars, a 50/30/20 check and charts, plus a transaction log. Every number is a live formula, so when you log a purchase the whole dashboard updates by itself.
   </div>
 
   <div class="how-to">
@@ -111,36 +111,35 @@
     <div class="how-to-steps">
       <strong>1.</strong> In Claude, go to <em>Settings → Connectors</em> and connect <strong>Google Drive</strong><br>
       <strong>2.</strong> Tap <em>Copy prompt</em> below<br>
-      <strong>3.</strong> Paste it into a new chat and replace the <strong>[brackets]</strong> with your own pay, categories and goals<br>
+      <strong>3.</strong> Paste it into a new chat as is. Claude asks you a few quick questions (your pay, what you spend on, any savings goals). Not sure? Just say "use the default"<br>
       <strong>4.</strong> Claude builds the sheet in your Drive and sends you the link. Log purchases in the Transactions tab and watch the Dashboard update
     </div>
   </div>
 
-  <div class="prompt-box" id="prompt-text">Create a Google Sheet in my Drive called "My Monthly Budget". Make it look
-like a polished personal-finance app, not a plain spreadsheet.
+  <div class="prompt-box" id="prompt-text">You are my friendly budget coach and Google Sheets expert. Using my connected Google Drive, you will build me a polished, fully working monthly budget inside Google Sheets in ONE pass, right after a short interview. It should look like a personal-finance app, not a plain spreadsheet.
 
-ABOUT ME
-- My monthly take-home pay: [YOUR MONTHLY TAKE-HOME PAY]
-- My categories and monthly budgets: [e.g. Rent 1500, Utilities 150,
-  Groceries 400, Gas 150, Eating Out 200, Subscriptions 50, Shopping 150,
-  Fun Money 100, Emergency Fund 300]
-- My savings goals: [e.g. Emergency Fund $5,000 (saved $1,200 so far),
-  Vacation $2,000 (saved $300)]
-If I left anything blank or it doesn't add up to my income, ask me before
-you build it.
+STEP 0: CHECK THE CONNECTION
+First, check that you can reach my Google Drive. If you can't, stop and tell me in one or two plain sentences how to turn it on (Settings, then Connectors, then Google Drive), and wait until I say it's done.
 
-TAB 1: "Dashboard" (the first tab, built to read on a phone: keep it within
-columns A–D)
-- A title bar: "Monthly Budget" and the current month.
-- Big summary cards at the top: Income, Budgeted, Spent so far, Left to
-  spend, and Savings rate (%). All formulas pulling from the other tabs.
-- A "Days left in month" cell, and "Safe to spend per day" = Left to spend
-  divided by days left.
-- A category table: Category, Budget, Spent, Left, and a progress bar for
-  each category using SPARKLINE (green under 80% used, amber 80–100%,
-  red over 100%).
-- Group my categories into Needs, Wants and Savings, with a 50/30/20 check
-  that shows each group's share of income next to its target.
+STEP 1: INTERVIEW ME FIRST
+Ask me these questions one at a time, in a warm, relaxed tone. Wait for my answer before asking the next one. If I'm not sure or say "use the default", use the default shown and move on. Never make me feel like I'm filling out a form.
+
+1. Roughly how much do you take home each month, after taxes? (A ballpark is fine.)
+2. What do you spend money on each month, and about how much for each? If you'd rather not list it all out, say "use the default" and I'll start you with: Rent, Utilities, Groceries, Gas, Eating Out, Subscriptions, Shopping, Fun Money and an Emergency Fund, with amounts that fit your income using the 50/30/20 rule (50% needs, 30% wants, 20% savings).
+3. Are you saving toward anything right now? For each goal, tell me the target and how much you've saved so far (for example: a $5,000 emergency fund with $1,200 saved, or a $2,000 vacation with $300 saved). If not, say "no goals yet" and I'll add one starter emergency-fund goal.
+4. What should I call your sheet? (Default: "My Monthly Budget".)
+
+After your answers, if your spending adds up to more than your income, point it out in one friendly line and suggest a quick fix, then ask once if you want me to adjust it. After that, don't ask anything else. Make every remaining decision yourself and build the whole thing.
+
+STEP 2: BUILD IT IN ONE PASS
+Create the Google Sheet in my Drive with these four tabs.
+
+TAB 1: "Dashboard" (the first tab, built to read on a phone: keep it within columns A to D)
+- A title bar with the sheet name and the current month.
+- Big summary cards at the top: Income, Budgeted, Spent so far, Left to spend, and Savings rate (%). All formulas pulling from the other tabs.
+- A "Days left in month" cell, and "Safe to spend per day" = Left to spend divided by days left.
+- A category table: Category, Budget, Spent, Left, and a progress bar for each category using SPARKLINE (green under 80% used, amber 80 to 100%, red over 100%).
+- My categories grouped into Needs, Wants and Savings, with a 50/30/20 check showing each group's share of income next to its target.
 - A donut chart of spending by category and a bar chart of Budget vs Spent.
 
 TAB 2: "Transactions"
@@ -149,23 +148,31 @@ TAB 2: "Transactions"
 - Leave it empty with plenty of rows so I can start logging.
 
 TAB 3: "Budget"
-- My categories and monthly budgets from above.
-- "Spent" for each category is a SUMIF over the Transactions tab, so logging
-  a purchase updates everything automatically.
+- My categories and monthly budgets from the interview.
+- "Spent" for each category is a SUMIF over the Transactions tab, so logging a purchase updates everything automatically.
 
 TAB 4: "Goals"
-- My savings goals with saved so far, target, % done, a SPARKLINE progress
-  bar, and the months left at the current monthly contribution.
+- My savings goals with saved so far, target, % done, a SPARKLINE progress bar, and the months left at the current monthly contribution.
 
 STYLE
-- One consistent palette: dark navy header bars, white text, soft gray
-  card backgrounds, green for good, amber for close, red for over.
-- Currency formatting everywhere, frozen header rows, generous row heights,
-  no gridlines on the Dashboard, a clean modern font.
-- Every number that can be a formula must be a formula, so the sheet stays
-  live as I add transactions.
+- One consistent palette: dark navy header bars, white text, soft gray card backgrounds, green for good, amber for close, red for over.
+- Currency formatting everywhere, frozen header rows, generous row heights, no gridlines on the Dashboard, a clean modern font.
+- Every number that can be a formula must be a formula, so the sheet stays live as I add transactions.
 
-When it's done, give me the link.</div>
+STEP 3: QUIETLY CHECK YOUR WORK
+Before you finish, confirm all of this is true and fix anything that isn't:
+- All four tabs exist and the Dashboard is the first tab.
+- Every summary card and the category table are live formulas, not typed numbers.
+- The Category dropdown on Transactions matches my budget categories exactly.
+- The progress bars and charts show up and use the colors above.
+
+STEP 4: DELIVER
+Send me the link to the sheet, then one short line on what you built (how many categories and goals) and one tip: "Log a purchase in Transactions and watch the Dashboard update."
+
+VOICE AND TONE
+- Warm and plain-spoken. No jargon.
+- Make confident decisions after the interview. Don't keep asking me to confirm.
+- No em dashes anywhere. Use commas, colons, periods or parentheses instead.</div>
 
   <button class="copy-button" id="copy-btn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
