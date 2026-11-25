@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Job Tracker · KyleMeetsAI</title>
+<meta name="description" content="Builds a personal job-search command center as a Claude artifact that remembers everything across sessions. Track every application through a six-stage pipeline, log notes, surface stalled jobs, and draft follow-up emails in your own voice, written from you to the recruiter.">
+<link rel="canonical" href="https://kylemeetsai.com/prompts/job-tracker">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KyleMeetsAI">
+<meta property="og:title" content="AI Job Tracker · KyleMeetsAI">
+<meta property="og:description" content="Builds a personal job-search command center as a Claude artifact that remembers everything across sessions. Track every application through a six-stage pipeline, log notes, surface stalled jobs, and draft follow-up emails in your own voice, written from you to the recruiter.">
+<meta property="og:url" content="https://kylemeetsai.com/prompts/job-tracker">
+<meta name="theme-color" content="#ECEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=656bcfa9">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="KyleMeetsAI home"><img src="/assets/photo/kyle-tiktok-avatar.jpg" alt="" width="36" height="36"><span>KyleMeets<b>AI</b></span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="hide-sm" href="/#prompts">Prompts</a>
+      <a class="hide-sm" href="/#videos">Videos</a>
+      <a class="hide-sm" href="/#about">About</a>
+      <a class="nav-cta" href="/#work">Work with me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="p-main">
+  <div class="wrap">
+    <div class="p-layout">
+    <article class="p-article" data-added="2026-06-02">
+      <a class="crumb" href="/#prompts"><span aria-hidden="true">←</span> All prompts</a>
+      <header class="p-hero">
+        <div class="p-eyebrow"><span class="label">Career · Prompt</span><span class="new" hidden>New</span></div>
+        <h1>AI Job Tracker</h1>
+        <p class="p-lede">Builds a personal job-search command center as a Claude artifact that remembers everything across sessions. Answer five quick questions, then track every application through a six-stage pipeline, log notes, surface stalled jobs, and draft follow-up emails in your own voice, written from you to the recruiter, never the other way around.</p>
+        
+        <div class="p-works"><span class="label">Works in</span><span class="apps"><span class="app">Claude</span></span></div>
+        <div class="p-actions"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai/video/7646644288176082190" target="_blank" rel="noopener">Watch the video <span aria-hidden="true">↗</span></a></div>
+        
+      </header>
+
+      <section class="p-section" aria-labelledby="how-h">
+        <h2 class="p-h2" id="how-h">How to use it</h2>
+        <ol class="p-steps"><li><span>Tap <em>Copy prompt</em> below</span></li><li><span>Paste into a new Claude chat</span></li><li><span>Answer the five quick setup questions about your name, field, and email tone</span></li><li><span>Get your AI Job Tracker as an artifact that saves, and open it every time you apply or hear back</span></li></ol>
+        
+      </section>
+
+      <section class="p-section" aria-labelledby="box-h">
+        <div class="p-box">
+          <div class="p-box-bar"><h2 class="label" id="box-h">The prompt</h2><button class="copy-btn" type="button" data-copy>Copy prompt</button></div>
+          <div class="p-box-text" id="prompt-text" tabindex="0">You are a senior product designer and front-end engineer building me a state-of-the-art AI Job Tracker as an artifact: a single self-contained HTML file that saves across sessions using the artifact&#x27;s built-in storage. Not a one-off. A tool I will open every time I apply to a job or hear back from one. Premium polish, conversational input.
+
+Step 1: Interview me
+
+Before you build anything, walk me through these questions one at a time. Warm and concise tone. Wait for my answer before moving to the next question.
+
+1. What&#x27;s your first name? I&#x27;ll use this to sign every follow-up email the tracker drafts on your behalf.
+2. What kind of role are you applying for? (e.g., software engineering, product design, marketing, product management, sales, data, ops, finance, customer success, generalist, etc.) I&#x27;ll use this to seed your tracker with realistic example jobs and to tone the follow-up emails correctly.
+3. Do you want to start with an empty tracker, or seed it with 5 example jobs in your field so you can see how everything works? You can delete them in one click. (If you pick seeded, I&#x27;ll generate 5 realistic example jobs in your field: 3 active at different stages, 1 stalled, 1 closed.)
+4. Pick a follow-up email tone: warm and conversational, professional and formal, or direct and startup-flavored. This shapes the voice of every email the tracker drafts for you.
+5. Anything I should know that would help? (Optional. Example: &quot;I&#x27;m a career switcher so my notes tend to mention bootcamps,&quot; or &quot;I&#x27;m only applying to remote roles.&quot; If nothing comes to mind, just say skip.)
+
+After my answers, build the artifact. Do not show me any code or summaries first. Just build it and publish.
+
+Step 2: Build the artifact
+
+Build a single self-contained HTML file and publish it as an artifact named &quot;AI Job Tracker&quot;. The artifact must work exactly as specified below.
+
+Seed data (on first render only, if saved storage is empty)
+
+Compute today&#x27;s date dynamically using `new Date()`. Use that as the anchor for all relative dates (&quot;Updated Xd ago,&quot; stalled calculations, weekly review windows).
+
+If the user picked &quot;empty tracker&quot; in Step 1, skip seeding and let them add jobs via the chat input.
+
+If the user picked &quot;seeded tracker,&quot; generate 5 example jobs in the user&#x27;s stated field. Use real, recognizable company names that hire for that field. Spread the stages so all states are visible:
+
+- Job 1: Far along. Applied ~22 days ago, lastUpdated ~4 days ago. Stages completed through Final Round. Notes mention a specific upcoming touchpoint.
+- Job 2: Mid-pipeline. Applied ~17 days ago, lastUpdated ~3 days ago. Stages completed through Round 2. Notes mention an upcoming round and an interviewer first name.
+- Job 3: Early. Applied ~10 days ago, lastUpdated ~5 days ago. Stages completed through Phone Screen. Notes mention a scheduled recruiter call.
+- Job 4: Stalled. Applied ~35 days ago, lastUpdated ~35 days ago (no movement). Stages completed only through Applied. Notes mention how they applied (referral, cold, posting). Status active, amber-tinted.
+- Job 5: Closed (rejected). Applied ~30 days ago, lastUpdated ~16 days ago. Stages completed through Phone Screen. Notes mention a polite-rejection reason. Status closed.
+
+Active tab renders by default. The first 4 sit in Active, with Job 4 amber-tinted and a &quot;Generate next move&quot; button. Job 5 lives under Closed.
+
+Three tabs
+
+1. Active: every job whose status !== &#x27;closed&#x27; (stalled jobs included, amber-tinted in place).
+2. Stalled: subset of active where (today - lastUpdated) &gt;= 7 days. Each card surfaces a &quot;Generate next move&quot; button.
+3. Closed: offers, rejections, withdrawals.
+
+Job card
+
+- Company (serif heading) + role.
+- Application date + relative &quot;Updated Xd ago.&quot;
+- Horizontal progress line across the card with 6 checkpoints: Applied → Phone Screen → Round 1 → Round 2 → Final Round → Offer/Decision. Checkboxes use a satisfying elastic pop animation on tap. Clicking a stage auto-completes all earlier stages. Un-checking clears later ones.
+- Notes textarea (interviewer names, take-homes, salary). Auto-saves on blur.
+- AI button: &quot;Generate next move&quot; on stalled cards (amber). &quot;Draft follow-up&quot; on active cards (sage).
+- Footer: &quot;Mark offer / Rejected / Withdrew&quot; buttons. Closed cards get a &quot;Reopen&quot; button.
+
+Chat input (top of artifact)
+
+Conversational input field. When the user types things like &quot;I just applied to Anthropic for Product Designer&quot; or &quot;I had my whiteboard at Stripe, going to the final&quot;:
+
+1. Parse the natural language.
+2. If anything is missing, ask ONE clarifying question.
+3. Add or update the job card in real time.
+4. Confirm concisely (&quot;Got it, added Anthropic,&quot; &quot;Checked off Final Round for Stripe&quot;).
+
+CRITICAL — Parser architecture
+
+Do NOT route every message to the artifact&#x27;s built-in Claude call. Build a deterministic regex fast-path first, with the LLM as fallback. Without this, the parser will fail on common inputs.
+
+The fast-path must handle:
+
+- `&quot;(just) applied to/at/with &lt;company&gt; for/as (a|an|the) &lt;role&gt;&quot;` → action=add.
+- `&quot;(just) applied to &lt;company&gt;&quot;` with no role → action=clarify, ask &quot;What role at &lt;company&gt;?&quot;, store pendingClarification. The user&#x27;s next message becomes the role.
+- Existing-company stage updates: match the company name case-insensitively against state.jobs, then map phrases to stages:
+  - &quot;phone screen / recruiter call / intro call&quot; → `phoneScreen`
+  - &quot;round 1 / first round / technical screen&quot; → `round1`
+  - &quot;round 2 / second round / whiteboard / onsite / portfolio review / take-home&quot; → `round2`
+  - &quot;final / final round / panel / loop&quot; → `finalRound`
+  - &quot;offer / got the job / decision&quot; → `offerDecision`
+- &quot;going to / moving to &lt;stage&gt;&quot; means complete the PRIOR stage (not the target). e.g., &quot;had whiteboard, going to final&quot; → round2=true.
+- Closing: &quot;rejected / passed / didn&#x27;t move forward&quot; → action=close, outcome=rejected. &quot;got an offer / accepted / signed&quot; → offer. &quot;withdrew / pulled out&quot; → withdrawn.
+- Case-insensitive company match. TitleCase new company and role names.
+
+Only fall through to `askClaude` when the regex returns null. The LLM prompt should request a strict JSON object with: `action` (`&quot;add&quot; | &quot;update_stage&quot; | &quot;update_notes&quot; | &quot;close&quot; | &quot;clarify&quot; | &quot;unknown&quot;`), `jobId`, `company`, `role`, `stageKey`, `stageValue`, `appendNotes`, `closedOutcome`, `clarifyQuestion`, `confirmation`. Extract JSON robustly (strip code fences, balance braces). If the LLM returns action=unknown or throws, attempt the regex parser one more time in &quot;loose&quot; mode (bare company mention adds a note) before showing an error.
+
+CRITICAL — Response coercion
+
+the artifact&#x27;s built-in Claude call may return a plain string OR a structured object. Never assume the shape. Calling `String(obj)` on the wrong shape yields `[object Object]` in the UI. Implement a `coerceText(res)` helper that handles every shape:
+
+- plain string
+- `{ text: &quot;...&quot; }`
+- `{ content: &quot;...&quot; }` or `{ content: [{ type: &#x27;text&#x27;, text: &#x27;...&#x27; }, ...] }`
+- `{ message: { content: ... } }`
+- `{ response | output | completion: ... }`
+- `{ choices: [{ message: { content: ... } }] }`
+- arrays of the above (concatenate)
+
+Pass every askClaude response through `coerceText` before using it. Never `String(res)` directly on the response.
+
+CRITICAL — Timeouts and optimistic rendering (don&#x27;t make the user wait)
+
+the artifact&#x27;s built-in Claude call can take a long time, and sometimes it hangs. The artifact must NEVER show a spinner with no content. Implement a `withTimeout(promise, ms)` helper:
+
+```js
+function withTimeout(promise, ms) {
+  return new Promise((resolve, reject) =&gt; {
+    const t = setTimeout(() =&gt; reject(new Error(&#x27;timeout&#x27;)), ms);
+    Promise.resolve(promise).then(
+      v =&gt; { clearTimeout(t); resolve(v); },
+      e =&gt; { clearTimeout(t); reject(e); }
+    );
+  });
+}
+```
+
+Wrap EVERY askClaude call with it:
+
+- Follow-up draft: 8 seconds.
+- Chat parser fallback: 6 seconds.
+- Weekly coach line: 6 seconds.
+
+Optimistic rendering pattern (use everywhere a deterministic fallback exists):
+
+1. Render the deterministic template (or local fallback) INSTANTLY.
+2. Show a subtle label like &quot;Draft ready · polishing with AI…&quot;.
+3. Race the LLM against the timeout.
+4. If the LLM wins AND the response passes validation (length &gt;= 60, not `[object Object]`, passes `isRecruiterVoice` check), swap it in.
+5. Otherwise leave the template in place and just remove the &quot;polishing&quot; label.
+
+Never block UI rendering on an LLM call.
+
+Next move / Draft follow-up button
+
+Calls the artifact&#x27;s built-in Claude call (wrapped in `withTimeout`) to draft a follow-up email. CRITICAL: get the perspective right on the first try.
+
+Perspective (this is the #1 failure mode, be explicit):
+
+The email is written FROM the candidate (the user, by their first name collected in Step 1) TO the interviewer or recruiter. Not the other way around. The naive prompt &quot;write a follow-up message for a job applicant&quot; is ambiguous, and the model defaults to writing AS a recruiter TO the candidate (&quot;Hi [Name], we were impressed by your...&quot;). That is WRONG.
+
+Spell it out in the prompt to askClaude:
+
+- Author: the candidate, by first name (use the name collected in Step 1).
+- Recipient: the interviewer, recruiter, or hiring contact named in the notes if present. Otherwise, &quot;the hiring team.&quot;
+- First-person (&quot;I&quot;, &quot;my&quot;) refers to the candidate. Second-person (&quot;you&quot;, &quot;your&quot;, &quot;the team&quot;) refers to the recipient.
+- Forbid recruiter phrases: &quot;we were impressed by your,&quot; &quot;you&#x27;re exactly the kind of,&quot; &quot;we&#x27;d like to move you forward,&quot; &quot;we&#x27;re excited to have you,&quot; &quot;expect to hear from us,&quot; &quot;thank you for applying,&quot; &quot;your candidacy,&quot; &quot;based on your interview,&quot; etc.
+- Greeting addresses the interviewer by name, not the candidate.
+- Sign-off is &quot;Best, [candidate first name]&quot; — never `[Name]` or `[Signature]` placeholders.
+
+Include both a correct example (candidate writing to a named interviewer) and a wrong example (recruiter writing to the candidate) in the prompt itself so the model cannot drift.
+
+Other constraints:
+
+- 90 to 130 words.
+- Salutation + 2 to 3 short paragraphs + sign-off as the candidate.
+- Mine the notes for specifics (names, projects, dates) and reference them naturally.
+- Never opens with &quot;Hi, hope you&#x27;re well&quot; or &quot;just checking in.&quot;
+- Stalled jobs → &quot;gently circling back, confident not apologetic.&quot; Candidate asking for an update.
+- Active jobs → forward-looking touchpoint from the candidate (thank-you, prep question, scheduling).
+- No emoji. Return text only.
+- Match the email tone the user picked in Step 1 (warm and conversational, professional and formal, or direct and startup-flavored).
+
+CRITICAL — Deterministic fallback templates
+
+Do NOT trust the LLM alone, and NEVER wait for it. Build a `templateFollowUp(job, stalled, daysSilent)` function that returns a fully-formed, candidate-voice follow-up email from the user, branching on stage (Phone Screen / Round 1 / Round 2 / Final Round / Stalled). It must:
+
+- Extract a likely recipient first name from notes (`&quot;with &lt;Name&gt;&quot;`, `&quot;from &lt;Name&gt;&quot;`, or the first capitalized non-stopword).
+- Reference the role and company.
+- Be rendered IMMEDIATELY when the button is clicked (no waiting), then optionally replaced by the LLM version per the optimistic-rendering pattern.
+- Be the only thing shown if any of the following are true:
+  - LLM response is empty, under 60 chars, or contains `[object Object]`.
+  - `isRecruiterVoice()` flags the LLM output (see below).
+  - The LLM call times out or throws.
+
+CRITICAL — Recruiter-voice detector
+
+Implement `isRecruiterVoice(text)` that returns true if the output contains any of:
+
+- &quot;we were/are impressed by your&quot;
+- &quot;you&#x27;re exactly the kind of&quot;
+- &quot;we&#x27;d/we would like to move/invite/advance you&quot;
+- &quot;we want you on (our|the) team&quot;
+- &quot;expect to hear (back) from us&quot;
+- &quot;we&#x27;ll/we will be in touch / reach out / follow up / get back to you&quot;
+- &quot;thank you for applying / your interest in&quot;
+- &quot;we&#x27;re moving you into the next round&quot;
+- &quot;the team is/was excited about|to meet/interview&quot;
+- &quot;your candidacy&quot;
+- &quot;our hiring team/manager/committee&quot;
+- Salutation that begins with the candidate&#x27;s own first name as the addressee (e.g., &quot;Hi &lt;candidate-name&gt;&quot;, &quot;Hello &lt;candidate-name&gt;&quot;, &quot;Dear &lt;candidate-name&gt;&quot;). If the candidate is the recipient, perspective is flipped.
+- Sign-off from &quot;the hiring team / recruiting team / talent team&quot;
+
+Any match → discard the LLM output and use `templateFollowUp` instead.
+
+Also strip placeholder signatures (`[Name]`, `[Your Name]`, `[Signature]`) and replace with the candidate&#x27;s first name collected in Step 1.
+
+Render the output inline below the button with a Copy button.
+
+Weekly review panel
+
+Toggle at the bottom expands a navy panel with white text showing:
+
+- Applications submitted this week vs last week (+delta).
+- Interviews moved (stages advanced) this week.
+- Stale jobs needing follow-up.
+- One AI coaching line via the built-in Claude call (wrapped in `withTimeout(6000)`, response passed through `coerceText`), max 35 words, references the actual pipeline (&quot;3 of your last 5 stalled at application stage, try a referral on the next 2&quot;) not boilerplate. Cached so it does not regenerate on every render. Render a deterministic local fallback FIRST, then upgrade if the LLM returns something better in time.
+
+Visual design
+
+- White/cream background (`#fbfaf7`), navy headers (`#0e2238`), single sage accent (`#6a8f72`), warm amber for stalled (`#c98a2b`), muted rose for rejections.
+- Custom serif for headings: Fraunces or Playfair Display from Google Fonts. Inter for body.
+- Job cards: 14px rounded corners, soft shadow depth, 1px line border.
+- Stalled cards: gradient from amber-tint to cream, amber-soft border.
+- Stage circles: 26px, sage fill with white check on completion, elastic pop animation (`cubic-bezier(.6, -0.4, .3, 1.6)`, keyframes scale 0.6 → 1.25 → 1.08).
+- Horizontal progress bar threads behind the circles, fills to the % of completed stages.
+- Tabs are pill-style segmented control with count badges.
+- Mobile-readable (max-width 920px, responsive grid).
+- Looks like something a $200/hour career coach would email you.
+
+Persistence
+
+One saved storage key (`&quot;jobtracker.v1&quot;`) holds `{ jobs, chat, activeTab, reviewOpen, seeded, userName, emailTone }`. Save on every mutation. Reload tomorrow or next month — everything is exactly where it was left, including chat history (capped at last 50 messages) and which tab was open. `userName` and `emailTone` are set once from the Step 1 interview and persisted.
+
+Date handling
+
+Use `new Date()` for today. All &quot;Updated Xd ago,&quot; stalled calculations, and weekly review windows use that anchor. Seed data uses dates computed relative to today so it always looks fresh.
+
+Summary of non-obvious requirements (read twice)
+
+1. Regex parser BEFORE the LLM for chat input. Common phrases like &quot;applied to X for Y&quot; must work without an LLM round-trip.
+2. `coerceText(askClaudeResponse)` everywhere you use the LLM. Never `String(res)`. The response is often an object, not a string.
+3. `withTimeout` wraps every askClaude call (6 to 8 seconds) and the deterministic fallback renders INSTANTLY. Nothing in the artifact waits on the LLM. The LLM only ever upgrades content that is already on screen.
+4. Follow-up perspective is FROM the candidate TO the interviewer. The model will get this wrong without explicit examples and a post-hoc `isRecruiterVoice` detector that triggers a template fallback.
+5. Deterministic templates for every LLM-generated string: follow-up emails, coaching note. The artifact must work even if the LLM is offline, slow, or returns garbage.
+6. Sign emails as the candidate&#x27;s first name (collected in Step 1), never as `[Name]` or `[Signature]`. Strip placeholders if they sneak through.
+
+Build the HTML file, then publish it as an artifact named &quot;AI Job Tracker&quot;.</div>
+        </div>
+        <div class="p-after"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button></div>
+      </section>
+    </article>
+
+    <aside class="kyle-card" aria-label="About Kyle">
+      <div class="kyle-card-tile"><img src="/assets/photo/kyle-square.jpg" alt="" width="600" height="600" loading="lazy"><span class="tile-name" aria-hidden="true"><span class="mic"><i></i><i></i><i></i><i></i></span>KyleMeetsAI</span></div>
+      <div class="kyle-card-copy"><p class="kyle-card-title">Hi, I’m Kyle.</p><p>I post a new AI how-to every week, and its prompt waits for you here.</p></div>
+      <div class="kyle-card-links"><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a></div>
+    </aside>
+
+    <section class="p-section p-related" aria-labelledby="rel-h">
+      <div class="p-related-head"><h2 class="p-h2" id="rel-h">More like this</h2><a class="p-all" href="/#prompts">All prompts <span class="arrow" aria-hidden="true">→</span></a></div>
+      <div class="p-grid" id="related"><a class="p-card" href="/prompts/resume-tailor" data-drawer="resume-tailor" data-topic="career" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-07-23"><span class="p-meta"><span class="p-topic">Career</span><span class="new" hidden>New</span></span><h3>Resume Tailor</h3><p>Paste one prompt into Claude and it interviews you, then builds you your own private &quot;Resume Tailor&quot; tool as an interactive artifact. It rewrites your resume to match a specific job, shows the exact keywords you are missing, scores how well you match against the posting, and upgrades your weak bullet points into strong, measurable ones. Your resume stays loaded in the tool so you can reopen it every time you apply for a new job.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/job-fit-scorer" data-drawer="job-fit-scorer" data-topic="career" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-06-19"><span class="p-meta"><span class="p-topic">Career</span><span class="new" hidden>New</span></span><h3>AI Job Fit Scorer</h3><p>A brutally honest hiring strategist scores how well your resume fits any job. Set it up once as a Claude.ai Project with your resume in the knowledge, then paste any job description to get a visual one-page report: a match score out of 10, interview likelihood, color-coded requirement-coverage bars, strengths, gaps, and an overall verdict.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/linkedin-audit" data-drawer="linkedin-audit" data-topic="career" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-06-05"><span class="p-meta"><span class="p-topic">Career</span><span class="new" hidden>New</span></span><h3>AI LinkedIn Audit</h3><p>A senior technical recruiter audits the LinkedIn profile open in your browser. Using the Claude for Chrome extension, Claude reads the live page and returns an honest score out of 100, a section-by-section breakdown with paste-ready rewrites, and a prioritized top-3 action list to rank higher in recruiter search and get more replies.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/interview-assistant" data-drawer="interview-assistant" data-topic="career" data-apps="claude chatgpt" data-format="prompt" data-added="2026-05-13"><span class="p-meta"><span class="p-topic">Career</span><span class="new" hidden>New</span></span><h3>AI Interview Assistant</h3><p>Share your company, role title, interview round, and job description. Get a tailored HTML brief covering round strategy, likely questions, positioning stories, smart questions to ask back, and a follow-up template, plus optional live practice drills.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/cover-letter" data-drawer="cover-letter" data-topic="career" data-apps="claude" data-format="prompt" data-added="2026-04-21"><span class="p-meta"><span class="p-topic">Career</span><span class="new" hidden>New</span></span><h3>AI Cover Letter Writer</h3><p>Paste your resume + a job posting. Claude writes a polished, human-sounding cover letter and saves it as a ready-to-send Word doc.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/interview-coach" data-drawer="interview-coach" data-topic="career" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-04-17"><span class="p-meta"><span class="p-topic">Career</span><span class="new" hidden>New</span></span><h3>AI Interview Coach</h3><p>Paste a job description + your resume. Claude runs a realistic mock interview, scores each answer, and coaches you with honest feedback.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a></div>
+    </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="wordmark" href="/"><span>KyleMeets<b>AI</b></span></a>
+    <nav aria-label="Footer">
+      <a href="/#prompts">Prompts</a>
+      <a href="/#videos">Videos</a>
+      <a href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram</a>
+      <a href="/#work">Work with me</a>
+    </nav>
+    <span class="fine">© 2026 KyleMeetsAI</span>
+  </div>
+</footer>
+<script src="/assets/prompt.js?v=2916b2a5" defer></script>
+</body>
+</html>

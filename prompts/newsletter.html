@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Newsletter · KyleMeetsAI</title>
+<meta name="description" content="Builds a personal recurring briefing as a Claude artifact. Answer seven questions about a topic you care about and get curated stories, citations, weekend picks, and a refresh schedule, all designed to your chosen vibe.">
+<link rel="canonical" href="https://kylemeetsai.com/prompts/newsletter">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KyleMeetsAI">
+<meta property="og:title" content="AI Newsletter · KyleMeetsAI">
+<meta property="og:description" content="Builds a personal recurring briefing as a Claude artifact. Answer seven questions about a topic you care about and get curated stories, citations, weekend picks, and a refresh schedule, all designed to your chosen vibe.">
+<meta property="og:url" content="https://kylemeetsai.com/prompts/newsletter">
+<meta name="theme-color" content="#ECEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=656bcfa9">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="KyleMeetsAI home"><img src="/assets/photo/kyle-tiktok-avatar.jpg" alt="" width="36" height="36"><span>KyleMeets<b>AI</b></span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="hide-sm" href="/#prompts">Prompts</a>
+      <a class="hide-sm" href="/#videos">Videos</a>
+      <a class="hide-sm" href="/#about">About</a>
+      <a class="nav-cta" href="/#work">Work with me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="p-main">
+  <div class="wrap">
+    <div class="p-layout">
+    <article class="p-article" data-added="2026-05-15">
+      <a class="crumb" href="/#prompts"><span aria-hidden="true">←</span> All prompts</a>
+      <header class="p-hero">
+        <div class="p-eyebrow"><span class="label">Content · Prompt</span><span class="new" hidden>New</span></div>
+        <h1>AI Newsletter</h1>
+        <p class="p-lede">Builds a personal recurring briefing as a Claude artifact on a topic you care about, from pop culture or tech to sports, finance, fashion, or anything else. Answer seven questions about your topic, name, refresh schedule, vibe, and sources. Get a Hero story, Buzz cards, weekend picks, trending conversations, and a conversation starter, all with citations and a refresh button. Lives in your artifact panel, with a Refresh Now button and a fresh brief on the schedule you pick.</p>
+        
+        <div class="p-works"><span class="label">Works in</span><span class="apps"><span class="app">Claude</span></span></div>
+        <div class="p-actions"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai/video/7639985396809551118" target="_blank" rel="noopener">Watch the video <span aria-hidden="true">↗</span></a></div>
+        
+      </header>
+
+      <section class="p-section" aria-labelledby="how-h">
+        <h2 class="p-h2" id="how-h">How to use it</h2>
+        <ol class="p-steps"><li><span>Tap <em>Copy prompt</em> below</span></li><li><span>Paste into a new Claude chat</span></li><li><span>Answer the seven questions about your topic, refresh schedule, vibe, and sources</span></li><li><span>Get your personal briefing as an artifact, plus a fresh brief on your schedule</span></li></ol>
+        
+      </section>
+
+      <section class="p-section" aria-labelledby="box-h">
+        <div class="p-box">
+          <div class="p-box-bar"><h2 class="label" id="box-h">The prompt</h2><button class="copy-btn" type="button" data-copy>Copy prompt</button></div>
+          <div class="p-box-text" id="prompt-text" tabindex="0">You are my personal editor and analyst. Think the smartest version of a daily briefing publication built for an audience of one: me. You have taste, timing, and an instinct for what actually matters in the space I care about most.
+
+# WHAT WE ARE BUILDING
+
+A personal recurring briefing as an artifact. It is the one thing I open on a set schedule to know what is worth my attention in the topic I care about. It must be an artifact that persists across sessions (use the artifact&#x27;s built-in storage) and lives in my artifact panel. Not a static HTML page, not a markdown doc.
+
+# CRITICAL ARCHITECTURE: FORMAT IS FIXED, DATA IS DYNAMIC
+
+Design the layout, CSS, typography, and structure once. They never change after that. Store all briefing content in a single, clearly delimited data block (a SEED_BRIEF JavaScript object or equivalent JSON). Every refresh, manual or scheduled, replaces only that data block. Lock the scheduled task to &quot;only ever edit the SEED_BRIEF data block. Do not touch styling, structure, or markup.&quot; This keeps weekly runs fast, cheap, and unable to drift the design.
+
+# STEP 1: INTERVIEW ME FIRST
+
+Before you build anything, ask me these 7 questions one at a time, conversationally. Wait for my answer before asking the next. Keep your tone warm, sharp, and concise.
+
+1. What topic should this briefing cover? (Pop culture, sports, tech and AI, finance, fashion, gaming, fitness, indie music, real estate, cooking, books, parenting, anything else.) Give me the category and a one-line description of what you care about most within it.
+
+2. What do you want to call it? Suggest a name based on the topic and let me accept or change it. (Examples: &quot;Pop Culture Daily,&quot; &quot;Tech Friday,&quot; &quot;The Fashion Beat,&quot; &quot;Indie Cool-Down,&quot; &quot;Founders Brief.&quot;)
+
+3. How often and when should it refresh? Give me a day of the week and a time, plus the timezone you are in. (Example: &quot;Friday at 7 AM Central.&quot; Default to weekly if I am not sure. Daily is fine too, just warn me daily costs more in compute.)
+
+4. What is the vibe? Pick one: editorial magazine, minimalist tech, bold and loud, warm and cozy, or clean business. This drives the color palette and typography.
+
+5. Any sources you trust most, or should I pick? If you have favorite outlets, list them. If not, say &quot;pick for me&quot; and I will choose the most credible source mix for your topic across industry trade, mainstream press, niche outlets, and social pulse (relevant subreddits, X communities, etc.).
+
+6. What is your first name? I will use it in the greeting at the top.
+
+7. Anything to always skip or always include? (Examples: &quot;skip politics,&quot; &quot;no doom or scandal,&quot; &quot;always include weekend events,&quot; &quot;always include a stat of the week.&quot; If nothing comes to mind, say &quot;skip.&quot;)
+
+After I answer, confirm what you have, then proceed to build. Do not ask follow-ups unless something is genuinely unclear.
+
+# STEP 2: CURATION RULES (USED BY BOTH REFRESH PATHS)
+
+Pull the latest stories from the past 7 days from a diverse, trustworthy source mix matched to my topic.
+
+If I gave you specific outlets, lead with those. If I said &quot;pick for me,&quot; choose a balanced mix of 8 to 12 reputable sources covering the topic from different angles: industry trade publication, mainstream press, niche outlet, and social or community pulse (relevant subreddit, X community, Discord/forum if relevant).
+
+Cross-reference at least 3 sources before promoting a story to the Hero slot. Single-outlet stories get a visible &quot;Single Source&quot; label and never lead. Filter aggressively. Skip anything that fails my &quot;always skip&quot; list, anything that is filler, and anything that does not actually move the conversation in my topic.
+
+Curate 10 to 14 stories total, ranked by buzz, not chronology. Score each on a Buzz Meter from 1 to 10 based on social conversation volume, cross-outlet coverage, and cultural or industry weight.
+
+# STEP 3: REFRESH (TWO PATHS, BOTH REQUIRED)
+
+1. **Scheduled refresh.** Runs on the day and time I picked, in my timezone. The task runs the full curation below and updates only the SEED_BRIEF data block in the artifact if it can reach it; if it can&#x27;t, it delivers the new brief as its report. Assume cron runs in my machine&#x27;s local timezone unless I said otherwise.
+
+2. **Manual refresh.** A &quot;Refresh Now&quot; button top-right of the artifact. Use whatever mechanism is cleanest given your available tools (client-side fetch, server-side curation, or triggering the scheduled task in the background). Show a clear loading state and a clear &quot;done&quot; signal. The artifact must NOT auto-fetch on open (slow and expensive). It displays the most recently cached brief. The scheduled task and the Refresh Now button are the only update paths.
+
+# STEP 4: LAYOUT (IN ORDER)
+
+1. **Header.** Today&#x27;s date, day of week, week number. A rotating warm greeting using my first name. &quot;Last refreshed&quot; timestamp. Refresh Now button top-right.
+
+2. **The Hero.** One headline story. 3 to 4 sentence summary in smart-friend voice. Buzz Meter. &quot;Why it matters&quot; line. 2 to 3 source citations as clickable links with outlet name, headline, and date.
+
+3. **The Buzz.** 4 cards covering the biggest sub-stories in my topic. Each card: headline, 2-sentence summary, Buzz Meter, 1 to 2 cited sources. Adapt the 4 card categories to my topic:
+   - Pop culture: celebrity moves, casting news, industry shifts, viral moments.
+   - Tech and AI: product launches, funding and deals, research and AI moves, big-company moves.
+   - Sports: trades and signings, results, injuries and storylines, off-field news.
+   - Finance: market moves, earnings, regulatory, deal flow.
+   - Fashion: collections, brand moves, retail and commerce, street style and culture.
+   - Gaming: releases, studio news, esports, viral plays.
+   - For any other topic, pick the 4 sub-beats that map cleanly. Lock them once.
+
+4. **What Dropped This Week.** Three subsections matched to my topic. Each item: title, creator or source, brief take, where to find it, source link.
+   - Pop culture: Music, Film, TV.
+   - Tech and AI: Tools and Products, Research, Reads.
+   - Sports: Games, Signings and Trades, Watchable Content.
+   - Finance: Earnings, Deals, Macro Reads.
+   - Fashion: Collections, Collabs, Editorial.
+   - Adapt to fit any topic. Lock the three subsections once.
+
+5. **Trending Now.** 3 to 4 conversations actually catching fire on social. Capture the conversation, not just the trend. What are people actually saying. Each: short context, why it is trending, sourced examples.
+
+6. **Three Picks for the Weekend.** One curated recommendation in each of three categories matched to my topic.
+   - Pop culture: Watch, Listen, Read.
+   - Tech: Try, Read, Watch.
+   - Sports: Watch, Listen, Read.
+   - Finance: Read, Listen, Watch.
+   - Adapt and lock for the chosen topic. Two-sentence pitch each. Where to find it.
+
+7. **Conversation Starter of the Week.** One sharp, opinionated take framed as: &quot;If someone brings up X, here is the angle that lands.&quot;
+
+8. **Quick Hits.** 6 one-liners, each with a citation icon that expands to source on hover or tap.
+
+9. **Source Diversity Check (footer).** Small visual showing which outlets contributed this week. A quiet reminder that this is curated from multiple sources.
+
+# STEP 5: CITATIONS
+
+Every claim is sourced. Every story shows outlet name, headline, and publication date next to a link. Clicking opens the original in a new tab. Multi-outlet stories show all sources so I can pick the take I trust.
+
+# STEP 6: TONE
+
+Sharp, warm, conversational. Like a friend who reads everything in this space and texts me the actual takes. No press-release language. No filler. Cut the fat. If a story is not interesting, do not include it.
+
+# STEP 7: DESIGN (DERIVED FROM MY VIBE ANSWER)
+
+Pick the color and typography system that matches my vibe answer. Apply it once, lock it forever after.
+
+- **Editorial magazine:** cream background (#FAF7F2), deep navy headlines (#1B2845), one warm accent (coral #E07856 or gold #C9A66B, pick one and commit). Serif headlines (Editorial New, Cormorant Garamond), sans-serif body (Inter).
+- **Minimalist tech:** off-white background (#F7F7F8), near-black headlines (#0A0A0A), one cool accent (electric blue #2563EB or violet #7C3AED). Geometric sans only (Inter, Söhne).
+- **Bold and loud:** off-white background (#F5F5F0) or charcoal (#1A1A1A), oversized display headlines, one saturated accent (orange, magenta, or lime). Condensed display sans (Anton, Druk) paired with grotesk body.
+- **Warm and cozy:** soft cream background (#F4EFE6), terracotta headlines (#9B4722), muted gold accent (#C9A66B). Rounded serif (Recoleta, DM Serif Display) paired with clean sans body.
+- **Clean business:** white background (#FFFFFF), charcoal headlines (#1F2937), single restrained accent (forest #1F4E3D, oxblood #6E1423, or navy #1B2845). Modern sans (Söhne, Inter) throughout, no serif.
+
+Card-based layout with subtle shadows. Generous white space. Buzz Meter as a small horizontal bar next to each story. Source citations as small underlined links with the outlet name. Subtle hover states. Fully mobile-responsive. Should read like a designed publication on phone, not a dashboard.
+
+# STEP 8: PERSONALIZATION
+
+Save my first name to local storage so the greeting personalizes after the first run. On first load, default to the name I gave during the interview and let me edit it inline. Skip any other personalization (tap tracking, view counts, etc.) for v1 unless there is a concrete use for the data.
+
+# STEP 9: WHAT TO AVOID
+
+No press-release language. No corporate filler. No SEO-style headlines. No emoji overload (one or two per artifact, max, only if they earn it). No bracketed placeholders anywhere in the final output. No more than one accent color used as a highlight. No fake urgency. No bullet vomit. Cards over walls of text.
+
+# STEP 10: SELF-CHECK BEFORE DELIVERY
+
+Confirm before showing me the artifact:
+
+1. The artifact saves across sessions and is not a static HTML page. The SEED_BRIEF data block is the only place content lives.
+2. The scheduled task is set to my exact day, time, and timezone, and locked to &quot;only edit SEED_BRIEF.&quot;
+3. The Refresh Now button works manually and shows clear loading and done states.
+4. The artifact loads from cache on open (does not auto-fetch).
+5. The full curation ran end-to-end at least once to seed real content. No placeholder copy anywhere.
+6. Every story has at least one cited source link. Hero and Buzz cards meet the 3-source rule or carry a visible &quot;Single Source&quot; label.
+7. Greeting uses my first name. Date, day, and week number display correctly.
+8. Design matches my vibe answer and reads cleanly on phone.
+
+# STEP 11: CONFIRM WHEN BUILT
+
+After the artifact and scheduled task are live, tell me in under 200 words:
+
+1. The artifact name and where to find it in my artifact panel.
+2. The next scheduled run time in my timezone.
+3. Confirmation you ran the full curation end-to-end at least once to seed the brief with real content.</div>
+        </div>
+        <div class="p-after"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button></div>
+      </section>
+    </article>
+
+    <aside class="kyle-card" aria-label="About Kyle">
+      <div class="kyle-card-tile"><img src="/assets/photo/kyle-square.jpg" alt="" width="600" height="600" loading="lazy"><span class="tile-name" aria-hidden="true"><span class="mic"><i></i><i></i><i></i><i></i></span>KyleMeetsAI</span></div>
+      <div class="kyle-card-copy"><p class="kyle-card-title">Hi, I’m Kyle.</p><p>I post a new AI how-to every week, and its prompt waits for you here.</p></div>
+      <div class="kyle-card-links"><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a></div>
+    </aside>
+
+    <section class="p-section p-related" aria-labelledby="rel-h">
+      <div class="p-related-head"><h2 class="p-h2" id="rel-h">More like this</h2><a class="p-all" href="/#prompts">All prompts <span class="arrow" aria-hidden="true">→</span></a></div>
+      <div class="p-grid" id="related"><a class="p-card" href="/prompts/google-vids-movie" data-drawer="google-vids-movie" data-topic="content" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-11-25"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>3 Free AI Movie Clips a Month</h3><p>Google Vids turns one sentence into a 15-second movie clip with sound, free three times a month on any Google account. Paste this into Gemini or ChatGPT and it asks a few quick questions, then writes the Vids prompt for you, so you don&#x27;t waste a free clip.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/social-media-dashboard" data-drawer="social-media-dashboard" data-topic="content" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-10-19"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>Claude Tells You What to Post Next</h3><p>Drop your TikTok or Instagram stats export into Claude, paste one prompt, and get a live dashboard built from your real numbers: your best days, which weekday works for you, what&#x27;s growing, and three bets for what to post next week. Drop in next week&#x27;s file and it updates itself.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/product-launch-email" data-drawer="product-launch-email" data-topic="content" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-08-03"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>Product Launch Email</h3><p>Give it your brand, product, and vibe and it designs one complete, premium launch email: hero, three-column benefits, story feature block, social proof, and a limited-time offer banner, fully written and ready to paste into any email platform.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/content-calendar" data-drawer="content-calendar" data-topic="content" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-06-22"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>AI Content Calendar</h3><p>Acts as your AI content strategist. It interviews you about your niche and goals, researches what is working in your space right now with live web search, then builds a 30-day calendar of weekday posts, each with a scroll-stopping hook, a specific shot list, keywords, and the research reason behind it. Pick Excel, an HTML doc, or a live interactive artifact, and optionally push every post to your Google Calendar.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/caption-generator" data-drawer="caption-generator" data-topic="content" data-apps="claude" data-format="prompt" data-added="2026-06-18"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>AI Caption Generator</h3><p>Builds a live caption generator as a Claude artifact that writes Instagram captions in your exact voice. Paste five recent captions so Claude learns your phrasing, hooks, and signature phrases, then pick your post type, goal, length, vibe, and CTA to get three caption options that actually sound like you.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/canva-carousel" data-drawer="canva-carousel" data-topic="content" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-06-10"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>Canva Carousel</h3><p>An expert carousel designer builds an editable carousel straight into your Canva account using the Canva connector. Answer six quick questions, approve a slide outline, then get a premium 1080x1350 portrait carousel with each slide as its own editable Canva page, exported as PNGs, a PDF, and an editable link.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a></div>
+    </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="wordmark" href="/"><span>KyleMeets<b>AI</b></span></a>
+    <nav aria-label="Footer">
+      <a href="/#prompts">Prompts</a>
+      <a href="/#videos">Videos</a>
+      <a href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram</a>
+      <a href="/#work">Work with me</a>
+    </nav>
+    <span class="fine">© 2026 KyleMeetsAI</span>
+  </div>
+</footer>
+<script src="/assets/prompt.js?v=2916b2a5" defer></script>
+</body>
+</html>

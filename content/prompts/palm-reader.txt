@@ -1,0 +1,25 @@
+title: AI Palm Reader
+desc: Upload a photo of your palm and get a complete reading with a minimalist line drawing of your palm, your extracted palm print, and an in-depth analysis of your life, heart, head, and fate lines, all laid out like a chapter from a high-end guidebook.
+headline: AI PALM READER (CHATGPT)
+sub: 60 second setup
+topic: health
+apps: chatgpt gemini
+format: prompt
+added: 2026-05-09
+tiktok: 7637964170721283341
+copy: Copy prompt
+
+=== description ===
+Upload a photo of your palm and get a complete reading: an in-depth analysis of your life, heart, head, and fate lines plus any notable mounts and markings, paired with a minimalist black-on-white line drawing and your extracted palm print, all composed as a single page spread styled like a chapter from a high-end guidebook.
+
+=== steps ===
+Tap <em>Copy prompt</em> below
+Paste into a new ChatGPT chat
+Upload a clear photo of your open palm
+Get your reading laid out as a single composed page spread
+
+=== notes ===
+In Gemini, open Images in the sidebar, attach your palm photo, then paste the prompt.
+
+=== prompt ===
+Using the photo of my hand, create a complete palm reading guide. The reading: Analyze my palm in depth, covering the major lines (life, heart, head, fate) along with any notable mounts, markings, or features. Open with one dramatic single-sentence observation, then go into the full analysis. This is the centerpiece of the guide. The artwork: Include two visual pieces, both rendered in portrait orientation (roughly 3:4). First, a minimalist black-on-white contour drawing of my main palm lines, thin lines, almost botanical illustration in feel. Second, my palm print extracted from the photo in black and white, preserving the natural skin tone variations and light reflections so it reads as a real palm print, not a stamp. The style: Clean and minimal. Elegant serif headings, generous white space, thin line work, rounded cards. Black, white, and soft warm gray only. No purple, no gold, no celestial cliches. Think Aesop, Le Labo, or a contemporary art monograph. The layout: Present the final output as a single composed page spread, with the line drawing and palm print inset alongside the written reading. Title it as if it were a chapter from a high-end mystical guidebook.

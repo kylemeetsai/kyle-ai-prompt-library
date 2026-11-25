@@ -1,0 +1,25 @@
+title: AI Color Analysis
+desc: Upload a portrait and get a true personal color analysis: your single best-fitting season from all 12 palettes, a curated swatch grid with hex codes, and a "wears well vs avoid" comparison, all laid out as an editorial magazine spread.
+headline: AI COLOR ANALYSIS (CHATGPT)
+sub: 60 second setup
+topic: health
+apps: chatgpt gemini
+format: prompt
+added: 2026-05-10
+tiktok: 7638257629629926670
+copy: Copy prompt
+
+=== description ===
+Upload a portrait and get a true personal color analysis: an objective read of your undertone, value contrast, chroma, and harmony, the single best-fitting season from all 12 palettes, a 10–12 color swatch grid with hex codes that flatter your specific features, and a "wears well vs avoid" comparison, all laid out as a single editorial magazine spread.
+
+=== steps ===
+Tap <em>Copy prompt</em> below
+Paste into a new ChatGPT chat
+Upload a clear portrait photo of yourself
+Get your color analysis laid out as a magazine spread
+
+=== notes ===
+In Gemini, open Images in the sidebar, attach your photo, then paste the prompt.
+
+=== prompt ===
+Using this portrait, create a true personal color analysis presented as a single editorial magazine spread in portrait orientation (roughly 3:4). IMPORTANT: Do not default toward warm, muted, earthy, beige, minimalist, or "Soft Autumn"-leaning palettes because of the design aesthetic. The seasonal diagnosis must come entirely from facial analysis, not from the requested visual style of the layout. First, objectively analyze: * skin undertone (warm, cool, neutral, olive, peach, golden, rosy, etc.) * value contrast (light, medium, deep) * chroma/intensity (muted vs bright/clear) * harmony between skin, hair, and eyes * how overall contrast influences seasonal direction Evaluate all 12 seasonal palettes equally: * Bright Spring * True Spring * Light Spring * Light Summer * True Summer * Soft Summer * Soft Autumn * True Autumn * Deep Autumn * Deep Winter * True Winter * Bright Winter Then select the SINGLE best-fitting season and briefly explain why competing seasons were ruled out. The analysis: At the top of the page, include: 1. The final season diagnosis as a bold editorial headline 2. One concise line identifying the exact traits that drove the diagnosis Example: "neutral-cool rosy undertone, ash blonde hair, soft gray-blue eyes, low contrast" 3. A very short poetic descriptor of the palette mood The layout: TOP BLOCK * Large editorial title with the season name * One-line descriptor underneath * One-line technical reasoning beneath that MIDDLE BLOCK * A clean swatch grid of 10–12 colors that specifically support THIS identified season * Every swatch must include: * curated color name * accurate hex code * The colors should be chosen because they flatter the analyzed features, not because they fit the page aesthetic * Arrange in a clean structured grid BOTTOM BLOCK A side-by-side "wears well vs avoid" comparison: LEFT: * 3 colors that harmonize with the analyzed complexion RIGHT: * 3 colors that create disharmony, dullness, harshness, or imbalance Show these either as: * fabric drapes * color overlays * stylized fashion silhouettes * or portrait comparisons Label both sides clearly. VISUAL STYLE: The page itself should feel editorial and high-fashion, but the design aesthetic must NOT influence the seasonal result. Use: * elegant typography * intentional white space * refined magazine layout * restrained graphic design * clean hierarchy Avoid: * forcing warm neutrals * forcing muted palettes * making every analysis look like Soft Autumn * reusing identical palettes between different people The final result should feel like a genuine professional color analysis created specifically for this individual, with a palette uniquely derived from their actual features.

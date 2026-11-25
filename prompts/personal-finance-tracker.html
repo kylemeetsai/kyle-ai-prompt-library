@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Personal Finance Tracker (EMAIL MCP) · KyleMeetsAI</title>
+<meta name="description" content="Scans your email for the last 90 days and builds a saved dashboard of every active subscription, with a &quot;worth a second look&quot; callout for services you may not be using anymore.">
+<link rel="canonical" href="https://kylemeetsai.com/prompts/personal-finance-tracker">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KyleMeetsAI">
+<meta property="og:title" content="AI Personal Finance Tracker (EMAIL MCP) · KyleMeetsAI">
+<meta property="og:description" content="Scans your email for the last 90 days and builds a saved dashboard of every active subscription, with a &quot;worth a second look&quot; callout for services you may not be using anymore.">
+<meta property="og:url" content="https://kylemeetsai.com/prompts/personal-finance-tracker">
+<meta name="theme-color" content="#ECEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=656bcfa9">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="KyleMeetsAI home"><img src="/assets/photo/kyle-tiktok-avatar.jpg" alt="" width="36" height="36"><span>KyleMeets<b>AI</b></span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="hide-sm" href="/#prompts">Prompts</a>
+      <a class="hide-sm" href="/#videos">Videos</a>
+      <a class="hide-sm" href="/#about">About</a>
+      <a class="nav-cta" href="/#work">Work with me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="p-main">
+  <div class="wrap">
+    <div class="p-layout">
+    <article class="p-article" data-added="2026-05-06">
+      <a class="crumb" href="/#prompts"><span aria-hidden="true">←</span> All prompts</a>
+      <header class="p-hero">
+        <div class="p-eyebrow"><span class="label">Money · Prompt</span><span class="new" hidden>New</span></div>
+        <h1>AI Personal Finance Tracker (EMAIL MCP)</h1>
+        <p class="p-lede">Scans your email for subscription receipts from the past 90 days and builds a saved dashboard that refreshes from your email when you open it or tap Refresh. Shows total monthly spend, an upcoming charges timeline, every active subscription as a card, and a "worth a second look" callout for services you may not be using anymore.</p>
+        
+        <div class="p-works"><span class="label">Works in</span><span class="apps"><span class="app">Claude</span></span></div>
+        <div class="p-actions"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai/video/7636537357394660621" target="_blank" rel="noopener">Watch the video <span aria-hidden="true">↗</span></a></div>
+        
+      </header>
+
+      <section class="p-section" aria-labelledby="how-h">
+        <h2 class="p-h2" id="how-h">How to use it</h2>
+        <ol class="p-steps"><li><span>Tap <em>Copy prompt</em> below</span></li><li><span>Paste into a new Claude chat with your email connector set up (Gmail, Outlook, etc.)</span></li><li><span>The dashboard builds itself from your past 90 days of subscription receipts</span></li><li><span>Reopen the artifact anytime to refresh with current data</span></li></ol>
+        
+      </section>
+
+      <section class="p-section" aria-labelledby="box-h">
+        <div class="p-box">
+          <div class="p-box-bar"><h2 class="label" id="box-h">The prompt</h2><button class="copy-btn" type="button" data-copy>Copy prompt</button></div>
+          <div class="p-box-text" id="prompt-text" tabindex="0">Build me a personal subscription tracker as a saved artifact dashboard that refreshes from my email when I open it or tap Refresh, so it always reflects what I&#x27;m currently paying for.
+
+Before you build, check what email connector I already have set up.
+
+— If an email tool is already connected (Gmail, Outlook, etc.), just
+  use it and move straight into building. Don&#x27;t make me re-confirm.
+— If nothing is connected, tell me, recommend the right connector,
+  and walk me through hooking it up. Wait for confirmation before
+  moving on.
+
+Quick environment check first: this only works in a tool that
+supports saved artifacts and email connectors. If that&#x27;s not the
+environment I&#x27;m in, tell me up front instead of trying to build
+something half-working.
+
+What the dashboard does:
+
+Scan my email for the last 90 days and pull every recurring
+subscription receipt — streaming, software, AI tools, fitness apps,
+news, cloud storage, anything billing monthly or annually. From each
+receipt, extract the service name, plan description, monthly cost
+(annualize any yearly bills into a monthly equivalent), last charge
+date, and next billing date.
+
+Be careful with yearly subscriptions: divide them by 12 for the
+monthly figure. Don&#x27;t accidentally count a $60/year plan as $60/mo
+in the totals.
+
+Surface a &quot;Worth a second look&quot; callout — services where I haven&#x27;t
+received any non-receipt emails from that brand in the last 30
+days. Frame this as a soft signal, not a verdict. I might still use
+those services and just not be on their mailing list, so the
+language should suggest review, not cancellation.
+
+How it should look — single mobile-proportioned column, around
+608px wide, dark mode (near-black background), Linear/Notion vibes,
+not corporate banking:
+
+1. HERO at the top.
+   - One enormous dollar number in bold white-to-gray gradient
+     typography, with the cents shown smaller and subscripted (like
+     &quot;$197&quot; big, &quot;.86&quot; small).
+   - One muted line under it: &quot;That&#x27;s $X,XXX a year across N active
+     subscriptions.&quot;
+   - Two small pill chips below: &quot;Next: [service] [date]&quot; with a
+     clock icon, and &quot;Biggest: [service] $X/mo&quot; with a circle icon.
+
+2. &quot;WORTH A SECOND LOOK&quot; CALLOUT, prominent under the hero.
+   - Subtle amber-tinted card on near-black, with a glowing amber
+     dot.
+   - Header in small uppercase tracked-out type: &quot;SUBSCRIPTIONS
+     WORTH A SECOND LOOK.&quot;
+   - One bold punchy line where the dollar amount glows amber:
+     &quot;$XX/mo on N services you may not be using as much.&quot;
+   - A clean list of each one: small brand-colored swatch on the
+     left, service name in the middle, price on the right
+     (&quot;$XX.XX /mo&quot;).
+   - Below the list, one small italic line in muted text:
+     &quot;Based on email activity in the last 30 days — review before
+     canceling anything.&quot;
+
+3. TIMELINE: &quot;When&#x27;s my money leaving?&quot; / &quot;Next 30 days.&quot;
+   - A thin horizontal axis with date labels every 5 days
+     (e.g. APR 28, MAY 3, MAY 8…).
+   - A colored dot for each upcoming charge, positioned by date,
+     colored with that brand&#x27;s signature color. If two charges hit
+     the same day, fan them out vertically. Hover reveals service
+     name + amount.
+
+4. ACTIVE SUBSCRIPTIONS card grid (2 columns).
+   - Section header on the left (&quot;Active subscriptions&quot;), count on
+     the right (&quot;N active&quot;).
+   - Each card has: a brand-colored monogram tile in the top-left
+     (the letter for Netflix in red, Spotify green, ChatGPT teal,
+     Disney blue, Adobe red, etc.) and a small category tag in the
+     top-right (Streaming, Productivity, AI, Fitness, News, Storage,
+     Security) tinted with the same brand color.
+   - Below: service name, plan description in muted text (like
+     &quot;Netflix Premium (4K + HDR)&quot;), then a big bold price with
+     &quot; / mo&quot; in small muted type beside it.
+   - At the bottom: &quot;Next [date]&quot; with a small calendar icon.
+   - Cards in the &quot;second look&quot; set get a tiny amber dot in the
+     top-right corner as a quiet flag.
+   - A subtle vertical accent stripe in the brand color runs down
+     the left edge of each card.
+   - For services without a well-known brand color, pick a
+     reasonable neutral and tell me in chat which ones got a
+     fallback so I know what&#x27;s approximate.
+
+5. CATEGORY DONUT at the bottom.
+   - Header: &quot;By category&quot; / &quot;monthly $.&quot;
+   - Multi-colored donut chart with category-coded segments. Center
+     of the donut shows the total monthly spend with &quot; / MONTH&quot;
+     underneath.
+   - To the right of the donut: a legend listing each category with
+     a colored swatch, the category name, and the monthly amount
+     (e.g. &quot;Streaming $68 /mo&quot;).
+
+6. FOOTER: a small muted line: &quot;Refreshed live from [email source] ·
+   last 90 days.&quot;
+
+Animation and polish:
+— Subtle fade-up entrance on each section as the page loads,
+  staggered top-to-bottom.
+— Generous spacing. Large readable typography. Tabular numerals on
+  all dollar amounts so they line up cleanly.
+— The hero number and the &quot;second look&quot; callout are the two visual
+  anchors that need to land. Everything else supports them.
+
+Be honest with me about the data:
+
+— If you find very few or no receipts, don&#x27;t fake a dashboard. Tell
+  me what you found and where you looked, and ask whether my
+  receipts might be in another inbox, a Promotions tab, or
+  filtered into a separate folder.
+— If a parsed amount looks uncertain — a yearly plan you weren&#x27;t
+  sure about, a service where the next-charge date wasn&#x27;t clear,
+  or a number you had to estimate — call it out in chat after the
+  build so I can verify.
+— If you guessed at a brand color or category for a less common
+  service, tell me which ones so I know what&#x27;s approximate.
+
+Make it feel like a product, not a report.
+
+When it&#x27;s built, tell me where it lives and how I can reopen it
+later. If anything goes sideways — no receipts found, unsupported
+email provider, weird data — explain in plain English and suggest a
+fix instead of giving up.</div>
+        </div>
+        <div class="p-after"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button></div>
+      </section>
+    </article>
+
+    <aside class="kyle-card" aria-label="About Kyle">
+      <div class="kyle-card-tile"><img src="/assets/photo/kyle-square.jpg" alt="" width="600" height="600" loading="lazy"><span class="tile-name" aria-hidden="true"><span class="mic"><i></i><i></i><i></i><i></i></span>KyleMeetsAI</span></div>
+      <div class="kyle-card-copy"><p class="kyle-card-title">Hi, I’m Kyle.</p><p>I post a new AI how-to every week, and its prompt waits for you here.</p></div>
+      <div class="kyle-card-links"><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a></div>
+    </aside>
+
+    <section class="p-section p-related" aria-labelledby="rel-h">
+      <div class="p-related-head"><h2 class="p-h2" id="rel-h">More like this</h2><a class="p-all" href="/#prompts">All prompts <span class="arrow" aria-hidden="true">→</span></a></div>
+      <div class="p-grid" id="related"><a class="p-card" href="/prompts/savings-goal-tracker" data-drawer="savings-goal-tracker" data-topic="money" data-apps="claude" data-format="prompt" data-added="2026-12-04"><span class="p-meta"><span class="p-topic">Money</span><span class="new" hidden>New</span></span><h3>The Exact Day You&#x27;ll Hit Your Savings Goal</h3><p>Paste one prompt and Claude builds your savings tracker in Google Sheets, works out your estimated finish date, and checks in every Monday to warn you if you&#x27;re falling behind. It never moves money.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/refund-hunter" data-drawer="refund-hunter" data-topic="money" data-apps="claude chatgpt" data-format="prompt" data-added="2026-11-24"><span class="p-meta"><span class="p-topic">Money</span><span class="new" hidden>New</span></span><h3>Claude Finds Refunds Companies Owe You</h3><p>Connect Gmail, paste one prompt, and Claude searches a year of your email for refunds, credits and billing mistakes companies still owe you. It writes each claim message for you, never sends anything, and checks again every week.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/google-sheets-budget" data-drawer="google-sheets-budget" data-topic="money" data-apps="claude" data-format="prompt" data-added="2026-10-17"><span class="p-meta"><span class="p-topic">Money</span><span class="new" hidden>New</span></span><h3>Claude Builds Your Budget (Google Sheets)</h3><p>Connect Google Drive, paste one prompt, answer a few quick questions about your money, and Claude builds a polished budget inside Google Sheets: a phone-friendly dashboard with summary cards, color-coded progress bars, a 50/30/20 check, a donut chart and a transaction log. Every number is a live formula, so logging a purchase updates the whole dashboard by itself.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/price-drop-agent" data-drawer="price-drop-agent" data-topic="money" data-apps="claude" data-format="prompt" data-added="2026-07-23"><span class="p-meta"><span class="p-topic">Money</span><span class="new" hidden>New</span></span><h3>Price Drop Agent</h3><p>Builds a personal Price Drop Agent as a Claude artifact that watches the 3 to 4 products you are shopping for. It interviews you first, researches real listings and the honest &quot;usual price&quot; of each item, then shows today&#x27;s price, a Deal Score, and a clear BUY NOW or WAIT call on a clean dashboard that saves across sessions. It also sets up a daily morning check that only messages you when something actually hits a great deal. No fake sales, no hype, no noise.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/budget-tracker" data-drawer="budget-tracker" data-topic="money" data-apps="claude chatgpt" data-format="prompt" data-added="2026-04-16"><span class="p-meta"><span class="p-topic">Money</span><span class="new" hidden>New</span></span><h3>AI Budget Tracker</h3><p>Upload a bank statement or CSV. Get an interactive dashboard with charts, overspending flags, and one savings tip.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/ai-visibility-check" data-drawer="ai-visibility-check" data-topic="agents" data-apps="claude chatgpt" data-format="prompt" data-added="2026-11-30"><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>Does AI Recommend Your Business?</h3><p>Paste one prompt and Claude asks AI the questions your customers ask, shows who it recommends instead of you and why, and gives you 3 fixes. Then it checks again every week. Research only: it never posts or contacts anyone.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a></div>
+    </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="wordmark" href="/"><span>KyleMeets<b>AI</b></span></a>
+    <nav aria-label="Footer">
+      <a href="/#prompts">Prompts</a>
+      <a href="/#videos">Videos</a>
+      <a href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram</a>
+      <a href="/#work">Work with me</a>
+    </nav>
+    <span class="fine">© 2026 KyleMeetsAI</span>
+  </div>
+</footer>
+<script src="/assets/prompt.js?v=2916b2a5" defer></script>
+</body>
+</html>
