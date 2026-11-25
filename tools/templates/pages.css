@@ -1,3 +1,12 @@
+/* ---------- hero: the how-it-works animation (Nov 25: replaces the talking video and the separate section) ---------- */
+.hero { padding-bottom: clamp(44px, 6vw, 80px); }
+.hero-film { margin: 0; width: min(100%, 500px); justify-self: center; display: grid; gap: 14px; }
+@media (min-width: 900px) { .hero-film { justify-self: end; } }
+.film-steps { list-style: none; margin: 0; padding: 0 4px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.film-steps li { display: flex; align-items: flex-start; gap: 8px; font-size: 13.5px; line-height: 1.35; color: var(--muted); }
+.film-steps b { flex: none; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--chip); color: var(--chip-ink); font: 700 12px/1 var(--display); }
+@media (max-width: 400px) { .film-steps { gap: 8px; } .film-steps li { font-size: 12.5px; gap: 6px; } }
+
 /* ---------- shared extras ---------- */
 .skip { position: absolute; left: 12px; top: -80px; z-index: 50; padding: 10px 14px; border-radius: 10px; background: var(--chip); color: var(--chip-ink); font-weight: 600; text-decoration: none; }
 .skip:focus { top: 12px; }

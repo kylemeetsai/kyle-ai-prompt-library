@@ -1,5 +1,5 @@
-// Homepage: logo strip pause, video tabs, the searchable prompt library, the prompt drawer
-// (each prompt also has its own page at /prompts/<slug>), and the hero's prompt hand-off.
+// Homepage: the pause button, video tabs, the searchable prompt library and the prompt drawer
+// (each prompt also has its own page at /prompts/<slug>).
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $ = id => document.getElementById(id);
@@ -11,7 +11,7 @@
   const dateOf = s => { const [y, m, d] = (s || '').split('-').map(Number); return new Date(y, m - 1, d).getTime(); };
   const isLive = s => dateOf(s) <= today;
 
-  // ---------- one pause button stops all motion: logos, both videos, the hero hand-off ----------
+  // ---------- one pause button stops all motion: the logos and the animation ----------
   const toggle = $('motion-toggle');
   let motionPaused = false;
   const PAUSE = '<path d="M3 2h2v8H3zM7 2h2v8H7z" fill="currentColor"/>', PLAY = '<path d="M3 1.5v9l7-4.5z" fill="currentColor"/>';
@@ -20,13 +20,12 @@
     toggle.setAttribute('aria-pressed', paused);
     toggle.setAttribute('aria-label', paused ? 'Play motion' : 'Pause motion');
     toggle.firstElementChild.innerHTML = paused ? PLAY : PAUSE;
-    document.querySelectorAll('#call, #film').forEach(v => { if (v.tagName === 'VIDEO') paused ? v.pause() : v.play().catch(() => {}); });
+    document.querySelectorAll('#film').forEach(v => { if (v.tagName === 'VIDEO') paused ? v.pause() : v.play().catch(() => {}); });
   });
   if (reduce) toggle.hidden = true;
 
   // ---------- videos: a still photo instead of motion when motion is reduced ----------
   if (reduce) {
-    const call = $('call'); const img = new Image(); img.src = call.poster; img.alt = ''; call.replaceWith(img);
     const film = $('film'); film.removeAttribute('autoplay'); film.pause(); film.controls = true;
   }
 
@@ -174,46 +173,4 @@
   $('d-close').addEventListener('click', () => drawer.close());
   $('d-copy').addEventListener('click', e => { if (current) copy(current.prompt, e.currentTarget, $('d-prompt')); });
 
-  // ---------- the hero: Kyle's call tile hands over a new real prompt every few seconds ----------
-  const HERO = JSON.parse($('hero-data').textContent);
-  const heroBtn = $('hero-copy');
-  let heroI = 0;
-  heroBtn.addEventListener('click', () => copy(HERO[heroI].prompt, heroBtn, null));
-  const showHero = i => {
-    const h = HERO[i];
-    $('h-text').textContent = h.text; $('h-name').textContent = h.name;
-    $('h-link').href = '/prompts/' + h.slug; $('h-link').dataset.drawer = h.slug;
-    $('h-apps').replaceChildren(...h.apps.map(a => el('span', 'app', a)));
-  };
-  if (!reduce) {
-    const you = $('you'), card = $('handoff'), stage = document.querySelector('.stage');
-    let hold = false;
-    stage.addEventListener('pointerenter', () => { hold = true; });
-    stage.addEventListener('pointerleave', () => { hold = false; });
-    stage.addEventListener('focusin', () => { hold = true; });
-    stage.addEventListener('focusout', () => { hold = false; });
-    // A press and a ping only: nothing is copied until the visitor clicks for real.
-    const press = () => {
-      heroBtn.classList.add('is-pressed', 'is-pinged');
-      setTimeout(() => heroBtn.classList.remove('is-pressed'), 140);
-      setTimeout(() => heroBtn.classList.remove('is-pinged'), 800);
-    };
-    const cycle = () => {
-      if (hold || motionPaused || document.hidden || drawer.open) { setTimeout(cycle, 1500); return; }
-      you.classList.remove('is-there'); card.classList.add('is-swapping');
-      setTimeout(() => { heroI = (heroI + 1) % HERO.length; showHero(heroI); card.classList.remove('is-swapping'); }, 380);
-      setTimeout(() => you.classList.add('is-there'), 950);
-      setTimeout(press, 2250);
-      setTimeout(cycle, 5600);
-    };
-    const first = () => {
-      setTimeout(() => you.classList.add('is-there'), 500);
-      setTimeout(press, 1800);
-      setTimeout(cycle, 5200);
-    };
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { io.disconnect(); first(); } }, { threshold: 0.3 });
-      io.observe(card);
-    } else first();
-  }
 })();

@@ -25,9 +25,6 @@ TOPICS = {'money': 'Money', 'agents': 'Agents', 'content': 'Content', 'career': 
 APPS = {'claude': 'Claude', 'chatgpt': 'ChatGPT', 'gemini': 'Gemini'}
 FORMATS = {'prompt': 'Prompt', 'guide': 'Guide', 'link': 'Tool tips', 'skill': 'Skill'}
 SECTIONS = ('description', 'steps', 'notes', 'prompt')
-# The hero card cycles through these (real prompts; the first one renders without JS).
-HERO = [('refund-hunter', 'Refund hunter'), ('gemini-calls', 'Gemini makes your calls'),
-        ('google-sheets-budget', 'Budget in Google Sheets')]
 TOOLS = [  # "Tools I teach" strip. svg = inline file; color = keep original colours; label = name beside an icon
     {'svg': 'claude-logo.svg', 'h': 25, 'name': 'Claude'},
     {'file': 'chatgpt.svg', 'ar': 118 / 28, 'h': 25, 'name': 'ChatGPT'},
@@ -212,17 +209,6 @@ def logos(items, copies):
     return ''.join(out)
 
 
-def first_lines(prompt, limit=230):
-    para = prompt.strip().split('\n\n')[0].replace('\n', ' ')
-    parts = re.split(r'(?<=[.!?])\s+', para)
-    text = parts[0]
-    for s in parts[1:]:
-        if len(text) + len(s) + 1 > limit:
-            break
-        text += ' ' + s
-    return text.replace("'", '’')
-
-
 def related(p, prompts):
     others = [o for o in prompts if o['slug'] != p['slug']]
     groups = {}  # same topic first, then most apps in common; newest first inside each group
@@ -323,30 +309,20 @@ def home_page(prompts):
     chips += ''.join(f'<button class="chip" type="button" data-group="topic" data-value="{k}" aria-pressed="false">{v}</button>' for k, v in TOPICS.items())
     chips += '<span class="sep" aria-hidden="true"></span>'
     chips += ''.join(f'<button class="chip" type="button" data-group="app" data-value="{k}" aria-pressed="false">{v}</button>' for k, v in APPS.items())
-    by_slug = {p['slug']: p for p in prompts}
-    hero = []
-    for slug, name in HERO:
-        p = by_slug[slug]
-        hero.append({'slug': slug, 'name': name, 'apps': [APPS[a] for a in p['apps']],
-                     'text': first_lines(p['prompt']), 'prompt': p['prompt'], 'copy': p['copy']})
-    h0 = hero[0]
     body = read('tools', 'templates', 'home.html')
     fills = {
         'TOOL_LOGOS': logos(TOOLS, 1), 'PARTNER_LOGOS': logos(PARTNERS, 2), 'CHIPS': chips,
         'COUNT': f'{len(live)} prompts and guides', 'CARDS': ''.join(card(p) for p in prompts),
-        'HERO_APPS': ''.join(f'<span class="app">{a}</span>' for a in h0['apps']),
-        'HERO_TEXT': e(h0['text']), 'HERO_SLUG': h0['slug'], 'HERO_NAME': e(h0['name']), 'FOOTER': FOOTER,
+        'FOOTER': FOOTER,
     }
     for k, v in fills.items():
         body = body.replace('{{%s}}' % k, v)
     left = re.findall(r'\{\{[A-Z_]+\}\}', body)
     if left:
         sys.exit(f'home.html: unfilled {left}')
-    hero_json = json.dumps(hero, ensure_ascii=False).replace('<', '\\u003c')
     desc = 'Kyle teaches everyday people and businesses how to put AI to work, with a free library of the exact prompts from every video.'
     return (head('KyleMeetsAI · AI, made easy', desc, '/') + HEADER + body.replace('<main id="top">', '<main id="main">') +
-            f'\n<script type="application/json" id="hero-data">{hero_json}</script>\n'
-            f'<script src="/assets/home.js?v={version("assets/home.js")}" defer></script>\n</body>\n</html>\n')
+            f'\n<script src="/assets/home.js?v={version("assets/home.js")}" defer></script>\n</body>\n</html>\n')
 
 
 def not_found_page():

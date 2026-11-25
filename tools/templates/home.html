@@ -15,29 +15,18 @@
         </dl>
       </div>
 
-      <div class="stage">
-        <div class="tile">
-          <video id="call" src="/assets/video/kyle-call.mp4" poster="/assets/photo/kyle-B-web.jpg" autoplay muted loop playsinline aria-hidden="true"></video>
-          <span class="tile-name"><span class="mic" aria-hidden="true"><i></i><i></i><i></i><i></i></span>KyleMeetsAI</span>
+      <figure class="hero-film">
+        <div class="film">
+          <video id="film" src="/assets/video/how-it-works.mp4" poster="/assets/video/how-it-works-poster.jpg" autoplay muted loop playsinline aria-label="Animation: a viewer watches Kyle’s AI-visibility agent video, copies its prompt, pastes it into an AI chat, and the AI reports that it picked 3 competitors over their business and gives 3 fixes."></video>
         </div>
-        <div class="handoff" id="handoff" role="group" aria-label="Featured prompt">
-          <div class="handoff-body">
-          <div class="handoff-top">
-            <span class="label">Prompt</span>
-            <span class="apps" id="h-apps">{{HERO_APPS}}</span>
-          </div>
-          <p class="handoff-text" id="h-text">{{HERO_TEXT}}</p>
-          <div class="handoff-bottom">
-            <a href="/prompts/{{HERO_SLUG}}" data-drawer="{{HERO_SLUG}}" id="h-link"><span id="h-name">{{HERO_NAME}}</span> <span aria-hidden="true">→</span></a>
-            <button class="copy-btn" id="hero-copy" type="button">Copy prompt</button>
-          </div>
-          </div>
-          <div class="you" id="you" aria-hidden="true">
-            <svg viewBox="0 0 24 24"><path d="M3 2.5 20.5 10l-7.6 2.4L10.4 20z" fill="var(--accent)" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg>
-            <span>You</span>
-          </div>
-        </div>
-      </div>
+        <figcaption>
+          <ol class="film-steps">
+            <li><b>1</b><span>Watch a video</span></li>
+            <li><b>2</b><span>Copy its prompt</span></li>
+            <li><b>3</b><span>Paste it in your AI</span></li>
+          </ol>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
@@ -50,25 +39,6 @@
       <div class="marquee"><div class="track" id="tool-track">{{TOOL_LOGOS}}</div></div>
     </div>
   </div>
-
-  <section class="how" id="how">
-    <div class="wrap">
-      <div>
-        <div class="section-head" style="margin-bottom:8px">
-          <span class="label">How it works</span>
-          <h2>From video to done in three steps.</h2>
-        </div>
-        <ol class="steps">
-          <li><div><strong>Watch a 60-second video</strong><span>Each one shows one real thing AI can do for you, start to finish.</span></div></li>
-          <li><div><strong>Copy its prompt here</strong><span>Every prompt from my videos lives in the library below. Free, no sign-up.</span></div></li>
-          <li><div><strong>Paste it into your AI</strong><span>Claude, ChatGPT or Gemini. It asks you a few questions, then does the work.</span></div></li>
-        </ol>
-      </div>
-      <div class="film">
-        <video id="film" src="/assets/video/how-it-works.mp4" poster="/assets/video/how-it-works-poster.jpg" autoplay muted loop playsinline aria-label="Animation: a viewer watches Kyle’s video, copies the refund hunter prompt, pastes it into an AI chat, and gets the result."></video>
-      </div>
-    </div>
-  </section>
 
   <section class="library" id="prompts">
     <div class="wrap">
