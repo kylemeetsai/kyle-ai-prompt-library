@@ -91,6 +91,61 @@
     background: #ff6b2c; color: #fff; border-radius: 8px;
     text-decoration: none; font-weight: 600; font-size: 14px;
   }
+
+  /* kmai-shared:start (watch link, related prompts, dark mode; same block on every prompt page) */
+  .watch-video {
+    display: inline-flex; align-items: center; gap: 8px;
+    margin: 14px 0 0; padding: 8px 14px; border-radius: 999px;
+    background: #111; color: #fff; text-decoration: none;
+    font-size: 13.5px; font-weight: 700;
+  }
+  .watch-video:hover { opacity: 0.88; }
+  .watch-play {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; border-radius: 50%; background: #ff6b2c; color: #fff; font-size: 9px; padding-left: 1px;
+  }
+  .related { margin-top: 32px; }
+  .related-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: #ff6b2c; margin-bottom: 10px; }
+  .related-list { display: flex; flex-direction: column; gap: 10px; }
+  .related-card {
+    display: block; background: #fff; border: 1px solid #eee; border-radius: 14px;
+    padding: 14px 16px; text-decoration: none; color: inherit;
+    transition: box-shadow 0.15s ease, transform 0.1s ease;
+  }
+  .related-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .related-card:active { transform: scale(0.98); }
+  .related-title { font-size: 15.5px; font-weight: 700; display: flex; justify-content: space-between; gap: 10px; }
+  .related-title .arrow { color: #ff6b2c; }
+  .related-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .rtag { font-size: 10px; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; background: #eef0f2; color: #566072; }
+  .rtag.chatgpt { background: #e7f6ee; color: #1d8a5b; }
+  .rtag.gemini { background: #eaf0ff; color: #3b5bdb; }
+  .rtag.design { background: #fff0e6; color: #d1590f; }
+  @media (prefers-color-scheme: dark) {
+    body { background: #141413 !important; color: #f1efe9 !important; }
+    .back-link { color: #a8a59c !important; }
+    .back-link:hover { color: #f1efe9 !important; }
+    .headline-block { background: #1d1d1b !important; color: #f1efe9; box-shadow: none !important; }
+    .subhead { background: #262522 !important; color: #f1efe9; box-shadow: none !important; }
+    .description { color: #c9c6bd !important; }
+    .how-to, .prompt-box, .related-card { background: #1d1d1b !important; border-color: #33322e !important; }
+    .how-to-steps { color: #d6d3ca !important; }
+    .how-to-steps strong { color: #f7f5ef !important; }
+    .prompt-box { color: #e9e6dd !important; }
+    .copy-button { background: #f1efe9 !important; color: #111 !important; }
+    .copy-button.copied { background: #1d9e75 !important; color: #fff !important; }
+    .footer-cta { background: #1d1d1b !important; border: 1px solid #33322e; }
+    .watch-video { background: #f1efe9; color: #111; }
+    .rtag { background: rgba(255,255,255,0.08); color: #c4c9d1; }
+    .rtag.chatgpt { background: rgba(29,138,91,0.22); color: #5fd39c; }
+    .rtag.gemini { background: rgba(59,91,219,0.24); color: #9db1ff; }
+    .rtag.design { background: rgba(255,107,44,0.16); color: #ff9a6b; }
+    a { color: #ff9a6b; }
+    .watch-video, .related-card, .try-button, .footer-cta a { color: inherit; }
+    .footer-cta a, .try-button { color: #fff !important; }
+    .watch-video { color: #111 !important; }
+  }
+  /* kmai-shared:end */
 </style>
 </head>
 <body>
@@ -101,6 +156,7 @@
     <div class="headline">AI BUDGET TRACKER</div>
     <div class="subhead">60 second setup</div>
   </div>
+  <!-- kmai:watch --><a class="watch-video" href="https://www.tiktok.com/@kyle.meets.ai/video/7626488801132612877" target="_blank" rel="noopener"><span class="watch-play" aria-hidden="true">▶</span> Watch the video</a><!-- /kmai:watch -->
 
   <div class="description">
     Paste this into Claude, drop in your bank statement or CSV, and get an interactive dashboard with spending breakdowns, charts, and a savings tip.
@@ -143,6 +199,13 @@ Always be conversational and clear. No jargon. Talk to me like a friend who's go
     <span id="copy-label">Copy prompt</span>
   </button>
 
+  <!-- kmai:related:start -->
+  <div class="related" id="related" hidden>
+    <div class="related-label">Related prompts</div>
+    <div class="related-list"></div>
+  </div>
+  <!-- kmai:related:end -->
+
   <div class="footer-cta">
     <div class="footer-cta-label">Want more like this?</div>
     <div class="footer-cta-title">Follow @kyle.meets.ai</div>
@@ -175,6 +238,51 @@ Always be conversational and clear. No jargon. Talk to me like a friend who's go
       label.textContent = 'Copy prompt';
     }, 2000);
   });
+</script>
+<script id="kmai-related">
+  // Related prompts: reads the hub's cards and shows 3 from the same topic (then shared apps), newest first.
+  (function () {
+    var box = document.getElementById('related');
+    if (!box || !window.fetch || !window.DOMParser) return;
+    var here = (location.pathname.split('/').pop() || '').replace(/\.html$/, '');
+    fetch('index.html').then(function (r) { return r.text(); }).then(function (t) {
+      var doc = new DOMParser().parseFromString(t, 'text/html');
+      var cards = Array.prototype.slice.call(doc.querySelectorAll('.prompt-card'));
+      var key = function (c) { return (c.getAttribute('href') || '').replace(/\.html$/, ''); };
+      var me = cards.filter(function (c) { return key(c) === here; })[0];
+      var topic = me ? me.getAttribute('data-topic') : null;
+      var apps = me ? (me.getAttribute('data-apps') || '').split(' ') : [];
+      var score = function (c) {
+        var s = (topic && c.getAttribute('data-topic') === topic) ? 10 : 0;
+        (c.getAttribute('data-apps') || '').split(' ').forEach(function (a) { if (a && apps.indexOf(a) !== -1) s += 1; });
+        return s;
+      };
+      var pick = cards.filter(function (c) { return c !== me; }).sort(function (a, b) {
+        return score(b) - score(a) || (b.getAttribute('data-added') || '').localeCompare(a.getAttribute('data-added') || '');
+      }).slice(0, 3);
+      if (!pick.length) return;
+      var list = box.querySelector('.related-list');
+      pick.forEach(function (c) {
+        var a = document.createElement('a');
+        a.className = 'related-card'; a.href = c.getAttribute('href');
+        var title = document.createElement('div'); title.className = 'related-title';
+        var tt = c.querySelector('.prompt-title');
+        var name = document.createElement('span');
+        name.textContent = tt ? tt.textContent.replace('\u2192', '').trim() : key(c);
+        var arrow = document.createElement('span'); arrow.className = 'arrow'; arrow.textContent = '\u2192';
+        title.appendChild(name); title.appendChild(arrow); a.appendChild(title);
+        var tags = document.createElement('div'); tags.className = 'related-tags';
+        Array.prototype.slice.call(c.querySelectorAll('.tool-tag')).forEach(function (tg) {
+          var sp = document.createElement('span');
+          var cls = (tg.className.match(/tool-(chatgpt|gemini|design)/) || [])[1] || '';
+          sp.className = 'rtag' + (cls ? ' ' + cls : ''); sp.textContent = tg.textContent;
+          tags.appendChild(sp);
+        });
+        a.appendChild(tags); list.appendChild(a);
+      });
+      box.hidden = false;
+    }).catch(function () {});
+  })();
 </script>
 </body>
 </html>
