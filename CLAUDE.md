@@ -64,6 +64,13 @@ non-technical TikTok audience. This file is the process of record. Follow it.
   (Atlas) keeps that tool's tag instead. Connectors (Gmail, Notion, Sheets) go in the card
   text, not the tags.
 
+## Visitor stats (Nov 2026)
+
+Cloudflare Web Analytics is on for this Pages project (privacy-friendly: no cookies, no banner,
+counts only). Cloudflare injects its beacon automatically on every deployment, so pages need no
+snippet. See the numbers in Cloudflare: Workers & Pages → kyle-ai-prompt-library → Metrics →
+View Web Analytics (top pages, referrers such as TikTok and Instagram, countries, devices).
+
 ## Shared parts on every prompt page (Nov 2026)
 
 Every prompt page carries three marker-wrapped blocks (they're identical across pages, so copying
