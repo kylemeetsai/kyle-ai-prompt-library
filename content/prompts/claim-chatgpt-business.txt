@@ -1,0 +1,38 @@
+title: Claim Your Business in ChatGPT (Blue Check)
+desc: ChatGPT now gives verified businesses a profile with a blue check. Here are the 3 steps to claim yours in OpenAI's Business Hub, plus a prompt that writes your profile details for you.
+headline: CHATGPT GAVE BUSINESSES A BLUE CHECK ✅
+sub: The full guide · 3 steps + a prompt that writes your profile
+topic: content
+apps: claude chatgpt gemini
+format: guide
+added: 2026-12-02
+copy: Copy prompt
+try: https://chatgpt.com/business-hub | Open Business Hub | OpenAI's page · tap Claim your business and sign in
+
+=== description ===
+ChatGPT now has profile pages for businesses. Claim and verify yours and you get the <strong>blue check</strong>, a say in what your profile shows, and <strong>insights</strong> on how often ChatGPT mentions you. Here are the 3 steps, where to find your insights, and a prompt that writes your profile details for you.
+
+=== steps ===
+<strong>Claim it:</strong> tap <em>Open Business Hub</em> above (or open <strong>Business Hub</strong> from the ChatGPT sidebar), sign in, then search for your business by name and select it. Not listed? See if you can add it as an online business
+<strong>Prove it's yours:</strong> verify with your business phone, business email, your website's domain or your Shopify store. On Shopify? Tap <strong>Connect Shopify</strong> and you can use your Shopify products in your profile. Then finish the ID check with <strong>Persona</strong> when asked: it unlocks your blue check, your edits and your insights
+<strong>Add your details</strong> (the most important step): tap <em>Copy prompt</em> below, paste it into a new ChatGPT chat, answer its questions, check what it writes, then copy it into your profile. OpenAI reviews changes before they go live
+<strong>Then check Insights:</strong> see how often ChatGPT mentions you, your website clicks and the topics you come up in. Blank at first? There may not be enough activity yet
+
+=== notes ===
+Good to know: it's in beta and open to online shops and online services with a website. Local stores and restaurants can only claim a listing that already exists in the US, for now.
+Only do the ID check through Business Hub. Never send your ID or a verification code to anyone in a chat, email or DM.
+Bonus: once you're verified, eligible online shops and services can also set up their own AI agent that answers customer questions.
+Claiming doesn't guarantee a higher spot. ChatGPT still picks which businesses to recommend on its own.
+
+=== prompt ===
+I want to claim my business in ChatGPT's Business Hub and get my profile right. Ask me one question at a time and wait for each answer: my business name and website, what I sell, who my customers are, where and how I ship or deliver, and my return, refund or cancellation policy. If I say "you pick", work it out from my website and tell me what you chose. For delivery and returns, only use what I tell you or what my website says, never a made-up policy.
+
+Then search the web, starting with my website, and tell me how ChatGPT would likely describe my business today, and what's wrong or missing. Say where you found each thing. If you can't search, can't find my business, or aren't sure a result is mine, say so instead of guessing.
+
+Then write my profile details, ready to copy:
+1. Business description: two sentences in plain words.
+2. Category: the product or service category that fits best.
+3. Delivery policy: one short paragraph.
+4. Return policy: one short paragraph.
+
+Keep it friendly and true: no hype, no made-up facts, and flag anything you had to guess. Finish with a short checklist of what to fill in at chatgpt.com/business-hub: website, description, category, delivery policy, return policy, logo and cover photo.
