@@ -326,6 +326,16 @@ dialog.drawer::backdrop { background: rgba(12,14,17,.42); backdrop-filter: blur(
 .film-steps b { flex: none; display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--chip); color: var(--chip-ink); font: 700 12px/1 var(--display); }
 @media (max-width: 400px) { .film-steps { gap: 8px; } .film-steps li { font-size: 12.5px; gap: 6px; } }
 
+/* ---------- the audience numbers: one centered band under the hero, counting up on arrival ---------- */
+.hero .stats-wrap { display: block; }
+.stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 920px; margin: clamp(40px, 6vw, 72px) auto 0; padding-block: clamp(20px, 3vw, 30px); border-block: 1px solid var(--line); text-align: center; }
+.stats > div { display: grid; gap: 10px; justify-items: center; padding-inline: 8px; min-width: 0; }
+.stats > div + div { border-left: 1px solid var(--line); }
+.stats dt { font: 800 clamp(30px, 8.6vw, 66px)/.95 var(--display); letter-spacing: -.03em; font-variant-numeric: tabular-nums; font-variation-settings: "opsz" 96; white-space: nowrap; }
+.stats .plus { color: var(--accent); }
+@media (max-width: 359px) { .stats > div { padding-inline: 2px; } .stats dd { letter-spacing: .03em; white-space: nowrap; } }
+.stats dd { margin: 0; font: 500 clamp(11px, 1.3vw, 13px)/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
 /* ---------- shared extras ---------- */
 .skip { position: absolute; left: 12px; top: -80px; z-index: 50; padding: 10px 14px; border-radius: 10px; background: var(--chip); color: var(--chip-ink); font-weight: 600; text-decoration: none; }
 .skip:focus { top: 12px; }

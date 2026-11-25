@@ -29,6 +29,26 @@
     const film = $('film'); film.removeAttribute('autoplay'); film.pause(); film.controls = true;
   }
 
+  // ---------- the audience numbers count up when they come into view ----------
+  const counts = [...document.querySelectorAll('.stats .count')];
+  const fmt = n => n >= 1e6 ? (n / 1e6).toFixed(n >= 9.95e6 ? 0 : 1).replace(/\.0$/, '') + 'M'
+    : n >= 1000 ? (n / 1000).toFixed(n >= 9950 ? 0 : 1).replace(/\.0$/, '') + 'K' : String(Math.round(n));
+  if (!reduce && counts.length && 'IntersectionObserver' in window) {
+    const finals = counts.map(c => c.textContent);
+    counts.forEach(c => { c.textContent = '0'; });
+    const run = () => {
+      const t0 = performance.now(), dur = 1700;
+      const tick = now => {
+        const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        counts.forEach((c, i) => { c.textContent = p < 1 ? fmt(+c.dataset.to * e) : finals[i]; });
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(es => { if (es.some(x => x.isIntersecting)) { io.disconnect(); run(); } }, { threshold: 0.6 });
+    io.observe(document.querySelector('.stats'));
+  }
+
   // ---------- copy ----------
   const flash = (btn, text, ms = 1800) => {
     if (!btn.dataset.label) btn.dataset.label = btn.innerHTML;
