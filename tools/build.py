@@ -146,6 +146,11 @@ def head(title, desc, url_path, extra='', noindex=False):
 <meta property="og:title" content="{e(title)}">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{SITE}{url_path}">
+<meta property="og:image" content="{SITE}/assets/og/kylemeetsai.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="KyleMeetsAI: AI made easy.">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ECEEF1" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48.png">
@@ -335,7 +340,7 @@ def home_page(prompts):
     if left:
         sys.exit(f'home.html: unfilled {left}')
     desc = 'Kyle teaches everyday people and businesses how to put AI to work, with a free library of the exact prompts from every video.'
-    return (head('KyleMeetsAI · AI, made easy', desc, '/') + HEADER + body.replace('<main id="top">', '<main id="main">') +
+    return (head('KyleMeetsAI · AI made easy', desc, '/') + HEADER + body.replace('<main id="top">', '<main id="main">') +
             f'\n<script src="/assets/home.js?v={version("assets/home.js")}" defer></script>\n</body>\n</html>\n')
 
 
