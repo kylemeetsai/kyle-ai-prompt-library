@@ -64,6 +64,25 @@ non-technical TikTok audience. This file is the process of record. Follow it.
   (Atlas) keeps that tool's tag instead. Connectors (Gmail, Notion, Sheets) go in the card
   text, not the tags.
 
+## Shared parts on every prompt page (Nov 2026)
+
+Every prompt page carries three marker-wrapped blocks (they're identical across pages, so copying
+any existing page brings them along):
+- **`/* kmai-shared:start … end */` in the `<style>`:** the watch link, related prompts and the
+  page's dark mode (`prefers-color-scheme: dark`, follows the viewer's phone or computer).
+- **`<!-- kmai:watch -->` under the headline:** "▶ Watch the video" linking to that video's TikTok
+  (`https://www.tiktok.com/@kyle.meets.ai/video/<id>`). Until the video is live it says "Watch my
+  videos on TikTok" and links to the profile; swap in the video link once it posts.
+- **`<!-- kmai:related -->` above the footer + `<script id="kmai-related">`:** shows 3 related
+  prompts, read live from `index.html` (same topic first, then shared apps, newest first). Nothing
+  to maintain.
+The Remotion project's `tools/prompt-library/inject_pages.py` re-applies all three across the
+site (idempotent) and holds the page → TikTok video map.
+
+The hub (`index.html`) has its own dark mode block (`/* kmai-dark:start … end */`) and a header
+with the live prompt count, TikTok and Instagram buttons, and a "Partnerships & questions" card
+(email link + Copy button). Keep the email visible and copyable there.
+
 ## Giveaway types: prompt, guide, link
 
 Not every video needs a prompt. **Prompt:** copy box (the AI does the work).
