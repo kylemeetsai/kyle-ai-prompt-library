@@ -5,7 +5,7 @@ sub: My 3 photo rules · Atlas by World Labs
 topic: design
 tool: Atlas
 format: link
-added: 2026-12-01
+added: 2026-12-03
 copy: Copy rules
 try: https://atlas.worldlabs.ai | Try Atlas | World Labs' site · sign in, then open Viewfinder
 

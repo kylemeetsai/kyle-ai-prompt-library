@@ -5,7 +5,7 @@ sub: The full guide · 3 steps + a prompt that writes your profile
 topic: content
 apps: claude chatgpt gemini
 format: guide
-added: 2026-12-02
+added: 2026-12-01
 copy: Copy prompt
 try: https://chatgpt.com/business-hub | Open Business Hub | OpenAI's page · tap Claim your business and sign in
 

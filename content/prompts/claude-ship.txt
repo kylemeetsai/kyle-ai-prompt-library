@@ -5,7 +5,7 @@ sub: The setup guide · 6 steps + a setup prompt
 topic: agents
 apps: claude
 format: guide
-added: 2026-12-03
+added: 2026-12-02
 copy: Copy prompt
 try: https://code.claude.com/docs/en/ship-command | Read Anthropic's guide | Anthropic's /ship docs · no sign-in needed
 
