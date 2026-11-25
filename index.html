@@ -80,6 +80,43 @@
     border-radius: 3px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.08);
   }
+  /* Search: instant, filters together with the topic pills */
+  .search { position: relative; margin: 22px 0 0; }
+  .search svg {
+    position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+    width: 18px; height: 18px; color: #9a9a92; pointer-events: none;
+  }
+  .search input {
+    width: 100%; height: 50px;
+    padding: 0 48px 0 44px;
+    background: #fff;
+    border: 1px solid #e6e6e0;
+    border-radius: 14px;
+    font-family: inherit; font-size: 16px; color: #111;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    -webkit-appearance: none; appearance: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .search input::placeholder { color: #9a9a92; }
+  .search input:focus { outline: none; border-color: #ff6b2c; box-shadow: 0 0 0 3px rgba(255,107,44,0.15); }
+  .search input::-webkit-search-cancel-button { display: none; }
+  .search-clear {
+    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+    width: 34px; height: 34px; border: 0; border-radius: 10px;
+    background: transparent; color: #8a8a83; font-size: 20px; line-height: 1;
+    cursor: pointer; display: none;
+  }
+  .search-clear:hover { background: #f3f3ee; color: #333; }
+  .search.has-text .search-clear { display: block; }
+  .search-key {
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%);
+    font-size: 12px; font-weight: 700; color: #aaa;
+    border: 1px solid #e2e2dc; border-radius: 6px; padding: 1px 7px;
+    pointer-events: none;
+  }
+  .search.has-text .search-key { display: none; }
+  @media (hover: none) { .search-key { display: none; } }
+  .results-count { text-align: center; font-size: 13px; color: #888; margin: 6px 0 0; min-height: 18px; }
   /* Filter pill bar — All on its own row, topics wrap centered beneath it */
   .filter-bar {
     display: flex;
@@ -269,6 +306,13 @@
     <div class="subhead">Tap · copy · paste into any AI</div>
   </div>
 
+  <div class="search" role="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input type="search" id="prompt-search" placeholder="Search prompts" aria-label="Search prompts" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search">
+    <span class="search-key" aria-hidden="true">/</span>
+    <button type="button" class="search-clear" aria-label="Clear search">×</button>
+  </div>
+
   <nav class="filter-bar" aria-label="Filter prompts by topic">
     <button class="pill" type="button" data-filter="all" aria-pressed="true">All <span class="pill-count"></span></button>
     <span class="pill-break" aria-hidden="true"></span>
@@ -280,6 +324,8 @@
     <button class="pill" type="button" data-filter="money" aria-pressed="false">Money <span class="pill-count"></span></button>
     <button class="pill" type="button" data-filter="agents" aria-pressed="false">Agents &amp; Automation <span class="pill-count"></span></button>
   </nav>
+
+  <p class="results-count" aria-live="polite"></p>
 
   <div class="prompts-list">
     <a href="google-vids-movie.html" class="prompt-card" data-topic="content" data-tool="claude" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-11-25">
@@ -553,7 +599,7 @@
     </a>
   </div>
 
-  <p class="no-results">No prompts in this category yet — check back soon.</p>
+  <p class="no-results" aria-live="polite">No prompts in this category yet. Check back soon.</p>
 
   <p class="disclaimer">These prompts are provided for educational and informational purposes only. Results from AI tools vary and may contain errors. Always review AI output before using it for any important decisions. This is not professional, legal, medical, or financial advice. Use at your own discretion.</p>
 </div>
@@ -580,35 +626,86 @@
       }
     });
 
-    // Write the live count into each pill from the actual cards on the page.
-    pills.forEach(function (pill) {
-      var filter = pill.getAttribute('data-filter');
-      var count = filter === 'all'
-        ? cards.length
-        : cards.filter(function (c) { return c.getAttribute('data-topic') === filter; }).length;
-      var slot = pill.querySelector('.pill-count');
-      if (slot) slot.textContent = count > 0 ? count : '';
+    // Search + topic filter. Both apply together; pill counts follow the search.
+    var input = document.getElementById('prompt-search');
+    var searchBox = document.querySelector('.search');
+    var clearBtn = document.querySelector('.search-clear');
+    var countLine = document.querySelector('.results-count');
+    var topic = 'all';
+    var query = '';
+    var TOPIC_WORDS = { skills: 'skills skill', career: 'career job jobs resume interview', design: 'design', content: 'content social', health: 'health life wellness', money: 'money finance budget savings', agents: 'agents agent automation automate' };
+    // A few everyday words people type that the cards say differently.
+    var SYNONYMS = { cv: 'resume', email: 'email|gmail|inbox', mail: 'email|gmail|inbox', workout: 'workout|personal trainer|strength program|running coach', gym: 'personal trainer|workout|strength program', fitness: 'personal trainer|workout|strength program|running coach', run: 'running coach|strava', running: 'running coach|strava', diet: 'nutrition|nutritionist|meal', food: 'nutrition|meal|recipe', video: 'video|vids|motion', movie: 'movie|vids|video', photo: 'photo|image|picture', money: 'money|budget|savings|finance|refund', finance: 'finance|budget|savings|money', job: 'job|career|resume|interview', business: 'business|quote|lead|customer', social: 'social|instagram|tiktok|linkedin|caption|content', website: 'website|site', app: 'app|dashboard|tracker', ai: '' };
+    function norm(t) { return (t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9+#.\s]/g, ' '); }
+    var haystacks = cards.map(function (c) {
+      return norm(c.textContent + ' ' + (TOPIC_WORDS[c.getAttribute('data-topic')] || '') + ' ' + (c.getAttribute('data-apps') || '') + ' ' + (c.getAttribute('data-format') || ''));
     });
-
-    function apply(filter) {
+    function tokens(q) { return norm(q).split(/\s+/).filter(function (w) { return w.length > 0 && SYNONYMS[w] !== ''; }); }
+    function matchesQuery(i, toks) {
+      return toks.every(function (w) {
+        var alts = (SYNONYMS[w] || w).split('|');
+        if (!SYNONYMS[w] && alts.indexOf(w) === -1) alts.push(w);
+        return alts.some(function (a) { return a && haystacks[i].indexOf(a) !== -1; });
+      });
+    }
+    function render(scroll) {
+      var toks = tokens(query);
+      var hits = cards.map(function (c, i) { return toks.length === 0 || matchesQuery(i, toks); });
       var visible = 0;
-      cards.forEach(function (card) {
-        var show = filter === 'all' || card.getAttribute('data-topic') === filter;
+      cards.forEach(function (card, i) {
+        var show = hits[i] && (topic === 'all' || card.getAttribute('data-topic') === topic);
         card.classList.toggle('hidden', !show);
         if (show) visible++;
       });
       pills.forEach(function (pill) {
-        pill.setAttribute('aria-pressed', pill.getAttribute('data-filter') === filter ? 'true' : 'false');
+        var f = pill.getAttribute('data-filter');
+        var n = cards.filter(function (c, i) { return hits[i] && (f === 'all' || c.getAttribute('data-topic') === f); }).length;
+        var slot = pill.querySelector('.pill-count');
+        if (slot) slot.textContent = n > 0 ? n : '';
+        pill.setAttribute('aria-pressed', f === topic ? 'true' : 'false');
       });
-      if (noResults) noResults.style.display = visible === 0 ? 'block' : 'none';
+      searchBox.classList.toggle('has-text', query.length > 0);
+      if (countLine) countLine.textContent = (toks.length || topic !== 'all') && visible > 0 ? 'Showing ' + visible + ' of ' + cards.length + ' prompts' : '';
+      if (noResults) {
+        noResults.style.display = visible === 0 ? 'block' : 'none';
+        noResults.textContent = toks.length
+          ? 'No prompts match "' + query.trim() + '"' + (topic !== 'all' ? ' in this topic' : '') + '. Try "resume", "Gmail" or "budget".'
+          : 'No prompts in this category yet. Check back soon.';
+      }
+      if (scroll && searchBox.getBoundingClientRect().top < 0) searchBox.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-
-    pills.forEach(function (pill) {
-      pill.addEventListener('click', function () {
-        apply(pill.getAttribute('data-filter'));
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+    function syncUrl() {
+      try {
+        var url = new URL(window.location.href);
+        if (query.trim()) url.searchParams.set('q', query.trim()); else url.searchParams.delete('q');
+        history.replaceState(null, '', url.pathname + url.search + url.hash);
+      } catch (e) {}
+    }
+    var t;
+    input.addEventListener('input', function () {
+      query = input.value;
+      render(false);
+      clearTimeout(t); t = setTimeout(syncUrl, 300);
     });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { input.value = ''; query = ''; render(false); syncUrl(); }
+      if (e.key === 'Enter') input.blur();
+    });
+    clearBtn.addEventListener('click', function () { input.value = ''; query = ''; render(false); syncUrl(); input.focus(); });
+    document.addEventListener('keydown', function (e) {
+      var tag = (document.activeElement && document.activeElement.tagName) || '';
+      if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA' && !e.metaKey && !e.ctrlKey) { e.preventDefault(); input.focus(); }
+    });
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () { topic = pill.getAttribute('data-filter'); render(true); });
+    });
+    // A link like ?q=refund opens the page already searched.
+    try {
+      var q0 = new URL(window.location.href).searchParams.get('q');
+      if (q0) { input.value = q0; query = q0; }
+    } catch (e) {}
+    input.placeholder = 'Search ' + cards.length + ' prompts';
+    render(false);
   })();
 </script>
 </body>
