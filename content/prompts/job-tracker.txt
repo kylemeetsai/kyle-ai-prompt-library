@@ -1,0 +1,250 @@
+title: AI Job Tracker
+desc: Builds a personal job-search command center as a Claude artifact that remembers everything across sessions. Track every application through a six-stage pipeline, log notes, surface stalled jobs, and draft follow-up emails in your own voice, written from you to the recruiter.
+headline: AI JOB TRACKER
+sub: 60 second setup
+topic: career
+apps: claude
+format: prompt
+added: 2026-06-02
+tiktok: 7646644288176082190
+copy: Copy prompt
+
+=== description ===
+Builds a personal job-search command center as a Claude artifact that remembers everything across sessions. Answer five quick questions, then track every application through a six-stage pipeline, log notes, surface stalled jobs, and draft follow-up emails in your own voice, written from you to the recruiter, never the other way around.
+
+=== steps ===
+Tap <em>Copy prompt</em> below
+Paste into a new Claude chat
+Answer the five quick setup questions about your name, field, and email tone
+Get your AI Job Tracker as an artifact that saves, and open it every time you apply or hear back
+
+=== prompt ===
+You are a senior product designer and front-end engineer building me a state-of-the-art AI Job Tracker as an artifact: a single self-contained HTML file that saves across sessions using the artifact's built-in storage. Not a one-off. A tool I will open every time I apply to a job or hear back from one. Premium polish, conversational input.
+
+Step 1: Interview me
+
+Before you build anything, walk me through these questions one at a time. Warm and concise tone. Wait for my answer before moving to the next question.
+
+1. What's your first name? I'll use this to sign every follow-up email the tracker drafts on your behalf.
+2. What kind of role are you applying for? (e.g., software engineering, product design, marketing, product management, sales, data, ops, finance, customer success, generalist, etc.) I'll use this to seed your tracker with realistic example jobs and to tone the follow-up emails correctly.
+3. Do you want to start with an empty tracker, or seed it with 5 example jobs in your field so you can see how everything works? You can delete them in one click. (If you pick seeded, I'll generate 5 realistic example jobs in your field: 3 active at different stages, 1 stalled, 1 closed.)
+4. Pick a follow-up email tone: warm and conversational, professional and formal, or direct and startup-flavored. This shapes the voice of every email the tracker drafts for you.
+5. Anything I should know that would help? (Optional. Example: "I'm a career switcher so my notes tend to mention bootcamps," or "I'm only applying to remote roles." If nothing comes to mind, just say skip.)
+
+After my answers, build the artifact. Do not show me any code or summaries first. Just build it and publish.
+
+Step 2: Build the artifact
+
+Build a single self-contained HTML file and publish it as an artifact named "AI Job Tracker". The artifact must work exactly as specified below.
+
+Seed data (on first render only, if saved storage is empty)
+
+Compute today's date dynamically using `new Date()`. Use that as the anchor for all relative dates ("Updated Xd ago," stalled calculations, weekly review windows).
+
+If the user picked "empty tracker" in Step 1, skip seeding and let them add jobs via the chat input.
+
+If the user picked "seeded tracker," generate 5 example jobs in the user's stated field. Use real, recognizable company names that hire for that field. Spread the stages so all states are visible:
+
+- Job 1: Far along. Applied ~22 days ago, lastUpdated ~4 days ago. Stages completed through Final Round. Notes mention a specific upcoming touchpoint.
+- Job 2: Mid-pipeline. Applied ~17 days ago, lastUpdated ~3 days ago. Stages completed through Round 2. Notes mention an upcoming round and an interviewer first name.
+- Job 3: Early. Applied ~10 days ago, lastUpdated ~5 days ago. Stages completed through Phone Screen. Notes mention a scheduled recruiter call.
+- Job 4: Stalled. Applied ~35 days ago, lastUpdated ~35 days ago (no movement). Stages completed only through Applied. Notes mention how they applied (referral, cold, posting). Status active, amber-tinted.
+- Job 5: Closed (rejected). Applied ~30 days ago, lastUpdated ~16 days ago. Stages completed through Phone Screen. Notes mention a polite-rejection reason. Status closed.
+
+Active tab renders by default. The first 4 sit in Active, with Job 4 amber-tinted and a "Generate next move" button. Job 5 lives under Closed.
+
+Three tabs
+
+1. Active: every job whose status !== 'closed' (stalled jobs included, amber-tinted in place).
+2. Stalled: subset of active where (today - lastUpdated) >= 7 days. Each card surfaces a "Generate next move" button.
+3. Closed: offers, rejections, withdrawals.
+
+Job card
+
+- Company (serif heading) + role.
+- Application date + relative "Updated Xd ago."
+- Horizontal progress line across the card with 6 checkpoints: Applied → Phone Screen → Round 1 → Round 2 → Final Round → Offer/Decision. Checkboxes use a satisfying elastic pop animation on tap. Clicking a stage auto-completes all earlier stages. Un-checking clears later ones.
+- Notes textarea (interviewer names, take-homes, salary). Auto-saves on blur.
+- AI button: "Generate next move" on stalled cards (amber). "Draft follow-up" on active cards (sage).
+- Footer: "Mark offer / Rejected / Withdrew" buttons. Closed cards get a "Reopen" button.
+
+Chat input (top of artifact)
+
+Conversational input field. When the user types things like "I just applied to Anthropic for Product Designer" or "I had my whiteboard at Stripe, going to the final":
+
+1. Parse the natural language.
+2. If anything is missing, ask ONE clarifying question.
+3. Add or update the job card in real time.
+4. Confirm concisely ("Got it, added Anthropic," "Checked off Final Round for Stripe").
+
+CRITICAL — Parser architecture
+
+Do NOT route every message to the artifact's built-in Claude call. Build a deterministic regex fast-path first, with the LLM as fallback. Without this, the parser will fail on common inputs.
+
+The fast-path must handle:
+
+- `"(just) applied to/at/with <company> for/as (a|an|the) <role>"` → action=add.
+- `"(just) applied to <company>"` with no role → action=clarify, ask "What role at <company>?", store pendingClarification. The user's next message becomes the role.
+- Existing-company stage updates: match the company name case-insensitively against state.jobs, then map phrases to stages:
+  - "phone screen / recruiter call / intro call" → `phoneScreen`
+  - "round 1 / first round / technical screen" → `round1`
+  - "round 2 / second round / whiteboard / onsite / portfolio review / take-home" → `round2`
+  - "final / final round / panel / loop" → `finalRound`
+  - "offer / got the job / decision" → `offerDecision`
+- "going to / moving to <stage>" means complete the PRIOR stage (not the target). e.g., "had whiteboard, going to final" → round2=true.
+- Closing: "rejected / passed / didn't move forward" → action=close, outcome=rejected. "got an offer / accepted / signed" → offer. "withdrew / pulled out" → withdrawn.
+- Case-insensitive company match. TitleCase new company and role names.
+
+Only fall through to `askClaude` when the regex returns null. The LLM prompt should request a strict JSON object with: `action` (`"add" | "update_stage" | "update_notes" | "close" | "clarify" | "unknown"`), `jobId`, `company`, `role`, `stageKey`, `stageValue`, `appendNotes`, `closedOutcome`, `clarifyQuestion`, `confirmation`. Extract JSON robustly (strip code fences, balance braces). If the LLM returns action=unknown or throws, attempt the regex parser one more time in "loose" mode (bare company mention adds a note) before showing an error.
+
+CRITICAL — Response coercion
+
+the artifact's built-in Claude call may return a plain string OR a structured object. Never assume the shape. Calling `String(obj)` on the wrong shape yields `[object Object]` in the UI. Implement a `coerceText(res)` helper that handles every shape:
+
+- plain string
+- `{ text: "..." }`
+- `{ content: "..." }` or `{ content: [{ type: 'text', text: '...' }, ...] }`
+- `{ message: { content: ... } }`
+- `{ response | output | completion: ... }`
+- `{ choices: [{ message: { content: ... } }] }`
+- arrays of the above (concatenate)
+
+Pass every askClaude response through `coerceText` before using it. Never `String(res)` directly on the response.
+
+CRITICAL — Timeouts and optimistic rendering (don't make the user wait)
+
+the artifact's built-in Claude call can take a long time, and sometimes it hangs. The artifact must NEVER show a spinner with no content. Implement a `withTimeout(promise, ms)` helper:
+
+```js
+function withTimeout(promise, ms) {
+  return new Promise((resolve, reject) => {
+    const t = setTimeout(() => reject(new Error('timeout')), ms);
+    Promise.resolve(promise).then(
+      v => { clearTimeout(t); resolve(v); },
+      e => { clearTimeout(t); reject(e); }
+    );
+  });
+}
+```
+
+Wrap EVERY askClaude call with it:
+
+- Follow-up draft: 8 seconds.
+- Chat parser fallback: 6 seconds.
+- Weekly coach line: 6 seconds.
+
+Optimistic rendering pattern (use everywhere a deterministic fallback exists):
+
+1. Render the deterministic template (or local fallback) INSTANTLY.
+2. Show a subtle label like "Draft ready · polishing with AI…".
+3. Race the LLM against the timeout.
+4. If the LLM wins AND the response passes validation (length >= 60, not `[object Object]`, passes `isRecruiterVoice` check), swap it in.
+5. Otherwise leave the template in place and just remove the "polishing" label.
+
+Never block UI rendering on an LLM call.
+
+Next move / Draft follow-up button
+
+Calls the artifact's built-in Claude call (wrapped in `withTimeout`) to draft a follow-up email. CRITICAL: get the perspective right on the first try.
+
+Perspective (this is the #1 failure mode, be explicit):
+
+The email is written FROM the candidate (the user, by their first name collected in Step 1) TO the interviewer or recruiter. Not the other way around. The naive prompt "write a follow-up message for a job applicant" is ambiguous, and the model defaults to writing AS a recruiter TO the candidate ("Hi [Name], we were impressed by your..."). That is WRONG.
+
+Spell it out in the prompt to askClaude:
+
+- Author: the candidate, by first name (use the name collected in Step 1).
+- Recipient: the interviewer, recruiter, or hiring contact named in the notes if present. Otherwise, "the hiring team."
+- First-person ("I", "my") refers to the candidate. Second-person ("you", "your", "the team") refers to the recipient.
+- Forbid recruiter phrases: "we were impressed by your," "you're exactly the kind of," "we'd like to move you forward," "we're excited to have you," "expect to hear from us," "thank you for applying," "your candidacy," "based on your interview," etc.
+- Greeting addresses the interviewer by name, not the candidate.
+- Sign-off is "Best, [candidate first name]" — never `[Name]` or `[Signature]` placeholders.
+
+Include both a correct example (candidate writing to a named interviewer) and a wrong example (recruiter writing to the candidate) in the prompt itself so the model cannot drift.
+
+Other constraints:
+
+- 90 to 130 words.
+- Salutation + 2 to 3 short paragraphs + sign-off as the candidate.
+- Mine the notes for specifics (names, projects, dates) and reference them naturally.
+- Never opens with "Hi, hope you're well" or "just checking in."
+- Stalled jobs → "gently circling back, confident not apologetic." Candidate asking for an update.
+- Active jobs → forward-looking touchpoint from the candidate (thank-you, prep question, scheduling).
+- No emoji. Return text only.
+- Match the email tone the user picked in Step 1 (warm and conversational, professional and formal, or direct and startup-flavored).
+
+CRITICAL — Deterministic fallback templates
+
+Do NOT trust the LLM alone, and NEVER wait for it. Build a `templateFollowUp(job, stalled, daysSilent)` function that returns a fully-formed, candidate-voice follow-up email from the user, branching on stage (Phone Screen / Round 1 / Round 2 / Final Round / Stalled). It must:
+
+- Extract a likely recipient first name from notes (`"with <Name>"`, `"from <Name>"`, or the first capitalized non-stopword).
+- Reference the role and company.
+- Be rendered IMMEDIATELY when the button is clicked (no waiting), then optionally replaced by the LLM version per the optimistic-rendering pattern.
+- Be the only thing shown if any of the following are true:
+  - LLM response is empty, under 60 chars, or contains `[object Object]`.
+  - `isRecruiterVoice()` flags the LLM output (see below).
+  - The LLM call times out or throws.
+
+CRITICAL — Recruiter-voice detector
+
+Implement `isRecruiterVoice(text)` that returns true if the output contains any of:
+
+- "we were/are impressed by your"
+- "you're exactly the kind of"
+- "we'd/we would like to move/invite/advance you"
+- "we want you on (our|the) team"
+- "expect to hear (back) from us"
+- "we'll/we will be in touch / reach out / follow up / get back to you"
+- "thank you for applying / your interest in"
+- "we're moving you into the next round"
+- "the team is/was excited about|to meet/interview"
+- "your candidacy"
+- "our hiring team/manager/committee"
+- Salutation that begins with the candidate's own first name as the addressee (e.g., "Hi <candidate-name>", "Hello <candidate-name>", "Dear <candidate-name>"). If the candidate is the recipient, perspective is flipped.
+- Sign-off from "the hiring team / recruiting team / talent team"
+
+Any match → discard the LLM output and use `templateFollowUp` instead.
+
+Also strip placeholder signatures (`[Name]`, `[Your Name]`, `[Signature]`) and replace with the candidate's first name collected in Step 1.
+
+Render the output inline below the button with a Copy button.
+
+Weekly review panel
+
+Toggle at the bottom expands a navy panel with white text showing:
+
+- Applications submitted this week vs last week (+delta).
+- Interviews moved (stages advanced) this week.
+- Stale jobs needing follow-up.
+- One AI coaching line via the built-in Claude call (wrapped in `withTimeout(6000)`, response passed through `coerceText`), max 35 words, references the actual pipeline ("3 of your last 5 stalled at application stage, try a referral on the next 2") not boilerplate. Cached so it does not regenerate on every render. Render a deterministic local fallback FIRST, then upgrade if the LLM returns something better in time.
+
+Visual design
+
+- White/cream background (`#fbfaf7`), navy headers (`#0e2238`), single sage accent (`#6a8f72`), warm amber for stalled (`#c98a2b`), muted rose for rejections.
+- Custom serif for headings: Fraunces or Playfair Display from Google Fonts. Inter for body.
+- Job cards: 14px rounded corners, soft shadow depth, 1px line border.
+- Stalled cards: gradient from amber-tint to cream, amber-soft border.
+- Stage circles: 26px, sage fill with white check on completion, elastic pop animation (`cubic-bezier(.6, -0.4, .3, 1.6)`, keyframes scale 0.6 → 1.25 → 1.08).
+- Horizontal progress bar threads behind the circles, fills to the % of completed stages.
+- Tabs are pill-style segmented control with count badges.
+- Mobile-readable (max-width 920px, responsive grid).
+- Looks like something a $200/hour career coach would email you.
+
+Persistence
+
+One saved storage key (`"jobtracker.v1"`) holds `{ jobs, chat, activeTab, reviewOpen, seeded, userName, emailTone }`. Save on every mutation. Reload tomorrow or next month — everything is exactly where it was left, including chat history (capped at last 50 messages) and which tab was open. `userName` and `emailTone` are set once from the Step 1 interview and persisted.
+
+Date handling
+
+Use `new Date()` for today. All "Updated Xd ago," stalled calculations, and weekly review windows use that anchor. Seed data uses dates computed relative to today so it always looks fresh.
+
+Summary of non-obvious requirements (read twice)
+
+1. Regex parser BEFORE the LLM for chat input. Common phrases like "applied to X for Y" must work without an LLM round-trip.
+2. `coerceText(askClaudeResponse)` everywhere you use the LLM. Never `String(res)`. The response is often an object, not a string.
+3. `withTimeout` wraps every askClaude call (6 to 8 seconds) and the deterministic fallback renders INSTANTLY. Nothing in the artifact waits on the LLM. The LLM only ever upgrades content that is already on screen.
+4. Follow-up perspective is FROM the candidate TO the interviewer. The model will get this wrong without explicit examples and a post-hoc `isRecruiterVoice` detector that triggers a template fallback.
+5. Deterministic templates for every LLM-generated string: follow-up emails, coaching note. The artifact must work even if the LLM is offline, slow, or returns garbage.
+6. Sign emails as the candidate's first name (collected in Step 1), never as `[Name]` or `[Signature]`. Strip placeholders if they sneak through.
+
+Build the HTML file, then publish it as an artifact named "AI Job Tracker".

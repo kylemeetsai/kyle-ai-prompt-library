@@ -1,0 +1,149 @@
+title: AI Personal Finance Tracker (Email)
+desc: Scans your email for the last 90 days and builds a saved dashboard of every active subscription, with a "worth a second look" callout for services you may not be using anymore.
+headline: AI PERSONAL FINANCE TRACKER (EMAIL MCP)
+sub: 60 second setup
+topic: money
+apps: claude
+format: prompt
+added: 2026-05-06
+tiktok: 7636537357394660621
+copy: Copy prompt
+
+=== description ===
+Scans your email for subscription receipts from the past 90 days and builds a saved dashboard that refreshes from your email when you open it or tap Refresh. Shows total monthly spend, an upcoming charges timeline, every active subscription as a card, and a "worth a second look" callout for services you may not be using anymore.
+
+=== steps ===
+Tap <em>Copy prompt</em> below
+Paste into a new Claude chat with your email connector set up (Gmail, Outlook, etc.)
+The dashboard builds itself from your past 90 days of subscription receipts
+Reopen the artifact anytime to refresh with current data
+
+=== prompt ===
+Build me a personal subscription tracker as a saved artifact dashboard that refreshes from my email when I open it or tap Refresh, so it always reflects what I'm currently paying for.
+
+Before you build, check what email connector I already have set up.
+
+— If an email tool is already connected (Gmail, Outlook, etc.), just
+  use it and move straight into building. Don't make me re-confirm.
+— If nothing is connected, tell me, recommend the right connector,
+  and walk me through hooking it up. Wait for confirmation before
+  moving on.
+
+Quick environment check first: this only works in a tool that
+supports saved artifacts and email connectors. If that's not the
+environment I'm in, tell me up front instead of trying to build
+something half-working.
+
+What the dashboard does:
+
+Scan my email for the last 90 days and pull every recurring
+subscription receipt — streaming, software, AI tools, fitness apps,
+news, cloud storage, anything billing monthly or annually. From each
+receipt, extract the service name, plan description, monthly cost
+(annualize any yearly bills into a monthly equivalent), last charge
+date, and next billing date.
+
+Be careful with yearly subscriptions: divide them by 12 for the
+monthly figure. Don't accidentally count a $60/year plan as $60/mo
+in the totals.
+
+Surface a "Worth a second look" callout — services where I haven't
+received any non-receipt emails from that brand in the last 30
+days. Frame this as a soft signal, not a verdict. I might still use
+those services and just not be on their mailing list, so the
+language should suggest review, not cancellation.
+
+How it should look — single mobile-proportioned column, around
+608px wide, dark mode (near-black background), Linear/Notion vibes,
+not corporate banking:
+
+1. HERO at the top.
+   - One enormous dollar number in bold white-to-gray gradient
+     typography, with the cents shown smaller and subscripted (like
+     "$197" big, ".86" small).
+   - One muted line under it: "That's $X,XXX a year across N active
+     subscriptions."
+   - Two small pill chips below: "Next: [service] [date]" with a
+     clock icon, and "Biggest: [service] $X/mo" with a circle icon.
+
+2. "WORTH A SECOND LOOK" CALLOUT, prominent under the hero.
+   - Subtle amber-tinted card on near-black, with a glowing amber
+     dot.
+   - Header in small uppercase tracked-out type: "SUBSCRIPTIONS
+     WORTH A SECOND LOOK."
+   - One bold punchy line where the dollar amount glows amber:
+     "$XX/mo on N services you may not be using as much."
+   - A clean list of each one: small brand-colored swatch on the
+     left, service name in the middle, price on the right
+     ("$XX.XX /mo").
+   - Below the list, one small italic line in muted text:
+     "Based on email activity in the last 30 days — review before
+     canceling anything."
+
+3. TIMELINE: "When's my money leaving?" / "Next 30 days."
+   - A thin horizontal axis with date labels every 5 days
+     (e.g. APR 28, MAY 3, MAY 8…).
+   - A colored dot for each upcoming charge, positioned by date,
+     colored with that brand's signature color. If two charges hit
+     the same day, fan them out vertically. Hover reveals service
+     name + amount.
+
+4. ACTIVE SUBSCRIPTIONS card grid (2 columns).
+   - Section header on the left ("Active subscriptions"), count on
+     the right ("N active").
+   - Each card has: a brand-colored monogram tile in the top-left
+     (the letter for Netflix in red, Spotify green, ChatGPT teal,
+     Disney blue, Adobe red, etc.) and a small category tag in the
+     top-right (Streaming, Productivity, AI, Fitness, News, Storage,
+     Security) tinted with the same brand color.
+   - Below: service name, plan description in muted text (like
+     "Netflix Premium (4K + HDR)"), then a big bold price with
+     " / mo" in small muted type beside it.
+   - At the bottom: "Next [date]" with a small calendar icon.
+   - Cards in the "second look" set get a tiny amber dot in the
+     top-right corner as a quiet flag.
+   - A subtle vertical accent stripe in the brand color runs down
+     the left edge of each card.
+   - For services without a well-known brand color, pick a
+     reasonable neutral and tell me in chat which ones got a
+     fallback so I know what's approximate.
+
+5. CATEGORY DONUT at the bottom.
+   - Header: "By category" / "monthly $."
+   - Multi-colored donut chart with category-coded segments. Center
+     of the donut shows the total monthly spend with " / MONTH"
+     underneath.
+   - To the right of the donut: a legend listing each category with
+     a colored swatch, the category name, and the monthly amount
+     (e.g. "Streaming $68 /mo").
+
+6. FOOTER: a small muted line: "Refreshed live from [email source] ·
+   last 90 days."
+
+Animation and polish:
+— Subtle fade-up entrance on each section as the page loads,
+  staggered top-to-bottom.
+— Generous spacing. Large readable typography. Tabular numerals on
+  all dollar amounts so they line up cleanly.
+— The hero number and the "second look" callout are the two visual
+  anchors that need to land. Everything else supports them.
+
+Be honest with me about the data:
+
+— If you find very few or no receipts, don't fake a dashboard. Tell
+  me what you found and where you looked, and ask whether my
+  receipts might be in another inbox, a Promotions tab, or
+  filtered into a separate folder.
+— If a parsed amount looks uncertain — a yearly plan you weren't
+  sure about, a service where the next-charge date wasn't clear,
+  or a number you had to estimate — call it out in chat after the
+  build so I can verify.
+— If you guessed at a brand color or category for a less common
+  service, tell me which ones so I know what's approximate.
+
+Make it feel like a product, not a report.
+
+When it's built, tell me where it lives and how I can reopen it
+later. If anything goes sideways — no receipts found, unsupported
+email provider, weird data — explain in plain English and suggest a
+fix instead of giving up.

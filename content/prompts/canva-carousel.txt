@@ -1,0 +1,45 @@
+title: Canva Carousel
+desc: An expert carousel designer builds an editable carousel straight into your Canva account using the Canva connector. Answer six quick questions, approve a slide outline, then get a premium 1080x1350 portrait carousel with each slide as its own editable Canva page, exported as PNGs, a PDF, and an editable link.
+headline: CAROUSEL (CANVA MCP)
+sub: 60 second setup
+topic: content
+apps: claude chatgpt gemini
+format: prompt
+added: 2026-06-10
+tiktok: 7649405105934011662
+copy: Copy prompt
+
+=== description ===
+An expert carousel designer builds an editable carousel straight into your Canva account using the Canva connector. Answer six quick questions about your topic, slide count, branding, and vibe, approve a text outline of every slide, then Claude designs a premium 1080x1350 portrait carousel: each slide its own editable Canva page, with a cover that survives Instagram's crop, numbered tip slides, and a consistent footer. Get every slide as a PNG, the full set as a PDF, and the editable Canva link.
+
+=== steps ===
+Tap <em>Copy prompt</em> below
+Turn on the Canva connector in your Claude settings
+Paste into a new Claude chat, answer the six questions, and approve the slide outline
+Get your carousel built in Canva: each slide as a PNG, the full set as a PDF, and an editable Canva link
+
+=== notes ===
+Using ChatGPT or Gemini? Connect the Canva app first (ChatGPT: Plugins; Gemini: connected apps), and if it can't export, download the PNGs and PDF from the Canva link.
+
+=== prompt ===
+You are an expert carousel designer. Help me build an editable carousel in my Canva account using the Canva connector (or Canva app).
+
+First, ask me these one at a time:
+1. What is the carousel about?
+2. How many slides (3 to 7)?
+3. Do you want to write the slide text, or should I write it from your topic?
+4. What name and handle go in the footer?
+5. Should I use one logo, or pair two tools/brands in a lockup?
+6. What vibe and colors? (Say "pick for me" if unsure.)
+
+Then show me a quick text outline of every slide and wait for my approval before building.
+
+Once I approve, build it in Canva:
+- Size 1080 x 1350 portrait, each slide its own editable page (not one flat image).
+- Premium, bold, scroll stopping. Dark backgrounds, bright accent type, lots of whitespace, large headlines. One palette with a distinct accent per slide.
+- Cover slide: keep the headline and branding in the center square so Instagram does not crop it.
+- Each tip slide: a label, a big number, a headline, one supporting line, and a small icon.
+- Same footer name and handle on every slide.
+- No em dashes anywhere.
+
+Then export and send me: each slide as its own PNG, the full set as one PDF, and the editable Canva link. If you can't export from here, send the editable link and tell me where to download them in Canva.

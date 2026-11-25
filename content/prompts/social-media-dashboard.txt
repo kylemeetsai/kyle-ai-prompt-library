@@ -1,0 +1,79 @@
+title: Claude Tells You What to Post Next
+desc: Drop your TikTok or Instagram stats export into Claude, paste one prompt, and get a live dashboard built from your real numbers: your best days, which weekday works for you, what's growing, and three bets for what to post next week. Drop in next week's file and it updates itself.
+headline: CLAUDE TELLS YOU WHAT TO POST NEXT 📊
+sub: One file · your own social media dashboard
+topic: content
+apps: claude chatgpt gemini
+format: prompt
+added: 2026-10-19
+tiktok: 7698471478831893774
+copy: Copy prompt
+
+=== description ===
+Export your TikTok or Instagram stats, drop the file into Claude and paste this prompt. Claude reads your real numbers and builds you a live dashboard: your total views, your best days, which weekday works best for you, what's growing, and three specific bets for what to post next week. Drop in next week's export and it updates itself.
+
+=== steps ===
+Get your stats file. <strong>TikTok:</strong> on a computer, open TikTok Studio → Analytics → Export. <strong>Instagram:</strong> Meta Business Suite → Insights → Export
+Open a new chat in Claude and attach the file
+Tap <em>Copy prompt</em> below, paste it into the same message and send. Claude asks two quick questions (your goal, how often you post). Not sure? Just say "use the default"
+Claude builds your dashboard right in the chat. Next week, export again and drop the new file on the dashboard's drop box to see how you're trending
+
+=== notes ===
+In ChatGPT, click Preview on the code it writes; in Gemini, click Add files under the message box and choose Canvas before you send.
+
+=== prompt ===
+You are my friendly social media analyst. I've attached my analytics export from TikTok or Instagram. Using only my real numbers, build me a single-page dashboard as an interactive artifact or canvas that shows what's working and tells me what to post next. Do it in ONE pass, right after two quick questions.
+
+STEP 0: CHECK THE FILE
+- If no file is attached, stop and tell me how to get one in a few plain lines, then wait:
+  TikTok: on a computer, open TikTok Studio, go to Analytics, and look for Export or Download (top right). Pick the longest date range.
+  Instagram: open Meta Business Suite (business.facebook.com), go to Insights, and look for Export.
+  Menus move around, so tell me to look for the word "Export".
+- If a file is attached, open every file and sheet in it. Work out which platform it's from and what each row is: one row per DAY (account totals by date) or one row per POST (a video or reel with its own numbers). Then tell me in two short lines what you found, for example: "This is your TikTok overview: 60 days, from Aug 12 to Oct 10, with views, likes, comments and shares."
+
+STEP 1: TWO QUICK QUESTIONS
+Ask these one at a time, warmly. If I say "skip" or "use the default", use the default and move on.
+1. What matters most to you right now: more views, more followers, or more sales and clicks? (Default: more views.)
+2. Roughly how often do you post? (Default: a few times a week.)
+After that, don't ask anything else. Make every remaining decision yourself and build the whole thing.
+
+READING THE DATA (be careful, the insights have to be true)
+- Numbers may be stored as text, with commas, or as "1.2K". Convert them all to real numbers.
+- Dates may have no year (like "October 11"). They are recent and in order, so use the current year, and step back a year for any date that would land in the future. Work out the weekday of every row.
+- If there are several files, merge them and never count the same date or post twice.
+- Use only columns that exist. If something is missing (no saves, no titles, no shares), leave that part out quietly. Never invent a number.
+- Small samples mislead. Only compare two groups when each has at least 3 days or posts, and say how many the comparison is based on in small text.
+
+LAYOUT (one column, about 680px wide, built to read on a phone)
+1. Header: "Your TikTok" or "Your Instagram" on the left, the date range in small caps on the right.
+2. Hero: total views as one huge number, with "views in the last N days" under it. Then three small cards: a typical day or typical post (the median, not the average), total likes, and the best day or best post with its number and date.
+3. A bar for every day (or every post), oldest to newest, height = views. Color the top 5 in the accent color and the rest soft gray, and label the top 2 with their views. The headline states the real finding, for example "Five days brought in almost half your views".
+4. "What's working": the three strongest true patterns, each comparing two real groups, as cards with one big number on the left (like 2.6x or +66%) and one plain sentence on the right. Pick from: best weekday vs worst weekday (medians), the latest 30 days vs the 30 before, shares or likes per 1,000 views on the top 5 vs everything else, and, for per-post files, the length, posting time or topic of the top posts vs the rest. Favor patterns that match my answer to question 1.
+5. "Typical views by day of the week": horizontal bars (median views), best day in the accent color, headline "<Day> is your day". Leave this out if any weekday has fewer than 2 data points.
+6. "Your biggest days" (or "Your biggest posts"): the top 5 with date, views, likes and shares, plus the post title or caption if the file has one.
+7. "Post next": a dark card with three specific bets for my next week, built from the insights above and fitted to how often I post: which day to post my best idea, which days to skip or use for lighter posts, and what to repeat from my top days or posts.
+8. A "Drop next week's export here" box: a dashed outline with a small file icon. When I drop a newer export on it, read it in the browser, add only the dates or posts that aren't already there, update every section, count the total up to the new number, and show a small pill like "+10% vs a typical week" plus a toast with how many views were added.
+
+STYLE
+- Background #F1EFF6, white cards with 18px rounded corners and no borders, dark ink #17131F, muted text #6E6880.
+- ONE accent color: TikTok red #FE2C55 for TikTok, Instagram pink #E1306C for Instagram. Use it only for top results and key numbers.
+- Fonts from Google Fonts: Bricolage Grotesque ExtraBold for the hero and headlines, Instrument Sans for body text, Geist Mono for small all-caps labels and numbers.
+- Every section gets a small all-caps label above a bold headline that states the finding, not the chart type.
+- No emoji, no gradients on cards.
+
+MOTION (lively, but never in the way)
+- Use a springy, slightly overshooting ease for everything that moves. Nothing linear.
+- The hero total counts up from 0. Small hearts float up the side of the hero card.
+- Bars grow from the bottom one after another. Insight numbers pop in and count up. Sections rise into place as they scroll into view.
+- Hovering or tapping a bar shows a small dark tooltip with its date, views and likes.
+- Respect prefers-reduced-motion (turn motion off for people who ask).
+
+STEP 2: QUIETLY CHECK YOUR WORK
+Before you finish, re-check the total, the median and every number in "What's working" against the file, and fix anything that's off. Make sure every section either has real data or is left out.
+
+STEP 3: DELIVER
+Show the dashboard, then one short line on what stood out most, and one tip: "Next week, export again and drop the new file on the box to see how you're trending."
+
+VOICE AND TONE
+- Warm and plain-spoken. No jargon.
+- No em dashes anywhere. Use commas, colons, periods or parentheses instead.

@@ -1,0 +1,94 @@
+title: AI Cover Letter Writer
+desc: Paste your resume + a job posting. Claude writes a polished, human-sounding cover letter and saves it as a ready-to-send Word doc.
+headline: AI COVER LETTER WRITER
+sub: 60 second setup
+topic: career
+apps: claude
+format: prompt
+added: 2026-04-21
+tiktok: 7630659806931553550
+copy: Copy prompt
+
+=== description ===
+Paste this into Claude with your resume and a job posting. You'll get a polished, human-sounding cover letter (no AI tells, no fluff) saved as a ready-to-send Word doc.
+
+=== steps ===
+Tap <em>Copy prompt</em> below
+Paste into a new Claude chat
+Fill in the job description, resume, company, and tone
+Claude writes it and saves the .docx for you
+
+=== prompt ===
+You are a senior career coach and professional writer. Your job is to write me a polished, interview-winning cover letter based on my actual resume and a specific job description, then save it as a Microsoft Word document. Do not fabricate anything.
+
+Inputs:
+- Job description: [paste full job posting here]
+- My resume: [paste full resume text here]
+- Company name: [company]
+- Hiring manager: [name, or write "leave generic"]
+- Tone: [conversational, polished professional, or warm and direct]
+
+ANTI-FABRICATION RULES:
+1. Only reference experience, skills, job titles, and metrics that appear in my resume. If it is not in my resume, do not include it.
+2. If the job description asks for something I do not have, do not invent it. Focus on the strongest relevant matches.
+3. Use my exact metrics and outcomes. Do not inflate, round, or estimate numbers.
+4. Pull the company name, role, and specific requirements directly from the job description.
+
+VOICE RULES (to avoid sounding AI-generated):
+1. Do not use em dashes anywhere in the letter. Use commas, periods, parentheses, or colons instead. This is non-negotiable.
+2. Do not use these phrases: "I am writing to express my interest," "I would love the opportunity to," "passionate about," "results-driven," "proven track record," "thought leader," "synergy," "team player," "wears many hats," "excited to bring my skills to," "perfect fit," "hit the ground running."
+3. Write at an 8th-grade reading level. Mix short punchy sentences with longer flowing ones.
+4. Use contractions naturally (I've, we're, that's, don't).
+5. Do not start sentences with "Furthermore," "Moreover," or "In conclusion."
+6. Vary paragraph openers. Do not start every paragraph with "I."
+
+STRUCTURE RULES:
+1. Open with a specific hook that proves I read the job description. Reference a real detail from the company or the role.
+2. Middle (1 to 2 paragraphs) maps my experience to 3 specific things in the job description, using their language.
+3. Include at least two concrete metrics from my resume.
+4. Close with confidence about next steps, not begging.
+5. Keep it under 300 words. One page.
+
+LETTER CONTENT STRUCTURE:
+
+[My name]
+[My email] | [My phone] | [My city, state]
+
+[Today's date]
+
+[Hiring manager name, or "Hiring Team"]
+[Company name]
+
+Dear [Name, or "Hiring Team"],
+
+[Opening paragraph]
+
+[Body paragraph 1]
+
+[Body paragraph 2, if needed]
+
+[Closing paragraph]
+
+Sincerely,
+[My name]
+
+Pull my name, email, phone, and city from my resume. If any detail is missing, insert a placeholder in brackets so I know to fill it in.
+
+WORD DOCUMENT OUTPUT:
+After writing the letter, save it as a Microsoft Word document (.docx) with these formatting specs:
+- File name: "Cover Letter [Company Name] [My Last Name].docx"
+- Font: Calibri, 11pt body text
+- My name at the top: Calibri, 16pt, bold
+- Contact info line: Calibri, 10pt, regular
+- Date and recipient block: Calibri, 11pt
+- Margins: 1 inch on all sides
+- Line spacing: 1.15
+- Paragraph spacing: 6pt after each paragraph
+- Left-aligned throughout (no justified text)
+- Single blank line between paragraphs
+- No bullet points, no tables, no headers or footers
+- Save the file to my working folder and give me the link to open it
+
+Then also print the full cover letter text in the chat so I can read and edit it before opening the file.
+
+Write the cover letter and save the Word document now.

@@ -1,0 +1,47 @@
+title: Gemini Makes Your Phone Calls
+desc: Flip Gemini to Task mode, paste one prompt, and answer a few quick questions. Gemini calls up to two businesses at once for you, reports back what each one said, and books the best option on your Google Calendar when you say so. It only shares your first name and number, and asks before anything costs money.
+headline: GEMINI CALLS FOR YOU 📞
+sub: One prompt · Gemini makes the calls
+topic: agents
+apps: gemini
+format: prompt
+added: 2026-11-24
+tiktok: 7711180706319273229
+copy: Copy prompt
+
+=== description ===
+Hate making phone calls? Paste this prompt into the Gemini app in Task mode and answer a few quick questions. Gemini calls up to two businesses at the same time for you, tells you what each one said, and books the best option when you say so, right on your Google Calendar. It only shares your first name and callback number, and it checks with you before anything costs money.
+
+=== steps ===
+Open the <strong>Gemini</strong> app and flip the switch from <em>Chat</em> to <strong>Task</strong>
+Tap <em>Copy prompt</em> below and paste it in as is
+Answer Gemini's questions: what you need, which business, when you're free. Not sure? Just say "you pick"
+Check the call plan, say go, and Gemini makes the calls and reports back
+
+=== notes ===
+Good to know: it calls US businesses only (not people), it's free, and you need to be 18+ on a personal Google account. Not yet available in Indiana, Louisiana, Minnesota or Montana.
+Calling isn't available in Nebraska either (Google lists Indiana, Louisiana, Minnesota, Montana and Nebraska).
+If Task mode doesn't offer to call on your phone, Google may not have turned calling on for your account yet.
+
+=== prompt ===
+You're my phone-call assistant in Task mode. Before you call anyone, interview me one question at a time and wait for my answer each time:
+
+1. What do you want me to get done? For example: book an appointment, get a price or quote, check if something is available, or ask a question.
+2. Which business should I call? You can name one, or say "find the best ones near me" and I'll suggest the 2 or 3 best-rated options so you can pick up to two to call at the same time.
+3. When are you free? Give me your best times and a backup option.
+4. Any must-haves or deal-breakers? Like a budget, a specific service, party size, or anything you want me to ask about (price, wait time, cancellation policy).
+5. What can I share? Only your first name, and your callback number if they need it.
+
+If I say "you pick" to any question, choose a sensible default and tell me what you chose.
+
+Rules for every call:
+- Only call businesses. Never personal contacts, and never emergency services.
+- Never share card numbers, account numbers, passwords, my address, date of birth, or health details. If they ask for payment or anything sensitive, don't give it. Say I'll follow up myself, and tell me in your summary.
+- Don't agree to a deposit, prepayment, cancellation fee, or anything that costs money without asking me first.
+- Be polite and brief. If they'd rather not talk to an AI, thank them and end the call.
+- If a business is closed right now, ask me if you should call when they open.
+- If you reach voicemail, leave a short message with only my first name and callback number.
+
+Before you dial, show me your call plan: who you're calling, the goal, the exact questions you'll ask, and what you'll share. Wait for my OK.
+
+After the calls, give me a short summary for each business: what they offered, the price, the times, and anything I still need to do. Recommend the best option and tell me why. Only book it if I say so. When I do, add it to my Google Calendar with the address, the price, and their phone number.

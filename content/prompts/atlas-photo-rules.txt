@@ -1,0 +1,36 @@
+title: Walk Inside Any Photo: My 3 Photo Rules
+desc: Atlas by World Labs turns one photo into a 3D world you can walk through. Here are my 3 rules for photos that build great worlds, plus the steps to try it on your own room.
+headline: WALK INSIDE ANY PHOTO 🏠
+sub: My 3 photo rules · Atlas by World Labs
+topic: design
+tool: Atlas
+format: link
+added: 2026-12-01
+copy: Copy rules
+try: https://atlas.worldlabs.ai | Try Atlas | World Labs' site · sign in, then open Viewfinder
+
+=== description ===
+Atlas, from World Labs, turns one photo into a 3D world you can fly a camera through, even the parts the camera never saw. These are my 3 rules for photos that build great worlds, plus the steps to walk inside yours.
+
+=== steps ===
+Tap <em>Copy rules</em> below and keep them in your notes
+Take your photo (or 3) following the rules, or pick a wide, sharp old one
+Go to <strong>atlas.worldlabs.ai</strong>, sign in, open <em>Viewfinder</em>, and follow the steps in the rules
+
+=== notes ===
+Good to know: some steps use paid credits, so check the cost in the app before you click. On a free account, World Labs can use your photos to train its AI, so leave out anything private.
+
+=== prompt ===
+My 3 photo rules for Atlas (by World Labs):
+1. Go wide. Stand in a corner (or at the edge of the space) and shoot across it, phone sideways, at chest height.
+2. Bright, sharp, empty. Lights on, phone steady, floor and a bit of ceiling in the shot, no people or pets.
+3. Want it closer to the real place? Add 2 more photos. Step a few feet to the side for each one, keep about half of the last shot in view, same lights, nothing moved.
+
+How to walk inside your photo:
+1. Go to atlas.worldlabs.ai, sign in, open Viewfinder.
+2. Upload one photo, or your 3 together. Using an old pic? Pick a wide, sharp one where people aren't the main thing.
+3. Let it build, then drag the camera around. Anything your photo didn't show is the AI's best guess.
+4. Draw a camera path and hit Render to get a video.
+5. No photo? Viewfinder can make one for you. Try: "a cozy reading nook in a treehouse at golden hour, wide angle, eye level, warm lamps".
+
+Heads up: some steps use paid credits, so check the cost in the app before you click. On a free account, World Labs can use your photos to train its AI, so leave out anything private.

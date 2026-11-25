@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Price Drop Agent · KyleMeetsAI</title>
+<meta name="description" content="Builds a personal Price Drop Agent as a Claude artifact that watches the 3 to 4 products you are shopping for. It interviews you first, researches real listings and the honest &quot;usual price&quot; of each item, then shows today&#x27;s price, a Deal Score, and a clear BUY NOW or WAIT call on a clean dashboard that saves across sessions. It also sets up a daily morning check that only messages you when something actually hits a great deal. No fake sales, no hype, no noise.">
+<link rel="canonical" href="https://kylemeetsai.com/prompts/price-drop-agent">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KyleMeetsAI">
+<meta property="og:title" content="Price Drop Agent · KyleMeetsAI">
+<meta property="og:description" content="Builds a personal Price Drop Agent as a Claude artifact that watches the 3 to 4 products you are shopping for. It interviews you first, researches real listings and the honest &quot;usual price&quot; of each item, then shows today&#x27;s price, a Deal Score, and a clear BUY NOW or WAIT call on a clean dashboard that saves across sessions. It also sets up a daily morning check that only messages you when something actually hits a great deal. No fake sales, no hype, no noise.">
+<meta property="og:url" content="https://kylemeetsai.com/prompts/price-drop-agent">
+<meta name="theme-color" content="#ECEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48.png?v=7f4f42a2">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f59fe489">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=7f6fe8f5">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="KyleMeetsAI home"><img src="/assets/photo/kyle-tiktok-avatar.jpg?v=552bc3f5" alt="" width="36" height="36"><span>KyleMeets<b>AI</b></span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="hide-sm" href="/#prompts">Prompts</a>
+      <a class="hide-sm" href="/#videos">Videos</a>
+      <a class="hide-sm" href="/#about">About</a>
+      <a class="nav-cta" href="/#work">Work with me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="p-main">
+  <div class="wrap">
+    <div class="p-layout">
+    <article class="p-article" data-added="2026-07-23">
+      <a class="crumb" href="/#prompts"><span aria-hidden="true">←</span> All prompts</a>
+      <header class="p-hero">
+        <div class="p-eyebrow"><span class="label">Money · Prompt</span><span class="new" hidden>New</span></div>
+        <h1>Price Drop Agent</h1>
+        <p class="p-lede">Builds a personal Price Drop Agent as a Claude artifact that watches the 3 to 4 products you are shopping for. It interviews you first, researches real listings and the honest "usual price" of each item, then shows today's price, a Deal Score, and a clear BUY NOW or WAIT call on a clean dashboard that saves across sessions. It also sets up a daily morning check that only speaks up when something actually hits a great deal. No fake sales, no hype, no noise.</p>
+        
+        <div class="p-works"><span class="label">Works in</span><span class="apps"><span class="app">Claude</span></span></div>
+        <div class="p-actions"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai/video/7660243459487419662" target="_blank" rel="noopener">Watch the video <span aria-hidden="true">↗</span></a></div>
+        
+      </header>
+
+      <section class="p-section" aria-labelledby="how-h">
+        <h2 class="p-h2" id="how-h">How to use it</h2>
+        <ol class="p-steps"><li><span>Tap <em>Copy prompt</em> below</span></li><li><span>Paste it into a new Claude chat</span></li><li><span>Answer the short interview: what you are shopping for, your target price, and when to check each morning</span></li><li><span>Claude researches real prices, builds your live dashboard, and sets a daily check that only pings you on a genuine deal</span></li></ol>
+        
+      </section>
+
+      <section class="p-section" aria-labelledby="box-h">
+        <div class="p-box">
+          <div class="p-box-bar"><h2 class="label" id="box-h">The prompt</h2><button class="copy-btn" type="button" data-copy>Copy prompt</button></div>
+          <div class="p-box-text" id="prompt-text" tabindex="0">You are my personal deal watcher. Think of the sharpest shopping-savvy friend I have: the one who knows what things actually cost, never falls for a fake &quot;sale,&quot; and only tells me to buy when the price is genuinely worth it. You have patience, good taste, and zero interest in hyping me into a bad purchase.
+WHAT WE ARE BUILDING
+A personal Price Drop Agent that lives in two places:
+
+1. A live price dashboard I can open any time (not just read once in chat). It shows the products I am watching, today&#x27;s price for each, how good that price is, and a clear BUY NOW or WAIT call.
+2. A daily background check that refreshes those prices every morning and only messages me when something actually hits a great deal. No noise. No &quot;prices updated&quot; pings. Only &quot;this one is worth buying now.&quot;
+
+The dashboard must be an artifact that saves across sessions (use the artifact&#x27;s built-in storage) and lives in my artifact panel. Not a static page I have to rebuild, and not a plain chat message.
+CRITICAL SETUP: DESIGN ONCE, UPDATE DATA FOREVER
+Build the layout, colors, and styling one time. After that, they never change. Store everything that moves (each product&#x27;s current price, deal score, verdict, and the date it was checked) in a single clearly labeled data block inside the artifact (a WATCHLIST data object or equivalent). Every refresh, whether I trigger it or the morning task does, only replaces that data block. Lock the daily task to this rule: &quot;Only ever update the WATCHLIST data. Never touch the design, layout, or wording of the page.&quot; This keeps every morning check fast, cheap, and unable to mess up the design.
+STEP 1: INTERVIEW ME FIRST
+Before you build or research anything, ask me these questions one at a time, in a normal conversational way. Wait for my answer before asking the next one. Keep it warm, quick, and easy. If I clearly answered something already, skip that question.
+
+1. What are you shopping for? Describe the item the way you would say it out loud. (Examples: &quot;a 55-inch 4K TV,&quot; &quot;a robot vacuum,&quot; &quot;AirPods Pro,&quot; &quot;a stand mixer,&quot; &quot;a carry-on suitcase,&quot; &quot;a specific pair of running shoes in my size.&quot;) The more specific you are, the better I can match real listings.
+2. Any must-haves or deal-breakers? (Examples: &quot;has to be OLED,&quot; &quot;white only,&quot; &quot;under 6 pounds,&quot; &quot;a brand I trust,&quot; &quot;must be new, not refurbished.&quot;) If none, just say &quot;no rules.&quot;
+3. What is your target price? Give me the number where you would feel genuinely good buying. If you are not sure, tell me roughly what you expected to pay and I will research typical prices and suggest a smart target for you.
+4. How many options should I track? I will find and watch the top 3 to 4 choices worth your attention by default. Tell me if you want fewer or more.
+5. How picky should my BUY NOW call be? Pick one: &quot;only tell me when it is a rare, seriously good deal,&quot; &quot;a solid everyday-good deal is fine,&quot; or &quot;I am flexible, just keep me informed.&quot; This sets how aggressive I am before I say buy.
+6. When should I check each morning, and what timezone are you in? (Example: &quot;8 AM Eastern.&quot;) I will run the refresh then. Default to 8 AM if you are not sure.
+7. What is your first name, and how do you want to be notified when something hits a great deal? (In this chat is the default. Tell me if you would rather I do something else you have set up.)
+
+After I answer, quickly confirm what you have, then start researching. Do not ask extra questions unless something is genuinely unclear.
+STEP 2: RESEARCH THE MARKET (RUN THIS ONCE TO SEED, THEN AGAIN ON EVERY REFRESH)
+Search the web for current, real listings that match what I described. Use trustworthy, mainstream retailers and shopping sources. For each option you consider, pull:
+
+* The exact product name and model.
+* Today&#x27;s price, and where that price is (which retailer).
+* A short quality read in plain language (what makes it good, who it is best for).
+* An average review score and roughly how many reviews it is based on, so I know if the score is trustworthy.
+
+Then figure out the honest &quot;usual price&quot; for each item: what it normally sells for day to day, not the inflated &quot;list price&quot; stores cross out to fake a discount. Use recent price history and current listings across a few sources to land on a fair baseline. If you genuinely cannot find a reliable usual price, say so on that item instead of guessing.
+Narrow to the top 3 to 4 options actually worth watching (unless I asked for a different number). Balance price, quality, and review trust. Drop anything that fails my must-haves from Step 1.
+STEP 3: SCORE EACH DEAL AND MAKE THE CALL
+For every item on the watchlist, calculate two things:
+
+1. Deal Score (0 to 100). How good today&#x27;s price is compared to that item&#x27;s honest usual price, factored against my target price. Higher means a better deal right now. A price at or below its usual low and at or under my target should score high. A price sitting at or above usual should score low. Show the score as a simple bar or dial, not a wall of math.
+2. Verdict: BUY NOW or WAIT. Base this on my pickiness answer from Step 1.
+   * &quot;Rare, seriously good deal&quot; only: say BUY NOW only when the price is at or near its lowest in recent memory AND at or under my target.
+   * &quot;Solid everyday-good deal is fine&quot;: say BUY NOW when the price is clearly below usual and at or near my target.
+   * &quot;Flexible&quot;: say BUY NOW when the price is a real, honest discount, even if not the rock-bottom best. Everything else is WAIT, with a one-line reason (&quot;Wait: this usually drops another 10 to 15 percent during big sale events&quot;).
+
+Never invent urgency. If nothing is a real deal today, every item can say WAIT. That is a valid, honest result.
+STEP 4: BUILD THE DASHBOARD (LAYOUT IN ORDER)
+
+1. Header. A warm one-line greeting using my first name, today&#x27;s date, and a &quot;Last checked&quot; timestamp. A &quot;Check Now&quot; button in the top right so I can refresh on demand.
+2. Top Line. One clear sentence at the top: either &quot;One deal is worth grabbing today&quot; (name it) or &quot;Nothing worth buying yet, still watching.&quot; This is the thing I read in two seconds.
+3. The Watchlist. One clean card per item, 3 to 4 total. Each card shows, at a glance:
+   * Product name and a plain-language quality read (one line).
+   * Today&#x27;s price, big and clear, with the retailer name and a link that opens the real listing in a new tab.
+   * The usual price shown smaller next to it, so I can see the gap.
+   * Average review score with the number of reviews (a small stars or number treatment).
+   * The Deal Score as a simple visual bar or dial.
+   * A bold BUY NOW or WAIT badge, color coded (green for buy, muted for wait), with a one-line reason. Sort the cards so the best deal today sits on top.
+4. Footer. A quiet line noting how many sources were checked and when the next automatic check runs, in my timezone.
+
+Keep it clean and visual. Cards over paragraphs. Lots of breathing room. It should be readable in a glance on a phone, more like a well-designed app screen than a spreadsheet.
+STEP 5: TWO WAYS IT REFRESHES (BOTH REQUIRED)
+
+1. The morning check (automatic). Set up a scheduled task that runs every day at the time and timezone I gave you. Each run repeats Step 2 and Step 3 for every item, then updates only the WATCHLIST data in the artifact if it can reach it (if it can&#x27;t, it just reports). Then it checks: did anything newly cross into BUY NOW territory since yesterday? If yes, message me the way I asked in Step 1, short and specific (&quot;The [item] just hit [price] at [retailer]. That is a genuine deal, here is the link.&quot;). If nothing is a real deal, it stays silent. No daily &quot;all quiet&quot; messages.
+2. The Check Now button (manual). A button in the top right of the dashboard that reruns the research and updates the page on demand, with a clear loading state and a clear &quot;done&quot; signal. The dashboard should show the most recent saved prices when I open it, and only go fetch fresh prices when I press the button or when the morning task runs. It should not auto-search every time I open it, because that is slow and wasteful.
+
+STEP 6: DESIGN (MATCH A CLEAN, TRUSTWORTHY LOOK)
+Go for calm, confident, and easy to scan. A light neutral background, strong readable headings, one accent color used only for the &quot;good deal&quot; green and key highlights. Big clear prices. Generous spacing. Subtle shadows on cards. Fully responsive so it looks designed on a phone, not cramped. Avoid loud reds, fake &quot;SALE&quot; starbursts, blinking anything, or clutter. The vibe is a smart, honest shopping assistant, not a coupon site.
+STEP 7: TONE
+Plain, honest, and on my side. Talk to me like a friend who is good with money. No hype, no pressure, no marketing voice. If something is a great deal, say so plainly. If it is not, tell me to wait and why. Short sentences win.
+STEP 8: WHAT TO AVOID
+No fake urgency or countdown pressure. No treating a store&#x27;s crossed-out &quot;list price&quot; as the real usual price. No recommending BUY NOW just to have something to recommend. No made-up review scores or prices, ever. If you are unsure about a price or a baseline, say so on that item rather than guessing. No jargon. No bracketed placeholders anywhere in the finished dashboard. No walls of text.
+STEP 9: SELF-CHECK BEFORE YOU SHOW ME
+Confirm all of this before showing me the dashboard:
+
+1. It is an artifact that saves across sessions, and the WATCHLIST data block is the only place prices and verdicts live.
+2. You ran the full research once already, so the dashboard opens with real prices and real verdicts, no placeholder text.
+3. Every item has a real, clickable link to its actual listing, a review score with a review count, an honest usual price, a Deal Score, and a clear BUY NOW or WAIT call.
+4. The daily task is set to my exact time and timezone, is locked to &quot;only update the WATCHLIST data,&quot; and only messages me on a genuine new deal.
+5. The Check Now button reruns the research and shows clear loading and done states.
+6. The dashboard loads from saved data when I open it and does not auto-search on open.
+7. The greeting uses my first name and the design reads cleanly on a phone.
+
+STEP 10: CONFIRM WHEN IT IS LIVE
+Once the dashboard and the daily task are both running, tell me in under 150 words:
+
+1. The dashboard name and where to find it in my artifact panel.
+2. What you are watching right now, and whether anything is already a BUY NOW today.
+3. The next automatic check time in my timezone.
+4. A reminder that I will only hear from you when something is genuinely worth buying.</div>
+        </div>
+        <div class="p-after"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button></div>
+      </section>
+    </article>
+
+    <aside class="kyle-card" aria-label="About Kyle">
+      <div class="kyle-card-tile"><img src="/assets/photo/kyle-square.jpg?v=afd3b15a" alt="" width="600" height="600" loading="lazy"><span class="tile-name" aria-hidden="true"><span class="mic"><i></i><i></i><i></i><i></i></span>KyleMeetsAI</span></div>
+      <div class="kyle-card-copy"><p class="kyle-card-title">Hi, I’m Kyle.</p><p>I post a new AI how-to every week, and its prompt waits for you here.</p></div>
+      <div class="kyle-card-links"><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a></div>
+    </aside>
+
+    <section class="p-section p-related" aria-labelledby="rel-h">
+      <div class="p-related-head"><h2 class="p-h2" id="rel-h">More like this</h2><a class="p-all" href="/#prompts">All prompts <span class="arrow" aria-hidden="true">→</span></a></div>
+      <div class="p-grid" id="related"><a class="p-card" href="/prompts/savings-goal-tracker" data-drawer="savings-goal-tracker" data-topic="money" data-apps="claude" data-format="prompt" data-added="2026-12-04" hidden><span class="p-meta"><span class="p-topic">Money</span><span class="new" hidden>New</span></span><h3>The Exact Day You&#x27;ll Hit Your Savings Goal</h3><p>Paste one prompt and Claude builds your savings tracker in Google Sheets, works out your estimated finish date, and checks in every Monday to warn you if you&#x27;re falling behind. It never moves money.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/refund-hunter" data-drawer="refund-hunter" data-topic="money" data-apps="claude chatgpt" data-format="prompt" data-added="2026-11-24"><span class="p-meta"><span class="p-topic">Money</span><span class="new" hidden>New</span></span><h3>Claude Finds Refunds Companies Owe You</h3><p>Connect Gmail, paste one prompt, and Claude searches a year of your email for refunds, credits and billing mistakes companies still owe you. It writes each claim message for you, never sends anything, and checks again every week.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/google-sheets-budget" data-drawer="google-sheets-budget" data-topic="money" data-apps="claude" data-format="prompt" data-added="2026-10-17"><span class="p-meta"><span class="p-topic">Money</span><span class="new" hidden>New</span></span><h3>Claude Builds Your Budget (Google Sheets)</h3><p>Connect Google Drive, paste one prompt, answer a few quick questions about your money, and Claude builds a polished budget inside Google Sheets: a phone-friendly dashboard with summary cards, color-coded progress bars, a 50/30/20 check, a donut chart and a transaction log. Every number is a live formula, so logging a purchase updates the whole dashboard by itself.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/personal-finance-tracker" data-drawer="personal-finance-tracker" data-topic="money" data-apps="claude" data-format="prompt" data-added="2026-05-06"><span class="p-meta"><span class="p-topic">Money</span><span class="new" hidden>New</span></span><h3>AI Personal Finance Tracker (Email)</h3><p>Scans your email for the last 90 days and builds a saved dashboard of every active subscription, with a &quot;worth a second look&quot; callout for services you may not be using anymore.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/budget-tracker" data-drawer="budget-tracker" data-topic="money" data-apps="claude chatgpt" data-format="prompt" data-added="2026-04-16"><span class="p-meta"><span class="p-topic">Money</span><span class="new" hidden>New</span></span><h3>AI Budget Tracker</h3><p>Upload a bank statement or CSV. Get an interactive dashboard with charts, overspending flags, and one savings tip.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/ai-visibility-check" data-drawer="ai-visibility-check" data-topic="agents" data-apps="claude chatgpt" data-format="prompt" data-added="2026-11-30" hidden><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>Does AI Recommend Your Business?</h3><p>Paste one prompt and Claude asks AI the questions your customers ask, shows who it recommends instead of you and why, and gives you 3 fixes. Then it checks again every week. Research only: it never posts or contacts anyone.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a></div>
+    </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="wordmark" href="/"><span>KyleMeets<b>AI</b></span></a>
+    <nav aria-label="Footer">
+      <a href="/#prompts">Prompts</a>
+      <a href="/#videos">Videos</a>
+      <a href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram</a>
+      <a href="/#work">Work with me</a>
+    </nav>
+    <span class="fine">© 2026 KyleMeetsAI</span>
+  </div>
+</footer>
+<script src="/assets/prompt.js?v=2a7fae20" defer></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+title: AI Running Coach (Strava)
+desc: Connects to your Strava and builds a live AI Running Coach dashboard as a saved artifact that refreshes from your data every time you open it. Pulls your last 90 days of runs into five key stats, a personalized "Coach's Read" of what you are doing well and what to fix, trend charts for weekly volume and pace, and a recent-runs table that flags your PRs. Type in a goal and how many days you can train, and it generates a tailored one-week plan that stays within your current fitness. All in miles and minutes per mile.
+headline: AI RUNNING COACH (STRAVA) 🏃
+sub: Live from your Strava
+topic: health
+apps: claude
+format: prompt
+added: 2026-07-18
+tiktok: 7651734543426227469
+copy: Copy prompt
+
+=== description ===
+Connects to your Strava and builds a live "AI Running Coach" dashboard as a saved artifact that refreshes from your data every time you open it. It pulls your last 90 days of runs and shows five key stats, a personalized "Coach's Read" of what you are doing well and what to fix, trend charts for weekly volume and pace, a recent-runs table with PR flags, and a "Build My Plan" tool that generates a tailored one-week training plan from a goal you type in. All distances in miles and pace in minutes per mile.
+
+=== steps ===
+Tap <em>Copy prompt</em> below
+Open Claude with the Strava connector turned on
+Paste the prompt into a new chat
+Claude builds your live coaching dashboard as a saved artifact that refreshes from Strava each time you open it
+
+=== prompt ===
+Connect to my Strava account and build me a live "AI Running Coach" dashboard as a saved artifact that refreshes from my Strava every time I open it.
+Pull this data on load: my athlete profile (name and location), my last 90 days of activities, and my training zones.
+Build the page with these sections, top to bottom:
+
+A header with the title "AI Running Coach," a subtitle saying it is built live from my Strava, my name and location on the right, and a "last updated" timestamp.
+A row of five key stats: 90-day total miles, number of runs, average run pace (min/mile), total active hours, and total relative effort. Convert all distances to miles and pace to minutes per mile since I use imperial.
+A "Your Coach's Read" card where you analyze my actual last 90 days and write about 110 words in three short paragraphs: what I am genuinely doing well with a specific number, the single biggest thing to improve, and one concrete action for next week. Address me as "you" and bold the key phrase in each paragraph.
+A "Trends" card with two charts: a bar chart of my weekly running volume in miles, and a line chart of my pace trend over time (lower is faster).
+A "Build My Plan" card with a text box where I type a goal and a dropdown for how many days a week I can train, plus a button. When I click it, generate a tailored one-week plan based on my current fitness and show it as seven day-cards (day, workout type, and a short specific detail with distance or pace cues). Do not overreach beyond my current level.
+A "Recent Runs" table showing my last 8 runs with date, name, distance, pace, cadence, and relative effort, and flag any runs with PRs.

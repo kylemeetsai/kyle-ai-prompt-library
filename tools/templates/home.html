@@ -1,0 +1,213 @@
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1>AI<span class="comma">,</span><br>made easy.</h1>
+        <p class="lede">I teach everyday people and businesses how to put AI to work. I test the tools, keep what works, and <strong>hand you the exact prompt from every video</strong>.</p>
+        <div class="ctas">
+          <a class="btn btn-primary" href="/#prompts">Get the free prompts <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost hide-sm" href="/#videos">Watch the videos</a>
+        </div>
+      </div>
+
+      <figure class="hero-film">
+        <div class="film">
+          <video id="film" src="/assets/video/how-it-works.mp4" poster="/assets/video/how-it-works-poster.jpg" autoplay muted loop playsinline aria-label="Animation: a viewer watches Kyle’s video, copies his what-to-post-next prompt, pastes it into an AI chat, and gets a dashboard showing their best day to post and 3 post ideas."></video>
+        </div>
+        <figcaption>
+          <ol class="film-steps">
+            <li><b>1</b><span>Watch a video</span></li>
+            <li><b>2</b><span>Copy its prompt</span></li>
+            <li><b>3</b><span>Paste it in your AI</span></li>
+          </ol>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="wrap stats-wrap">
+      <dl class="stats" aria-label="My audience">
+        <div><dt><span class="count" data-to="19000">19K</span><span class="plus">+</span></dt><dd>followers</dd></div>
+        <div><dt><span class="count" data-to="1000000">1M</span><span class="plus">+</span></dt><dd>video views</dd></div>
+        <div><dt><span class="count" data-to="100000">100K</span><span class="plus">+</span></dt><dd>likes</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <div class="tools" role="group" aria-label="Tools I teach">
+    <div class="wrap">
+      <div class="tools-head">
+        <span class="label">Tools I teach</span>
+        <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false" aria-label="Pause motion"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 2h2v8H3zM7 2h2v8H7z" fill="currentColor"/></svg></button>
+      </div>
+      <div class="marquee"><div class="track" id="tool-track">{{TOOL_LOGOS}}</div></div>
+    </div>
+  </div>
+
+  <section class="library" id="prompts">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">The prompt library</span>
+        <h2>Every prompt from my videos, ready to copy.</h2>
+        <p>Search by what you want to get done, or filter by topic and the AI you use.</p>
+      </div>
+      <div class="lib-tools">
+        <label class="search"><span class="sr">Search prompts</span>
+          <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input id="q" type="search" placeholder="Try “budget”, “resume” or “agent”" autocomplete="off">
+        </label>
+        <div class="filters" id="filters" role="group" aria-label="Filter prompts">{{CHIPS}}</div>
+        <span class="lib-count" id="count" aria-live="polite">{{COUNT}}</span>
+      </div>
+      <div class="p-grid" id="grid">{{CARDS}}</div>
+      <div class="empty" id="empty" hidden></div>
+      <div class="lib-more"><button class="btn btn-ghost" id="more" type="button" hidden></button></div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Videos</span>
+        <h2>Learn something new in about a minute.</h2>
+        <p>Short videos that show one real thing AI can do for you. Tap one to get its prompt.</p>
+      </div>
+      <div class="tabs" role="tablist" aria-label="Videos">
+        <button role="tab" id="tab-new" aria-selected="true" aria-controls="panel-new" type="button">Latest</button>
+        <button role="tab" id="tab-top" aria-selected="false" aria-controls="panel-top" type="button" tabindex="-1">Most watched</button>
+      </div>
+      <div class="vid-grid" id="panel-new" role="tabpanel" aria-labelledby="tab-new">
+        <article class="vid"><a class="cover" href="/prompts/gemini-calls" data-drawer="gemini-calls" aria-label="Get the prompt for the Gemini calls video"><img src="/assets/covers/gemini-calls.jpg" alt="" width="486" height="648"></a>
+          <div class="vid-body"><h3>Gemini makes your phone calls</h3><div class="vid-actions"><a class="get" href="/prompts/gemini-calls" data-drawer="gemini-calls">Get the prompt <span class="arrow" aria-hidden="true">→</span></a><a class="watch" href="https://www.tiktok.com/@kyle.meets.ai/video/7711180706319273229" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div></div></article>
+        <article class="vid"><a class="cover" href="/prompts/refund-hunter" data-drawer="refund-hunter" aria-label="Get the prompt for the refund agent video"><img src="/assets/covers/refund-agent.jpg" alt="" width="486" height="648"></a>
+          <div class="vid-body"><h3>An agent that finds refunds you’re owed</h3><div class="vid-actions"><a class="get" href="/prompts/refund-hunter" data-drawer="refund-hunter">Get the prompt <span class="arrow" aria-hidden="true">→</span></a><a class="watch" href="https://www.tiktok.com/@kyle.meets.ai/video/7711774082081017102" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div></div></article>
+        <article class="vid"><a class="cover" href="/prompts/social-media-dashboard" data-drawer="social-media-dashboard" aria-label="Get the prompt for the what to post next video"><img src="/assets/covers/social-dashboard.jpg" alt="" width="486" height="648"></a>
+          <div class="vid-body"><h3>Claude tells you what to post next</h3><div class="vid-actions"><a class="get" href="/prompts/social-media-dashboard" data-drawer="social-media-dashboard">Get the prompt <span class="arrow" aria-hidden="true">→</span></a><a class="watch" href="https://www.tiktok.com/@kyle.meets.ai/video/7698471478831893774" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div></div></article>
+        <article class="vid"><a class="cover" href="/prompts/google-sheets-budget" data-drawer="google-sheets-budget" aria-label="Get the prompt for the Google Sheets budget video"><img src="/assets/covers/sheets-budget.jpg" alt="" width="486" height="648"></a>
+          <div class="vid-body"><h3>Claude builds your budget in Google Sheets</h3><div class="vid-actions"><a class="get" href="/prompts/google-sheets-budget" data-drawer="google-sheets-budget">Get the prompt <span class="arrow" aria-hidden="true">→</span></a><a class="watch" href="https://www.tiktok.com/@kyle.meets.ai/video/7697635757686607118" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div></div></article>
+      </div>
+      <div class="vid-grid three" id="panel-top" role="tabpanel" aria-labelledby="tab-top" hidden>
+        <article class="vid"><a class="cover" href="/prompts/desktop-agent-organize-folders" data-drawer="desktop-agent-organize-folders" aria-label="Get the prompt for the AI agent video"><img src="/assets/covers/cowork-agent.jpg" alt="" loading="lazy" width="720" height="1030"><span class="cover-chip"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1.5v9l8-4.5z" fill="currentColor"/></svg>431.1K views</span></a>
+          <div class="vid-body"><h3>Create your own AI agent in 60 seconds</h3><div class="vid-actions"><a class="get" href="/prompts/desktop-agent-organize-folders" data-drawer="desktop-agent-organize-folders">Get the prompt <span class="arrow" aria-hidden="true">→</span></a><a class="watch" href="https://www.tiktok.com/@kyle.meets.ai/video/7624356875886284063" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div></div></article>
+        <article class="vid"><a class="cover" href="/prompts/instagram-carousel" data-drawer="instagram-carousel" aria-label="Get the prompt for the Instagram carousel video"><img src="/assets/covers/carousel.jpg" alt="" loading="lazy" width="486" height="648"><span class="cover-chip"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1.5v9l8-4.5z" fill="currentColor"/></svg>352.2K views</span></a>
+          <div class="vid-body"><h3>Your first Instagram carousel in 60 seconds</h3><div class="vid-actions"><a class="get" href="/prompts/instagram-carousel" data-drawer="instagram-carousel">Get the prompt <span class="arrow" aria-hidden="true">→</span></a><a class="watch" href="https://www.tiktok.com/@kyle.meets.ai/video/7633478585839389965" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div></div></article>
+        <article class="vid"><a class="cover" href="https://www.tiktok.com/@kyle.meets.ai/video/7631433696192548109" target="_blank" rel="noopener" aria-label="Watch the mobile app video"><img src="/assets/covers/mobile-app.jpg" alt="" loading="lazy" width="486" height="648"><span class="cover-chip"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 1.5v9l8-4.5z" fill="currentColor"/></svg>349.1K views</span></a>
+          <div class="vid-body"><h3>Design your first mobile app in 60 seconds</h3><div class="vid-actions"><a class="watch" href="https://www.tiktok.com/@kyle.meets.ai/video/7631433696192548109" target="_blank" rel="noopener">Watch <span aria-hidden="true">↗</span></a></div></div></article>
+      </div>
+      <div class="follow">
+        <span class="label">Follow along</span>
+        <a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok <span aria-hidden="true">↗</span></a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head"><span class="label">From the comments</span><h2>What viewers say.</h2></div>
+      <div class="quotes" role="region" aria-label="Viewer comments" tabindex="0">
+        <figure class="quote"><p>“I have not learned so much, so fast in my life 😂”</p><footer>On “Design your first mobile app”</footer></figure>
+        <figure class="quote"><p>“this is wild, built one in like 2 mins and it actually works 😭”</p><footer>On “AI Budget Tracker”</footer></figure>
+        <figure class="quote"><p>“This is so helpful. I love the way you explain things.”</p><footer>On “Create your own AI agent”</footer></figure>
+        <figure class="quote"><p>“Dude finally someone explains! Thank you !!”</p><footer>On “Design your first mobile app”</footer></figure>
+        <figure class="quote"><p>“This was extremely helpful and informative! Keep this coming 🙏”</p><footer>On “Create your own AI agent”</footer></figure>
+        <figure class="quote"><p>“Love the way you do these man! Good stuff 💯”</p><footer>On “AI Color Analysis”</footer></figure>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Projects</span>
+        <h2>Things I’ve built with AI.</h2>
+        <p>Real projects I made with the same tools I teach.</p>
+      </div>
+      <div class="builds">
+        <article class="build">
+          <span class="status soon">Coming soon</span>
+          <h3>MyCookery</h3>
+          <p>Save recipes from any website into one cookbook, tick off ingredients while you cook, and share it with family.</p>
+          <a href="https://mycookery.app" target="_blank" rel="noopener">mycookery.app <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="build">
+          <span class="status past">Past project</span>
+          <h3>Growfolio</h3>
+          <p>Upload your portfolio as a spreadsheet or a screenshot of your brokerage app, and get back a plain-English briefing on what actually moved.</p>
+        </article>
+        <article class="build">
+          <span class="status">Live</span>
+          <h3>This website</h3>
+          <p>Designed and built with Claude Code, including the prompt library you can search above.</p>
+          <a href="/#prompts">Search the prompts <span class="arrow" aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" style="padding-top:0">
+    <div class="wrap">
+      <div class="work">
+        <div class="work-inner">
+          <div class="section-head">
+            <span class="label" style="color:inherit;opacity:.65">Work with me</span>
+            <h2>Let’s put AI to work for you.</h2>
+            <p>Two ways to work together. Email me about either one and I’ll get back to you.</p>
+          </div>
+          <div class="work-grid">
+            <div class="work-card">
+              <span class="label">For brands</span>
+              <h3>Brand partnerships</h3>
+              <p>Short demo videos that show your AI tool’s real use cases, for an audience of everyday people and professionals learning AI. Written and filmed by me, in my own style.</p>
+              <div class="marquee" role="group" aria-label="Brands I’ve worked with: ElevenLabs, Typeless and TheTop"><div class="track slow" id="partner-track">{{PARTNER_LOGOS}}</div></div>
+              <a class="btn btn-primary" href="mailto:kyle.meets.ai@gmail.com?subject=Brand%20partnership">Email me about a partnership</a>
+            </div>
+            <div class="work-card">
+              <span class="label">For businesses</span>
+              <h3>AI consulting</h3>
+              <p>I help small teams start using AI without hiring an engineer. Common projects:</p>
+              <ul>
+                <li>Set up Claude or ChatGPT for your team, with use cases built around your work</li>
+                <li>Automate the busywork: inbox triage, follow-ups, weekly reports</li>
+                <li>Build simple AI agents that run on a schedule and check in with you</li>
+                <li>Train your team to work AI into their operating rhythm, from weekly planning to reporting</li>
+              </ul>
+              <a class="btn btn-ghost" href="mailto:kyle.meets.ai@gmail.com?subject=AI%20consulting">Email me about consulting</a>
+            </div>
+          </div>
+          <div class="email-row">
+            <a class="email" id="email" href="mailto:kyle.meets.ai@gmail.com">kyle.meets.ai@gmail.com</a>
+            <button class="email-copy" id="email-copy" type="button">Copy email</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about" style="padding-top:0">
+    <div class="wrap">
+      <div class="about-head">
+        <img class="about-photo" src="/assets/photo/kyle-about-sq.jpg" alt="Kyle smiling" loading="lazy" width="320" height="320">
+        <div><span class="label">About</span><h2>Hi, I’m Kyle.</h2></div>
+      </div>
+      <div class="about-copy">
+        <p>I work in tech, and I teach people how to use AI in real life. Every video shows <strong>one real thing you can do with AI, start to finish</strong>, and the prompt waits for you here.</p>
+        <p>I test a lot of tools along the way and only teach the ones worth your time. No jargon, no ten-step setups.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+{{FOOTER}}
+
+<dialog class="drawer" id="drawer" aria-labelledby="d-title">
+  <div class="d-inner">
+    <div class="d-head"><span class="label" id="d-topic"></span><button class="d-close" id="d-close" type="button" aria-label="Close">×</button></div>
+    <div class="d-title"><span class="apps" id="d-apps"></span><h3 id="d-title"></h3><p id="d-desc"></p></div>
+    <div class="d-prompt" id="d-prompt" tabindex="0"></div>
+    <div class="d-actions">
+      <button class="btn btn-primary" id="d-copy" type="button">Copy prompt</button>
+      <a class="btn btn-ghost" id="d-page" href="/">See the full steps</a>
+      <a class="btn btn-ghost" id="d-watch" target="_blank" rel="noopener">Watch the video <span aria-hidden="true">↗</span></a>
+      <p class="d-tip" id="d-tip"></p>
+    </div>
+  </div>
+</dialog>

@@ -1,0 +1,25 @@
+title: 3 Free AI Movie Clips a Month
+desc: Google Vids turns one sentence into a 15-second movie clip with sound, free three times a month on any Google account. Paste this into Gemini or ChatGPT and it asks a few quick questions, then writes the Vids prompt for you, so you don't waste a free clip.
+headline: FREE AI MOVIE CLIPS 🎬
+sub: One prompt · your own 15-second movie
+topic: content
+apps: claude chatgpt gemini
+format: prompt
+added: 2026-11-25
+copy: Copy prompt
+
+=== description ===
+Google Vids now turns one sentence into a 15-second movie clip with sound, and every Google account gets three free a month. This prompt turns Gemini or ChatGPT into your film director: it asks you a few quick questions, then writes a Vids prompt built to make every free clip count.
+
+=== steps ===
+Tap <em>Copy prompt</em> below and paste it into <strong>Gemini</strong> or <strong>ChatGPT</strong> (the free versions work)
+Answer its questions one at a time: the scene, where, the mood, the camera, the sound, and your photos. Not sure? Just say "you pick"
+It writes your Vids prompt. On a <strong>computer</strong>, go to <strong>vids.new</strong> and click <em>Create AI videos</em>
+Paste it, pick <strong>Portrait 9:16</strong> and <strong>15 seconds</strong>, click <em>Generate</em>, then <strong>Insert</strong> before you close the tab
+
+=== notes ===
+Good to know: every Google account gets three free 15-second clips a month. Use photos of places or things, not people. Vids' AI tools work best in English.
+Works in Claude too: paste it into a new Claude chat.
+
+=== prompt ===
+You're my film director for Google Vids, which makes 15-second clips with sound using Gemini Omni. I only get three free clips a month, so help me make each one count. Ask me one question at a time: what happens in the scene, where it takes place, the mood, how the camera should move, what we should hear, and whether I want to use my own photos. If I say "you pick", choose something cinematic. Keep it original, no celebrities or famous characters. Then write one Vids prompt in English, under 90 words, in this order: shot type and "one continuous shot, no cuts", the subject and action, the setting, light and mood, the camera move, then "Sound:" and what we hear. Put any spoken lines in quotes and say who says them. If I'm using photos (places or things, not other people), tell me which to add as Ingredients and call them Image 1, Image 2 and so on, plus a few words on what each shows. Don't make the video yourself. Finish with the steps: on a computer, go to vids.new, click Create AI videos, paste the prompt, pick the shape (Portrait 9:16 for TikTok), 15 seconds and the highest resolution it offers, click Generate, then Insert before you close the tab.

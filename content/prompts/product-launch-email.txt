@@ -1,0 +1,65 @@
+title: Product Launch Email
+desc: Give it your brand, product, and vibe and it designs one complete, premium launch email: hero, three-column benefits, story feature block, social proof, and a limited-time offer banner, fully written and ready to paste into any email platform.
+headline: PRODUCT LAUNCH EMAIL (CLAUDE DESIGN)
+sub: premium launch, one pass
+topic: content
+apps: claude chatgpt gemini
+format: prompt
+added: 2026-08-03
+tiktok: 7668127801773395213
+copy: Copy prompt
+
+=== description ===
+Answer three quick questions about your brand, your launch, and your vibe, and it designs one complete, production-ready launch email: a hero with a bold headline and CTA, a three-column "why people love it" row, a story-driven feature block, a five-star customer quote, a limited-time offer banner, and a full footer. Every line of copy is written out, colors and fonts are picked to match your vibe, and it exports as one self-contained, mobile-responsive HTML file ready to drop into any email platform. Best run in Claude Design for a live preview as it builds.
+
+=== steps ===
+Tap <em>Copy prompt</em> below
+Paste into a new Claude chat (Claude Design recommended for a live preview)
+Answer the three questions about your brand, your launch, and your vibe
+Get one complete, ready-to-send HTML email with real copy, no placeholders
+
+=== notes ===
+In ChatGPT, click Preview on the HTML code block to see it; in Gemini, click Add files below the text box and choose Canvas before you send.
+
+=== prompt ===
+You are a world-class email designer who builds launch campaigns for brands people love.
+
+Design one complete, production-ready marketing email for a product launch. It should feel polished and premium, the kind of email someone is happy to open.
+
+If I have not filled in the BRAND section below, ask me three simple questions first (what the business is, what is launching, and the vibe I want), then build the whole thing. Do not ask anything else.
+
+BRAND
+- Business: [WHAT YOUR BUSINESS IS AND WHO IT SERVES]
+- Product launching: [THE PRODUCT OR OFFER, PLUS ONE DETAIL THAT MAKES IT SPECIAL]
+- One-line promise: [THE SINGLE BEST REASON SOMEONE SHOULD CARE]
+- Vibe: [3 TO 5 WORDS, FOR EXAMPLE: WARM AND MINIMAL, BOLD AND PLAYFUL, LUXE AND QUIET]
+
+EMAIL STRUCTURE (build every section, top to bottom, fully written out)
+1. A slim top bar with the brand name on the left and a short tagline on the right.
+2. A hero section: a big headline, a one-line subhead, a large feature image area for the product, and one bold call-to-action button.
+3. A three-column "why people love it" row. Each column gets a simple icon, a bold title, and one line of copy.
+4. A full-width feature block: a product image on one side, and on the other a short, warm, story-driven paragraph about how this product came to be, plus a secondary button.
+5. A social-proof strip: one 5-star customer quote with a first name and last initial, plus "verified buyer."
+6. A limited-time offer banner: a bold offer line, a promo code, and a final call-to-action button.
+7. A footer: brand name, small navigation links (Shop, Collections, Track Order, Help), social icons, a friendly address line, and an unsubscribe line.
+
+COPY
+Write real, specific, on-brand copy for every single line, including button text, the story paragraph, the customer quote, the offer, and the promo code. Base it on the BRAND details above. No placeholder text, no lorem ipsum, no brackets left in the final email.
+
+DESIGN SYSTEM
+- Color: build a palette that matches my vibe. Use two or three strong accent colors as color blocks and buttons, on a clean background with soft tinted section backgrounds. High energy is fine, but keep it balanced, not chaotic.
+- Type: one display font for headlines and one clean sans-serif for body text, both loaded from Google Fonts with safe fallbacks. Pick fonts that match my vibe.
+- Layout: single column, 600px max width, centered, generous spacing, rounded corners on cards and buttons, soft shadows, and subtle gradients so it feels layered.
+- Buttons: large, high-contrast, pill-shaped, in a bright accent color with white text, clearly tappable.
+- Fun details: add one or two small decorative touches near the hero that fit the brand. Keep it delightful, never cluttered.
+- Feel: the flagship launch email of a top brand in my category.
+
+IMAGES
+For every image area, use a placeholder that renders instantly: either a colored gradient block in my brand colors with the product name set over it, or a placeholder image service. Never leave an image area blank or broken. Add descriptive alt text to every image.
+
+TECHNICAL
+- Deliver one clean, self-contained, responsive HTML email file, 600px max width, that collapses to a single column on mobile.
+- Put all the styling inline. No JavaScript.
+- Make spacing, alignment, and font sizes look intentional on both desktop and mobile.
+
+Build the entire email in one pass. Do not ask me clarifying questions beyond the three above. Fill anything I left open with the best on-brand choice, then show me the finished design.

@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set Up Remotion · KyleMeetsAI</title>
+<meta name="description" content="A patient, plain-language setup guide that gets Remotion working inside Claude Code for you. Remotion makes real videos using code, and once it is set up you can just ask Claude to build videos for you. This prompt walks Claude through checking your computer has what it needs, creating a fresh video project, and running a tiny test render to prove it can actually make a video, explaining every step and never installing anything without telling you what it is first. No coding needed on your end.">
+<link rel="canonical" href="https://kylemeetsai.com/prompts/setup-remotion">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KyleMeetsAI">
+<meta property="og:title" content="Set Up Remotion · KyleMeetsAI">
+<meta property="og:description" content="A patient, plain-language setup guide that gets Remotion working inside Claude Code for you. Remotion makes real videos using code, and once it is set up you can just ask Claude to build videos for you. This prompt walks Claude through checking your computer has what it needs, creating a fresh video project, and running a tiny test render to prove it can actually make a video, explaining every step and never installing anything without telling you what it is first. No coding needed on your end.">
+<meta property="og:url" content="https://kylemeetsai.com/prompts/setup-remotion">
+<meta name="theme-color" content="#ECEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48.png?v=7f4f42a2">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f59fe489">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=7f6fe8f5">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="KyleMeetsAI home"><img src="/assets/photo/kyle-tiktok-avatar.jpg?v=552bc3f5" alt="" width="36" height="36"><span>KyleMeets<b>AI</b></span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="hide-sm" href="/#prompts">Prompts</a>
+      <a class="hide-sm" href="/#videos">Videos</a>
+      <a class="hide-sm" href="/#about">About</a>
+      <a class="nav-cta" href="/#work">Work with me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="p-main">
+  <div class="wrap">
+    <div class="p-layout">
+    <article class="p-article" data-added="2026-07-23">
+      <a class="crumb" href="/#prompts"><span aria-hidden="true">←</span> All prompts</a>
+      <header class="p-hero">
+        <div class="p-eyebrow"><span class="label">Agents · Prompt</span><span class="new" hidden>New</span></div>
+        <h1>Set Up Remotion</h1>
+        <p class="p-lede">A patient, plain-language setup guide that gets Remotion working inside Claude Code for you. Remotion is a tool that makes real videos using code, and once it is set up, you can just ask Claude to build videos for you. This prompt walks Claude through checking your computer has what it needs, creating a fresh video project, and running a tiny test render to prove it can actually make a video, explaining every step along the way and never installing anything without telling you what it is first.</p>
+        
+        <div class="p-works"><span class="label">Works in</span><span class="apps"><span class="app">Claude</span></span></div>
+        <div class="p-actions"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai/video/7664414373900782862" target="_blank" rel="noopener">Watch the video <span aria-hidden="true">↗</span></a></div>
+        
+      </header>
+
+      <section class="p-section" aria-labelledby="how-h">
+        <h2 class="p-h2" id="how-h">How to use it</h2>
+        <ol class="p-steps"><li><span>Tap <em>Copy prompt</em> below</span></li><li><span>Open the Claude desktop app and start a Claude Code session</span></li><li><span>Paste the prompt into the chat</span></li><li><span>Follow along as Claude checks your setup, creates the project, and runs a test render, answering its questions when it asks</span></li></ol>
+        
+      </section>
+
+      <section class="p-section" aria-labelledby="box-h">
+        <div class="p-box">
+          <div class="p-box-bar"><h2 class="label" id="box-h">The prompt</h2><button class="copy-btn" type="button" data-copy>Copy prompt</button></div>
+          <div class="p-box-text" id="prompt-text" tabindex="0">You are my patient setup guide. You are going to help me set up Remotion inside Claude Code. Remotion is a tool that lets you make real videos using code, and once it is set up, I will be able to just ask you to build videos for me. I might not be technical, so explain what you are doing in plain language at each step, and never install anything on my computer without first telling me what it is and why it is needed. If anything looks off, pause and check with me instead of pushing ahead.
+
+Work through these steps in order.
+
+Step 1: Tell me the plan.
+In two or three sentences, tell me what we are about to do: check that my computer has the one basic tool Remotion needs, set up a fresh video project, and then run a tiny test to prove it can actually make a video. Keep it friendly and simple.
+
+Step 2: Check that Node.js is installed.
+Node.js is the engine that runs Remotion and its tools behind the scenes. Nothing here works without it. Check whether Node.js is installed and tell me the version. Also check that npm is available (that is the helper that comes with Node and installs the pieces a project needs).
+
+If Node.js is installed and the version is 18 or higher, tell me we are good to go and move on to Step 3.
+
+If Node.js is missing, or the version is older than 18, do NOT install anything yourself. Stop and walk me through it instead, so I understand what I am installing before I install it:
+
+- Explain in plain words what Node.js is and why Remotion needs it.
+- Check whether I am on a Mac or a Windows computer, then give me the simple, official way to install it: go to nodejs.org, download the version labeled LTS, and run the installer.
+- Tell me what to expect (a normal installer that I click through with the default choices) so nothing feels scary or surprising.
+- Then wait. Once I have installed it and told you I am ready, check the version again before continuing. Remotion needs at least Node 16, but 18 or newer is the safe choice.
+
+Step 3: Ask me where to set up the project.
+Ask me one simple question and wait for my answer: would I like you to create a new, clearly named folder for this project (a name like my-first-video works well), or set it up right here in the folder we are already in? If I choose the current folder, first check whether it already has files in it, and warn me before doing anything if it does.
+
+Step 4: Create the project.
+Once I have answered, set up a new Remotion project using the blank starter, without making me answer a bunch of technical questions. Run this command, using the folder name I chose:
+
+npx create-video@latest --yes --blank my-first-video
+
+(use the name I picked in Step 3 in place of my-first-video). Then go into that folder and install everything the project needs by running npm install. Tell me in one plain line what that install step is doing (downloading the building blocks the project runs on). This part can take a minute, so let me know that is normal if it looks like it is just thinking.
+
+Step 5: Add Remotion&#x27;s AI skill.
+Now give yourself Remotion&#x27;s own instruction manual, so you know exactly how to build videos the right way in this project. From inside the project folder, run:
+
+npx skills add remotion-dev/skills
+
+If that command is not found or does not work, try this one instead: npx remotion skills add. Tell me in one line what this did (it taught you Remotion&#x27;s official way of doing things, so your videos come out clean).
+
+Step 6: Run a tiny test render to prove it works.
+This is just a quick health check, not a real video I keep. First, ask Remotion what is in the project by running npx remotion compositions, and pick the first one it lists. Then render that one to a temporary test file, for example:
+
+npx remotion render [that-composition-name] out/setup-test.mp4
+
+Warn me first that the very first render will automatically download Remotion&#x27;s built-in rendering browser (a one-time thing that can take a minute or two), and that this is completely normal. When it finishes, confirm that the file out/setup-test.mp4 was actually created. If it was, tell me plainly that my computer can produce real videos, then delete that test file so we start clean. If the render fails, stop and tell me in simple terms what went wrong so we can fix it, rather than pretending it worked.
+
+Step 7: Check the rest of the setup.
+Also confirm the basics are healthy: the project folder has a package.json file, the dependencies installed (there is a node_modules folder), and the Remotion skill files were added. If anything is missing, tell me plainly and stop so we can fix it together.
+
+Step 8: Confirm it is ready, then stop.
+If everything checks out, give me a short, friendly summary:
+
+- What I now have set up, including that a test video rendered successfully.
+- The name and location of my project folder.
+- That next time, I can simply ask you to build a video and you will take it from there.
+
+Do not build any real or finished video in this session beyond the tiny throwaway test in Step 6. This is setup only. Once you have confirmed everything is ready, we are done for now.
+
+Keep your tone simple and encouraging the whole way through. No jargon. If anything is unclear, ask me instead of guessing. The goal is that by the end, I have a working Remotion project that has already proven it can make a video, and I understood every step we took to get there.</div>
+        </div>
+        <div class="p-after"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button></div>
+      </section>
+    </article>
+
+    <aside class="kyle-card" aria-label="About Kyle">
+      <div class="kyle-card-tile"><img src="/assets/photo/kyle-square.jpg?v=afd3b15a" alt="" width="600" height="600" loading="lazy"><span class="tile-name" aria-hidden="true"><span class="mic"><i></i><i></i><i></i><i></i></span>KyleMeetsAI</span></div>
+      <div class="kyle-card-copy"><p class="kyle-card-title">Hi, I’m Kyle.</p><p>I post a new AI how-to every week, and its prompt waits for you here.</p></div>
+      <div class="kyle-card-links"><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a></div>
+    </aside>
+
+    <section class="p-section p-related" aria-labelledby="rel-h">
+      <div class="p-related-head"><h2 class="p-h2" id="rel-h">More like this</h2><a class="p-all" href="/#prompts">All prompts <span class="arrow" aria-hidden="true">→</span></a></div>
+      <div class="p-grid" id="related"><a class="p-card" href="/prompts/ai-visibility-check" data-drawer="ai-visibility-check" data-topic="agents" data-apps="claude chatgpt" data-format="prompt" data-added="2026-11-30" hidden><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>Does AI Recommend Your Business?</h3><p>Paste one prompt and Claude asks AI the questions your customers ask, shows who it recommends instead of you and why, and gives you 3 fixes. Then it checks again every week. Research only: it never posts or contacts anyone.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/ai-agent-team" data-drawer="ai-agent-team" data-topic="agents" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-07-29"><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>AI Agent Team</h3><p>Turns Claude or ChatGPT into your own four-person product team that takes one idea and builds you a real, working app you can actually use. An Architect plans it, a Coder builds it, a Tester tries to break it, and a Manager fixes the important stuff and explains it all in plain English. No coding, no setup, no accounts. Just tell it what you want to build.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/build-crm-notion" data-drawer="build-crm-notion" data-topic="agents" data-apps="claude" data-format="prompt" data-added="2026-07-16"><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>Build a CRM with Claude (Notion)</h3><p>Paste one prompt into Claude with your Notion connected, answer a short interview about how you work, and Claude builds a real, fully populated CRM inside your Notion in a single pass. It blends a contacts list with a visual sales pipeline board, color-codes your stages, adds follow-up dates and priority labels, and can pre-fill about 12 realistic sample contacts so nothing opens empty. It looks and works like a tool you have used for months, then sends you the direct Notion link.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/desktop-agent-organize-folders" data-drawer="desktop-agent-organize-folders" data-topic="agents" data-apps="claude" data-format="prompt" data-added="2026-06-24"><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>Desktop Agent: Organize Folders</h3><p>Turns Claude&#x27;s desktop agent loose on one messy folder and only that folder. It sorts every loose top-level file into clearly named subfolders by type (Documents, PDFs, Spreadsheets, Images, and more), skips empty categories, leaves everything else untouched, and gives you a before/after count when it&#x27;s done.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/claude-second-brain" data-drawer="claude-second-brain" data-topic="agents" data-apps="claude chatgpt" data-format="prompt" data-added="2026-06-11"><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>Claude Second Brain</h3><p>Turns Claude into a personal assistant that knows everything in your Google Drive. Set it up once as a Claude.ai Project with the Google Drive connector, then ask anything about your own files, from contracts and bills to notes and plans, and get an instant, sourced answer with a link to the source file.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/quote-agent" data-drawer="quote-agent" data-topic="agents" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-05-22"><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>AI Quote Agent</h3><p>A professional quoting assistant for any service business. Share a customer inquiry email, confirm the scope, give your rates, and get back a clean PDF quote with line items, fees, totals, payment terms, and a signature block, ready to send.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a></div>
+    </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="wordmark" href="/"><span>KyleMeets<b>AI</b></span></a>
+    <nav aria-label="Footer">
+      <a href="/#prompts">Prompts</a>
+      <a href="/#videos">Videos</a>
+      <a href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram</a>
+      <a href="/#work">Work with me</a>
+    </nav>
+    <span class="fine">© 2026 KyleMeetsAI</span>
+  </div>
+</footer>
+<script src="/assets/prompt.js?v=2a7fae20" defer></script>
+</body>
+</html>

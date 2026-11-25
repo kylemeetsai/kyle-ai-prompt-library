@@ -1,0 +1,32 @@
+title: Desktop Agent: Organize Folders
+desc: Turns Claude's desktop agent loose on one messy folder and only that folder. It sorts every loose top-level file into clearly named subfolders by type (Documents, PDFs, Spreadsheets, Images, and more), skips empty categories, leaves everything else untouched, and gives you a before/after count when it's done.
+headline: DESKTOP AGENT 🤖: ORGANIZE FOLDERS
+sub: 60 second setup
+topic: agents
+apps: claude
+format: prompt
+added: 2026-06-24
+tiktok: 7655023440033844494
+copy: Copy prompt
+
+=== description ===
+Turns Claude's desktop agent loose on one messy folder and only that folder. It sorts every loose file at the top level into clearly named subfolders by type (Documents, PDFs, Spreadsheets, Presentations, Images, Video, Archives, and Misc), skips any empty category, and leaves everything else on your computer untouched. When it finishes, you get a quick before/after count: how many loose files you started with and how many tidy folders you have now.
+
+=== steps ===
+Tap <em>Copy prompt</em> below
+Open the Claude desktop app with file access to the folder you want organized
+Paste the prompt into a new chat
+Claude sorts the loose top-level files into tidy subfolders by type and reports a before/after count
+
+=== prompt ===
+Organize this folder. ONLY touch the files that are loose at the top level of this folder, nothing else on my computer.
+Sort every file into clearly named subfolders based on its type:
+
+"Documents" for .docx and .md and .txt
+"PDFs" for .pdf
+"Spreadsheets" for .xlsx and .csv
+"Presentations" for .pptx
+"Images" for .png and .jpg
+"Video" for .mov
+"Archives" for .zip
+"Misc" for anything that doesn't fit Move each file into the right subfolder so the top level goes from ~50 messy files down to a handful of tidy folders. Skip any empty category (don't create a folder if nothing goes in it). When you're done, give me a quick before/after count: how many loose files there were at the start and how many neat folders there are now.

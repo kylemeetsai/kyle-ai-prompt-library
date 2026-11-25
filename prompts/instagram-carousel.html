@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instagram Carousel (Claude Design) · KyleMeetsAI</title>
+<meta name="description" content="Generates a complete Instagram carousel from your topic and audience, with live previews and one-click PNG downloads sized to Instagram&#x27;s 1080x1080 spec, ready to post.">
+<link rel="canonical" href="https://kylemeetsai.com/prompts/instagram-carousel">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KyleMeetsAI">
+<meta property="og:title" content="Instagram Carousel (Claude Design) · KyleMeetsAI">
+<meta property="og:description" content="Generates a complete Instagram carousel from your topic and audience, with live previews and one-click PNG downloads sized to Instagram&#x27;s 1080x1080 spec, ready to post.">
+<meta property="og:url" content="https://kylemeetsai.com/prompts/instagram-carousel">
+<meta name="theme-color" content="#ECEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48.png?v=7f4f42a2">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f59fe489">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=7f6fe8f5">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="KyleMeetsAI home"><img src="/assets/photo/kyle-tiktok-avatar.jpg?v=552bc3f5" alt="" width="36" height="36"><span>KyleMeets<b>AI</b></span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="hide-sm" href="/#prompts">Prompts</a>
+      <a class="hide-sm" href="/#videos">Videos</a>
+      <a class="hide-sm" href="/#about">About</a>
+      <a class="nav-cta" href="/#work">Work with me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="p-main">
+  <div class="wrap">
+    <div class="p-layout">
+    <article class="p-article" data-added="2026-05-05">
+      <a class="crumb" href="/#prompts"><span aria-hidden="true">←</span> All prompts</a>
+      <header class="p-hero">
+        <div class="p-eyebrow"><span class="label">Content · Prompt</span><span class="new" hidden>New</span></div>
+        <h1>Instagram Carousel (Claude Design)</h1>
+        <p class="p-lede">Generates a complete Instagram carousel from your topic and audience. Builds a single HTML artifact with live previews of every slide and one-click PNG downloads sized exactly to Instagram's 1080x1080 spec, so you can post directly.</p>
+        
+        <div class="p-works"><span class="label">Works in</span><span class="apps"><span class="app">Claude</span></span></div>
+        <div class="p-actions"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai/video/7633478585839389965" target="_blank" rel="noopener">Watch the video <span aria-hidden="true">↗</span></a></div>
+        
+      </header>
+
+      <section class="p-section" aria-labelledby="how-h">
+        <h2 class="p-h2" id="how-h">How to use it</h2>
+        <ol class="p-steps"><li><span>Tap <em>Copy prompt</em> below</span></li><li><span>Paste into a new Claude chat</span></li><li><span>Fill in your topic, audience, slide count, and any brand colors or aesthetic</span></li><li><span>Download each slide as a 1080x1080 PNG and post</span></li></ol>
+        <div class="p-notes"><p>If a download button doesn't respond, ask Claude to export the slides as PNG files, or screenshot each slide.</p></div>
+      </section>
+
+      <section class="p-section" aria-labelledby="box-h">
+        <div class="p-box">
+          <div class="p-box-bar"><h2 class="label" id="box-h">The prompt</h2><button class="copy-btn" type="button" data-copy>Copy prompt</button></div>
+          <div class="p-box-text" id="prompt-text" tabindex="0">Build me ONE single HTML artifact (not multiple separate files) that displays an Instagram carousel as a responsive grid of slide previews on screen. Under each slide preview, include a &quot;Download as PNG&quot; button that exports just that slide at exactly 1080x1080 resolution. I want to see all slides at once, then download each one to post to Instagram.
+
+TOPIC: [describe your carousel topic. Examples: &quot;5 productivity habits I swear by&quot;, &quot;intro to my coaching practice&quot;, &quot;summer reading list 2025&quot;, &quot;announcing our new product launch&quot;]
+AUDIENCE: [who this is for. Examples: &quot;first-time founders&quot;, &quot;moms returning to work&quot;, &quot;people new to AI&quot;, &quot;wedding photographers&quot;]
+NUMBER OF SLIDES: [pick anywhere from 5 to 10. Instagram&#x27;s engagement sweet spot is 7 to 10]
+
+STRUCTURE (adjust to your slide count):
+- Slide 1: Cover / hook (big headline, sets tone, includes a subtle swipe hint)
+- Middle slides: One idea per slide (tips, steps, points, items, or features)
+- Final slide: CTA (&quot;save this&quot;, &quot;follow for more&quot;, &quot;try it yourself&quot;, or your own call to action)
+
+REQUIREMENTS:
+- Single self-contained HTML file
+- Grid of live previews scaled to fit the screen, auto-adjusting columns based on slide count
+- Each preview has its own &quot;Download as PNG&quot; button below it
+- Also include a &quot;Download all&quot; button at the top. When clicked, it must export slides sequentially with a 400ms delay between each download to avoid the browser blocking multiple downloads
+- Display a small one-line note near the &quot;Download all&quot; button that says: &quot;Your browser may ask permission to download multiple files. Click Allow.&quot;
+- Each PNG exports at exactly 1080x1080 (Instagram square spec)
+- Use html2canvas version 1.4.1 loaded from cdnjs. Call it with these exact options for every export: { width: 1080, height: 1080, scale: 1, useCORS: true, allowTaint: false, backgroundColor: [match the slide&#x27;s actual background color, never null] }. Do NOT use scale: 2, because the source already renders at 1080x1080 and scale: 2 would produce 2160x2160 output
+- Render each slide at full 1080x1080 inside a hidden off-screen stage positioned at left: -99999px. Do NOT use display: none, which breaks html2canvas rendering. The on-screen grid shows CSS-scaled clones using transform: scale(...) with transform-origin: top left so layout stays predictable
+- Before ANY export runs, await document.fonts.ready so Google Fonts finish loading. Also run one silent &quot;warmup&quot; html2canvas pass on page load (throw the result away) so the browser caches font glyphs before the user clicks any download button. This prevents the common bug where the first export uses fallback system fonts
+- File names: export as [topic-slug]-01.png, [topic-slug]-02.png, etc. so downloads stay organized
+
+DESIGN RULES:
+- Pick a strong, opinionated visual direction. Not generic web design. Commit to a specific aesthetic (e.g. travel scrapbook, brutalist editorial, soft pastel risograph, 90s zine, modern minimalist, retro postcard, vintage magazine, art deco, swiss design, collage, etc.)
+- Use real Google Fonts loaded from fonts.googleapis.com, layered inline SVG illustrations or shapes for graphic detail, and a considered color palette of 3 to 5 colors max with intentional typography hierarchy
+- Avoid external image URLs (Unsplash, Pexels, etc.) because they frequently fail CORS in html2canvas. Use inline SVG for any illustration or graphic element
+- Avoid emojis in slide bodies. They render with system fonts during export and often look different from the preview. Use inline SVG icons instead, or text only
+- Add visual continuity across slides. Use a recurring shape, color block, texture, or graphic element on every slide so the carousel reads as ONE connected story, not separate posts
+- Include page indices (01/07, 02/07, etc.) so it reads as a connected carousel
+- Keep critical text and key visuals inside a center safe zone with at least 80px of padding on ALL FOUR sides (top, bottom, left, right). Instagram crops the feed preview, so anything near the edges may get cut
+- Body text minimum 32px, headlines 80px or larger, so it stays legible on mobile
+
+AESTHETIC FOR THIS ONE: [optional. Describe a vibe or say &quot;surprise me&quot;]
+BRAND COLORS / FONTS (if any): [optional. Drop hex codes or font names if you have them]</div>
+        </div>
+        <div class="p-after"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button></div>
+      </section>
+    </article>
+
+    <aside class="kyle-card" aria-label="About Kyle">
+      <div class="kyle-card-tile"><img src="/assets/photo/kyle-square.jpg?v=afd3b15a" alt="" width="600" height="600" loading="lazy"><span class="tile-name" aria-hidden="true"><span class="mic"><i></i><i></i><i></i><i></i></span>KyleMeetsAI</span></div>
+      <div class="kyle-card-copy"><p class="kyle-card-title">Hi, I’m Kyle.</p><p>I post a new AI how-to every week, and its prompt waits for you here.</p></div>
+      <div class="kyle-card-links"><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a></div>
+    </aside>
+
+    <section class="p-section p-related" aria-labelledby="rel-h">
+      <div class="p-related-head"><h2 class="p-h2" id="rel-h">More like this</h2><a class="p-all" href="/#prompts">All prompts <span class="arrow" aria-hidden="true">→</span></a></div>
+      <div class="p-grid" id="related"><a class="p-card" href="/prompts/google-vids-movie" data-drawer="google-vids-movie" data-topic="content" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-11-25"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>3 Free AI Movie Clips a Month</h3><p>Google Vids turns one sentence into a 15-second movie clip with sound, free three times a month on any Google account. Paste this into Gemini or ChatGPT and it asks a few quick questions, then writes the Vids prompt for you, so you don&#x27;t waste a free clip.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/social-media-dashboard" data-drawer="social-media-dashboard" data-topic="content" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-10-19"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>Claude Tells You What to Post Next</h3><p>Drop your TikTok or Instagram stats export into Claude, paste one prompt, and get a live dashboard built from your real numbers: your best days, which weekday works for you, what&#x27;s growing, and three bets for what to post next week. Drop in next week&#x27;s file and it updates itself.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/product-launch-email" data-drawer="product-launch-email" data-topic="content" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-08-03"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>Product Launch Email</h3><p>Give it your brand, product, and vibe and it designs one complete, premium launch email: hero, three-column benefits, story feature block, social proof, and a limited-time offer banner, fully written and ready to paste into any email platform.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/content-calendar" data-drawer="content-calendar" data-topic="content" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-06-22"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>AI Content Calendar</h3><p>Acts as your AI content strategist. It interviews you about your niche and goals, researches what is working in your space right now with live web search, then builds a 30-day calendar of weekday posts, each with a scroll-stopping hook, a specific shot list, keywords, and the research reason behind it. Pick Excel, an HTML doc, or a live interactive artifact, and optionally push every post to your Google Calendar.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/caption-generator" data-drawer="caption-generator" data-topic="content" data-apps="claude" data-format="prompt" data-added="2026-06-18"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>AI Caption Generator</h3><p>Builds a live caption generator as a Claude artifact that writes Instagram captions in your exact voice. Paste five recent captions so Claude learns your phrasing, hooks, and signature phrases, then pick your post type, goal, length, vibe, and CTA to get three caption options that actually sound like you.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/canva-carousel" data-drawer="canva-carousel" data-topic="content" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-06-10"><span class="p-meta"><span class="p-topic">Content</span><span class="new" hidden>New</span></span><h3>Canva Carousel</h3><p>An expert carousel designer builds an editable carousel straight into your Canva account using the Canva connector. Answer six quick questions, approve a slide outline, then get a premium 1080x1350 portrait carousel with each slide as its own editable Canva page, exported as PNGs, a PDF, and an editable link.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a></div>
+    </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="wordmark" href="/"><span>KyleMeets<b>AI</b></span></a>
+    <nav aria-label="Footer">
+      <a href="/#prompts">Prompts</a>
+      <a href="/#videos">Videos</a>
+      <a href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram</a>
+      <a href="/#work">Work with me</a>
+    </nav>
+    <span class="fine">© 2026 KyleMeetsAI</span>
+  </div>
+</footer>
+<script src="/assets/prompt.js?v=2a7fae20" defer></script>
+</body>
+</html>
