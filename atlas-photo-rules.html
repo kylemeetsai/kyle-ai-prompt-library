@@ -91,6 +91,16 @@
     background: #ff6b2c; color: #fff; border-radius: 8px;
     text-decoration: none; font-weight: 600; font-size: 14px;
   }
+  .try-button {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; padding: 16px; margin-bottom: 20px;
+    background: #ff6b2c; color: #fff; border-radius: 14px;
+    font-size: 17px; font-weight: 700; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(255,107,44,0.25);
+    transition: transform 0.1s;
+  }
+  .try-button:active { transform: scale(0.98); }
+  .try-sub { text-align: center; font-size: 13px; color: #777; margin: -12px 0 20px; }
 </style>
 </head>
 <body>
@@ -105,6 +115,9 @@
   <div class="description">
     Atlas, from World Labs, turns one photo into a 3D world you can fly a camera through, even the parts the camera never saw. These are my 3 rules for photos that build great worlds, plus the steps to walk inside yours.
   </div>
+
+  <a class="try-button" href="https://atlas.worldlabs.ai" target="_blank" rel="noopener">Try Atlas →</a>
+  <div class="try-sub">World Labs' site · sign in, then open Viewfinder</div>
 
   <div class="how-to">
     <div class="how-to-label">How to use</div>
