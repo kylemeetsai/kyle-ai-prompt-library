@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Set Up Claude&#x27;s /ship Command · KyleMeetsAI</title>
+<meta name="description" content="Get Claude Code ready to review your change, fix what breaks and hand it back to you to merge. Plain steps first, then a setup prompt that walks you through it.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="KyleMeetsAI">
+<meta property="og:title" content="Set Up Claude&#x27;s /ship Command · KyleMeetsAI">
+<meta property="og:description" content="Get Claude Code ready to review your change, fix what breaks and hand it back to you to merge. Plain steps first, then a setup prompt that walks you through it.">
+<meta property="og:url" content="https://kylemeetsai.com/prompts/claude-ship">
+<meta property="og:image" content="https://kylemeetsai.com/assets/og/kylemeetsai.png?v=145c2b3d">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="KyleMeetsAI: AI made easy.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ECEEF1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1114" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/icon-48.png?v=7f4f42a2">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=f59fe489">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Geist:wght@400..700&family=Geist+Mono:wght@400..600&display=swap">
+<link rel="stylesheet" href="/assets/site.css?v=8986f5fc">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="wordmark" href="/" aria-label="KyleMeetsAI home"><img src="/assets/photo/kyle-tiktok-avatar.jpg?v=552bc3f5" alt="" width="36" height="36"><span>KyleMeets<b>AI</b></span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="hide-sm" href="/#prompts">Prompts</a>
+      <a class="hide-sm" href="/#videos">Videos</a>
+      <a class="hide-sm" href="/#about">About</a>
+      <a class="nav-cta" href="/#work">Work with me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" class="p-main">
+  <div class="wrap">
+    <div class="p-layout">
+    <article class="p-article" data-added="2026-12-03">
+      <a class="crumb" href="/#prompts"><span aria-hidden="true">←</span> All prompts</a>
+      <header class="p-hero">
+        <div class="p-eyebrow"><span class="label">Agents · Guide</span><span class="new" hidden>New</span></div>
+        <h1>Set Up Claude&#x27;s /ship Command</h1>
+        <p class="p-lede">Anthropic just released <strong>Claude Ship</strong>. In Claude Code, one command, <strong>/ship</strong>, saves your change, sends it for review on GitHub, checks it, and keeps fixing what comes back. <strong>You still hit merge.</strong> Here are the steps, plus a prompt that gets your project ready for your first /ship.</p>
+        
+        <div class="p-works"><span class="label">Works in</span><span class="apps"><span class="app">Claude</span></span></div>
+        <div class="p-actions"><a class="btn btn-primary" href="https://code.claude.com/docs/en/ship-command" target="_blank" rel="noopener">Read Anthropic&#x27;s guide <span aria-hidden="true">↗</span></a><button class="btn btn-ghost" type="button" data-copy>Copy prompt</button></div>
+        <p class="p-fine">Anthropic&#x27;s /ship docs · no sign-in needed</p>
+      </header>
+
+      <section class="p-section" aria-labelledby="how-h">
+        <h2 class="p-h2" id="how-h">How to use it</h2>
+        <ol class="p-steps"><li><span><strong>You need:</strong> Claude Code on your computer and a GitHub account</span></li><li><span><strong>Open Claude Code in your terminal</strong>, inside your project's folder. /ship works there, not in a regular Claude chat</span></li><li><span><strong>Paste the setup prompt below.</strong> Claude checks your GitHub sign-in, keeps your keys and passwords out, and writes your review rules</span></li><li><span><strong>Type /ship yourself.</strong> Claude opens a pull request, reviews your change, and keeps fixing what comes back while the window stays open</span></li><li><span><strong>You hit merge.</strong> When Claude says the checks pass, merge it on GitHub. Claude never merges for you</span></li><li><span><strong>Don't see /ship?</strong> Type <strong>claude update</strong> in your terminal, then restart Claude Code (sometimes twice)</span></li></ol>
+        <div class="p-notes"><p>Good to know: the agents that review, fix and approve every pull request on their own are switched on by a company's Claude admin. On your own, /ship gives you the review and the fixes.</p><p>AI review can still miss bugs (Anthropic says so), so you're the last check before you merge.</p></div>
+      </section>
+
+      <section class="p-section" aria-labelledby="box-h">
+        <div class="p-box">
+          <div class="p-box-bar"><h2 class="label" id="box-h">The prompt</h2><button class="copy-btn" type="button" data-copy>Copy prompt</button></div>
+          <div class="p-box-text" id="prompt-text" tabindex="0">Help me get set up to use /ship, the Claude Code command that opens a pull request on GitHub, reviews my change, and works on the feedback and failing checks. Go one step at a time, ask me one question at a time, and wait for my answer. Use plain English. Ask before you commit, push, change a file or create anything on GitHub. Never ask me for passwords or tokens, and never merge, approve or force-push anything.
+
+1. Check the basics: is this folder a git project, is git 2.38 or newer, and is the GitHub CLI (gh) 2.63 or newer installed and signed in? If something is missing, give me the exact command and let me run it myself in my own terminal, including the sign-in (gh auth login, using the browser option). If I&#x27;m on Windows outside WSL, tell me /ship will review my change there but won&#x27;t keep fixing it.
+2. Check for secrets: make sure .env files, API keys and passwords are in .gitignore and not already committed, and look inside my changed files for keys too. Never show me a secret&#x27;s value. If one is already committed, stop and walk me through fixing it first.
+3. If this project isn&#x27;t on GitHub yet, offer to create a private repo for it, and wait for my yes.
+4. Interview me: What does this project do, in one sentence? What must never break (checkout, sign-up, a booking form)? Is there anything that should always get a person&#x27;s eyes before it goes live? If I&#x27;m not sure, suggest an answer.
+5. From my answers, write a short &quot;Review rules&quot; section in CLAUDE.md: what counts as important, what to ignore, and five nitpicks at most. Show it to me before you save it. Then, with my OK, commit and push the setup files (CLAUDE.md, .gitignore) to my main branch on their own, because /ship won&#x27;t commit changes to those files for me.
+6. Show me every uncommitted file, because /ship can commit all of them, and help me set aside anything that shouldn&#x27;t go in.
+7. In three plain sentences, tell me what /ship will do: commit, push, open a pull request, review it, then keep working on failing checks and comments while this window stays open. Remind me that I merge it myself, that typing /ship stop ends it, and that in Manual permission mode you&#x27;ll ask me before each push or reply.
+8. If I have no change ready, suggest one small, safe change and make it with me. Then tell me to type /ship myself.</div>
+        </div>
+        <div class="p-after"><button class="btn btn-primary" type="button" data-copy>Copy prompt</button></div>
+      </section>
+    </article>
+
+    <aside class="kyle-card" aria-label="About Kyle">
+      <div class="kyle-card-tile"><img src="/assets/photo/kyle-square.jpg?v=afd3b15a" alt="" width="600" height="600" loading="lazy"><span class="tile-name" aria-hidden="true"><span class="mic"><i></i><i></i><i></i><i></i></span>KyleMeetsAI</span></div>
+      <div class="kyle-card-copy"><p class="kyle-card-title">Hi, I’m Kyle.</p><p>I post a new AI how-to every week, and its prompt waits for you here.</p></div>
+      <div class="kyle-card-links"><a class="btn btn-ghost" href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok <span aria-hidden="true">↗</span></a><a class="btn btn-ghost" href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a></div>
+    </aside>
+
+    <section class="p-section p-related" aria-labelledby="rel-h">
+      <div class="p-related-head"><h2 class="p-h2" id="rel-h">More like this</h2><a class="p-all" href="/#prompts">All prompts <span class="arrow" aria-hidden="true">→</span></a></div>
+      <div class="p-grid" id="related"><a class="p-card" href="/prompts/ai-visibility-check" data-drawer="ai-visibility-check" data-topic="agents" data-apps="claude chatgpt" data-format="prompt" data-added="2026-11-30" hidden><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>Does AI Recommend Your Business?</h3><p>Paste one prompt and Claude asks AI the questions your customers ask, shows who it recommends instead of you and why, and gives you 3 fixes. Then it checks again every week. Research only: it never posts or contacts anyone.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/ai-agent-team" data-drawer="ai-agent-team" data-topic="agents" data-apps="claude chatgpt gemini" data-format="prompt" data-added="2026-07-29"><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>AI Agent Team</h3><p>Turns Claude or ChatGPT into your own four-person product team that takes one idea and builds you a real, working app you can actually use. An Architect plans it, a Coder builds it, a Tester tries to break it, and a Manager fixes the important stuff and explains it all in plain English. No coding, no setup, no accounts. Just tell it what you want to build.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span><span class="app">Gemini</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/setup-remotion" data-drawer="setup-remotion" data-topic="agents" data-apps="claude" data-format="prompt" data-added="2026-07-23"><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>Set Up Remotion</h3><p>A patient, plain-language setup guide that gets Remotion working inside Claude Code for you. Remotion makes real videos using code, and once it is set up you can just ask Claude to build videos for you. This prompt walks Claude through checking your computer has what it needs, creating a fresh video project, and running a tiny test render to prove it can actually make a video, explaining every step and never installing anything without telling you what it is first. No coding needed on your end.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/build-crm-notion" data-drawer="build-crm-notion" data-topic="agents" data-apps="claude" data-format="prompt" data-added="2026-07-16"><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>Build a CRM with Claude (Notion)</h3><p>Paste one prompt into Claude with your Notion connected, answer a short interview about how you work, and Claude builds a real, fully populated CRM inside your Notion in a single pass. It blends a contacts list with a visual sales pipeline board, color-codes your stages, adds follow-up dates and priority labels, and can pre-fill about 12 realistic sample contacts so nothing opens empty. It looks and works like a tool you have used for months, then sends you the direct Notion link.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/desktop-agent-organize-folders" data-drawer="desktop-agent-organize-folders" data-topic="agents" data-apps="claude" data-format="prompt" data-added="2026-06-24"><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>Desktop Agent: Organize Folders</h3><p>Turns Claude&#x27;s desktop agent loose on one messy folder and only that folder. It sorts every loose top-level file into clearly named subfolders by type (Documents, PDFs, Spreadsheets, Images, and more), skips empty categories, leaves everything else untouched, and gives you a before/after count when it&#x27;s done.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a><a class="p-card" href="/prompts/claude-second-brain" data-drawer="claude-second-brain" data-topic="agents" data-apps="claude chatgpt" data-format="prompt" data-added="2026-06-11"><span class="p-meta"><span class="p-topic">Agents</span><span class="new" hidden>New</span></span><h3>Claude Second Brain</h3><p>Turns Claude into a personal assistant that knows everything in your Google Drive. Set it up once as a Claude.ai Project with the Google Drive connector, then ask anything about your own files, from contracts and bills to notes and plans, and get an instant, sourced answer with a link to the source file.</p><span class="p-foot"><span class="apps"><span class="app">Claude</span><span class="app">ChatGPT</span></span><span class="p-open">Open <span class="arrow" aria-hidden="true">→</span></span></span></a></div>
+    </section>
+    </div>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <a class="wordmark" href="/"><span>KyleMeets<b>AI</b></span></a>
+    <nav aria-label="Footer">
+      <a href="/#prompts">Prompts</a>
+      <a href="/#videos">Videos</a>
+      <a href="https://www.tiktok.com/@kyle.meets.ai" target="_blank" rel="noopener">TikTok</a>
+      <a href="https://www.instagram.com/kyle.meets.ai/" target="_blank" rel="noopener">Instagram</a>
+      <a href="/#work">Work with me</a>
+    </nav>
+    <span class="fine">© 2026 KyleMeetsAI</span>
+  </div>
+</footer>
+<script src="/assets/prompt.js?v=2a7fae20" defer></script>
+</body>
+</html>
