@@ -11,6 +11,8 @@
 /content/* / 301
 /savings-goal-tracker /prompts/savings-goal-tracker 301
 /savings-goal-tracker.html /prompts/savings-goal-tracker 301
+/claim-chatgpt-business /prompts/claim-chatgpt-business 301
+/claim-chatgpt-business.html /prompts/claim-chatgpt-business 301
 /atlas-photo-rules /prompts/atlas-photo-rules 301
 /atlas-photo-rules.html /prompts/atlas-photo-rules 301
 /ai-visibility-check /prompts/ai-visibility-check 301
