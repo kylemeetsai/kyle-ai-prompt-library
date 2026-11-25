@@ -6,9 +6,12 @@ non-technical TikTok audience. This file is the process of record. Follow it.
 ## What this is
 
 - **Static HTML, zero build, zero dependencies.** The files *are* the site. No
-  framework, no bundler, no CI. Deploy is **manual**: the owner re-uploads the
-  folder to Cloudflare Pages / Netlify (drag-and-drop). Merging a PR does **not**
-  deploy — always remind the owner of the manual re-upload step.
+  framework, no bundler, no CI. **Deploy is automatic (confirmed Nov 2026):**
+  merging into `main` publishes to Cloudflare Pages
+  (kyle-ai-prompt-library.pages.dev) within a minute or two. No re-upload.
+  To check a page is live, `curl -sL` its bare path (`/page`, Cloudflare
+  308-redirects `.html`) and look for its headline: an unknown path can still
+  answer 200 with the homepage.
 - **Structure:** `index.html` is the hub. Every prompt and every skill is its own
   self-contained `.html` file at the repo root, with inline `<style>` and a small
   inline copy-button `<script>`. Each detail page links back with
@@ -30,14 +33,29 @@ non-technical TikTok audience. This file is the process of record. Follow it.
 - **Filter pills** are a centered pyramid: `All` alone on top (followed by a
   `<span class="pill-break">`), then topic pills wrap beneath. Order: Skills, Career,
   Design, Content & Social, Health & Life, Money, Agents & Automation.
-- Each card carries `data-topic` (which pill) and `data-tool` (which colored tag),
-  plus optional `data-new` for a NEW badge. First child of each card is
-  `<div class="card-meta">` holding the tool-tag span (+ NEW badge).
+- Each card carries `data-topic` (which pill), `data-tool` (which colored tag),
+  `data-format` (`prompt`, `guide`, `link` or `skill`) and `data-added`
+  (`YYYY-MM-DD`, the day its video posts). First child of each card is
+  `<div class="card-meta">` holding the tool-tag span, then a
+  `<span class="format-tag">` reading Prompt / Guide / Try it (skills get none:
+  their tool tag already says Skill).
+- **NEW badges are automatic:** the hub's JS adds one for 14 days after
+  `data-added`. Never hand-add a NEW badge or `data-new`.
+- **Pills are topics (what the viewer wants to do), never formats.** A guide about
+  money goes under Money; the format tag says it's a guide.
 - **Pill counts are computed in JS from the cards** — never hand-edit them. The JS
   also hides a pill's count when it is 0, and shows the `.no-results` message when a
   filter matches nothing. Progressive enhancement: with JS off, all cards show.
 - Valid `data-topic`: `skills`, `career`, `design`, `content`, `health`, `money`, `agents`.
 - Valid `data-tool`: `claude`, `design`, `agent`, `connector`, `chatgpt`, `skill`.
+
+## Giveaway types: prompt, guide, link
+
+Not every video needs a prompt. **Prompt:** copy box (the AI does the work).
+**Guide:** numbered steps are the main content, optional helper prompt in a copy
+box. **Link:** the tool does the work; lead with a big orange
+`<a class="try-button">Try <tool> →</a>` to the official site plus a few tips
+(see `atlas-photo-rules.html`). Any page can carry a Try button.
 
 ## Adding a PROMPT
 
@@ -78,7 +96,9 @@ Decided with the owner and proven with the Humanizer skill (`humanizer.md`,
 ## Git / PR workflow
 
 - Develop on branch **`claude/prompt-library-organization-7pc5j0`**.
-- **One change = one PR into `main`.** Don't stack. The owner reviews and merges.
+- **One change = one PR into `main`.** Don't stack. Since Nov 2026 the owner has
+  pre-approved publishing a video's page when the video is scheduled (Claude opens
+  the PR and merges it); anything else, the owner reviews and merges.
 - **After a PR merges, restart the branch from the updated main before the next
   change:** `git fetch origin main && git checkout -B claude/prompt-library-organization-7pc5j0 origin/main`.
   A `git push --force-with-lease` is fine then (the branch holds only merged history).
@@ -99,4 +119,4 @@ Decided with the owner and proven with the Humanizer skill (`humanizer.md`,
   Download works in the preview.
 - Confirm `git diff --name-only` touches only what you intended; never edit unrelated
   prompt pages.
-- Remind the owner to re-upload to Cloudflare/Netlify to go live.
+- After merging, confirm the page is live (see the deploy note at the top).
