@@ -18,8 +18,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
     def send_head(self):
         path = self.path.split('?')[0].split('#')[0]
-        if path in REDIRECTS:
-            to, code = REDIRECTS[path]
+        rule = REDIRECTS.get(path) or next((v for k, v in REDIRECTS.items() if k.endswith('*') and path.startswith(k[:-1])), None)
+        if rule:
+            to, code = rule
             self.send_response(code); self.send_header('Location', to); self.end_headers(); return None
         local = os.path.join(ROOT, path.lstrip('/'))
         if path != '/' and not os.path.exists(local) and os.path.exists(local + '.html'):

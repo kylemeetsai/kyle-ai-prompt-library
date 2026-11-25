@@ -45,7 +45,7 @@
     <div class="wrap">
       <div class="tools-head">
         <span class="label">Tools I teach</span>
-        <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false" aria-label="Pause the moving logos"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 2h2v8H3zM7 2h2v8H7z" fill="currentColor"/></svg></button>
+        <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="false" aria-label="Pause motion"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 2h2v8H3zM7 2h2v8H7z" fill="currentColor"/></svg></button>
       </div>
       <div class="marquee"><div class="track" id="tool-track">{{TOOL_LOGOS}}</div></div>
     </div>
@@ -131,7 +131,7 @@
   <section style="padding-top:0">
     <div class="wrap">
       <div class="section-head"><span class="label">From the comments</span><h2>What viewers say.</h2></div>
-      <div class="quotes">
+      <div class="quotes" role="region" aria-label="Viewer comments" tabindex="0">
         <figure class="quote"><p>“I have not learned so much, so fast in my life 😂”</p><footer>On “Design your first mobile app”</footer></figure>
         <figure class="quote"><p>“this is wild, built one in like 2 mins and it actually works 😭”</p><footer>On “AI Budget Tracker”</footer></figure>
         <figure class="quote"><p>“This is so helpful. I love the way you explain things.”</p><footer>On “Create your own AI agent”</footer></figure>

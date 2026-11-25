@@ -2,6 +2,13 @@
 /classes / 301
 /classes.html / 301
 /prompts / 301
+/prompts/ / 301
+/profile.jpg /assets/photo/kyle-tiktok-avatar.jpg 301
+# Working files stay in the repo but are not part of the site.
+/CLAUDE.md / 301
+/README.md / 301
+/tools/* / 301
+/content/* / 301
 /savings-goal-tracker /prompts/savings-goal-tracker 301
 /savings-goal-tracker.html /prompts/savings-goal-tracker 301
 /atlas-photo-rules /prompts/atlas-photo-rules 301

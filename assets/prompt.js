@@ -14,6 +14,10 @@
     [...related.children].forEach(c => { const ok = dateOf(c.dataset.added) <= today && shown < 3; c.hidden = !ok; if (ok) shown++; });
   }
 
+  // Arriving here from the homepage drawer can leave its history entry behind: Back should go home.
+  const here = location.pathname;
+  addEventListener('popstate', () => { if (location.pathname !== here) location.reload(); });
+
   const box = document.getElementById('prompt-text');
   const flash = (btn, text, ms = 1800) => {
     if (!btn.dataset.label) btn.dataset.label = btn.textContent;

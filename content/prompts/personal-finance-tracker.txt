@@ -1,4 +1,4 @@
-title: AI Personal Finance Tracker (EMAIL MCP)
+title: AI Personal Finance Tracker (Email)
 desc: Scans your email for the last 90 days and builds a saved dashboard of every active subscription, with a "worth a second look" callout for services you may not be using anymore.
 headline: AI PERSONAL FINANCE TRACKER (EMAIL MCP)
 sub: 60 second setup

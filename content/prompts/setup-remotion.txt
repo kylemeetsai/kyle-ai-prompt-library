@@ -1,4 +1,4 @@
-title: Setup Remotion
+title: Set Up Remotion
 desc: A patient, plain-language setup guide that gets Remotion working inside Claude Code for you. Remotion makes real videos using code, and once it is set up you can just ask Claude to build videos for you. This prompt walks Claude through checking your computer has what it needs, creating a fresh video project, and running a tiny test render to prove it can actually make a video, explaining every step and never installing anything without telling you what it is first. No coding needed on your end.
 headline: SETUP REMOTION 🎥
 sub: Guided setup · no coding needed

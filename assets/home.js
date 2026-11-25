@@ -11,14 +11,16 @@
   const dateOf = s => { const [y, m, d] = (s || '').split('-').map(Number); return new Date(y, m - 1, d).getTime(); };
   const isLive = s => dateOf(s) <= today;
 
-  // ---------- moving logos: pause button ----------
+  // ---------- one pause button stops all motion: logos, both videos, the hero hand-off ----------
   const toggle = $('motion-toggle');
+  let motionPaused = false;
   const PAUSE = '<path d="M3 2h2v8H3zM7 2h2v8H7z" fill="currentColor"/>', PLAY = '<path d="M3 1.5v9l7-4.5z" fill="currentColor"/>';
   toggle.addEventListener('click', () => {
-    const paused = document.body.classList.toggle('paused');
+    const paused = motionPaused = document.body.classList.toggle('paused');
     toggle.setAttribute('aria-pressed', paused);
-    toggle.setAttribute('aria-label', paused ? 'Play the moving logos' : 'Pause the moving logos');
+    toggle.setAttribute('aria-label', paused ? 'Play motion' : 'Pause motion');
     toggle.firstElementChild.innerHTML = paused ? PLAY : PAUSE;
+    document.querySelectorAll('#call, #film').forEach(v => { if (v.tagName === 'VIDEO') paused ? v.pause() : v.play().catch(() => {}); });
   });
   if (reduce) toggle.hidden = true;
 
@@ -61,18 +63,28 @@
     c.remove(); return false; // waiting for its video; its own page already works
   });
   cards.forEach(c => { if (today - dateOf(c.dataset.added) < NEW_DAYS * DAY) c.querySelector('.new').hidden = false; });
-  const hay = cards.map(c => norm(c.textContent + ' ' + TOPIC_WORDS[c.dataset.topic] + ' ' + c.dataset.apps + ' ' + c.dataset.format));
-  const tokens = q => norm(q).split(/\s+/).filter(w => w && SYNONYMS[w] !== '');
-  const matches = (i, toks) => toks.every(w => { const alts = (SYNONYMS[w] || w).split('|'); if (!alts.includes(w)) alts.push(w); return alts.some(a => a && hay[i].includes(a)); });
+  Object.assign(SYNONYMS, { gemeni: 'gemini', gemenai: 'gemini', chatgbt: 'chatgpt', vacation: 'travel|trip|itinerary', trip: 'travel|trip|itinerary', holiday: 'travel|trip|itinerary', excel: 'spreadsheet|sheets|csv', spreadsheet: 'spreadsheet|sheets|csv', youtube: 'youtube|video', subscription: 'subscription', bill: 'bill|subscription|refund|budget' });
+  const STOP = new Set(['a', 'an', 'the', 'for', 'my', 'to', 'of', 'and', 'with', 'in', 'on', 'me', 'i', 'how', 'do', 'can', 'you', 'your', 'is', 'it', 'that', 'what', 'prompt', 'prompts']);
+  const hay = cards.map(c => ' ' + norm(c.textContent + ' ' + TOPIC_WORDS[c.dataset.topic] + ' ' + c.dataset.apps + ' ' + c.dataset.format).replace(/\s+/g, ' '));
+  const titles = cards.map(c => ' ' + norm(c.querySelector('h3').textContent));
+  const tokens = q => norm(q).split(/\s+/).filter(w => w && SYNONYMS[w] !== '' && !STOP.has(w));
+  const alts = w => { const base = w.length > 3 && w.endsWith('s') && !w.endsWith('ss') ? w.slice(0, -1) : w; const list = (SYNONYMS[w] || SYNONYMS[base] || base).split('|'); if (!list.includes(base)) list.push(base); return list; };
+  const hit = (text, a) => text.includes(' ' + a); // matches the start of a word: "trip" no longer finds "strips"
+  const score = (i, toks) => toks.reduce((n, w) => n + (alts(w).some(a => hit(titles[i], a)) ? 3 : alts(w).some(a => hit(hay[i], a)) ? 1 : 0), 0);
+  const matches = (i, toks, any) => (any ? toks.some : toks.every).call(toks, w => alts(w).some(a => hit(hay[i], a)));
   const state = { q: '', topic: 'all', app: 'all', all: false };
   const PAGE = matchMedia('(max-width: 640px)').matches ? 5 : 9;
   const filters = $('filters'), q = $('q'), more = $('more'), empty = $('empty'), count = $('count');
 
   const render = () => {
     const toks = tokens(state.q);
-    const hits = cards.filter((c, i) => (state.topic === 'all' || c.dataset.topic === state.topic)
-      && (state.app === 'all' || c.dataset.apps.split(' ').includes(state.app))
-      && (!toks.length || matches(i, toks)));
+    const inView = cards.map((c, i) => i).filter(i => (state.topic === 'all' || cards[i].dataset.topic === state.topic)
+      && (state.app === 'all' || cards[i].dataset.apps.split(' ').includes(state.app)));
+    let idx = toks.length ? inView.filter(i => matches(i, toks, false)) : inView;
+    if (toks.length > 1 && !idx.length) idx = inView.filter(i => matches(i, toks, true)); // "small business": any word
+    if (toks.length) idx = idx.map(i => [i, score(i, toks)]).sort((a, b) => b[1] - a[1] || a[0] - b[0]).map(x => x[0]);
+    grid.append(...(toks.length ? idx.concat(cards.map((c, i) => i).filter(i => !idx.includes(i))) : cards.map((c, i) => i)).map(i => cards[i]));
+    const hits = idx.map(i => cards[i]);
     const showAll = state.all || toks.length > 0;
     cards.forEach(c => { c.hidden = true; });
     hits.forEach((c, i) => { c.hidden = !showAll && i >= PAGE; });
@@ -140,12 +152,20 @@
     if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
     e.preventDefault(); openPrompt(a.dataset.drawer);
   });
+  let pendingNav = null;
+  $('d-page').addEventListener('click', e => {
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    const href = e.currentTarget.getAttribute('href');
+    if (history.state && history.state.drawer) { pendingNav = href; drawer.close(); } else location.href = href;
+  });
   drawer.addEventListener('close', () => {
     document.title = homeTitle;
     if (history.state && history.state.drawer) history.back();
     if (lastFocus) lastFocus.focus({ preventScroll: true });
   });
   window.addEventListener('popstate', () => {
+    if (pendingNav) { const h = pendingNav; pendingNav = null; location.href = h; return; }
     const s = history.state;
     if (s && s.drawer) { if (!show(s.drawer)) location.reload(); }
     else if (drawer.open) drawer.close();
@@ -179,7 +199,7 @@
       setTimeout(() => heroBtn.classList.remove('is-pinged'), 800);
     };
     const cycle = () => {
-      if (hold || document.hidden || drawer.open) { setTimeout(cycle, 1500); return; }
+      if (hold || motionPaused || document.hidden || drawer.open) { setTimeout(cycle, 1500); return; }
       you.classList.remove('is-there'); card.classList.add('is-swapping');
       setTimeout(() => { heroI = (heroI + 1) % HERO.length; showHero(heroI); card.classList.remove('is-swapping'); }, 380);
       setTimeout(() => you.classList.add('is-there'), 950);
