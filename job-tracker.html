@@ -103,21 +103,20 @@
   </div>
 
   <div class="description">
-    Builds a personal job-search command center as a Cowork Live Artifact that lives in your sidebar and remembers everything across sessions. Answer five quick questions, then track every application through a six-stage pipeline, log notes, surface stalled jobs, and draft follow-up emails in your own voice — written from you to the recruiter, never the other way around.
+    Builds a personal job-search command center as a Claude artifact that remembers everything across sessions. Answer five quick questions, then track every application through a six-stage pipeline, log notes, surface stalled jobs, and draft follow-up emails in your own voice — written from you to the recruiter, never the other way around.
   </div>
 
   <div class="how-to">
     <div class="how-to-label">How to use</div>
     <div class="how-to-steps">
       <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
-      <strong>2.</strong> Paste into a new Claude chat in Cowork (required for Live Artifacts)<br>
+      <strong>2.</strong> Paste into a new Claude chat<br>
       <strong>3.</strong> Answer the five quick setup questions about your name, field, and email tone<br>
-      <strong>4.</strong> Get your AI Job Tracker as a Live Artifact in the sidebar — open it every time you apply or hear back<br>
-      <em>Needs a paid Claude plan (Pro, Max or Ultra), because it runs in Cowork.</em>
+      <strong>4.</strong> Get your AI Job Tracker as an artifact that saves, and open it every time you apply or hear back
     </div>
   </div>
 
-  <div class="prompt-box" id="prompt-text">You are a senior product designer and front-end engineer building me a state-of-the-art AI Job Tracker as a Live Artifact: a single self-contained HTML file, persistent via localStorage, that opens in the Cowork sidebar. Not a one-off. A tool I will open every time I apply to a job or hear back from one. Premium polish, conversational input.
+  <div class="prompt-box" id="prompt-text">You are a senior product designer and front-end engineer building me a state-of-the-art AI Job Tracker as an artifact: a single self-contained HTML file that saves across sessions using the artifact's built-in storage. Not a one-off. A tool I will open every time I apply to a job or hear back from one. Premium polish, conversational input.
 
 Step 1: Interview me
 
@@ -133,9 +132,9 @@ After my answers, build the artifact. Do not show me any code or summaries first
 
 Step 2: Build the artifact
 
-Build a single self-contained HTML file and publish via `mcp__cowork__create_artifact` with id `"ai-job-tracker"`. The artifact must work exactly as specified below.
+Build a single self-contained HTML file and publish it as an artifact named "AI Job Tracker". The artifact must work exactly as specified below.
 
-Seed data (on first render only, if localStorage is empty)
+Seed data (on first render only, if saved storage is empty)
 
 Compute today's date dynamically using `new Date()`. Use that as the anchor for all relative dates ("Updated Xd ago," stalled calculations, weekly review windows).
 
@@ -177,7 +176,7 @@ Conversational input field. When the user types things like "I just applied to A
 
 CRITICAL — Parser architecture
 
-Do NOT route every message to `window.cowork.askClaude`. Build a deterministic regex fast-path first, with the LLM as fallback. Without this, the parser will fail on common inputs.
+Do NOT route every message to the artifact's built-in Claude call. Build a deterministic regex fast-path first, with the LLM as fallback. Without this, the parser will fail on common inputs.
 
 The fast-path must handle:
 
@@ -197,7 +196,7 @@ Only fall through to `askClaude` when the regex returns null. The LLM prompt sho
 
 CRITICAL — Response coercion
 
-`window.cowork.askClaude` may return a plain string OR a structured object. Never assume the shape. Calling `String(obj)` on the wrong shape yields `[object Object]` in the UI. Implement a `coerceText(res)` helper that handles every shape:
+the artifact's built-in Claude call may return a plain string OR a structured object. Never assume the shape. Calling `String(obj)` on the wrong shape yields `[object Object]` in the UI. Implement a `coerceText(res)` helper that handles every shape:
 
 - plain string
 - `{ text: "..." }`
@@ -211,7 +210,7 @@ Pass every askClaude response through `coerceText` before using it. Never `Strin
 
 CRITICAL — Timeouts and optimistic rendering (don't make the user wait)
 
-`window.cowork.askClaude` can take a long time, and sometimes it hangs. The artifact must NEVER show a spinner with no content. Implement a `withTimeout(promise, ms)` helper:
+the artifact's built-in Claude call can take a long time, and sometimes it hangs. The artifact must NEVER show a spinner with no content. Implement a `withTimeout(promise, ms)` helper:
 
 ```js
 function withTimeout(promise, ms) {
@@ -243,7 +242,7 @@ Never block UI rendering on an LLM call.
 
 Next move / Draft follow-up button
 
-Calls `window.cowork.askClaude` (wrapped in `withTimeout`) to draft a follow-up email. CRITICAL: get the perspective right on the first try.
+Calls the artifact's built-in Claude call (wrapped in `withTimeout`) to draft a follow-up email. CRITICAL: get the perspective right on the first try.
 
 Perspective (this is the #1 failure mode, be explicit):
 
@@ -314,7 +313,7 @@ Toggle at the bottom expands a navy panel with white text showing:
 - Applications submitted this week vs last week (+delta).
 - Interviews moved (stages advanced) this week.
 - Stale jobs needing follow-up.
-- One AI coaching line via `askClaude` (wrapped in `withTimeout(6000)`, response passed through `coerceText`), max 35 words, references the actual pipeline ("3 of your last 5 stalled at application stage, try a referral on the next 2") not boilerplate. Cached so it does not regenerate on every render. Render a deterministic local fallback FIRST, then upgrade if the LLM returns something better in time.
+- One AI coaching line via the built-in Claude call (wrapped in `withTimeout(6000)`, response passed through `coerceText`), max 35 words, references the actual pipeline ("3 of your last 5 stalled at application stage, try a referral on the next 2") not boilerplate. Cached so it does not regenerate on every render. Render a deterministic local fallback FIRST, then upgrade if the LLM returns something better in time.
 
 Visual design
 
@@ -330,7 +329,7 @@ Visual design
 
 Persistence
 
-Single localStorage key (`"jobtracker.v1"`) holds `{ jobs, chat, activeTab, reviewOpen, seeded, userName, emailTone }`. Save on every mutation. Reload tomorrow or next month — everything is exactly where it was left, including chat history (capped at last 50 messages) and which tab was open. `userName` and `emailTone` are set once from the Step 1 interview and persisted.
+One saved storage key (`"jobtracker.v1"`) holds `{ jobs, chat, activeTab, reviewOpen, seeded, userName, emailTone }`. Save on every mutation. Reload tomorrow or next month — everything is exactly where it was left, including chat history (capped at last 50 messages) and which tab was open. `userName` and `emailTone` are set once from the Step 1 interview and persisted.
 
 Date handling
 
@@ -345,7 +344,7 @@ Summary of non-obvious requirements (read twice)
 5. Deterministic templates for every LLM-generated string: follow-up emails, coaching note. The artifact must work even if the LLM is offline, slow, or returns garbage.
 6. Sign emails as the candidate's first name (collected in Step 1), never as `[Name]` or `[Signature]`. Strip placeholders if they sneak through.
 
-Build the HTML file, then publish via `mcp__cowork__create_artifact` with id `"ai-job-tracker"`.</div>
+Build the HTML file, then publish it as an artifact named "AI Job Tracker".</div>
 
   <button class="copy-button" id="copy-btn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
