@@ -5,6 +5,7 @@
   --muted: #59606B;
   --line: #D6DAE0;
   --accent: #FF5A1F;      /* signal orange: the You cursor, primary actions */
+  --accent-display: #F2501A; /* the same orange, a hair deeper for the giant "AI" (3:1 on the grey) */
   --accent-ink: #B93D0B;  /* orange text on light */
   --on-accent: #15171B;
   --tile: #0C0E11;
@@ -24,7 +25,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --canvas: #0F1114; --surface: #171A1F; --ink: #ECEEF2; --muted: #9AA2AD; --line: #2A2F37;
-    --accent: #FF6A33; --accent-ink: #FF8B5E; --on-accent: #111316; --tile: #050607;
+    --accent: #FF6A33; --accent-display: #FF6A33; --accent-ink: #FF8B5E; --on-accent: #111316; --tile: #050607;
     --chip: #ECEEF2; --chip-ink: #0F1114;
     --work-bg: #1A1E24; --work-ink: #ECEEF2; --work-line: #2E343D; --ok: #1E8A55;
     --shadow: 0 1px 0 rgba(0,0,0,.3), 0 18px 40px -20px rgba(0,0,0,.7);
@@ -33,7 +34,7 @@
 }
 :root[data-theme="dark"] {
   --canvas: #0F1114; --surface: #171A1F; --ink: #ECEEF2; --muted: #9AA2AD; --line: #2A2F37;
-  --accent: #FF6A33; --accent-ink: #FF8B5E; --on-accent: #111316; --tile: #050607;
+  --accent: #FF6A33; --accent-display: #FF6A33; --accent-ink: #FF8B5E; --on-accent: #111316; --tile: #050607;
   --chip: #ECEEF2; --chip-ink: #0F1114;
   --work-bg: #1A1E24; --work-ink: #ECEEF2; --work-line: #2E343D; --ok: #1E8A55;
   --shadow: 0 1px 0 rgba(0,0,0,.3), 0 18px 40px -20px rgba(0,0,0,.7);
@@ -94,7 +95,7 @@ a:hover .arrow { transform: translateX(3px); }
 @media (min-width: 900px) { .hero .wrap { grid-template-columns: 1.15fr .85fr; } }
 .hero-copy { display: grid; gap: 24px; min-width: 0; }
 h1 { font-size: clamp(58px, 9vw, 112px); font-weight: 800; line-height: .9; letter-spacing: -.038em; font-variation-settings: "opsz" 96; margin-left: -.03em; }
-h1 .comma { color: var(--accent); }
+h1 .ai { color: var(--accent-display, var(--accent)); }
 .lede { font-size: clamp(19px, 2.2vw, 22px); line-height: 1.45; color: var(--muted); max-width: 34ch; }
 .lede strong { color: var(--ink); font-weight: 600; }
 .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
