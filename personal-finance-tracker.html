@@ -103,7 +103,7 @@
   </div>
 
   <div class="description">
-    Scans your email for subscription receipts from the past 90 days and builds a Live Artifact dashboard that re-pulls fresh data each time you open it. Shows total monthly spend, an upcoming charges timeline, every active subscription as a card, and a "worth a second look" callout for services you may not be using anymore.
+    Scans your email for subscription receipts from the past 90 days and builds a saved dashboard that refreshes from your email when you open it or tap Refresh. Shows total monthly spend, an upcoming charges timeline, every active subscription as a card, and a "worth a second look" callout for services you may not be using anymore.
   </div>
 
   <div class="how-to">
@@ -111,14 +111,12 @@
     <div class="how-to-steps">
       <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
       <strong>2.</strong> Paste into a new Claude chat with your email connector set up (Gmail, Outlook, etc.)<br>
-      <strong>3.</strong> The Live Artifact dashboard builds itself from your past 90 days of subscription receipts<br>
+      <strong>3.</strong> The dashboard builds itself from your past 90 days of subscription receipts<br>
       <strong>4.</strong> Reopen the artifact anytime to refresh with current data
     </div>
   </div>
 
-  <div class="prompt-box" id="prompt-text">Build me a personal subscription tracker as a Live Artifact — a saved
-dashboard that re-pulls fresh data from my email every time I open
-it, so it always reflects what I'm currently paying for.
+  <div class="prompt-box" id="prompt-text">Build me a personal subscription tracker as a saved artifact dashboard that refreshes from my email when I open it or tap Refresh, so it always reflects what I'm currently paying for.
 
 Before you build, check what email connector I already have set up.
 
@@ -129,7 +127,7 @@ Before you build, check what email connector I already have set up.
   moving on.
 
 Quick environment check first: this only works in a tool that
-supports Live Artifacts and email connectors. If that's not the
+supports saved artifacts and email connectors. If that's not the
 environment I'm in, tell me up front instead of trying to build
 something half-working.
 

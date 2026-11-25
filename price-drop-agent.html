@@ -103,17 +103,16 @@
   </div>
 
   <div class="description">
-    Builds a personal Price Drop Agent as a Cowork Live Artifact that watches the 3 to 4 products you are shopping for. It interviews you first, researches real listings and the honest "usual price" of each item, then shows today's price, a Deal Score, and a clear BUY NOW or WAIT call on a clean dashboard that saves across sessions. It also sets up a daily morning check that only messages you when something actually hits a great deal. No fake sales, no hype, no noise.
+    Builds a personal Price Drop Agent as a Claude artifact that watches the 3 to 4 products you are shopping for. It interviews you first, researches real listings and the honest "usual price" of each item, then shows today's price, a Deal Score, and a clear BUY NOW or WAIT call on a clean dashboard that saves across sessions. It also sets up a daily morning check that only speaks up when something actually hits a great deal. No fake sales, no hype, no noise.
   </div>
 
   <div class="how-to">
     <div class="how-to-label">How to use</div>
     <div class="how-to-steps">
       <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
-      <strong>2.</strong> Paste it into a new Claude chat with web search on<br>
+      <strong>2.</strong> Paste it into a new Claude chat<br>
       <strong>3.</strong> Answer the short interview: what you are shopping for, your target price, and when to check each morning<br>
-      <strong>4.</strong> Claude researches real prices, builds your live dashboard, and sets a daily check that only pings you on a genuine deal<br>
-      <em>Needs a paid Claude plan (Pro, Max or Ultra), since the morning check is a scheduled task.</em>
+      <strong>4.</strong> Claude researches real prices, builds your live dashboard, and sets a daily check that only pings you on a genuine deal
     </div>
   </div>
 
@@ -124,7 +123,7 @@ A personal Price Drop Agent that lives in two places:
 1. A live price dashboard I can open any time (not just read once in chat). It shows the products I am watching, today's price for each, how good that price is, and a clear BUY NOW or WAIT call.
 2. A daily background check that refreshes those prices every morning and only messages me when something actually hits a great deal. No noise. No "prices updated" pings. Only "this one is worth buying now."
 
-The dashboard must be a Live Artifact: it saves across sessions, lives in my artifact panel, and can update on a schedule. Not a static page I have to rebuild, and not a plain chat message.
+The dashboard must be an artifact that saves across sessions (use the artifact's built-in storage) and lives in my artifact panel. Not a static page I have to rebuild, and not a plain chat message.
 CRITICAL SETUP: DESIGN ONCE, UPDATE DATA FOREVER
 Build the layout, colors, and styling one time. After that, they never change. Store everything that moves (each product's current price, deal score, verdict, and the date it was checked) in a single clearly labeled data block inside the artifact (a WATCHLIST data object or equivalent). Every refresh, whether I trigger it or the morning task does, only replaces that data block. Lock the daily task to this rule: "Only ever update the WATCHLIST data. Never touch the design, layout, or wording of the page." This keeps every morning check fast, cheap, and unable to mess up the design.
 STEP 1: INTERVIEW ME FIRST
@@ -175,7 +174,7 @@ STEP 4: BUILD THE DASHBOARD (LAYOUT IN ORDER)
 Keep it clean and visual. Cards over paragraphs. Lots of breathing room. It should be readable in a glance on a phone, more like a well-designed app screen than a spreadsheet.
 STEP 5: TWO WAYS IT REFRESHES (BOTH REQUIRED)
 
-1. The morning check (automatic). Set up a scheduled task that runs every day at the time and timezone I gave you. Each run repeats Step 2 and Step 3 for every item, then updates only the WATCHLIST data in the artifact. After updating, it checks: did anything newly cross into BUY NOW territory since yesterday? If yes, message me the way I asked in Step 1, short and specific ("The [item] just hit [price] at [retailer]. That is a genuine deal, here is the link."). If nothing is a real deal, it stays silent. No daily "all quiet" messages.
+1. The morning check (automatic). Set up a scheduled task that runs every day at the time and timezone I gave you. Each run repeats Step 2 and Step 3 for every item, then updates only the WATCHLIST data in the artifact if it can reach it (if it can't, it just reports). Then it checks: did anything newly cross into BUY NOW territory since yesterday? If yes, message me the way I asked in Step 1, short and specific ("The [item] just hit [price] at [retailer]. That is a genuine deal, here is the link."). If nothing is a real deal, it stays silent. No daily "all quiet" messages.
 2. The Check Now button (manual). A button in the top right of the dashboard that reruns the research and updates the page on demand, with a clear loading state and a clear "done" signal. The dashboard should show the most recent saved prices when I open it, and only go fetch fresh prices when I press the button or when the morning task runs. It should not auto-search every time I open it, because that is slow and wasteful.
 
 STEP 6: DESIGN (MATCH A CLEAN, TRUSTWORTHY LOOK)
@@ -187,7 +186,7 @@ No fake urgency or countdown pressure. No treating a store's crossed-out "list p
 STEP 9: SELF-CHECK BEFORE YOU SHOW ME
 Confirm all of this before showing me the dashboard:
 
-1. It is a Live Artifact that saves across sessions, and the WATCHLIST data block is the only place prices and verdicts live.
+1. It is an artifact that saves across sessions, and the WATCHLIST data block is the only place prices and verdicts live.
 2. You ran the full research once already, so the dashboard opens with real prices and real verdicts, no placeholder text.
 3. Every item has a real, clickable link to its actual listing, a review score with a review count, an honest usual price, a Deal Score, and a clear BUY NOW or WAIT call.
 4. The daily task is set to my exact time and timezone, is locked to "only update the WATCHLIST data," and only messages me on a genuine new deal.

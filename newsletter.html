@@ -103,17 +103,16 @@
   </div>
 
   <div class="description">
-    Builds a personal recurring briefing as a Cowork Live Artifact on a topic you care about, from pop culture or tech to sports, finance, fashion, or anything else. Answer seven questions about your topic, name, refresh schedule, vibe, and sources. Get a Hero story, Buzz cards, weekend picks, trending conversations, and a conversation starter, all with citations and a refresh button. Lives in your artifact panel and updates on the schedule you pick.
+    Builds a personal recurring briefing as a Claude artifact on a topic you care about, from pop culture or tech to sports, finance, fashion, or anything else. Answer seven questions about your topic, name, refresh schedule, vibe, and sources. Get a Hero story, Buzz cards, weekend picks, trending conversations, and a conversation starter, all with citations and a refresh button. Lives in your artifact panel, with a Refresh Now button and a fresh brief on the schedule you pick.
   </div>
 
   <div class="how-to">
     <div class="how-to-label">How to use</div>
     <div class="how-to-steps">
       <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
-      <strong>2.</strong> Paste into a new Claude chat in Cowork (required for Live Artifacts)<br>
+      <strong>2.</strong> Paste into a new Claude chat<br>
       <strong>3.</strong> Answer the seven questions about your topic, refresh schedule, vibe, and sources<br>
-      <strong>4.</strong> Get your personal briefing as a Live Artifact that refreshes on your schedule<br>
-      <em>Needs a paid Claude plan (Pro, Max or Ultra) for Cowork and the scheduled refresh.</em>
+      <strong>4.</strong> Get your personal briefing as an artifact, plus a fresh brief on your schedule
     </div>
   </div>
 
@@ -121,7 +120,7 @@
 
 # WHAT WE ARE BUILDING
 
-A personal recurring briefing as a Cowork Live Artifact. It is the one thing I open on a set schedule to know what is worth my attention in the topic I care about. It must be a Live Artifact specifically: persists across sessions, lives in my artifact panel, and can update on a schedule. Not a static HTML page, not a markdown doc.
+A personal recurring briefing as an artifact. It is the one thing I open on a set schedule to know what is worth my attention in the topic I care about. It must be an artifact that persists across sessions (use the artifact's built-in storage) and lives in my artifact panel. Not a static HTML page, not a markdown doc.
 
 # CRITICAL ARCHITECTURE: FORMAT IS FIXED, DATA IS DYNAMIC
 
@@ -159,7 +158,7 @@ Curate 10 to 14 stories total, ranked by buzz, not chronology. Score each on a B
 
 # STEP 3: REFRESH (TWO PATHS, BOTH REQUIRED)
 
-1. **Scheduled refresh.** Runs on the day and time I picked, in my timezone. The task runs the full curation below and updates only the SEED_BRIEF data block in the artifact. Assume cron runs in my machine's local timezone unless I said otherwise.
+1. **Scheduled refresh.** Runs on the day and time I picked, in my timezone. The task runs the full curation below and updates only the SEED_BRIEF data block in the artifact if it can reach it; if it can't, it delivers the new brief as its report. Assume cron runs in my machine's local timezone unless I said otherwise.
 
 2. **Manual refresh.** A "Refresh Now" button top-right of the artifact. Use whatever mechanism is cleanest given your available tools (client-side fetch, server-side curation, or triggering the scheduled task in the background). Show a clear loading state and a clear "done" signal. The artifact must NOT auto-fetch on open (slow and expensive). It displays the most recently cached brief. The scheduled task and the Refresh Now button are the only update paths.
 
@@ -233,7 +232,7 @@ No press-release language. No corporate filler. No SEO-style headlines. No emoji
 
 Confirm before showing me the artifact:
 
-1. The artifact is a Live Artifact, not a static HTML page. The SEED_BRIEF data block is the only place content lives.
+1. The artifact saves across sessions and is not a static HTML page. The SEED_BRIEF data block is the only place content lives.
 2. The scheduled task is set to my exact day, time, and timezone, and locked to "only edit SEED_BRIEF."
 3. The Refresh Now button works manually and shows clear loading and done states.
 4. The artifact loads from cache on open (does not auto-fetch).

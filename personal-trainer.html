@@ -103,17 +103,16 @@
   </div>
 
   <div class="description">
-    Builds a personal 4-week strength program as a Cowork Live Artifact, plus a printable Word doc backup. Answer seven questions about your goal, training level, equipment, days per week, session length, and any accommodations. Get today's workout auto-detected, a full 4-week calendar with progressive overload and a true deload week 4, RPE-based autoregulation, nutrition and recovery guardrails, and a progress tracker with PRs, body weight, and a weekly check-in.
+    Builds a personal 4-week strength program as a Claude artifact, plus a printable Word doc backup. Answer seven questions about your goal, training level, equipment, days per week, session length, and any accommodations. Get today's workout auto-detected, a full 4-week calendar with progressive overload and a true deload week 4, RPE-based autoregulation, nutrition and recovery guardrails, and a progress tracker with PRs, body weight, and a weekly check-in.
   </div>
 
   <div class="how-to">
     <div class="how-to-label">How to use</div>
     <div class="how-to-steps">
       <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
-      <strong>2.</strong> Paste into a new Claude chat in Cowork (required for Live Artifacts)<br>
+      <strong>2.</strong> Paste into a new Claude chat<br>
       <strong>3.</strong> Answer the seven questions about your goal, level, equipment, and schedule<br>
-      <strong>4.</strong> Get your 4-week program as a Live Artifact plus a printable Word doc<br>
-      <em>Needs a paid Claude plan (Pro, Max or Ultra), because it runs in Cowork.</em>
+      <strong>4.</strong> Get your 4-week program as an artifact plus a printable Word doc
     </div>
   </div>
 
@@ -121,7 +120,7 @@
 
 # WHAT WE ARE BUILDING
 
-A personal 4-week training system as a Cowork Live Artifact. It is my home base for the next 4 weeks: I open it every day to see today's workout, check off lifts as I go, log how it felt, track PRs, and stay accountable. It must be a Live Artifact specifically: persists across sessions, lives in my artifact panel, and stores my progress between visits. Not a static HTML page, not a markdown doc.
+A personal 4-week training system as an artifact. It is my home base for the next 4 weeks: I open it every day to see today's workout, check off lifts as I go, log how it felt, track PRs, and stay accountable. It must be an artifact that persists across sessions (use the artifact's built-in storage), lives in my artifact panel, and stores my progress between visits. Not a static HTML page, not a markdown doc.
 
 You will also save the full 4-week plan as a Word doc I can take to the gym in case I lose signal.
 
@@ -231,7 +230,7 @@ If the user clicks "Reset Program," confirm twice, then clear PROGRAM and LOG_ST
 
 # STEP 6: WORD DOC EXPORT
 
-In addition to the live artifact, save the full 4-week program as a Word doc to the user's working folder. Filename: "[Name]-4-Week-Training-Plan.docx" (e.g., "Kyle-4-Week-Training-Plan.docx"). Contents:
+In addition to the live artifact, save the full 4-week program as a Word doc (.docx) I can download. Filename: "[Name]-4-Week-Training-Plan.docx" (e.g., "Kyle-4-Week-Training-Plan.docx"). Contents:
 
 1. Cover page: program name, goal, training split, week-by-week overview.
 2. One page per session: warm-up, main lifts (sets x reps @ RPE, rest), accessories, cool-down. Big readable type, room to write the actual weight used next to each set.
@@ -253,7 +252,7 @@ No bracketed placeholders anywhere in the final output. No generic motivational 
 
 Confirm before showing me the artifact:
 
-1. The artifact is a Live Artifact, not a static HTML page. PROGRAM and LOG_STATE are clearly separated.
+1. The artifact saves across sessions and is not a static HTML page. PROGRAM and LOG_STATE are clearly separated.
 2. All 7 interview answers shaped the program (split matches days, equipment matches lifts, time cap matches session length, goal shapes calories/accent color, name shapes greeting, accommodations are respected).
 3. Today's Workout auto-detects the right day and is the largest card on the page.
 4. The 4-week calendar shows all 28 days with today highlighted.
