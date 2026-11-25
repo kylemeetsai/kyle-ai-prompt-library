@@ -47,7 +47,16 @@ non-technical TikTok audience. This file is the process of record. Follow it.
   also hides a pill's count when it is 0, and shows the `.no-results` message when a
   filter matches nothing. Progressive enhancement: with JS off, all cards show.
 - Valid `data-topic`: `skills`, `career`, `design`, `content`, `health`, `money`, `agents`.
-- Valid `data-tool`: `claude`, `design`, `agent`, `connector`, `chatgpt`, `skill`.
+- **App tags (Nov 2026): one `tool-tag` per AI app the prompt honestly works in**, in this
+  order: Claude (or Claude Design / Claude Code when it's built on that product), ChatGPT,
+  Gemini. `data-apps` lists them (`claude chatgpt gemini`); `data-tool` is the first one's
+  color key. Valid color keys: `claude`, `design`, `chatgpt`, `gemini`, `agent`, `connector`,
+  `skill`. Tag an app ONLY after checking the prompt against that app's official docs (see
+  the Remotion project's `docs/AI app capabilities (Nov 2026).md`); a tag that needs a small
+  change gets that change (an app-neutral wording edit and a one-line "Using ChatGPT? ..."
+  how-to note). When unsure, leave the tag off. A page that sends people to a non-chat tool
+  (Atlas) keeps that tool's tag instead. Connectors (Gmail, Notion, Sheets) go in the card
+  text, not the tags.
 
 ## Giveaway types: prompt, guide, link
 

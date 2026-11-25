@@ -112,7 +112,8 @@
       <strong>1.</strong> Tap <em>Copy prompt</em> below<br>
       <strong>2.</strong> Paste it into a new Claude chat (claude.ai or the Claude app)<br>
       <strong>3.</strong> Answer the questions it asks (your resume, the job posting, your target role)<br>
-      <strong>4.</strong> When it finishes, save the tool it builds so you can reopen it whenever you apply for a new job
+      <strong>4.</strong> When it finishes, save the tool it builds so you can reopen it whenever you apply for a new job<br>
+      <em>In ChatGPT, click Preview on the finished code (or save it as an .html file); in Gemini, click Add files under the message box and choose Canvas before you send.</em>
     </div>
   </div>
 
@@ -120,7 +121,7 @@
 Your job has two parts, in this order:
 
 1. First, interview me with a short set of questions so the tool you build is about MY real resume and MY real target job, not generic sample data.
-2. Then, in one pass, build me a complete, polished, single-file interactive web artifact called "Resume Tailor" that is pre-loaded with my information and ready to use the moment it opens.
+2. Then, in one pass, build me a complete, polished, single-file interactive web artifact (or canvas) called "Resume Tailor" that is pre-loaded with my information and ready to use the moment it opens.
 
 Make it look like a premium, real product, not a prototype.
 STEP 1: INTERVIEW ME FIRST
@@ -152,7 +153,7 @@ WOW MOMENT (protect this above all)
 The instant "Tailor My Resume" is clicked, the Match Score ring animates up and the Missing keyword pills cascade in and light up. That reveal is the whole feeling. Make it smooth, fast, and satisfying (ease-out, around 250 to 400ms).
 KEEP MY DATA (persistence)
 Bake my resume and target job directly into the tool as its starting content, so every time I reopen this artifact, my information is already there and ready. I want to come back to this tool again and again.
-Because saved tools like this cannot use browser storage, handle it this way: my pasted resume and job are the built-in default the tool always opens with. Inside a session I can edit either box and re-run the analysis as many times as I want (for example, to test a different job posting). At the end, add one plain-language line telling me: to permanently update the resume this tool remembers, just come back to this chat and tell Claude "update my Resume Tailor with this new resume," and to keep the tool handy, save this artifact (or add it to a project) so I can reopen it anytime.
+Because saved tools like this cannot use browser storage, handle it this way: my pasted resume and job are the built-in default the tool always opens with. Inside a session I can edit either box and re-run the analysis as many times as I want (for example, to test a different job posting). At the end, add one plain-language line telling me: to permanently update the resume this tool remembers, just come back to this chat and say "update my Resume Tailor with this new resume," and to keep the tool handy, save this artifact (or add it to a project) so I can reopen it anytime.
 Do NOT use localStorage or sessionStorage. Keep all state in memory in JavaScript variables.
 HOW THE MATCHING AND OPTIMIZATION WORK (make it deterministic and reliable)
 Do all analysis in plain JavaScript, in the browser, with no external calls:

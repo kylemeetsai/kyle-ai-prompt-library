@@ -114,13 +114,14 @@
       <strong>3.</strong> Answer 4 quick questions, or just say "use the default"<br>
       <strong>4.</strong> Get your list of money owed plus a claim message for each one. Check each item on your bank statement, then send the ones you want yourself<br>
       <strong>5.</strong> Click <strong>Schedule</strong> when it offers, and it checks again every week<br>
-      <em>Good to know: the weekly check needs a paid Claude plan. On the free plan, paste the prompt again any time. Flight rules cover US flights; anything else gets flagged with the rule to look up.</em>
+      <em>Good to know: the weekly check needs a paid Claude plan. On the free plan, paste the prompt again any time. Flight rules cover US flights; anything else gets flagged with the rule to look up.</em><br>
+      <em>Using ChatGPT? You need Plus or Pro on the web: connect Gmail first (Settings, then Plugins), then paste the prompt.</em>
     </div>
   </div>
 
   <div class="prompt-box" id="prompt-text">You're going to be my refund hunter. You'll search my email for money companies still owe me, write the claim messages for me, and then set yourself up to check again every week.
 
-FIRST: Check that you can search and read my Gmail. If you can't, stop and tell me in plain steps how to connect it: open Customize, then Connectors, and connect Gmail (or, if it's connected, click + under the chat box, then Connectors, and turn Gmail on). Then wait for me. Once it works, tell me in one line that I can lock sending: Customize, Connectors, Gmail, Permissions, and set send, reply and forward to "Always ask".
+FIRST: Check that you can search and read my Gmail. If you can't, stop and tell me in plain steps how to connect it: in Claude, open Customize, then Connectors, and connect Gmail (or, if it's connected, click + under the chat box, then Connectors, and turn Gmail on); in ChatGPT, open Settings, then Plugins, and connect Gmail. Then wait for me. Once it works, if you're Claude, tell me in one line that I can lock sending: Customize, Connectors, Gmail, Permissions, and set send, reply and forward to "Always ask".
 
 THE RULES, for this chat and every weekly run:
 - You only search and read my email. Never send, reply, forward, archive, delete, label or mark anything as spam. The only thing you may ever create is a Gmail draft, and only if I say yes in step 1. Never send a draft.
@@ -151,7 +152,7 @@ STEP 4: Deliver.
 - A table: company, amount, date, deadline, confidence, next step. Then Worth checking and Closed, one line each.
 - A short, polite claim message for each Likely owed item, with the order number, amount, date and what to ask for. If I said yes to drafts, save each as a Gmail draft with the To line empty. Otherwise show them here. Tell me where to send each one (the company's help page on its official website, or for a fare bought on a travel site, that site).
 - This warning: "I can see your email, not your bank. Check each item on your statement before you send anything."
-- Then set up the weekly check: create a weekly scheduled task on the day I chose, with these same rules and steps (no questions) over the last 12 months, read-only, and with the claim messages in the report instead of drafts. Each run marks anything with a new email in the last 7 days as NEW, and says so first if it can't reach Gmail. If you can't create it from here, give me the finished instructions in one copy box and tell me exactly what to do: click Scheduled, then New task, then Set up manually, paste them in, choose Weekly, and save. If my plan has no scheduled tasks (they need a paid plan), say so in one line and that I can paste this prompt again any time.
+- Then set up the weekly check: create a weekly scheduled task on the day I chose, with these same rules and steps (no questions) over the last 12 months, read-only, and with the claim messages in the report instead of drafts. Each run marks anything with a new email in the last 7 days as NEW, and says so first if it can't reach Gmail. If you can't create it from here, give me the finished instructions in one copy box and tell me exactly what to do: click Scheduled, then New task, then Set up manually, paste them in, choose Weekly, and save (that's Claude; in another app, use its own Scheduled or tasks page). If my plan has no scheduled tasks (they need a paid plan), say so in one line and that I can paste this prompt again any time.
 - Finish with one line on what my refund hunter will do each week and how to pause it.</div>
 
   <button class="copy-button" id="copy-btn">
