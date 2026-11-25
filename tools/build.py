@@ -53,7 +53,21 @@ def read(*p):
         return f.read()
 
 
+ASSET_REF = re.compile(r'(/assets/[A-Za-z0-9_./-]+\.(?:mp4|webm|jpg|jpeg|png|svg|gif|webp|ico))(?![?\w])')
+
+
+def version_assets(html_text):
+    # Browsers keep /assets/ files for a week, so every image and video link carries its file's
+    # hash: a changed file gets a new address and nobody sees a stale copy.
+    def add(m):
+        rel = m.group(1).lstrip('/')
+        return m.group(1) + ('?v=' + version(rel) if os.path.exists(path(rel)) else '')
+    return ASSET_REF.sub(add, html_text)
+
+
 def write(rel, text):
+    if rel.endswith('.html'):
+        text = version_assets(text)
     full = path(rel)
     os.makedirs(os.path.dirname(full), exist_ok=True)
     with open(full, 'w', encoding='utf-8') as f:
