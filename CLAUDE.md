@@ -39,6 +39,12 @@ non-technical TikTok audience. This file is the process of record. Follow it.
   `<div class="card-meta">` holding the tool-tag span, then a
   `<span class="format-tag">` reading Prompt / Guide / Try it (skills get none:
   their tool tag already says Skill).
+- **Search (Nov 2026):** the search box above the pills filters cards instantly as people
+  type, together with the selected pill; pill counts follow the search. It matches each card's
+  text plus its topic, apps and format, with a small synonym list in the script (`SYNONYMS`:
+  cv → resume, email → Gmail, workout → trainer...). Add a synonym there when a real search
+  misses. A link like `/?q=budget` opens the page already searched (handy in DMs and bios);
+  `/` focuses the box on desktop, Esc clears it.
 - **NEW badges are automatic:** the hub's JS adds one for 14 days after
   `data-added`. Never hand-add a NEW badge or `data-new`.
 - **Pills are topics (what the viewer wants to do), never formats.** A guide about
